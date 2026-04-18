@@ -1,61 +1,51 @@
 "use client"
 
+import Link from "next/link"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { 
-  Home, 
-  Building2, 
-  Factory, 
-  Hammer, 
-  Paintbrush, 
-  HardHat,
-  Ruler,
-  Truck
-} from "lucide-react"
-
-const services = [
-  {
-    icon: Home,
-    title: "Residential Construction",
-    description: "Custom homes, renovations, and additions built to your exact specifications with premium materials."
-  },
-  {
-    icon: Building2,
-    title: "Commercial Building",
-    description: "Office buildings, retail spaces, and commercial complexes designed for functionality and aesthetics."
-  },
-  {
-    icon: Factory,
-    title: "Industrial Projects",
-    description: "Warehouses, factories, and industrial facilities built to meet stringent safety standards."
-  },
-  {
-    icon: Hammer,
-    title: "Renovations",
-    description: "Transform existing spaces with our expert renovation services, from kitchens to entire buildings."
-  },
-  {
-    icon: Paintbrush,
-    title: "Interior & Exterior Finishing",
-    description: "Professional painting, flooring, and finishing touches that bring your project to completion."
-  },
-  {
-    icon: HardHat,
-    title: "Project Management",
-    description: "End-to-end project management ensuring on-time delivery and within budget constraints."
-  },
-  {
-    icon: Ruler,
-    title: "Architectural Design",
-    description: "Innovative architectural solutions tailored to your needs, combining form with function."
-  },
-  {
-    icon: Truck,
-    title: "Site Preparation",
-    description: "Complete site preparation including excavation, grading, and foundation work."
-  }
-]
+import { Skeleton } from "@/components/ui/skeleton"
+import { useServices } from "@/hooks/use-services"
+import { getIcon } from "@/lib/icon-map"
+import { ArrowRight } from "lucide-react"
 
 export function Services() {
+  const { services, loading, error } = useServices()
+
+  if (loading) {
+    return (
+      <section id="services" className="py-20 bg-stone-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <Skeleton className="h-4 w-32 mx-auto mb-4" />
+            <Skeleton className="h-10 w-3/4 mx-auto mb-4" />
+            <Skeleton className="h-6 w-full mx-auto" />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[...Array(8)].map((_, i) => (
+              <Card key={i} className="p-6">
+                <Skeleton className="h-12 w-12 rounded-lg mb-4" />
+                <Skeleton className="h-6 w-3/4 mb-3" />
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-2/3 mt-2" />
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  if (error) {
+    return (
+      <section id="services" className="py-20 bg-stone-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center">
+            <p className="text-red-600">Failed to load services. Please try again later.</p>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
   return (
     <section id="services" className="py-20 bg-stone-50">
       <div className="container mx-auto px-4">
@@ -70,21 +60,29 @@ export function Services() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((service, index) => (
-            <Card key={index} className="group hover:shadow-lg transition-shadow duration-300">
-              <CardHeader className="pb-3">
-                <div className="w-12 h-12 rounded-lg bg-amber-100 flex items-center justify-center mb-4 group-hover:bg-amber-600 transition-colors duration-300">
-                  <service.icon className="h-6 w-6 text-amber-600 group-hover:text-white transition-colors duration-300" />
-                </div>
-                <CardTitle className="text-lg">{service.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-stone-600 text-sm leading-relaxed">
-                  {service.description}
-                </p>
-              </CardContent>
-            </Card>
-          ))}
+          {services.map((service) => {
+            const IconComponent = getIcon(service.icon)
+            return (
+              <Link key={service.id} href={`/services/${service.id}`}>
+                <Card className="group hover:shadow-lg transition-shadow duration-300 h-full cursor-pointer">
+                  <CardHeader className="pb-3">
+                    <div className="w-12 h-12 rounded-lg bg-amber-100 flex items-center justify-center mb-4 group-hover:bg-amber-600 transition-colors duration-300">
+                      <IconComponent className="h-6 w-6 text-amber-600 group-hover:text-white transition-colors duration-300" />
+                    </div>
+                    <CardTitle className="text-lg">{service.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-stone-600 text-sm leading-relaxed">
+                      {service.description}
+                    </p>
+                    <div className="mt-4 flex items-center text-amber-600 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                      Learn more <ArrowRight className="ml-1 h-4 w-4" />
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+            )
+          })}
         </div>
       </div>
     </section>

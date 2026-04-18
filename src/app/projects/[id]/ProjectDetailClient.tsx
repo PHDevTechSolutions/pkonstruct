@@ -72,29 +72,44 @@ export function ProjectDetailClient({ id }: ProjectDetailClientProps) {
       {/* Hero */}
       <section className="relative bg-stone-900 py-20">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl">
-            <span className="inline-block px-3 py-1 bg-amber-600 text-white text-sm font-medium rounded-full mb-4">
-              {project.category}
-            </span>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              {project.title}
-            </h1>
-            <p className="text-xl text-stone-300 mb-8">
-              {project.description}
-            </p>
-            <div className="flex flex-wrap gap-6 text-stone-400">
-              <span className="flex items-center gap-2">
-                <MapPin className="h-5 w-5" />
-                {project.location}
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <span className="inline-block px-3 py-1 bg-amber-600 text-white text-sm font-medium rounded-full mb-4">
+                {project.category}
               </span>
-              <span className="flex items-center gap-2">
-                <Calendar className="h-5 w-5" />
-                {project.year}
-              </span>
-              <span className="flex items-center gap-2">
-                <Building2 className="h-5 w-5" />
-                {project.client}
-              </span>
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                {project.title}
+              </h1>
+              <p className="text-xl text-stone-300 mb-8">
+                {project.description}
+              </p>
+              <div className="flex flex-wrap gap-6 text-stone-400">
+                <span className="flex items-center gap-2">
+                  <MapPin className="h-5 w-5" />
+                  {project.location}
+                </span>
+                <span className="flex items-center gap-2">
+                  <Calendar className="h-5 w-5" />
+                  {project.year}
+                </span>
+                <span className="flex items-center gap-2">
+                  <Building2 className="h-5 w-5" />
+                  {project.client}
+                </span>
+              </div>
+            </div>
+            <div className="relative h-64 lg:h-80 rounded-xl overflow-hidden bg-stone-800">
+              {project.image ? (
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <div className="absolute inset-0 flex items-center justify-center bg-stone-700">
+                  <span className="text-stone-500 font-medium">Project Image</span>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -174,9 +189,13 @@ export function ProjectDetailClient({ id }: ProjectDetailClientProps) {
               <div>
                 <h2 className="text-2xl font-bold text-stone-900 mb-6">Project Gallery</h2>
                 <div className="grid sm:grid-cols-3 gap-4">
-                  {project.gallery.map((_, index) => (
-                    <div key={index} className="aspect-video bg-stone-200 rounded-lg flex items-center justify-center">
-                      <span className="text-stone-500 text-sm">Image {index + 1}</span>
+                  {project.gallery.map((img, index) => (
+                    <div key={index} className="aspect-video bg-stone-200 rounded-lg overflow-hidden">
+                      <img
+                        src={img}
+                        alt={`Gallery image ${index + 1}`}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                   ))}
                 </div>

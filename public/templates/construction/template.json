@@ -1,0 +1,1421 @@
+{
+  "id": "construction",
+  "name": "Construction & Building",
+  "description": "Premium template for construction companies, contractors, and builders. Features comprehensive project portfolios, service listings, team profiles, and professional design.",
+  "thumbnail": "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "pages": {
+    "homepage": {
+      "title": "Homepage",
+      "slug": "home",
+      "metaTitle": "BuildRight Construction | Building Excellence Since 1999",
+      "metaDescription": "Award-winning construction company specializing in residential, commercial, and industrial projects. Quality craftsmanship, on-time delivery, and customer satisfaction guaranteed.",
+      "sections": [
+        {
+          "id": "hero-1",
+          "type": "hero",
+          "title": "Hero Banner",
+          "isActive": true,
+          "order": 1,
+          "content": {
+            "headline": "Building Dreams, Delivering Excellence",
+            "subheadline": "Transform your vision into reality with BuildRight Construction. We deliver premium residential, commercial, and industrial construction projects with unmatched quality and precision.",
+            "ctaText": "Start Your Project",
+            "ctaLink": "/quote",
+            "secondaryButtonText": "View Our Work",
+            "secondaryButtonLink": "/projects",
+            "backgroundImage": "https://images.pexels.com/photos/159306/construction-site-build-construction-work-159306.jpeg?auto=compress&cs=tinysrgb&w=1920",
+            "showBadge": true,
+            "badge": "25+ Years of Excellence"
+          }
+        },
+        {
+          "id": "trust-badges",
+          "type": "clients",
+          "title": "Trusted By Industry Leaders",
+          "isActive": true,
+          "order": 2,
+          "content": {
+            "title": "Trusted By Industry Leaders",
+            "subtitle": "Proudly serving Fortune 500 companies, government agencies, and residential clients",
+            "showLogoCloud": true
+          }
+        },
+        {
+          "id": "services-1",
+          "type": "services",
+          "title": "Our Construction Services",
+          "isActive": true,
+          "order": 3,
+          "content": {
+            "title": "Comprehensive Construction Solutions",
+            "subtitle": "From groundbreaking to final inspection, we handle every phase of your construction project with expertise",
+            "layout": "detailed-cards",
+            "services": [
+              {
+                "title": "Residential Construction",
+                "description": "Custom homes, luxury villas, townhouses, and multi-family developments built to your exact specifications.",
+                "icon": "Home",
+                "features": ["Custom Home Design", "Luxury Villa Construction", "Townhouse Development", "Home Renovations"]
+              },
+              {
+                "title": "Commercial Construction",
+                "description": "Office buildings, retail spaces, warehouses, and mixed-use commercial projects delivered on time and budget.",
+                "icon": "Building2",
+                "features": ["Office Buildings", "Retail Construction", "Warehouses", "Mixed-Use Projects"]
+              },
+              {
+                "title": "Industrial Construction",
+                "description": "Factories, manufacturing plants, distribution centers, and industrial facilities with specialized engineering.",
+                "icon": "Factory",
+                "features": ["Manufacturing Plants", "Distribution Centers", "Processing Facilities", "Industrial Upgrades"]
+              },
+              {
+                "title": "Renovation & Remodeling",
+                "description": "Transform existing spaces with our comprehensive renovation services for residential and commercial properties.",
+                "icon": "Hammer",
+                "features": ["Kitchen Remodeling", "Bathroom Renovations", "Commercial Upgrades", "Historic Restoration"]
+              }
+            ]
+          }
+        },
+        {
+          "id": "why-choose-us",
+          "type": "features",
+          "title": "Why Choose BuildRight",
+          "isActive": true,
+          "order": 4,
+          "content": {
+            "title": "The BuildRight Advantage",
+            "subtitle": "What sets us apart from other construction companies",
+            "layout": "icon-grid",
+            "features": [
+              {
+                "icon": "Award",
+                "title": "Award-Winning Quality",
+                "description": "Winner of 15+ industry awards for design excellence, safety, and innovation"
+              },
+              {
+                "icon": "Clock",
+                "title": "On-Time Delivery",
+                "description": "98% of our projects completed on or before deadline with our proven project management system"
+              },
+              {
+                "icon": "Shield",
+                "title": "Safety First",
+                "description": "Zero lost-time accidents in the past 5 years. OSHA-compliant safety protocols on every site"
+              },
+              {
+                "icon": "Users",
+                "title": "Expert Team",
+                "description": "150+ skilled professionals including licensed architects, engineers, and certified tradespeople"
+              },
+              {
+                "icon": "Wallet",
+                "title": "Transparent Pricing",
+                "description": "Detailed quotes with no hidden fees. Flexible payment plans and financing options available"
+              },
+              {
+                "icon": "Leaf",
+                "title": "Sustainable Building",
+                "description": "LEED-certified construction practices, eco-friendly materials, and energy-efficient designs"
+              }
+            ]
+          }
+        },
+        {
+          "id": "featured-projects",
+          "type": "projects",
+          "title": "Featured Projects",
+          "isActive": true,
+          "order": 5,
+          "content": {
+            "title": "Our Portfolio of Excellence",
+            "subtitle": "Showcasing our most impactful construction projects from around the region",
+            "layout": "featured-grid",
+            "limit": 6,
+            "showFilters": true,
+            "featured": [
+              {
+                "title": "Downtown Business Center",
+                "category": "Commercial",
+                "description": "A 45-story mixed-use tower featuring premium office spaces, retail outlets, and modern amenities",
+                "location": "Metro City, NY",
+                "value": "$180M",
+                "duration": "36 months",
+                "image": "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              },
+              {
+                "title": "Lakeside Luxury Residences",
+                "category": "Residential",
+                "description": "Exclusive waterfront community with 50 custom-built luxury homes and private marina",
+                "location": "Lakeview, FL",
+                "value": "$95M",
+                "duration": "24 months",
+                "image": "https://images.pexels.com/photos/209296/pexels-photo-209296.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              },
+              {
+                "title": "Tech Manufacturing Plant",
+                "category": "Industrial",
+                "description": "State-of-the-art semiconductor manufacturing facility with cleanroom technology",
+                "location": "Silicon Valley, CA",
+                "value": "$250M",
+                "duration": "42 months",
+                "image": "https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              }
+            ]
+          }
+        },
+        {
+          "id": "stats-counter",
+          "type": "stats",
+          "title": "By The Numbers",
+          "isActive": true,
+          "order": 6,
+          "content": {
+            "title": "Our Impact in Numbers",
+            "subtitle": "Over two decades of delivering excellence",
+            "stats": [
+              { "label": "Projects Completed", "value": "500+", "suffix": "Projects" },
+              { "label": "Years Experience", "value": "25+", "suffix": "Years" },
+              { "label": "Happy Clients", "value": "1,200+", "suffix": "Clients" },
+              { "label": "Team Members", "value": "150+", "suffix": "Experts" },
+              { "label": "Safety Record", "value": "99.9", "suffix": "% Safe" },
+              { "label": "On-Time Rate", "value": "98", "suffix": "%" }
+            ]
+          }
+        },
+        {
+          "id": "process-steps",
+          "type": "process",
+          "title": "Our Construction Process",
+          "isActive": true,
+          "order": 7,
+          "content": {
+            "title": "How We Build Excellence",
+            "subtitle": "Our proven 5-step process ensures every project is delivered to the highest standards",
+            "steps": [
+              {
+                "title": "Discovery & Consultation",
+                "description": "We begin with an in-depth consultation to understand your vision, requirements, and budget. Our experts assess the site and provide initial recommendations.",
+                "icon": "Search",
+                "duration": "1-2 weeks"
+              },
+              {
+                "title": "Design & Planning",
+                "description": "Our architects and engineers create detailed blueprints and 3D renderings. We handle all permits and regulatory requirements.",
+                "icon": "Pencil",
+                "duration": "4-8 weeks"
+              },
+              {
+                "title": "Pre-Construction",
+                "description": "Finalizing contracts, scheduling, procurement, and site preparation. We establish quality control protocols and safety measures.",
+                "icon": "ClipboardCheck",
+                "duration": "2-4 weeks"
+              },
+              {
+                "title": "Construction Phase",
+                "description": "Our skilled teams execute the build with daily supervision, weekly progress reports, and rigorous quality inspections at every stage.",
+                "icon": "HardHat",
+                "duration": "Varies by project"
+              },
+              {
+                "title": "Completion & Handover",
+                "description": "Final inspections, addressing any punch list items, and presenting your completed project. We provide documentation and warranties.",
+                "icon": "CheckCircle",
+                "duration": "2-4 weeks"
+              }
+            ]
+          }
+        },
+        {
+          "id": "testimonials",
+          "type": "testimonials",
+          "title": "Client Success Stories",
+          "isActive": true,
+          "order": 8,
+          "content": {
+            "title": "What Our Clients Say",
+            "subtitle": "Real feedback from real customers who trusted us with their construction projects",
+            "testimonials": [
+              {
+                "name": "Sarah Johnson",
+                "title": "CEO, Johnson Retail Group",
+                "quote": "BuildRight delivered our flagship store three weeks ahead of schedule. The attention to detail and quality of craftsmanship exceeded our expectations. They made the entire process seamless.",
+                "rating": 5,
+                "project": "Downtown Retail Flagship",
+                "image": "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=200"
+              },
+              {
+                "name": "Michael Chen",
+                "title": "Homeowner",
+                "quote": "Building our dream home with BuildRight was an incredible experience. They listened to every detail we wanted and delivered a home that perfectly matches our vision. Highly recommended!",
+                "rating": 5,
+                "project": "Custom Lakefront Residence",
+                "image": "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=200"
+              },
+              {
+                "name": "Robert Williams",
+                "title": "Director of Operations, TechCorp Industries",
+                "quote": "The industrial facility BuildRight constructed for us has been operational for two years without a single issue. Their engineering expertise and project management are world-class.",
+                "rating": 5,
+                "project": "Manufacturing Plant Expansion",
+                "image": "https://images.pexels.com/photos/3778680/pexels-photo-3778680.jpeg?auto=compress&cs=tinysrgb&w=200"
+              }
+            ]
+          }
+        },
+        {
+          "id": "team-spotlight",
+          "type": "team",
+          "title": "Meet Our Leadership",
+          "isActive": true,
+          "order": 9,
+          "content": {
+            "title": "Experts Behind Every Build",
+            "subtitle": "Our leadership team brings decades of combined experience in construction, engineering, and project management",
+            "showFeaturedOnly": true,
+            "members": [
+              {
+                "name": "James Richardson",
+                "role": "Chief Executive Officer",
+                "bio": "25 years in construction management, former VP at Turner Construction",
+                "image": "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400",
+                "linkedin": "linkedin.com/in/jamesrichardson"
+              },
+              {
+                "name": "Maria Santos",
+                "role": "Chief Operations Officer",
+                "bio": "Expert in large-scale commercial projects, LEED AP certified",
+                "image": "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=400",
+                "linkedin": "linkedin.com/in/mariasantos"
+              },
+              {
+                "name": "David Park",
+                "role": "Head of Engineering",
+                "bio": "Structural engineer with 20+ years experience in complex industrial projects",
+                "image": "https://images.pexels.com/photos/3778680/pexels-photo-3778680.jpeg?auto=compress&cs=tinysrgb&w=400",
+                "linkedin": "linkedin.com/in/davidpark"
+              }
+            ]
+          }
+        },
+        {
+          "id": "final-cta",
+          "type": "cta",
+          "title": "Ready to Build?",
+          "isActive": true,
+          "order": 10,
+          "content": {
+            "title": "Let's Build Something Great Together",
+            "subtitle": "Whether you're planning a custom home, commercial development, or industrial facility, our team is ready to bring your vision to life. Get a free consultation and detailed quote today.",
+            "buttonText": "Get Your Free Quote",
+            "buttonLink": "/quote",
+            "secondaryButtonText": "Call (555) 123-4567",
+            "secondaryButtonLink": "tel:+15551234567",
+            "backgroundImage": "https://images.pexels.com/photos/2219024/pexels-photo-2219024.jpeg?auto=compress&cs=tinysrgb&w=1920",
+            "showTrustBadges": true,
+            "trustBadges": ["Licensed & Insured", "25+ Years Experience", "100% Satisfaction Guarantee"]
+          }
+        }
+      ],
+      "showInHeader": true,
+      "showInFooter": false,
+      "isPublished": true,
+      "isDefault": true
+    },
+    "about": {
+      "title": "About Us",
+      "slug": "about-us",
+      "metaTitle": "About BuildRight Construction | Our Story & Mission",
+      "metaDescription": "Learn about BuildRight Construction's 25-year journey, our commitment to quality, safety-first culture, and the team behind our award-winning projects.",
+      "sections": [
+        {
+          "id": "hero-about",
+          "type": "hero",
+          "title": "About Us Hero",
+          "isActive": true,
+          "order": 1,
+          "content": {
+            "headline": "Building More Than Structures",
+            "subheadline": "For 25 years, we've been building trust, relationships, and communities through exceptional construction",
+            "backgroundImage": "https://images.pexels.com/photos/159306/construction-site-build-construction-work-159306.jpeg?auto=compress&cs=tinysrgb&w=1920"
+          }
+        },
+        {
+          "id": "our-story",
+          "type": "text",
+          "title": "Our Story",
+          "isActive": true,
+          "order": 2,
+          "content": {
+            "title": "Our Journey Since 1999",
+            "layout": "two-column",
+            "content": [
+              {
+                "heading": "Humble Beginnings",
+                "text": "BuildRight Construction started as a small family-owned business with just three employees and a single backhoe. Founder James Richardson had a vision: to build not just structures, but lasting relationships with clients based on trust, transparency, and exceptional quality."
+              },
+              {
+                "heading": "Growth & Excellence",
+                "text": "Over two decades, we've grown into a leading construction company with 150+ team members and a portfolio of 500+ completed projects. Despite our growth, we've never lost sight of our founding principles: quality first, safety always, and customer satisfaction above all."
+              },
+              {
+                "heading": "Today & Tomorrow",
+                "text": "Today, BuildRight is recognized as an industry leader in sustainable construction practices and innovative building solutions. As we look to the future, we remain committed to building excellence while embracing new technologies and environmentally responsible practices."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mission-values",
+          "type": "features",
+          "title": "Mission & Values",
+          "isActive": true,
+          "order": 3,
+          "content": {
+            "title": "Our Core Values",
+            "subtitle": "The principles that guide every project we undertake",
+            "layout": "mission-cards",
+            "values": [
+              {
+                "title": "Quality Without Compromise",
+                "description": "We never cut corners. Every material, every technique, every finish meets or exceeds industry standards and our own rigorous quality benchmarks.",
+                "icon": "Gem"
+              },
+              {
+                "title": "Safety Above All",
+                "description": "Every team member returns home safely every day. Our comprehensive safety program has earned us recognition from OSHA and industry safety organizations.",
+                "icon": "ShieldCheck"
+              },
+              {
+                "title": "Integrity in Everything",
+                "description": "Transparent pricing, honest timelines, and clear communication. We believe trust is earned through consistent, ethical behavior on every project.",
+                "icon": "Scale"
+              },
+              {
+                "title": "Sustainable Innovation",
+                "description": "We embrace green building practices and innovative technologies that reduce environmental impact while delivering superior results.",
+                "icon": "Lightbulb"
+              }
+            ]
+          }
+        },
+        {
+          "id": "leadership-team",
+          "type": "team",
+          "title": "Our Leadership Team",
+          "isActive": true,
+          "order": 4,
+          "content": {
+            "title": "Meet the Experts",
+            "subtitle": "Our leadership team brings decades of combined experience from the world's top construction and engineering firms",
+            "showFullTeam": true,
+            "members": [
+              {
+                "name": "James Richardson",
+                "role": "Chief Executive Officer",
+                "bio": "With 25 years of construction management experience including a decade as VP at Turner Construction, James leads BuildRight with a focus on innovation, safety, and sustainable growth. He holds an MBA from Wharton and is a LEED AP certified professional.",
+                "image": "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400",
+                "linkedin": "linkedin.com/in/jamesrichardson"
+              },
+              {
+                "name": "Maria Santos",
+                "role": "Chief Operations Officer",
+                "bio": "Maria brings 20 years of expertise in large-scale commercial and industrial projects. Previously Director of Operations at Skanska, she oversees all project execution with a focus on efficiency and excellence. She holds a Master's in Construction Management from MIT.",
+                "image": "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=400",
+                "linkedin": "linkedin.com/in/mariasantos"
+              },
+              {
+                "name": "David Park",
+                "role": "Head of Engineering",
+                "bio": "David is a licensed structural engineer with 20+ years designing complex industrial and commercial structures. His innovative engineering solutions have been featured in Engineering News-Record. He holds a Ph.D. in Structural Engineering from Stanford.",
+                "image": "https://images.pexels.com/photos/3778680/pexels-photo-3778680.jpeg?auto=compress&cs=tinysrgb&w=400",
+                "linkedin": "linkedin.com/in/davidpark"
+              },
+              {
+                "name": "Jennifer Walsh",
+                "role": "Chief Financial Officer",
+                "bio": "Jennifer manages BuildRight's financial operations with expertise in construction accounting and project financing. She previously served as CFO at a major real estate development firm and holds an MBA from Harvard Business School.",
+                "image": "https://images.pexels.com/photos/1181695/pexels-photo-1181695.jpeg?auto=compress&cs=tinysrgb&w=400",
+                "linkedin": "linkedin.com/in/jenniferwalsh"
+              },
+              {
+                "name": "Carlos Mendez",
+                "role": "Director of Safety",
+                "bio": "Carlos is a certified safety professional (CSP) with 15 years of construction safety experience. He has implemented our award-winning safety program that has maintained a zero lost-time incident record for over 5 years.",
+                "image": "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=400",
+                "linkedin": "linkedin.com/in/carlosmendez"
+              },
+              {
+                "name": "Amanda Foster",
+                "role": "Head of Sustainability",
+                "bio": "Amanda leads our green building initiatives and sustainability programs. She is a LEED Fellow and has helped certify over 50 sustainable construction projects. She holds a Master's in Sustainable Design from UC Berkeley.",
+                "image": "https://images.pexels.com/photos/1181691/pexels-photo-1181691.jpeg?auto=compress&cs=tinysrgb&w=400",
+                "linkedin": "linkedin.com/in/amandafoster"
+              }
+            ]
+          }
+        },
+        {
+          "id": "awards-recognition",
+          "type": "awards",
+          "title": "Awards & Recognition",
+          "isActive": true,
+          "order": 5,
+          "content": {
+            "title": "Industry Recognition",
+            "subtitle": "Our commitment to excellence has been recognized by industry organizations and publications",
+            "awards": [
+              {
+                "title": "Builder of the Year",
+                "organization": "National Association of Home Builders",
+                "year": "2023",
+                "icon": "Trophy"
+              },
+              {
+                "title": "Excellence in Safety",
+                "organization": "Associated General Contractors of America",
+                "year": "2022",
+                "icon": "Shield"
+              },
+              {
+                "title": "Green Building Award",
+                "organization": "U.S. Green Building Council",
+                "year": "2021",
+                "icon": "Leaf"
+              },
+              {
+                "title": "Best Commercial Project",
+                "organization": "Engineering News-Record",
+                "year": "2020",
+                "icon": "Building"
+              }
+            ]
+          }
+        },
+        {
+          "id": "certifications",
+          "type": "partners",
+          "title": "Certifications & Memberships",
+          "isActive": true,
+          "order": 6,
+          "content": {
+            "title": "Certified & Accredited",
+            "subtitle": "We maintain the highest industry certifications and professional memberships",
+            "certifications": [
+              {
+                "name": "OSHA 30-Hour Certified",
+                "logo": "https://www.osha.gov/sites/default/files/images/2023-08/OSHA_Certification_Logo.png"
+              },
+              {
+                "name": "LEED Platinum Partner",
+                "logo": "https://www.usgbc.org/sites/default/files/2022-08/LEED-Logo.png"
+              },
+              {
+                "name": "AGC Member",
+                "logo": "https://www.agc.org/sites/default/files/2023-09/AGC-Logo.png"
+              },
+              {
+                "name": "NAHB Certified",
+                "logo": "https://www.nahb.org/sites/default/files/2023-07/NAHB-Logo.png"
+              }
+            ]
+          }
+        }
+      ],
+      "showInHeader": true,
+      "showInFooter": true,
+      "isPublished": true
+    },
+    "services": {
+      "title": "Services",
+      "slug": "services",
+      "metaTitle": "Construction Services | Residential, Commercial & Industrial",
+      "metaDescription": "Comprehensive construction services including custom homes, commercial buildings, industrial facilities, renovations, and sustainable green building solutions.",
+      "sections": [
+        {
+          "id": "hero-services",
+          "type": "hero",
+          "title": "Services Hero",
+          "isActive": true,
+          "order": 1,
+          "content": {
+            "headline": "Comprehensive Construction Services",
+            "subheadline": "From concept to completion, we deliver excellence across residential, commercial, and industrial construction projects",
+            "backgroundImage": "https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=1920"
+          }
+        },
+        {
+          "id": "services-overview",
+          "type": "services",
+          "title": "All Our Services",
+          "isActive": true,
+          "order": 2,
+          "content": {
+            "title": "What We Build",
+            "subtitle": "Full-spectrum construction services tailored to your unique requirements",
+            "layout": "detailed",
+            "services": [
+              {
+                "title": "Custom Home Construction",
+                "description": "Build your dream home with our custom residential construction services. From luxury estates to modern townhouses, we bring your vision to life with premium materials and expert craftsmanship. Our in-house architects and designers work with you to create a home that perfectly matches your lifestyle and preferences.",
+                "features": ["Custom architectural design", "Luxury finishes & materials", "Smart home integration", "Energy-efficient construction", "Landscape design included", "10-year structural warranty"],
+                "startingPrice": "From $400,000",
+                "timeline": "8-18 months",
+                "image": "https://images.pexels.com/photos/209296/pexels-photo-209296.jpeg?auto=compress&cs=tinysrgb&w=800"
+              },
+              {
+                "title": "Commercial Construction",
+                "description": "We deliver commercial spaces that drive business success. From office buildings and retail centers to mixed-use developments, our commercial construction services combine functional design with aesthetic excellence. We understand the unique requirements of commercial projects including strict timelines and minimal disruption to ongoing operations.",
+                "features": ["Office buildings & complexes", "Retail & shopping centers", "Medical facilities", "Hospitality & restaurants", "Mixed-use developments", "Tenant improvement"],
+                "startingPrice": "From $2M",
+                "timeline": "12-36 months",
+                "image": "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800"
+              },
+              {
+                "title": "Industrial Construction",
+                "description": "Our industrial construction expertise spans manufacturing plants, warehouses, distribution centers, and specialized facilities. We understand the complex engineering requirements and regulatory compliance needed for industrial projects. Our team includes specialists in heavy machinery foundations, clean room construction, and automated facility integration.",
+                "features": ["Manufacturing plants", "Warehouses & distribution", "Processing facilities", "Data centers", "Clean room construction", "Industrial renovations"],
+                "startingPrice": "From $5M",
+                "timeline": "18-48 months",
+                "image": "https://images.pexels.com/photos/2219024/pexels-photo-2219024.jpeg?auto=compress&cs=tinysrgb&w=800"
+              },
+              {
+                "title": "Renovation & Remodeling",
+                "description": "Transform existing spaces with our comprehensive renovation services. Whether updating a kitchen, adding a room, or completely renovating a commercial property, we handle everything from design to final finishes. We work efficiently to minimize disruption and deliver results that exceed expectations.",
+                "features": ["Kitchen & bathroom remodels", "Room additions", "Commercial fit-outs", "Historic restoration", "ADA compliance upgrades", "Energy efficiency retrofits"],
+                "startingPrice": "From $50,000",
+                "timeline": "2-8 months",
+                "image": "https://images.pexels.com/photos/1571462/pexels-photo-1571462.jpeg?auto=compress&cs=tinysrgb&w=800"
+              },
+              {
+                "title": "Green Building & Sustainability",
+                "description": "Build responsibly with our sustainable construction services. We are LEED-certified professionals who specialize in energy-efficient design, eco-friendly materials, and green building practices. Reduce your environmental footprint while enjoying lower operating costs and healthier indoor environments.",
+                "features": ["LEED-certified construction", "Net-zero energy buildings", "Solar panel installation", "Green roof systems", "Rainwater harvesting", "Sustainable materials sourcing"],
+                "startingPrice": "Custom Quote",
+                "timeline": "Varies by project",
+                "image": "https://images.pexels.com/photos/280012/pexels-photo-280012.jpeg?auto=compress&cs=tinysrgb&w=800"
+              },
+              {
+                "title": "Pre-Construction Services",
+                "description": "Start your project right with our comprehensive pre-construction services. We provide detailed feasibility studies, accurate cost estimating, value engineering, and comprehensive project planning. Our pre-construction expertise helps identify potential issues early and ensures smooth project execution.",
+                "features": ["Site analysis & feasibility", "Budget development", "Value engineering", "Permit & approval assistance", "Constructability reviews", "Scheduling & logistics planning"],
+                "startingPrice": "From $10,000",
+                "timeline": "4-12 weeks",
+                "image": "https://images.pexels.com/photos/1571463/pexels-photo-1571463.jpeg?auto=compress&cs=tinysrgb&w=800"
+              }
+            ]
+          }
+        },
+        {
+          "id": "process",
+          "type": "process",
+          "title": "Our Service Process",
+          "isActive": true,
+          "order": 3,
+          "content": {
+            "title": "How We Deliver Excellence",
+            "subtitle": "Our proven methodology ensures every project succeeds",
+            "steps": [
+              {
+                "title": "Initial Consultation",
+                "description": "We meet to understand your vision, requirements, and budget. We discuss your goals, timeline, and any specific needs for your project.",
+                "icon": "MessageCircle"
+              },
+              {
+                "title": "Design Development",
+                "description": "Our architects and engineers create detailed plans and 3D renderings. We refine the design until it perfectly matches your vision.",
+                "icon": "PenTool"
+              },
+              {
+                "title": "Proposal & Contract",
+                "description": "We provide a detailed proposal with transparent pricing. Once approved, we execute contracts and begin pre-construction planning.",
+                "icon": "FileText"
+              },
+              {
+                "title": "Construction Execution",
+                "description": "Our skilled teams build your project with daily supervision, quality checks, and regular progress updates.",
+                "icon": "HardHat"
+              },
+              {
+                "title": "Final Delivery",
+                "description": "We conduct final inspections, address any punch list items, and hand over your completed project with all documentation.",
+                "icon": "CheckCircle"
+              }
+            ]
+          }
+        },
+        {
+          "id": "service-cta",
+          "type": "cta",
+          "title": "Get Started",
+          "isActive": true,
+          "order": 4,
+          "content": {
+            "title": "Ready to Discuss Your Project?",
+            "subtitle": "Contact us for a free consultation and detailed quote tailored to your specific needs",
+            "buttonText": "Schedule Free Consultation",
+            "buttonLink": "/quote"
+          }
+        }
+      ],
+      "showInHeader": true,
+      "showInFooter": true,
+      "isPublished": true
+    },
+    "projects": {
+      "title": "Projects",
+      "slug": "projects",
+      "metaTitle": "Construction Portfolio | Completed Projects & Case Studies",
+      "metaDescription": "Explore our portfolio of 500+ completed construction projects including custom homes, commercial buildings, and industrial facilities. View detailed case studies and project galleries.",
+      "sections": [
+        {
+          "id": "hero-projects",
+          "type": "hero",
+          "title": "Projects Hero",
+          "isActive": true,
+          "order": 1,
+          "content": {
+            "headline": "Our Portfolio of Excellence",
+            "subheadline": "500+ successful projects showcasing our commitment to quality, innovation, and client satisfaction",
+            "backgroundImage": "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1920"
+          }
+        },
+        {
+          "id": "featured-projects",
+          "type": "projects",
+          "title": "Featured Projects",
+          "isActive": true,
+          "order": 2,
+          "content": {
+            "title": "Featured Projects",
+            "subtitle": "Showcasing our most impactful and innovative construction projects",
+            "layout": "featured",
+            "projects": [
+              {
+                "title": "Metro Business Center",
+                "category": "Commercial",
+                "description": "A 45-story LEED Platinum certified mixed-use tower in the heart of downtown. Features 800,000 sq ft of premium office space, 150,000 sq ft of retail, and a 500-space underground parking garage. Completed three months ahead of schedule.",
+                "client": "Metro Development Group",
+                "location": "Downtown Metro City, NY",
+                "value": "$185M",
+                "duration": "36 months",
+                "squareFootage": "950,000 sq ft",
+                "awards": ["Best Commercial Project 2022 - ENR", "LEED Platinum Certification"],
+                "features": ["Smart building technology", "Green roof garden", "Solar panel array", "Rainwater harvesting system"],
+                "testimonial": {
+                  "quote": "BuildRight exceeded every expectation. The quality of work and attention to detail is unmatched in the industry.",
+                  "author": "Robert Chen, CEO, Metro Development Group"
+                },
+                "images": [
+                  "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1200",
+                  "https://images.pexels.com/photos/1571461/pexels-photo-1571461.jpeg?auto=compress&cs=tinysrgb&w=1200",
+                  "https://images.pexels.com/photos/1571462/pexels-photo-1571462.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                ]
+              },
+              {
+                "title": "Lakeside Luxury Community",
+                "category": "Residential",
+                "description": "An exclusive waterfront residential development featuring 52 custom luxury homes ranging from 4,000 to 12,000 sq ft. Each home features premium finishes, smart home integration, and private docks. The community includes a private clubhouse, tennis courts, and a marina.",
+                "client": "Lakeside Development LLC",
+                "location": "Lakefront Estates, FL",
+                "value": "$95M",
+                "duration": "30 months",
+                "squareFootage": "380,000 sq ft total",
+                "awards": ["Best Residential Development 2021", "Florida Green Building Award"],
+                "features": ["Private marina with 75 boat slips", "Waterfront clubhouse", "Tennis & pickleball courts", "Gated community with 24/7 security"],
+                "testimonial": {
+                  "quote": "BuildRight created a masterpiece community. The craftsmanship and attention to detail in every home is extraordinary.",
+                  "author": "Patricia Williams, Developer, Lakeside Development LLC"
+                },
+                "images": [
+                  "https://images.pexels.com/photos/209296/pexels-photo-209296.jpeg?auto=compress&cs=tinysrgb&w=1200",
+                  "https://images.pexels.com/photos/209297/pexels-photo-209297.jpeg?auto=compress&cs=tinysrgb&w=1200",
+                  "https://images.pexels.com/photos/209298/pexels-photo-209298.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                ]
+              },
+              {
+                "title": "Precision Manufacturing Plant",
+                "category": "Industrial",
+                "description": "A 400,000 sq ft state-of-the-art semiconductor manufacturing facility featuring Class 10 clean rooms, advanced HVAC systems, and redundant power infrastructure. The facility includes a 50,000 sq ft R&D center and employee amenities building.",
+                "client": "Precision Tech Industries",
+                "location": "Tech Park, Austin, TX",
+                "value": "$285M",
+                "duration": "42 months",
+                "squareFootage": "450,000 sq ft",
+                "awards": ["Industrial Project of the Year 2020", "Excellence in Safety Award"],
+                "features": ["Class 10 clean room facilities", "Redundant power systems", "Advanced fire suppression", "Wastewater treatment plant"],
+                "testimonial": {
+                  "quote": "BuildRight's expertise in complex industrial construction is unmatched. They delivered a world-class facility on time and on budget.",
+                  "author": "Dr. James Morrison, VP Operations, Precision Tech"
+                },
+                "images": [
+                  "https://images.pexels.com/photos/2219024/pexels-photo-2219024.jpeg?auto=compress&cs=tinysrgb&w=1200",
+                  "https://images.pexels.com/photos/2219025/pexels-photo-2219025.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                ]
+              },
+              {
+                "title": "Heritage Medical Center",
+                "category": "Healthcare",
+                "description": "A new 250-bed acute care hospital featuring 12 operating rooms, emergency department, and comprehensive diagnostic services. The project included specialized MEP systems, medical gas infrastructure, and infection control measures throughout.",
+                "client": "Heritage Health System",
+                "location": "Medical District, Phoenix, AZ",
+                "value": "$220M",
+                "duration": "40 months",
+                "squareFootage": "525,000 sq ft",
+                "awards": ["Healthcare Facility Design Award", "LEED Gold Certification"],
+                "features": ["250 private patient rooms", "12 advanced operating suites", "Level II Trauma Center", "Helipad with direct ER access"],
+                "testimonial": {
+                  "quote": "BuildRight understood the unique requirements of healthcare construction. They delivered a facility that exceeds all regulatory standards.",
+                  "author": "Dr. Maria Gonzalez, CEO, Heritage Health System"
+                },
+                "images": [
+                  "https://images.pexels.com/photos/236380/pexels-photo-236380.jpeg?auto=compress&cs=tinysrgb&w=1200",
+                  "https://images.pexels.com/photos/236381/pexels-photo-236381.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "stats",
+          "type": "stats",
+          "title": "Project Statistics",
+          "isActive": true,
+          "order": 3,
+          "content": {
+            "title": "Our Impact by the Numbers",
+            "stats": [
+              { "label": "Total Projects", "value": "500+" },
+              { "label": "Total Value", "value": "$2.5B+" },
+              { "label": "Square Footage", "value": "15M+" },
+              { "label": "Industry Awards", "value": "45+" }
+            ]
+          }
+        }
+      ],
+      "showInHeader": true,
+      "showInFooter": true,
+      "isPublished": true
+    },
+    "contact": {
+      "title": "Contact Us",
+      "slug": "contact",
+      "metaTitle": "Contact BuildRight | Get Your Free Construction Quote",
+      "metaDescription": "Contact BuildRight Construction for inquiries, project quotes, or to schedule a consultation. Our team is ready to help bring your construction vision to life.",
+      "sections": [
+        {
+          "id": "hero-contact",
+          "type": "hero",
+          "title": "Contact Hero",
+          "isActive": true,
+          "order": 1,
+          "content": {
+            "headline": "Let's Build Something Together",
+            "subheadline": "Reach out to discuss your project. We're here to answer questions and provide expert guidance.",
+            "backgroundImage": "https://images.pexels.com/photos/2219024/pexels-photo-2219024.jpeg?auto=compress&cs=tinysrgb&w=1920"
+          }
+        },
+        {
+          "id": "contact-info",
+          "type": "location",
+          "title": "Contact Information",
+          "isActive": true,
+          "order": 2,
+          "content": {
+            "title": "Get in Touch",
+            "subtitle": "Multiple ways to reach our team",
+            "office": {
+              "name": "BuildRight Construction Headquarters",
+              "address": "1234 Construction Avenue, Suite 500",
+              "city": "Metro City",
+              "state": "NY",
+              "zip": "10001",
+              "country": "USA",
+              "phone": "+1 (555) 123-4567",
+              "fax": "+1 (555) 123-4568",
+              "email": "info@buildright.com"
+            },
+            "hours": [
+              { "day": "Monday - Friday", "time": "7:00 AM - 6:00 PM EST" },
+              { "day": "Saturday", "time": "8:00 AM - 2:00 PM EST" },
+              { "day": "Sunday", "time": "Closed" }
+            ],
+            "departments": [
+              { "name": "New Projects", "phone": "+1 (555) 123-4567 ext. 100", "email": "projects@buildright.com" },
+              { "name": "Customer Service", "phone": "+1 (555) 123-4567 ext. 200", "email": "service@buildright.com" },
+              { "name": "Careers", "phone": "+1 (555) 123-4567 ext. 300", "email": "careers@buildright.com" }
+            ],
+            "socialMedia": {
+              "facebook": "https://facebook.com/buildright",
+              "instagram": "https://instagram.com/buildright",
+              "linkedin": "https://linkedin.com/company/buildright",
+              "twitter": "https://twitter.com/buildright",
+              "youtube": "https://youtube.com/buildright"
+            },
+            "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.217676750658!2d-73.98784408459418!3d40.74844047932792!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ0JzU0LjQiTiA3M8KwNTknMTQuMyJX!5e0!3m2!1sen!2sus!4v1234567890"
+          }
+        },
+        {
+          "id": "contact-form",
+          "type": "contact",
+          "title": "Contact Form",
+          "isActive": true,
+          "order": 3,
+          "content": {
+            "title": "Send Us a Message",
+            "subtitle": "Fill out the form below and our team will respond within 24 hours",
+            "formFields": [
+              { "name": "firstName", "label": "First Name", "type": "text", "required": true },
+              { "name": "lastName", "label": "Last Name", "type": "text", "required": true },
+              { "name": "email", "label": "Email Address", "type": "email", "required": true },
+              { "name": "phone", "label": "Phone Number", "type": "tel", "required": false },
+              { "name": "projectType", "label": "Project Type", "type": "select", "options": ["Residential", "Commercial", "Industrial", "Renovation", "Other"], "required": true },
+              { "name": "budget", "label": "Estimated Budget", "type": "select", "options": ["Under $100k", "$100k - $500k", "$500k - $1M", "$1M - $5M", "Over $5M", "Not Sure"], "required": false },
+              { "name": "timeline", "label": "Expected Timeline", "type": "select", "options": ["ASAP", "3-6 months", "6-12 months", "1-2 years", "Not Sure"], "required": false },
+              { "name": "message", "label": "Tell Us About Your Project", "type": "textarea", "required": true }
+            ],
+            "submitButtonText": "Send Message",
+            "successMessage": "Thank you for contacting us! Our team will review your inquiry and get back to you within 24 hours.",
+            "privacyNotice": "By submitting this form, you agree to our Privacy Policy and consent to being contacted about your project."
+          }
+        }
+      ],
+      "showInHeader": true,
+      "showInFooter": true,
+      "isPublished": true
+    },
+    "quote": {
+      "title": "Get a Quote",
+      "slug": "quote",
+      "metaTitle": "Free Construction Quote | Request Your Project Estimate",
+      "metaDescription": "Get a free, detailed construction quote for your residential, commercial, or industrial project. No obligation, fast turnaround.",
+      "sections": [
+        {
+          "id": "hero-quote",
+          "type": "hero",
+          "title": "Quote Hero",
+          "isActive": true,
+          "order": 1,
+          "content": {
+            "headline": "Get Your Free Quote",
+            "subheadline": "Detailed project estimate tailored to your specific requirements. No obligation, no hidden fees.",
+            "badge": "Response within 24 hours"
+          }
+        },
+        {
+          "id": "quote-form",
+          "type": "contact",
+          "title": "Quote Request Form",
+          "isActive": true,
+          "order": 2,
+          "content": {
+            "title": "Project Details",
+            "subtitle": "Provide as much detail as possible for the most accurate quote",
+            "formType": "quote",
+            "formFields": [
+              { "name": "projectName", "label": "Project Name", "type": "text", "placeholder": "e.g., Smith Residence" },
+              { "name": "projectType", "label": "Project Type", "type": "select", "options": ["Custom Home", "Home Renovation", "Commercial Building", "Industrial Facility", "Multi-Family Development", "Other"], "required": true },
+              { "name": "projectAddress", "label": "Project Address", "type": "text", "placeholder": "Street address of project site" },
+              { "name": "budgetRange", "label": "Budget Range", "type": "select", "options": ["Under $250k", "$250k - $500k", "$500k - $1M", "$1M - $5M", "$5M - $10M", "Over $10M", "Prefer to Discuss"], "required": true },
+              { "name": "squareFootage", "label": "Approximate Square Footage", "type": "text", "placeholder": "e.g., 3,500 sq ft" },
+              { "name": "timeline", "label": "Desired Start Date", "type": "select", "options": ["ASAP", "1-3 months", "3-6 months", "6-12 months", "Over 1 year"], "required": true },
+              { "name": "firstName", "label": "First Name", "type": "text", "required": true },
+              { "name": "lastName", "label": "Last Name", "type": "text", "required": true },
+              { "name": "email", "label": "Email", "type": "email", "required": true },
+              { "name": "phone", "label": "Phone", "type": "tel", "required": true },
+              { "name": "projectDetails", "label": "Project Description", "type": "textarea", "placeholder": "Tell us about your project, special requirements, design preferences, etc." },
+              { "name": "fileUpload", "label": "Attach Files (optional)", "type": "file", "accept": ".pdf,.jpg,.png,.dwg" }
+            ],
+            "submitButtonText": "Request Quote",
+            "successMessage": "Your quote request has been submitted! Our estimating team will review your project and provide a detailed quote within 24-48 hours.",
+            "nextSteps": [
+              "Our team reviews your project details",
+              "We may contact you for additional information",
+              "You receive a detailed written estimate",
+              "We schedule a consultation to discuss the quote"
+            ]
+          }
+        }
+      ],
+      "showInHeader": true,
+      "showInFooter": false,
+      "isPublished": true
+    },
+    "careers": {
+      "title": "Careers",
+      "slug": "careers",
+      "metaTitle": "Join Our Team | BuildRight Construction Careers",
+      "metaDescription": "Explore career opportunities at BuildRight Construction. We're hiring skilled professionals, project managers, engineers, and tradespeople. Competitive benefits and growth opportunities.",
+      "sections": [
+        {
+          "id": "hero-careers",
+          "type": "hero",
+          "title": "Careers Hero",
+          "isActive": true,
+          "order": 1,
+          "content": {
+            "headline": "Build Your Career With Us",
+            "subheadline": "Join a team that's building the future. Competitive pay, comprehensive benefits, and opportunities for growth.",
+            "backgroundImage": "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1920"
+          }
+        },
+        {
+          "id": "why-work-here",
+          "type": "features",
+          "title": "Why Work at BuildRight",
+          "isActive": true,
+          "order": 2,
+          "content": {
+            "title": "Why BuildRight?",
+            "subtitle": "We invest in our people because they're our greatest asset",
+            "benefits": [
+              { "title": "Competitive Compensation", "description": "Above-market salaries with performance bonuses and profit sharing", "icon": "DollarSign" },
+              { "title": "Comprehensive Benefits", "description": "Health, dental, vision insurance plus 401(k) with company match", "icon": "Heart" },
+              { "title": "Safety First", "description": "Industry-leading safety program with continuous training and PPE provided", "icon": "Shield" },
+              { "title": "Career Growth", "description": "Clear advancement paths, mentorship programs, and tuition reimbursement", "icon": "TrendingUp" },
+              { "title": "Work-Life Balance", "description": "Flexible scheduling, paid time off, and family-friendly policies", "icon": "Clock" },
+              { "title": "Cutting-Edge Projects", "description": "Work on innovative, high-profile projects that advance your skills", "icon": "Zap" }
+            ]
+          }
+        },
+        {
+          "id": "open-positions",
+          "type": "text",
+          "title": "Open Positions",
+          "isActive": true,
+          "order": 3,
+          "content": {
+            "title": "Current Opportunities",
+            "layout": "job-listings",
+            "positions": [
+              {
+                "title": "Senior Project Manager",
+                "department": "Project Management",
+                "location": "Metro City, NY",
+                "type": "Full-time",
+                "experience": "7+ years",
+                "salary": "$95,000 - $140,000",
+                "description": "Lead complex commercial and industrial construction projects from inception to completion. Oversee budgets, schedules, and teams while ensuring quality and safety standards.",
+                "requirements": ["7+ years construction PM experience", "PMP certification preferred", "Strong leadership and communication skills", "Experience with $10M+ projects"]
+              },
+              {
+                "title": "Structural Engineer",
+                "department": "Engineering",
+                "location": "Metro City, NY",
+                "type": "Full-time",
+                "experience": "5+ years",
+                "salary": "$85,000 - $120,000",
+                "description": "Design and analyze structural systems for commercial and industrial buildings. Work with architects and construction teams to ensure structural integrity.",
+                "requirements": ["PE license required", "5+ years structural engineering experience", "Proficiency in structural analysis software", "Experience with concrete, steel, and wood structures"]
+              },
+              {
+                "title": "Construction Superintendent",
+                "department": "Field Operations",
+                "location": "Various Sites",
+                "type": "Full-time",
+                "experience": "5+ years",
+                "salary": "$75,000 - $110,000",
+                "description": "Supervise daily construction operations, manage subcontractors, ensure safety compliance, and maintain project schedules and quality standards.",
+                "requirements": ["5+ years field supervision experience", "OSHA 30-Hour certification", "Strong problem-solving abilities", "Ability to read blueprints and specifications"]
+              },
+              {
+                "title": "Safety Coordinator",
+                "department": "Safety",
+                "location": "Metro City, NY",
+                "type": "Full-time",
+                "experience": "3+ years",
+                "salary": "$55,000 - $75,000",
+                "description": "Implement and monitor safety programs across all project sites. Conduct inspections, training, and incident investigations.",
+                "requirements": ["CSP or equivalent certification", "3+ years construction safety experience", "Excellent communication skills", "Knowledge of OSHA regulations"]
+              },
+              {
+                "title": "Journeyman Carpenter",
+                "department": "Field Operations",
+                "location": "Various Sites",
+                "type": "Full-time",
+                "experience": "4+ years",
+                "salary": "$28 - $38/hour",
+                "description": "Skilled carpentry work including framing, finish carpentry, and custom millwork on residential and commercial projects.",
+                "requirements": ["Valid journeyman carpenter license", "4+ years professional carpentry experience", "Own tools and reliable transportation", "Ability to read blueprints"]
+              },
+              {
+                "title": "Project Estimator",
+                "department": "Pre-Construction",
+                "location": "Metro City, NY",
+                "type": "Full-time",
+                "experience": "3+ years",
+                "salary": "$65,000 - $90,000",
+                "description": "Prepare detailed cost estimates for construction projects. Analyze drawings, solicit subcontractor bids, and develop comprehensive proposals.",
+                "requirements": ["3+ years construction estimating experience", "Proficiency in estimating software (ProEst, PlanSwift)", "Strong analytical and math skills", "Attention to detail"]
+              }
+            ]
+          }
+        },
+        {
+          "id": "application-form",
+          "type": "contact",
+          "title": "Apply Now",
+          "isActive": true,
+          "order": 4,
+          "content": {
+            "title": "Submit Your Application",
+            "subtitle": "We review every application carefully and respond to qualified candidates within one week",
+            "formFields": [
+              { "name": "position", "label": "Position Applying For", "type": "select", "options": ["Senior Project Manager", "Structural Engineer", "Construction Superintendent", "Safety Coordinator", "Journeyman Carpenter", "Project Estimator", "Other"], "required": true },
+              { "name": "firstName", "label": "First Name", "type": "text", "required": true },
+              { "name": "lastName", "label": "Last Name", "type": "text", "required": true },
+              { "name": "email", "label": "Email", "type": "email", "required": true },
+              { "name": "phone", "label": "Phone", "type": "tel", "required": true },
+              { "name": "resume", "label": "Resume/CV", "type": "file", "accept": ".pdf,.doc,.docx", "required": true },
+              { "name": "coverLetter", "label": "Cover Letter", "type": "textarea", "placeholder": "Tell us why you're interested in joining BuildRight and what you can bring to our team" },
+              { "name": "portfolio", "label": "Portfolio/Work Samples (optional)", "type": "text", "placeholder": "Link to portfolio, LinkedIn, or project examples" }
+            ],
+            "submitButtonText": "Submit Application",
+            "successMessage": "Thank you for your interest in joining BuildRight! We've received your application and will review it within 5-7 business days."
+          }
+        }
+      ],
+      "showInHeader": true,
+      "showInFooter": true,
+      "isPublished": true
+    },
+    "faq": {
+      "title": "FAQ",
+      "slug": "faq",
+      "metaTitle": "Frequently Asked Questions | BuildRight Construction",
+      "metaDescription": "Find answers to common questions about our construction services, process, pricing, and more.",
+      "sections": [
+        {
+          "id": "hero-faq",
+          "type": "hero",
+          "title": "FAQ Hero",
+          "isActive": true,
+          "order": 1,
+          "content": {
+            "headline": "Frequently Asked Questions",
+            "subheadline": "Find answers to common questions about our construction services"
+          }
+        },
+        {
+          "id": "faq-content",
+          "type": "faq",
+          "title": "Common Questions",
+          "isActive": true,
+          "order": 2,
+          "content": {
+            "title": "Common Questions",
+            "categories": ["General", "Services", "Pricing", "Timeline", "Warranty"],
+            "faqs": [
+              {
+                "question": "How do I get started with a construction project?",
+                "answer": "Getting started is easy! First, contact us through our website or call us at (555) 123-4567 to schedule a free consultation. We'll discuss your project vision, requirements, and budget. Following the consultation, we'll prepare a detailed proposal including scope of work, timeline, and pricing. Once you approve the proposal, we begin the design and pre-construction phase.",
+                "category": "General"
+              },
+              {
+                "question": "What types of construction projects do you handle?",
+                "answer": "We handle a wide range of construction projects including: custom residential homes, luxury estates, townhouses and multi-family developments, commercial office buildings, retail centers, industrial facilities, warehouses, manufacturing plants, and renovation/remodeling projects. No project is too big or too small for our experienced team.",
+                "category": "Services"
+              },
+              {
+                "question": "How long does a typical construction project take?",
+                "answer": "Project timelines vary based on scope, complexity, and size. A custom home typically takes 8-18 months, while commercial projects range from 12-48 months. During our initial consultation, we provide a detailed timeline specific to your project. We use advanced project management techniques to ensure on-time delivery—98% of our projects are completed on or before the scheduled completion date.",
+                "category": "Timeline"
+              },
+              {
+                "question": "Do you offer financing options?",
+                "answer": "Yes, we work with several preferred lending partners who specialize in construction financing. We can connect you with lenders offering construction-to-permanent loans, renovation loans, and commercial construction financing. Our team can help you understand your financing options and guide you through the pre-approval process.",
+                "category": "Pricing"
+              },
+              {
+                "question": "How do you handle project pricing and budgets?",
+                "answer": "We provide transparent, detailed proposals with itemized costs. Our estimates include all labor, materials, permits, and project management fees. We use fixed-price contracts so there are no surprise costs during construction. Any changes to scope are documented with change orders. We also offer value engineering options to help meet budget requirements without compromising quality.",
+                "category": "Pricing"
+              },
+              {
+                "question": "What warranties do you provide?",
+                "answer": "We stand behind our work with comprehensive warranties: 10-year structural warranty on all new construction, 2-year warranty on systems (HVAC, electrical, plumbing), 1-year warranty on workmanship and materials. We also pass through all manufacturer warranties on appliances and fixtures. Our warranties are backed by our reputation for quality and customer service.",
+                "category": "Warranty"
+              },
+              {
+                "question": "Are you licensed and insured?",
+                "answer": "Yes, BuildRight Construction is fully licensed in all states where we operate. We carry comprehensive general liability insurance ($5M), workers' compensation insurance, and builder's risk insurance for every project. We can provide certificates of insurance upon request and are happy to discuss our coverage in detail during your consultation.",
+                "category": "General"
+              },
+              {
+                "question": "How do you ensure quality during construction?",
+                "answer": "Quality is built into every phase of our process. We have a dedicated quality control team that conducts inspections at critical milestones. Our project superintendents perform daily quality checks. We use only premium materials from trusted suppliers. All work is performed by our skilled employees or vetted subcontractors. We encourage client walkthroughs at key phases.",
+                "category": "Services"
+              },
+              {
+                "question": "Can you help with design and architecture?",
+                "answer": "Absolutely! We have in-house architects and designers who can create custom plans for your project. We also work seamlessly with outside architects if you already have plans. Our design-build approach ensures that the construction team is involved early, preventing costly changes during construction and ensuring your vision is executable within budget.",
+                "category": "Services"
+              },
+              {
+                "question": "What safety measures do you implement on job sites?",
+                "answer": "Safety is our top priority. Every site has a dedicated safety plan and daily safety briefings. All workers complete OSHA 30-hour training. We provide all necessary PPE and enforce strict safety protocols. Our sites have zero-tolerance policies for unsafe conditions. We maintain a 99.9% safety record and have been recognized with industry safety awards.",
+                "category": "Services"
+              },
+              {
+                "question": "Do you offer sustainable or green building options?",
+                "answer": "Yes! We're a LEED-certified construction company with experience building to various green standards including LEED, Passive House, and Net Zero. We offer sustainable material options, energy-efficient systems, solar integration, and green building consulting. Many of our clients choose sustainable features to reduce operating costs and environmental impact.",
+                "category": "Services"
+              },
+              {
+                "question": "How do you handle project communication?",
+                "answer": "We believe in transparent, regular communication. Every project gets a dedicated project manager available via phone, email, or our client portal. We provide weekly progress reports with photos. We schedule regular site meetings and walkthroughs. Our online portal gives you 24/7 access to schedules, documents, and photos. Emergency contacts are available outside business hours.",
+                "category": "General"
+              }
+            ]
+          }
+        }
+      ],
+      "showInHeader": true,
+      "showInFooter": true,
+      "isPublished": true
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "slug": "privacy-policy",
+      "metaTitle": "Privacy Policy | BuildRight Construction",
+      "metaDescription": "Our privacy policy explains how we collect, use, and protect your personal information.",
+      "sections": [
+        {
+          "id": "privacy-content",
+          "type": "text",
+          "title": "Privacy Policy",
+          "isActive": true,
+          "order": 1,
+          "content": {
+            "title": "Privacy Policy",
+            "lastUpdated": "January 2024",
+            "sections": [
+              {
+                "heading": "Introduction",
+                "text": "BuildRight Construction (\"we,\" \"our,\" or \"us\") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services."
+              },
+              {
+                "heading": "Information We Collect",
+                "text": "We may collect personal information including: name, email address, phone number, mailing address, project details, and payment information when you request quotes, contact us, or use our services."
+              },
+              {
+                "heading": "How We Use Your Information",
+                "text": "We use your information to: provide construction services, communicate about your project, process payments, send marketing communications (with your consent), improve our services, and comply with legal obligations."
+              },
+              {
+                "heading": "Information Sharing",
+                "text": "We do not sell your personal information. We may share information with: service providers who assist our operations, legal authorities when required by law, and business partners with your consent."
+              },
+              {
+                "heading": "Your Rights",
+                "text": "You have the right to: access your personal information, request correction of inaccurate data, request deletion of your data, opt-out of marketing communications, and lodge complaints with data protection authorities."
+              },
+              {
+                "heading": "Contact Us",
+                "text": "For questions about this Privacy Policy or to exercise your rights, contact us at privacy@buildright.com or call (555) 123-4567."
+              }
+            ]
+          }
+        }
+      ],
+      "showInHeader": false,
+      "showInFooter": true,
+      "isPublished": true
+    },
+    "terms": {
+      "title": "Terms of Service",
+      "slug": "terms-of-service",
+      "metaTitle": "Terms of Service | BuildRight Construction",
+      "metaDescription": "Our terms of service and legal agreements for using our website and construction services.",
+      "sections": [
+        {
+          "id": "terms-content",
+          "type": "text",
+          "title": "Terms of Service",
+          "isActive": true,
+          "order": 1,
+          "content": {
+            "title": "Terms of Service",
+            "lastUpdated": "January 2024",
+            "sections": [
+              {
+                "heading": "Agreement to Terms",
+                "text": "By accessing or using our website and services, you agree to be bound by these Terms of Service. If you disagree with any part of the terms, you may not access our services."
+              },
+              {
+                "heading": "Construction Services",
+                "text": "All construction services are governed by separate written contracts that detail scope, pricing, timeline, and specific terms. These Terms of Service apply to website use and general service inquiries."
+              },
+              {
+                "heading": "Quote Requests and Estimates",
+                "text": "Quotes provided through our website are estimates based on information provided. Final pricing is determined after detailed site assessment and project scope definition. Quotes are valid for 30 days unless otherwise specified."
+              },
+              {
+                "heading": "Intellectual Property",
+                "text": "All content on this website, including text, images, logos, and designs, is the property of BuildRight Construction and protected by copyright and trademark laws. You may not use our content without written permission."
+              },
+              {
+                "heading": "Limitation of Liability",
+                "text": "BuildRight Construction shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of our website or services."
+              },
+              {
+                "heading": "Changes to Terms",
+                "text": "We reserve the right to modify these terms at any time. Changes are effective immediately upon posting to this page. Your continued use of our services constitutes acceptance of revised terms."
+              },
+              {
+                "heading": "Contact Information",
+                "text": "For questions about these Terms of Service, contact us at legal@buildright.com or call (555) 123-4567."
+              }
+            ]
+          }
+        }
+      ],
+      "showInHeader": false,
+      "showInFooter": true,
+      "isPublished": true
+    },
+    "cookies": {
+      "title": "Cookie Policy",
+      "slug": "cookie-policy",
+      "metaTitle": "Cookie Policy | BuildRight Construction",
+      "metaDescription": "Learn about how we use cookies and similar technologies on our website.",
+      "sections": [
+        {
+          "id": "cookie-content",
+          "type": "text",
+          "title": "Cookie Policy",
+          "isActive": true,
+          "order": 1,
+          "content": {
+            "title": "Cookie Policy",
+            "lastUpdated": "January 2024",
+            "sections": [
+              {
+                "heading": "What Are Cookies",
+                "text": "Cookies are small text files stored on your device when you visit websites. They help websites remember your preferences and improve your browsing experience."
+              },
+              {
+                "heading": "How We Use Cookies",
+                "text": "We use cookies to: remember your preferences and settings, understand how you use our website, improve website functionality, provide personalized content, and analyze website traffic and performance."
+              },
+              {
+                "heading": "Types of Cookies We Use",
+                "text": "Essential Cookies: Required for basic website functionality. Analytics Cookies: Help us understand website usage. Preference Cookies: Remember your settings. Marketing Cookies: Used to deliver relevant advertisements."
+              },
+              {
+                "heading": "Managing Cookies",
+                "text": "You can control cookies through your browser settings. Most browsers allow you to refuse cookies or delete existing cookies. Please note that disabling cookies may affect website functionality."
+              },
+              {
+                "heading": "Third-Party Cookies",
+                "text": "We may allow third-party service providers to place cookies on your device for analytics and advertising purposes. These third parties include Google Analytics and social media platforms."
+              },
+              {
+                "heading": "Changes to This Policy",
+                "text": "We may update this Cookie Policy periodically. Changes will be posted on this page with an updated effective date."
+              },
+              {
+                "heading": "Contact Us",
+                "text": "For questions about our Cookie Policy, contact us at privacy@buildright.com."
+              }
+            ]
+          }
+        }
+      ],
+      "showInHeader": false,
+      "showInFooter": true,
+      "isPublished": true
+    }
+  },
+  "navigation": {
+    "siteName": "BuildRight Construction",
+    "headerLogo": "https://images.pexels.com/photos/2219024/pexels-photo-2219024.jpeg?auto=compress&cs=tinysrgb&w=200",
+    "headerBgColor": "#ffffff",
+    "headerTextColor": "#1c1917",
+    "footerDescription": "BuildRight Construction - Building excellence since 1999. Licensed, bonded, and insured construction company serving residential, commercial, and industrial clients with award-winning quality and safety.",
+    "footerCopyright": "© 2024 BuildRight Construction. All rights reserved. | Licensed Contractor #BC123456",
+    "footerBgColor": "#1c1917",
+    "footerTextColor": "#ffffff",
+    "footerLogo": "https://images.pexels.com/photos/2219024/pexels-photo-2219024.jpeg?auto=compress&cs=tinysrgb&w=200",
+    "socialLinks": [
+      { "platform": "Facebook", "url": "https://facebook.com/buildright", "icon": "Facebook", "isActive": true },
+      { "platform": "Instagram", "url": "https://instagram.com/buildright", "icon": "Instagram", "isActive": true },
+      { "platform": "LinkedIn", "url": "https://linkedin.com/company/buildright", "icon": "LinkedIn", "isActive": true },
+      { "platform": "Twitter", "url": "https://twitter.com/buildright", "icon": "Twitter", "isActive": true },
+      { "platform": "YouTube", "url": "https://youtube.com/buildright", "icon": "Youtube", "isActive": true }
+    ],
+    "footerColumns": [
+      {
+        "title": "Services",
+        "links": [
+          { "label": "Residential Construction", "url": "/services#residential" },
+          { "label": "Commercial Construction", "url": "/services#commercial" },
+          { "label": "Industrial Construction", "url": "/services#industrial" },
+          { "label": "Renovations", "url": "/services#renovations" },
+          { "label": "Green Building", "url": "/services#sustainable" }
+        ]
+      },
+      {
+        "title": "Company",
+        "links": [
+          { "label": "About Us", "url": "/about-us" },
+          { "label": "Our Team", "url": "/about-us#team" },
+          { "label": "Projects", "url": "/projects" },
+          { "label": "Careers", "url": "/careers" },
+          { "label": "News & Press", "url": "/blog" }
+        ]
+      },
+      {
+        "title": "Resources",
+        "links": [
+          { "label": "FAQ", "url": "/faq" },
+          { "label": "Get a Quote", "url": "/quote" },
+          { "label": "Client Portal", "url": "https://portal.buildright.com" },
+          { "label": "Safety Information", "url": "/safety" }
+        ]
+      },
+      {
+        "title": "Contact",
+        "contactInfo": {
+          "address": "1234 Construction Avenue, Suite 500, Metro City, NY 10001",
+          "phone": "+1 (555) 123-4567",
+          "email": "info@buildright.com",
+          "hours": "Mon-Fri: 7AM-6PM, Sat: 8AM-2PM"
+        }
+      }
+    ],
+    "headerNavigation": [
+      { "label": "Home", "url": "/", "showInHeader": true },
+      { "label": "About Us", "url": "/about-us", "showInHeader": true },
+      { "label": "Services", "url": "/services", "showInHeader": true, "dropdown": true },
+      { "label": "Projects", "url": "/projects", "showInHeader": true },
+      { "label": "Careers", "url": "/careers", "showInHeader": true },
+      { "label": "FAQ", "url": "/faq", "showInHeader": true },
+      { "label": "Contact", "url": "/contact", "showInHeader": true, "highlight": true }
+    ],
+    "footerNavigation": [
+      { "label": "Privacy Policy", "url": "/privacy-policy", "showInFooter": true },
+      { "label": "Terms of Service", "url": "/terms-of-service", "showInFooter": true },
+      { "label": "Cookie Policy", "url": "/cookie-policy", "showInFooter": true },
+      { "label": "Accessibility", "url": "/accessibility", "showInFooter": true },
+      { "label": "Sitemap", "url": "/sitemap.xml", "showInFooter": true }
+    ]
+  },
+  "styles": {
+    "primaryColor": "#d97706",
+    "primaryHover": "#b45309",
+    "secondaryColor": "#1c1917",
+    "accentColor": "#f59e0b",
+    "textColor": "#292524",
+    "lightTextColor": "#78716c",
+    "backgroundColor": "#fafaf9",
+    "cardBgColor": "#ffffff",
+    "borderColor": "#e7e5e4",
+    "fontFamily": "Inter, system-ui, -apple-system, sans-serif",
+    "headingFontFamily": "Inter, system-ui, sans-serif",
+    "borderRadius": "8px",
+    "shadow": "0 4px 6px -1px rgb(0 0 0 / 0.1)",
+    "shadowLarge": "0 10px 15px -3px rgb(0 0 0 / 0.1)"
+  }
+}

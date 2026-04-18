@@ -63,6 +63,118 @@
           "order": "DESCENDING"
         }
       ]
+    },
+    {
+      "collectionGroup": "pages",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "isDefault",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "isPublished",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "pages",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "slug",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "pages",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "slug",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "order",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "pages",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "isDefault",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "order",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "pages",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "isPublished",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "order",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "pages",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "showInHeader",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "order",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "pages",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "showInFooter",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "order",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "testimonials",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "published",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "rating",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "__name__",
+          "order": "ASCENDING"
+        }
+      ]
     }
   ],
   "fieldOverrides": []

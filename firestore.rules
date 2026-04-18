@@ -1,36 +1,83 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Allow read access to blog posts for everyone
+    // Helper function to check if user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Blog Posts
     match /blogPosts/{postId} {
       allow read: if true;
-      allow write: if false; // Only admin can write via Firebase Admin SDK
+      allow create, update, delete: if isAuthenticated();
     }
     
-    // Allow read access to projects for everyone
+    // Projects
     match /projects/{projectId} {
       allow read: if true;
-      allow write: if false;
+      allow create, update, delete: if isAuthenticated();
     }
     
-    // Allow read access to testimonials for everyone
+    // Services
+    match /services/{serviceId} {
+      allow read: if true;
+      allow create, update, delete: if isAuthenticated();
+    }
+    
+    // Team Members
+    match /team/{memberId} {
+      allow read: if true;
+      allow create, update, delete: if isAuthenticated();
+    }
+    
+    // Testimonials
     match /testimonials/{testimonialId} {
       allow read: if true;
-      allow write: if false;
+      allow create, update, delete: if isAuthenticated();
     }
     
-    // Allow create access to contact submissions (for contact form)
+    // Contact Submissions (public can create, only admin can read/update/delete)
     match /contactSubmissions/{submissionId} {
-      allow read: if false; // Only admin can read
-      allow create: if true; // Anyone can submit
-      allow update, delete: if false;
+      allow read: if isAuthenticated();
+      allow create: if true;
+      allow update, delete: if isAuthenticated();
     }
     
-    // Allow create access to quote requests (for quote form)
+    // Quote Requests (public can create, only admin can read/update/delete)
     match /quoteRequests/{quoteId} {
-      allow read: if false;
+      allow read: if isAuthenticated();
       allow create: if true;
-      allow update, delete: if false;
+      allow update, delete: if isAuthenticated();
+    }
+    
+    // Clients
+    match /clients/{clientId} {
+      allow read: if true;
+      allow create, update, delete: if isAuthenticated();
+    }
+    
+    // About
+    match /about/{docId} {
+      allow read: if true;
+      allow create, update, delete: if isAuthenticated();
+    }
+    
+    // FAQ
+    match /faq/{faqId} {
+      allow read: if true;
+      allow create, update, delete: if isAuthenticated();
+    }
+    
+    // Pages (Custom CMS Pages)
+    match /pages/{pageId} {
+      allow read: if true;
+      allow create, update, delete: if isAuthenticated();
+    }
+    
+    // Site Settings
+    match /settings/{settingId} {
+      allow read: if true;
+      allow create, update, delete: if isAuthenticated();
     }
   }
 }

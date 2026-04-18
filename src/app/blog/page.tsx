@@ -9,9 +9,54 @@ import { Calendar, Clock, ArrowRight, User, Loader2 } from "lucide-react"
 
 const categories = ["All", "Industry Trends", "Tips & Guides", "Education", "Project Stories", "Safety", "Technology"]
 
+const POSTS_PER_PAGE = 6
+
 export default function BlogPage() {
   const [activeCategory, setActiveCategory] = useState("All")
+  const [currentPage, setCurrentPage] = useState(1)
   const { posts, loading, error } = useBlogPosts(activeCategory === "All" ? undefined : activeCategory)
+  
+  // Reset to page 1 when category changes
+  const handleCategoryChange = (category: string) => {
+    setActiveCategory(category)
+    setCurrentPage(1)
+  }
+  
+  // Pagination calculations
+  const totalPosts = posts.length
+  const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE)
+  const startIndex = (currentPage - 1) * POSTS_PER_PAGE
+  const endIndex = startIndex + POSTS_PER_PAGE
+  const currentPosts = posts.slice(startIndex, endIndex)
+  
+  // Generate page numbers array
+  const getPageNumbers = () => {
+    const pages: (number | string)[] = []
+    const maxVisiblePages = 5
+    
+    if (totalPages <= maxVisiblePages) {
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(i)
+      }
+    } else {
+      if (currentPage <= 3) {
+        for (let i = 1; i <= 4; i++) pages.push(i)
+        pages.push('...')
+        pages.push(totalPages)
+      } else if (currentPage >= totalPages - 2) {
+        pages.push(1)
+        pages.push('...')
+        for (let i = totalPages - 3; i <= totalPages; i++) pages.push(i)
+      } else {
+        pages.push(1)
+        pages.push('...')
+        for (let i = currentPage - 1; i <= currentPage + 1; i++) pages.push(i)
+        pages.push('...')
+        pages.push(totalPages)
+      }
+    }
+    return pages
+  }
 
   if (loading) {
     return (
@@ -75,7 +120,7 @@ export default function BlogPage() {
                 variant={activeCategory === category ? "default" : "outline"}
                 size="sm"
                 className={activeCategory === category ? "bg-amber-600 hover:bg-amber-700" : ""}
-                onClick={() => setActiveCategory(category)}
+                onClick={() => handleCategoryChange(category)}
               >
                 {category}
               </Button>
@@ -89,13 +134,21 @@ export default function BlogPage() {
             </div>
           ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {posts.map((post) => (
+            {currentPosts.map((post) => (
               <Card key={post.id} className="group overflow-hidden hover:shadow-lg transition-shadow">
-                <Link href={`/blog/${post.id}`}>
+                <Link href={`/blog/${post.slug || post.id}`}>
                   <div className="relative h-48 bg-stone-200">
-                    <div className="absolute inset-0 flex items-center justify-center bg-stone-300">
-                      <span className="text-stone-500 font-medium">Blog Image</span>
-                    </div>
+                    {post.image ? (
+                      <img
+                        src={post.image}
+                        alt={post.title}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center bg-stone-300">
+                        <span className="text-stone-500 font-medium">Blog Image</span>
+                      </div>
+                    )}
                     <div className="absolute top-4 left-4">
                       <span className="px-3 py-1 bg-amber-600 text-white text-sm font-medium rounded-full">
                         {post.category}
@@ -130,7 +183,7 @@ export default function BlogPage() {
                       {post.author}
                     </div>
                     <Button variant="ghost" size="sm" className="text-amber-600 hover:text-amber-700" asChild>
-                      <Link href={`/blog/${post.id}`}>
+                      <Link href={`/blog/${post.slug || post.id}`}>
                         Read More
                         <ArrowRight className="ml-1 h-4 w-4" />
                       </Link>
@@ -143,13 +196,43 @@ export default function BlogPage() {
           )}
 
           {/* Pagination */}
-          <div className="flex justify-center gap-2 mt-12">
-            <Button variant="outline" size="sm" disabled>Previous</Button>
-            <Button variant="default" size="sm" className="bg-amber-600">1</Button>
-            <Button variant="outline" size="sm">2</Button>
-            <Button variant="outline" size="sm">3</Button>
-            <Button variant="outline" size="sm">Next</Button>
-          </div>
+          {totalPages > 1 && (
+            <div className="flex justify-center gap-2 mt-12">
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+                disabled={currentPage === 1}
+              >
+                Previous
+              </Button>
+              
+              {getPageNumbers().map((page, index) => (
+                page === '...' ? (
+                  <span key={`ellipsis-${index}`} className="px-2 py-1 text-stone-500">...</span>
+                ) : (
+                  <Button
+                    key={page}
+                    variant={currentPage === page ? "default" : "outline"}
+                    size="sm"
+                    className={currentPage === page ? "bg-amber-600 hover:bg-amber-700" : ""}
+                    onClick={() => setCurrentPage(page as number)}
+                  >
+                    {page}
+                  </Button>
+                )
+              ))}
+              
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+                disabled={currentPage === totalPages}
+              >
+                Next
+              </Button>
+            </div>
+          )}
         </div>
       </section>
     </main>

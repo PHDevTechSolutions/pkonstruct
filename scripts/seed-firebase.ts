@@ -311,6 +311,308 @@ const testimonials = [
   }
 ]
 
+// Services Data
+const services = [
+  {
+    id: "residential-construction",
+    icon: "home",
+    title: "Residential Construction",
+    description: "Custom homes, renovations, and additions built to your exact specifications with premium materials.",
+    fullDescription: "Our residential construction services cover everything from custom home building to major renovations and additions. We work closely with homeowners to bring their vision to life, using only premium materials and employing skilled craftsmen who take pride in their work.",
+    features: [
+      "Custom home design and construction",
+      "Home additions and expansions",
+      "Kitchen and bathroom remodeling",
+      "Energy-efficient upgrades",
+      "Outdoor living spaces",
+      "Basement finishing"
+    ],
+    order: 1
+  },
+  {
+    id: "commercial-building",
+    icon: "building2",
+    title: "Commercial Building",
+    description: "Office buildings, retail spaces, and commercial complexes designed for functionality and aesthetics.",
+    fullDescription: "We specialize in commercial construction projects of all sizes, from small retail spaces to large office complexes. Our team understands the unique requirements of commercial construction, including zoning regulations, accessibility standards, and efficient space planning.",
+    features: [
+      "Office building construction",
+      "Retail space development",
+      "Restaurant and hospitality build-outs",
+      "Mixed-use developments",
+      "Commercial tenant improvements",
+      "ADA compliance upgrades"
+    ],
+    order: 2
+  },
+  {
+    id: "industrial-projects",
+    icon: "factory",
+    title: "Industrial Projects",
+    description: "Warehouses, factories, and industrial facilities built to meet stringent safety standards.",
+    fullDescription: "Our industrial construction expertise covers manufacturing facilities, warehouses, distribution centers, and specialized industrial buildings. We understand the critical importance of durability, safety, and efficiency in industrial environments.",
+    features: [
+      "Manufacturing facility construction",
+      "Warehouse and distribution centers",
+      "Cold storage facilities",
+      "Heavy equipment foundations",
+      "Industrial renovations",
+      "Specialized process equipment installation"
+    ],
+    order: 3
+  },
+  {
+    id: "renovations",
+    icon: "hammer",
+    title: "Renovations",
+    description: "Transform existing spaces with our expert renovation services, from kitchens to entire buildings.",
+    fullDescription: "Whether you're looking to update a single room or completely transform an entire building, our renovation team has the expertise to handle projects of any scale. We specialize in breathing new life into existing structures while maintaining their character.",
+    features: [
+      "Whole house renovations",
+      "Historical building restoration",
+      "Structural modifications",
+      "Exterior facade updates",
+      "Interior space reconfiguration",
+      "Code compliance updates"
+    ],
+    order: 4
+  },
+  {
+    id: "interior-exterior-finishing",
+    icon: "paintbrush",
+    title: "Interior & Exterior Finishing",
+    description: "Professional painting, flooring, and finishing touches that bring your project to completion.",
+    fullDescription: "The finishing touches make all the difference. Our finishing specialists excel at painting, flooring installation, trim work, and all the details that transform a construction site into a beautiful, functional space.",
+    features: [
+      "Interior and exterior painting",
+      "Hardwood and tile flooring",
+      "Custom trim and molding",
+      "Cabinet installation",
+      "Countertop installation",
+      "Landscape hardscaping"
+    ],
+    order: 5
+  },
+  {
+    id: "project-management",
+    icon: "hardhat",
+    title: "Project Management",
+    description: "End-to-end project management ensuring on-time delivery and within budget constraints.",
+    fullDescription: "Effective project management is the key to successful construction. Our experienced project managers coordinate all aspects of your project, from permits and inspections to subcontractor management and quality control.",
+    features: [
+      "Complete project coordination",
+      "Permit and inspection management",
+      "Budget tracking and reporting",
+      "Schedule management",
+      "Quality assurance programs",
+      "Safety management"
+    ],
+    order: 6
+  },
+  {
+    id: "architectural-design",
+    icon: "ruler",
+    title: "Architectural Design",
+    description: "Innovative architectural solutions tailored to your needs, combining form with function.",
+    fullDescription: "Our in-house architectural team creates innovative designs that balance aesthetics, functionality, and budget. From initial concepts to final construction documents, we provide comprehensive design services.",
+    features: [
+      "Custom architectural design",
+      "3D modeling and visualization",
+      "Space planning",
+      "Sustainable design solutions",
+      "Renovation design services",
+      "Construction documentation"
+    ],
+    order: 7
+  },
+  {
+    id: "site-preparation",
+    icon: "truck",
+    title: "Site Preparation",
+    description: "Complete site preparation including excavation, grading, and foundation work.",
+    fullDescription: "Proper site preparation is the foundation of every successful construction project. Our site preparation services include everything from initial surveying and clearing to final grading and utility installation.",
+    features: [
+      "Land clearing and demolition",
+      "Excavation and grading",
+      "Foundation construction",
+      "Utility installation",
+      "Erosion control",
+      "Site drainage solutions"
+    ],
+    order: 8
+  }
+]
+
+// Team Data
+const team = [
+  {
+    id: "john-peterson",
+    name: "John Peterson",
+    role: "Founder & CEO",
+    experience: "25+ years",
+    bio: "John founded PKonstruct in 2005 with a vision to deliver exceptional construction services. His leadership has grown the company from a small team to an industry leader.",
+    phone: "+1 (555) 101-0001",
+    email: "john@pkonstruct.com",
+    order: 1,
+    socialLinks: {
+      linkedin: "https://linkedin.com/in/johnpeterson"
+    }
+  },
+  {
+    id: "maria-rodriguez",
+    name: "Maria Rodriguez",
+    role: "Chief Operations Officer",
+    experience: "18 years",
+    bio: "Maria ensures every project runs smoothly from start to finish. Her expertise in project management has been key to our 100% on-time delivery record.",
+    phone: "+1 (555) 101-0002",
+    email: "maria@pkonstruct.com",
+    order: 2,
+    socialLinks: {
+      linkedin: "https://linkedin.com/in/mariarodriguez"
+    }
+  },
+  {
+    id: "david-chen",
+    name: "David Chen",
+    role: "Head of Architecture",
+    experience: "20 years",
+    bio: "David brings creative vision and technical expertise to every project. His innovative designs have won multiple industry awards.",
+    phone: "+1 (555) 101-0003",
+    email: "david@pkonstruct.com",
+    order: 3,
+    socialLinks: {
+      linkedin: "https://linkedin.com/in/davidchen"
+    }
+  },
+  {
+    id: "sarah-thompson",
+    name: "Sarah Thompson",
+    role: "Safety Director",
+    experience: "15 years",
+    bio: "Sarah maintains our impeccable safety record. Her rigorous safety protocols ensure zero accidents across all project sites.",
+    phone: "+1 (555) 101-0004",
+    email: "sarah@pkonstruct.com",
+    order: 4,
+    socialLinks: {
+      linkedin: "https://linkedin.com/in/sarahthompson"
+    }
+  }
+]
+
+// Clients Data
+const clients = [
+  { id: "marriott", name: "Marriott Hotels", icon: "hotel", order: 1 },
+  { id: "home-depot", name: "Home Depot", icon: "store", order: 2 },
+  { id: "amazon", name: "Amazon Logistics", icon: "warehouse", order: 3 },
+  { id: "lennar", name: "Lennar Homes", icon: "home", order: 4 },
+  { id: "tesla", name: "Tesla Motors", icon: "factory", order: 5 },
+  { id: "wells-fargo", name: "Wells Fargo", icon: "landmark", order: 6 },
+  { id: "hyatt", name: "Hyatt Resorts", icon: "castle", order: 7 },
+  { id: "cbre", name: "CBRE Group", icon: "building2", order: 8 }
+]
+
+// About Data
+const aboutData = {
+  id: "company",
+  title: "Building Excellence for Over Two Decades",
+  subtitle: "About Us",
+  description: "PKonstruct has established itself as a trusted name in the construction industry. Our commitment to quality, safety, and client satisfaction has made us the preferred choice for projects of all sizes.",
+  story: "From humble beginnings in 2005, we have grown into a full-service construction company with expertise spanning residential, commercial, and industrial sectors.",
+  values: [
+    { icon: "checkcircle", title: "Quality Excellence", description: "We never compromise on quality. Every project is executed with precision and attention to detail." },
+    { icon: "award", title: "Award Winning", description: "Recognized with multiple industry awards for our innovative designs and sustainable practices." },
+    { icon: "users", title: "Expert Team", description: "Our team consists of certified professionals with decades of combined industry experience." },
+    { icon: "shield", title: "Safety First", description: "We maintain rigorous safety standards, ensuring zero accidents across all our project sites." }
+  ],
+  milestones: [
+    { year: "2005", event: "PKonstruct founded with 5 employees", order: 1 },
+    { year: "2010", event: "Completed 100th project milestone", order: 2 },
+    { year: "2015", event: "Expanded to commercial construction", order: 3 },
+    { year: "2020", event: "Achieved ISO 9001 certification", order: 4 },
+    { year: "2024", event: "500+ projects completed", order: 5 }
+  ],
+  stats: {
+    teamMembers: 150,
+    industryAwards: 25,
+    projectsCompleted: 500,
+    yearsExperience: 19
+  }
+}
+
+// FAQ Data
+const faqs = [
+  {
+    id: "faq-1",
+    question: "How long does a typical construction project take?",
+    answer: "Project timelines vary based on scope and complexity. A small renovation might take 2-4 weeks, while a custom home could take 8-12 months. Commercial projects typically range from 6 months to 2 years. We provide detailed timelines during the planning phase and keep you updated throughout the project.",
+    category: "general",
+    order: 1
+  },
+  {
+    id: "faq-2",
+    question: "Do you offer free estimates?",
+    answer: "Yes! We provide free, no-obligation estimates for all projects. Our team will visit your site, discuss your vision, and provide a detailed quote outlining all costs, timelines, and project specifications. Contact us to schedule your consultation.",
+    category: "general",
+    order: 2
+  },
+  {
+    id: "faq-3",
+    question: "Are you licensed and insured?",
+    answer: "Absolutely. PKonstruct is fully licensed in all states where we operate, and we carry comprehensive general liability and workers' compensation insurance. We can provide certificates of insurance upon request, and all our subcontractors are also fully licensed and insured.",
+    category: "general",
+    order: 3
+  },
+  {
+    id: "faq-4",
+    question: "What types of payment do you accept?",
+    answer: "We accept various payment methods including checks, wire transfers, and major credit cards. For larger projects, we typically work with a payment schedule tied to project milestones. We also partner with several financing companies that offer construction loans and home improvement financing.",
+    category: "pricing",
+    order: 4
+  },
+  {
+    id: "faq-5",
+    question: "Do you offer warranties on your work?",
+    answer: "Yes, we stand behind our work with comprehensive warranties. All projects include a 1-year workmanship warranty, and we pass along manufacturer warranties for all materials and products used. Some structural elements may have extended warranties. We'll provide detailed warranty information with your project contract.",
+    category: "general",
+    order: 5
+  },
+  {
+    id: "faq-6",
+    question: "How do you handle project changes or modifications?",
+    answer: "We understand that changes may be necessary during construction. All modifications are handled through our change order process, which includes documenting the change, providing cost and timeline impacts, and obtaining your written approval before proceeding. We maintain clear communication throughout this process.",
+    category: "process",
+    order: 6
+  },
+  {
+    id: "faq-7",
+    question: "What is your safety record?",
+    answer: "Safety is our top priority. We maintain a zero-accident policy across all job sites through rigorous safety training, daily safety briefings, and strict adherence to OSHA standards. Our safety director regularly inspects all sites, and we have received multiple safety excellence awards from industry organizations.",
+    category: "safety",
+    order: 7
+  },
+  {
+    id: "faq-8",
+    question: "Do you handle permits and inspections?",
+    answer: "Yes, we manage all aspects of permits and inspections for your project. Our team has extensive experience working with local building departments and understands the requirements in all areas we serve. We handle permit applications, schedule inspections, and ensure all work meets or exceeds code requirements.",
+    category: "process",
+    order: 8
+  },
+  {
+    id: "faq-9",
+    question: "Can you work with my architect or designer?",
+    answer: "Absolutely! We regularly collaborate with architects, interior designers, and other professionals. We're experienced in working with existing plans or can provide recommendations for design professionals if needed. Our goal is to ensure seamless coordination between all parties for the best possible outcome.",
+    category: "process",
+    order: 9
+  },
+  {
+    id: "faq-10",
+    question: "What areas do you serve?",
+    answer: "PKonstruct operates throughout the United States with regional offices in major metropolitan areas. Our main service areas include California, Texas, Florida, New York, Illinois, and Michigan. For projects outside these areas, please contact us to discuss availability and logistics.",
+    category: "general",
+    order: 10
+  }
+]
+
 async function seedData() {
   try {
     console.log("Starting Firebase seeding...")
@@ -336,10 +638,48 @@ async function seedData() {
       console.log(`  ✓ Testimonial: ${testimonial.name}`)
     }
 
+    // Seed Services
+    console.log("Seeding services...")
+    for (const service of services) {
+      await db.collection("services").doc(service.id).set(service)
+      console.log(`  ✓ Service: ${service.title}`)
+    }
+
+    // Seed Team
+    console.log("Seeding team...")
+    for (const member of team) {
+      await db.collection("team").doc(member.id).set(member)
+      console.log(`  ✓ Team: ${member.name}`)
+    }
+
+    // Seed Clients
+    console.log("Seeding clients...")
+    for (const client of clients) {
+      await db.collection("clients").doc(client.id).set(client)
+      console.log(`  ✓ Client: ${client.name}`)
+    }
+
+    // Seed About
+    console.log("Seeding about data...")
+    await db.collection("about").doc(aboutData.id).set(aboutData)
+    console.log(`  ✓ About data`)
+
+    // Seed FAQ
+    console.log("Seeding FAQ...")
+    for (const faq of faqs) {
+      await db.collection("faq").doc(faq.id).set(faq)
+      console.log(`  ✓ FAQ: ${faq.question.substring(0, 40)}...`)
+    }
+
     console.log("\n✅ Seeding completed successfully!")
     console.log(`   - ${blogPosts.length} blog posts`)
     console.log(`   - ${projects.length} projects`)
     console.log(`   - ${testimonials.length} testimonials`)
+    console.log(`   - ${services.length} services`)
+    console.log(`   - ${team.length} team members`)
+    console.log(`   - ${clients.length} clients`)
+    console.log(`   - 1 about document`)
+    console.log(`   - ${faqs.length} FAQs`)
 
   } catch (error) {
     console.error("❌ Seeding failed:", error)

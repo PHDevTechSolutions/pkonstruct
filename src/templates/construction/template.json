@@ -1,0 +1,425 @@
+{
+  "id": "construction",
+  "name": "Construction & Building",
+  "description": "Professional template for construction companies",
+  "thumbnail": "/templates/construction/thumbnail.jpg",
+  "pages": {
+    "homepage": {
+      "title": "Homepage",
+      "slug": "home",
+      "metaTitle": "Building Excellence - Construction Company",
+      "metaDescription": "Your trusted partner for residential and commercial construction projects.",
+      "sections": [
+        {
+          "id": "hero-1",
+          "type": "hero",
+          "title": "Hero Banner",
+          "isActive": true,
+          "order": 1,
+          "content": {
+            "headline": "Building Your Dreams",
+            "subheadline": "From concept to completion, we deliver excellence in every project",
+            "ctaText": "Get Free Quote",
+            "ctaLink": "/quote",
+            "backgroundImage": "/images/construction-hero.jpg"
+          }
+        },
+        {
+          "id": "services-1",
+          "type": "services",
+          "title": "Our Services",
+          "isActive": true,
+          "order": 2,
+          "content": {
+            "title": "What We Offer",
+            "subtitle": "Comprehensive construction solutions",
+            "layout": "grid",
+            "showFeatured": true
+          }
+        },
+        {
+          "id": "projects-1",
+          "type": "projects",
+          "title": "Featured Projects",
+          "isActive": true,
+          "order": 3,
+          "content": {
+            "title": "Our Latest Work",
+            "subtitle": "See our completed projects",
+            "layout": "grid",
+            "limit": 6,
+            "showFilter": true
+          }
+        },
+        {
+          "id": "stats-1",
+          "type": "stats",
+          "title": "Company Statistics",
+          "isActive": true,
+          "order": 4,
+          "content": {
+            "stats": [
+              { "label": "Projects Completed", "value": "500+" },
+              { "label": "Years Experience", "value": "25+" },
+              { "label": "Happy Clients", "value": "1000+" },
+              { "label": "Team Members", "value": "150+" }
+            ]
+          }
+        },
+        {
+          "id": "testimonials-1",
+          "type": "testimonials",
+          "title": "Client Testimonials",
+          "isActive": true,
+          "order": 5,
+          "content": {
+            "title": "What Our Clients Say",
+            "subtitle": "Real feedback from real customers"
+          }
+        },
+        {
+          "id": "cta-1",
+          "type": "cta",
+          "title": "Call to Action",
+          "isActive": true,
+          "order": 6,
+          "content": {
+            "title": "Ready to Start Your Project?",
+            "subtitle": "Contact us today for a free consultation",
+            "buttonText": "Contact Us",
+            "buttonLink": "/contact",
+            "backgroundColor": "#d97706"
+          }
+        }
+      ],
+      "showInHeader": true,
+      "showInFooter": false,
+      "isPublished": true
+    },
+    "about": {
+      "title": "About Us",
+      "slug": "about-us",
+      "metaTitle": "About Us - Construction Company",
+      "metaDescription": "Learn about our history, mission, and the team behind our success.",
+      "sections": [
+        {
+          "id": "hero-about",
+          "type": "hero",
+          "title": "About Hero",
+          "isActive": true,
+          "order": 1,
+          "content": {
+            "headline": "About Us",
+            "subheadline": "Building trust since 1999",
+            "backgroundImage": "/images/about-hero.jpg"
+          }
+        },
+        {
+          "id": "text-story",
+          "type": "text",
+          "title": "Our Story",
+          "isActive": true,
+          "order": 2,
+          "content": {
+            "title": "Our Story",
+            "text": "Founded in 1999, we started as a small family business with a vision to transform the construction industry. Today, we're a leading construction company known for quality, innovation, and customer satisfaction.",
+            "layout": "two-column"
+          }
+        },
+        {
+          "id": "team-1",
+          "type": "team",
+          "title": "Our Leadership",
+          "isActive": true,
+          "order": 3,
+          "content": {
+            "title": "Meet Our Team",
+            "subtitle": "Experienced professionals dedicated to excellence",
+            "showFilter": false
+          }
+        },
+        {
+          "id": "values-1",
+          "type": "features",
+          "title": "Our Values",
+          "isActive": true,
+          "order": 4,
+          "content": {
+            "title": "Why Choose Us",
+            "features": [
+              { "title": "Quality", "description": "We never compromise on quality" },
+              { "title": "Safety", "description": "Safety is our top priority" },
+              { "title": "Innovation", "description": "Latest technology and methods" },
+              { "title": "Reliability", "description": "On time, every time" }
+            ]
+          }
+        }
+      ],
+      "showInHeader": true,
+      "showInFooter": true,
+      "isPublished": true
+    },
+    "services": {
+      "title": "Services",
+      "slug": "services",
+      "metaTitle": "Our Services - Construction Company",
+      "metaDescription": "Comprehensive construction services for residential and commercial projects.",
+      "sections": [
+        {
+          "id": "hero-services",
+          "type": "hero",
+          "title": "Services Hero",
+          "isActive": true,
+          "order": 1,
+          "content": {
+            "headline": "Our Services",
+            "subheadline": "Comprehensive solutions for your construction needs",
+            "backgroundImage": "/images/services-hero.jpg"
+          }
+        },
+        {
+          "id": "services-list",
+          "type": "services",
+          "title": "Service Categories",
+          "isActive": true,
+          "order": 2,
+          "content": {
+            "title": "What We Offer",
+            "layout": "detailed",
+            "showCategories": true
+          }
+        },
+        {
+          "id": "process-1",
+          "type": "features",
+          "title": "Our Process",
+          "isActive": true,
+          "order": 3,
+          "content": {
+            "title": "How We Work",
+            "layout": "steps",
+            "steps": [
+              { "title": "Consultation", "description": "Free initial consultation" },
+              { "title": "Planning", "description": "Detailed project planning" },
+              { "title": "Execution", "description": "Professional construction" },
+              { "title": "Delivery", "description": "On-time project completion" }
+            ]
+          }
+        }
+      ],
+      "showInHeader": true,
+      "showInFooter": true,
+      "isPublished": true
+    },
+    "projects": {
+      "title": "Projects",
+      "slug": "projects",
+      "metaTitle": "Our Projects - Portfolio",
+      "metaDescription": "Explore our completed residential and commercial projects.",
+      "sections": [
+        {
+          "id": "hero-projects",
+          "type": "hero",
+          "title": "Projects Hero",
+          "isActive": true,
+          "order": 1,
+          "content": {
+            "headline": "Our Portfolio",
+            "subheadline": "Excellence in every build",
+            "backgroundImage": "/images/projects-hero.jpg"
+          }
+        },
+        {
+          "id": "projects-gallery",
+          "type": "projects",
+          "title": "Project Gallery",
+          "isActive": true,
+          "order": 2,
+          "content": {
+            "title": "Featured Projects",
+            "layout": "masonry",
+            "showFilter": true,
+            "categories": ["Residential", "Commercial", "Industrial", "Renovation"]
+          }
+        }
+      ],
+      "showInHeader": true,
+      "showInFooter": true,
+      "isPublished": true
+    },
+    "contact": {
+      "title": "Contact Us",
+      "slug": "contact",
+      "metaTitle": "Contact Us - Get in Touch",
+      "metaDescription": "Contact us for inquiries, quotes, or support.",
+      "sections": [
+        {
+          "id": "hero-contact",
+          "type": "hero",
+          "title": "Contact Hero",
+          "isActive": true,
+          "order": 1,
+          "content": {
+            "headline": "Contact Us",
+            "subheadline": "We'd love to hear from you",
+            "backgroundImage": "/images/contact-hero.jpg"
+          }
+        },
+        {
+          "id": "contact-form",
+          "type": "contact",
+          "title": "Contact Form",
+          "isActive": true,
+          "order": 2,
+          "content": {
+            "title": "Get in Touch",
+            "subtitle": "Fill out the form below and we'll get back to you",
+            "fields": ["name", "email", "phone", "service", "message"],
+            "showMap": true
+          }
+        },
+        {
+          "id": "contact-info",
+          "type": "text",
+          "title": "Office Information",
+          "isActive": true,
+          "order": 3,
+          "content": {
+            "title": "Visit Our Office",
+            "text": "123 Construction Ave, Building District, City 12345",
+            "showHours": true
+          }
+        }
+      ],
+      "showInHeader": true,
+      "showInFooter": true,
+      "isPublished": true
+    },
+    "quote": {
+      "title": "Get a Quote",
+      "slug": "quote",
+      "metaTitle": "Request a Quote - Free Estimate",
+      "metaDescription": "Get a free quote for your construction project.",
+      "sections": [
+        {
+          "id": "hero-quote",
+          "type": "hero",
+          "title": "Quote Hero",
+          "isActive": true,
+          "order": 1,
+          "content": {
+            "headline": "Get a Free Quote",
+            "subheadline": "Tell us about your project",
+            "backgroundImage": "/images/quote-hero.jpg"
+          }
+        },
+        {
+          "id": "quote-form",
+          "type": "contact",
+          "title": "Quote Request Form",
+          "isActive": true,
+          "order": 2,
+          "content": {
+            "title": "Project Details",
+            "subtitle": "Fill out the details and we'll provide a custom quote",
+            "fields": ["name", "email", "phone", "projectType", "budget", "timeline", "details"],
+            "formType": "quote"
+          }
+        },
+        {
+          "id": "faq-1",
+          "type": "faq",
+          "title": "FAQ",
+          "isActive": true,
+          "order": 3,
+          "content": {
+            "title": "Frequently Asked Questions",
+            "faqs": [
+              { "q": "How long does a typical project take?", "a": "Project timelines vary based on scope and complexity." },
+              { "q": "Do you offer financing options?", "a": "Yes, we partner with several financing providers." }
+            ]
+          }
+        }
+      ],
+      "showInHeader": true,
+      "showInFooter": false,
+      "isPublished": true
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "slug": "privacy-policy",
+      "metaTitle": "Privacy Policy",
+      "metaDescription": "Our privacy policy and data protection practices.",
+      "sections": [
+        {
+          "id": "privacy-content",
+          "type": "text",
+          "title": "Privacy Policy Content",
+          "isActive": true,
+          "order": 1,
+          "content": {
+            "title": "Privacy Policy",
+            "text": "This Privacy Policy describes how we collect, use, and protect your personal information."
+          }
+        }
+      ],
+      "showInHeader": false,
+      "showInFooter": true,
+      "isPublished": true
+    },
+    "terms": {
+      "title": "Terms of Service",
+      "slug": "terms-of-service",
+      "metaTitle": "Terms of Service",
+      "metaDescription": "Our terms of service and legal agreements.",
+      "sections": [
+        {
+          "id": "terms-content",
+          "type": "text",
+          "title": "Terms Content",
+          "isActive": true,
+          "order": 1,
+          "content": {
+            "title": "Terms of Service",
+            "text": "By using our services, you agree to these terms and conditions."
+          }
+        }
+      ],
+      "showInHeader": false,
+      "showInFooter": true,
+      "isPublished": true
+    }
+  },
+  "navigation": {
+    "siteName": "BuildRight Construction",
+    "headerLogo": "/logos/construction-logo.png",
+    "headerBgColor": "#ffffff",
+    "headerTextColor": "#1c1917",
+    "footerDescription": "Building excellence since 1999. Licensed and insured construction company serving residential and commercial clients.",
+    "footerCopyright": "© 2024 BuildRight Construction. All rights reserved.",
+    "footerBgColor": "#1c1917",
+    "footerTextColor": "#ffffff",
+    "socialLinks": [
+      { "platform": "Facebook", "url": "https://facebook.com/buildright", "icon": "Facebook", "isActive": true },
+      { "platform": "Instagram", "url": "https://instagram.com/buildright", "icon": "Instagram", "isActive": true },
+      { "platform": "LinkedIn", "url": "https://linkedin.com/company/buildright", "icon": "LinkedIn", "isActive": true }
+    ],
+    "footerColumns": [
+      {
+        "title": "Quick Links",
+        "links": [
+          { "label": "About Us", "url": "/about-us" },
+          { "label": "Services", "url": "/services" },
+          { "label": "Projects", "url": "/projects" },
+          { "label": "Careers", "url": "/careers" }
+        ]
+      }
+    ]
+  },
+  "styles": {
+    "primaryColor": "#d97706",
+    "secondaryColor": "#1c1917",
+    "accentColor": "#f59e0b",
+    "fontFamily": "Inter, system-ui, sans-serif"
+  }
+}

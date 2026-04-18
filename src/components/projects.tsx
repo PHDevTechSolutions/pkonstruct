@@ -74,9 +74,17 @@ export function Projects() {
             <Card key={project.id} className="overflow-hidden group hover:shadow-xl transition-shadow duration-300">
               <Link href={`/projects/${project.id}`}>
                 <div className="relative h-64 bg-stone-200">
-                  <div className="absolute inset-0 flex items-center justify-center bg-stone-300">
-                    <span className="text-stone-500 font-medium">Project Image</span>
-                  </div>
+                  {project.image ? (
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center bg-stone-300">
+                      <span className="text-stone-500 font-medium">Project Image</span>
+                    </div>
+                  )}
                   <div className="absolute top-4 left-4">
                     <span className="px-3 py-1 bg-amber-600 text-white text-sm font-medium rounded-full">
                       {project.category}
@@ -112,6 +120,16 @@ export function Projects() {
           ))}
         </div>
         )}
+        
+        {/* View All Button */}
+        <div className="text-center mt-12">
+          <Link href="/projects">
+            <Button size="lg" className="bg-amber-600 hover:bg-amber-700">
+              View All Projects
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </Link>
+        </div>
       </div>
     </section>
   )

@@ -1,44 +1,50 @@
 "use client"
 
 import { Card, CardContent } from "@/components/ui/card"
+import { Skeleton } from "@/components/ui/skeleton"
 import { Phone, Mail, Link2 } from "lucide-react"
-
-const teamMembers = [
-  {
-    name: "John Peterson",
-    role: "Founder & CEO",
-    experience: "25+ years",
-    bio: "John founded PKonstruct in 2005 with a vision to deliver exceptional construction services. His leadership has grown the company from a small team to an industry leader.",
-    phone: "+1 (555) 101-0001",
-    email: "john@pkonstruct.com"
-  },
-  {
-    name: "Maria Rodriguez",
-    role: "Chief Operations Officer",
-    experience: "18 years",
-    bio: "Maria ensures every project runs smoothly from start to finish. Her expertise in project management has been key to our 100% on-time delivery record.",
-    phone: "+1 (555) 101-0002",
-    email: "maria@pkonstruct.com"
-  },
-  {
-    name: "David Chen",
-    role: "Head of Architecture",
-    experience: "20 years",
-    bio: "David brings creative vision and technical expertise to every project. His innovative designs have won multiple industry awards.",
-    phone: "+1 (555) 101-0003",
-    email: "david@pkonstruct.com"
-  },
-  {
-    name: "Sarah Thompson",
-    role: "Safety Director",
-    experience: "15 years",
-    bio: "Sarah maintains our impeccable safety record. Her rigorous safety protocols ensure zero accidents across all project sites.",
-    phone: "+1 (555) 101-0004",
-    email: "sarah@pkonstruct.com"
-  }
-]
+import { useTeam } from "@/hooks/use-team"
 
 export function Team() {
+  const { members, loading, error } = useTeam()
+
+  if (loading) {
+    return (
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <Skeleton className="h-4 w-32 mx-auto mb-4" />
+            <Skeleton className="h-10 w-3/4 mx-auto mb-4" />
+            <Skeleton className="h-6 w-full mx-auto" />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[...Array(4)].map((_, i) => (
+              <Card key={i} className="p-6">
+                <Skeleton className="w-24 h-24 rounded-full mx-auto mb-4" />
+                <Skeleton className="h-6 w-3/4 mx-auto mb-2" />
+                <Skeleton className="h-4 w-1/2 mx-auto mb-4" />
+                <Skeleton className="h-4 w-full mb-2" />
+                <Skeleton className="h-4 w-2/3 mx-auto" />
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  if (error) {
+    return (
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center">
+            <p className="text-red-600">Failed to load team members. Please try again later.</p>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
@@ -53,13 +59,20 @@ export function Team() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {teamMembers.map((member, index) => (
-            <Card key={index} className="group hover:shadow-lg transition-shadow duration-300">
+          {members.map((member) => (
+            <Card key={member.id} className="group hover:shadow-lg transition-shadow duration-300">
               <CardContent className="p-6">
-                {/* Avatar placeholder */}
-                <div className="w-24 h-24 rounded-full bg-gradient-to-br from-amber-500 to-amber-700 mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold">
-                  {member.name.split(' ').map(n => n[0]).join('')}
-                </div>
+                {member.image ? (
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
+                  />
+                ) : (
+                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-amber-500 to-amber-700 mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold">
+                    {member.name.split(' ').map(n => n[0]).join('')}
+                  </div>
+                )}
 
                 <div className="text-center mb-4">
                   <h3 className="font-bold text-lg text-stone-900">{member.name}</h3>
@@ -86,13 +99,15 @@ export function Team() {
                   >
                     <Mail className="h-4 w-4" />
                   </a>
-                  <a
-                    href="#"
-                    className="p-2 rounded-full bg-stone-100 hover:bg-amber-100 text-stone-600 hover:text-amber-600 transition-colors"
-                    aria-label={`${member.name} LinkedIn`}
-                  >
-                    <Link2 className="h-4 w-4" />
-                  </a>
+                  {member.socialLinks?.linkedin && (
+                    <a
+                      href={member.socialLinks.linkedin}
+                      className="p-2 rounded-full bg-stone-100 hover:bg-amber-100 text-stone-600 hover:text-amber-600 transition-colors"
+                      aria-label={`${member.name} LinkedIn`}
+                    >
+                      <Link2 className="h-4 w-4" />
+                    </a>
+                  )}
                 </div>
               </CardContent>
             </Card>

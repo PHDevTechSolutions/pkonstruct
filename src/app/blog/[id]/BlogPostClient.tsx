@@ -8,11 +8,11 @@ import { useBlogPost, useBlogPosts } from "@/hooks/use-blog"
 import { ArrowLeft, Calendar, Clock, User, Share2, MessageCircle, Loader2 } from "lucide-react"
 
 interface BlogPostClientProps {
-  id: string
+  idOrSlug: string
 }
 
-export function BlogPostClient({ id }: BlogPostClientProps) {
-  const { post, loading, error } = useBlogPost(id)
+export function BlogPostClient({ idOrSlug }: BlogPostClientProps) {
+  const { post, loading, error } = useBlogPost(idOrSlug)
   const { posts: allPosts } = useBlogPosts()
 
   if (loading) {
@@ -81,17 +81,43 @@ export function BlogPostClient({ id }: BlogPostClientProps) {
             </div>
           </div>
 
-          {/* Featured Image Placeholder */}
-          <div className="relative h-64 md:h-96 bg-stone-200 rounded-xl mb-8">
-            <div className="absolute inset-0 flex items-center justify-center bg-stone-300 rounded-xl">
-              <span className="text-stone-500 font-medium">Featured Image</span>
-            </div>
+          {/* Featured Image */}
+          <div className="relative h-64 md:h-96 bg-stone-200 rounded-xl mb-8 overflow-hidden">
+            {post.image ? (
+              <img
+                src={post.image}
+                alt={post.title}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <div className="absolute inset-0 flex items-center justify-center bg-stone-300 rounded-xl">
+                <span className="text-stone-500 font-medium">Featured Image</span>
+              </div>
+            )}
           </div>
 
           {/* Content */}
           <div className="prose prose-stone max-w-none">
             <div dangerouslySetInnerHTML={{ __html: post.content }} />
           </div>
+
+          {/* Gallery Images */}
+          {post.gallery && post.gallery.length > 0 && (
+            <div className="mt-12">
+              <h3 className="text-xl font-bold text-stone-900 mb-6">Gallery</h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                {post.gallery.map((img, index) => (
+                  <div key={index} className="aspect-video rounded-lg overflow-hidden bg-stone-100">
+                    <img
+                      src={img}
+                      alt={`Gallery image ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Tags */}
           {post.tags && post.tags.length > 0 && (
@@ -152,7 +178,22 @@ export function BlogPostClient({ id }: BlogPostClientProps) {
             <h2 className="text-2xl font-bold text-stone-900 mb-8">Related Articles</h2>
             <div className="grid md:grid-cols-2 gap-6">
               {relatedPosts.map((relatedPost) => (
-                <Card key={relatedPost.id} className="hover:shadow-lg transition-shadow">
+                <Card key={relatedPost.id} className="hover:shadow-lg transition-shadow overflow-hidden">
+                  <Link href={`/blog/${relatedPost.id}`}>
+                    <div className="relative h-40 bg-stone-200">
+                      {relatedPost.image ? (
+                        <img
+                          src={relatedPost.image}
+                          alt={relatedPost.title}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div className="absolute inset-0 flex items-center justify-center bg-stone-300">
+                          <span className="text-stone-500 font-medium text-sm">Blog Image</span>
+                        </div>
+                      )}
+                    </div>
+                  </Link>
                   <CardContent className="p-6">
                     <span className="text-amber-600 text-sm font-medium">{relatedPost.category}</span>
                     <h3 className="font-bold text-lg mt-2 mb-3">

@@ -1,0 +1,320 @@
+{
+  "id": "cleaning-services",
+  "name": "Cleaning Services",
+  "description": "Professional template for cleaning and maintenance companies",
+  "thumbnail": "/templates/cleaning/thumbnail.jpg",
+  "pages": {
+    "homepage": {
+      "title": "Homepage",
+      "slug": "home",
+      "metaTitle": "Sparkle Clean - Professional Cleaning Services",
+      "metaDescription": "Professional residential and commercial cleaning services you can trust.",
+      "sections": [
+        {
+          "id": "hero-1",
+          "type": "hero",
+          "title": "Hero Banner",
+          "isActive": true,
+          "order": 1,
+          "content": {
+            "headline": "A Cleaner, Healthier Space",
+            "subheadline": "Professional cleaning services for homes and businesses",
+            "ctaText": "Book Now",
+            "ctaLink": "/quote",
+            "backgroundImage": "/images/cleaning-hero.jpg",
+            "badge": "Eco-Friendly Products"
+          }
+        },
+        {
+          "id": "services-1",
+          "type": "services",
+          "title": "Our Services",
+          "isActive": true,
+          "order": 2,
+          "content": {
+            "title": "Cleaning Services We Offer",
+            "subtitle": "From residential to commercial",
+            "layout": "cards",
+            "services": [
+              { "title": "Residential Cleaning", "icon": "Home" },
+              { "title": "Office Cleaning", "icon": "Building" },
+              { "title": "Deep Cleaning", "icon": "Sparkles" },
+              { "title": "Move-in/Move-out", "icon": "Truck" }
+            ]
+          }
+        },
+        {
+          "id": "why-us",
+          "type": "features",
+          "title": "Why Choose Us",
+          "isActive": true,
+          "order": 3,
+          "content": {
+            "title": "Why Sparkle Clean?",
+            "features": [
+              { "title": "Trusted Team", "description": "Background-checked, trained professionals" },
+              { "title": "Eco-Friendly", "description": "Safe, sustainable cleaning products" },
+              { "title": "Satisfaction Guaranteed", "description": "100% satisfaction or we re-clean" },
+              { "title": "Flexible Scheduling", "description": "Book online, 24/7 availability" }
+            ]
+          }
+        },
+        {
+          "id": "testimonials-1",
+          "type": "testimonials",
+          "title": "Reviews",
+          "isActive": true,
+          "order": 4,
+          "content": {
+            "title": "What Our Customers Say",
+            "subtitle": "Rated 4.9/5 from over 2,000 reviews"
+          }
+        },
+        {
+          "id": "cta-1",
+          "type": "cta",
+          "title": "Book Now",
+          "isActive": true,
+          "order": 5,
+          "content": {
+            "title": "Ready for a Sparkling Clean Space?",
+            "subtitle": "Book your first cleaning and get 20% off",
+            "buttonText": "Get Instant Quote",
+            "buttonLink": "/quote",
+            "backgroundColor": "#0d9488"
+          }
+        }
+      ],
+      "showInHeader": true,
+      "showInFooter": false,
+      "isPublished": true
+    },
+    "about": {
+      "title": "About Us",
+      "slug": "about-us",
+      "metaTitle": "About Sparkle Clean - Our Story",
+      "metaDescription": "Learn about our mission to provide eco-friendly cleaning services.",
+      "sections": [
+        {
+          "id": "hero-about",
+          "type": "hero",
+          "title": "About Hero",
+          "isActive": true,
+          "order": 1,
+          "content": {
+            "headline": "About Sparkle Clean",
+            "subheadline": "Making spaces sparkle since 2010",
+            "backgroundImage": "/images/about-cleaning.jpg"
+          }
+        },
+        {
+          "id": "text-story",
+          "type": "text",
+          "title": "Our Mission",
+          "isActive": true,
+          "order": 2,
+          "content": {
+            "title": "Our Mission",
+            "text": "We believe everyone deserves a clean, healthy living and working environment. That's why we use only eco-friendly products and employ trained professionals who treat your space with care.",
+            "layout": "centered"
+          }
+        },
+        {
+          "id": "team-1",
+          "type": "team",
+          "title": "Our Cleaners",
+          "isActive": true,
+          "order": 3,
+          "content": {
+            "title": "Meet Our Team",
+            "subtitle": "Professional, friendly, and thorough"
+          }
+        }
+      ],
+      "showInHeader": true,
+      "showInFooter": true,
+      "isPublished": true
+    },
+    "services": {
+      "title": "Services",
+      "slug": "services",
+      "metaTitle": "Our Cleaning Services",
+      "metaDescription": "Residential, commercial, and specialty cleaning services.",
+      "sections": [
+        {
+          "id": "hero-services",
+          "type": "hero",
+          "title": "Services Hero",
+          "isActive": true,
+          "order": 1,
+          "content": {
+            "headline": "Our Services",
+            "subheadline": "Comprehensive cleaning solutions",
+            "backgroundImage": "/images/services-cleaning.jpg"
+          }
+        },
+        {
+          "id": "services-list",
+          "type": "services",
+          "title": "Service Details",
+          "isActive": true,
+          "order": 2,
+          "content": {
+            "title": "Cleaning Services",
+            "layout": "detailed",
+            "showPricing": true
+          }
+        },
+        {
+          "id": "pricing-1",
+          "type": "features",
+          "title": "Pricing",
+          "isActive": true,
+          "order": 3,
+          "content": {
+            "title": "Transparent Pricing",
+            "layout": "pricing",
+            "plans": [
+              { "name": "Basic", "price": "$99", "period": "per visit" },
+              { "name": "Standard", "price": "$149", "period": "per visit" },
+              { "name": "Deep Clean", "price": "$249", "period": "per visit" }
+            ]
+          }
+        }
+      ],
+      "showInHeader": true,
+      "showInFooter": true,
+      "isPublished": true
+    },
+    "quote": {
+      "title": "Get a Quote",
+      "slug": "quote",
+      "metaTitle": "Book Cleaning - Free Quote",
+      "metaDescription": "Get an instant quote for your cleaning needs.",
+      "sections": [
+        {
+          "id": "hero-quote",
+          "type": "hero",
+          "title": "Quote Hero",
+          "isActive": true,
+          "order": 1,
+          "content": {
+            "headline": "Get Your Free Quote",
+            "subheadline": "Instant estimate in 2 minutes",
+            "badge": "20% Off First Clean"
+          }
+        },
+        {
+          "id": "quote-calculator",
+          "type": "contact",
+          "title": "Quote Calculator",
+          "isActive": true,
+          "order": 2,
+          "content": {
+            "title": "Calculate Your Price",
+            "formType": "quote",
+            "fields": ["serviceType", "propertySize", "rooms", "frequency", "name", "email", "phone"],
+            "showPricing": true
+          }
+        }
+      ],
+      "showInHeader": true,
+      "showInFooter": false,
+      "isPublished": true
+    },
+    "contact": {
+      "title": "Contact Us",
+      "slug": "contact",
+      "metaTitle": "Contact Sparkle Clean",
+      "metaDescription": "Reach out for bookings, questions, or support.",
+      "sections": [
+        {
+          "id": "hero-contact",
+          "type": "hero",
+          "title": "Contact Hero",
+          "isActive": true,
+          "order": 1,
+          "content": {
+            "headline": "Contact Us",
+            "subheadline": "We're here to help"
+          }
+        },
+        {
+          "id": "contact-form",
+          "type": "contact",
+          "title": "Contact Form",
+          "isActive": true,
+          "order": 2,
+          "content": {
+            "title": "Send us a Message",
+            "fields": ["name", "email", "phone", "subject", "message"]
+          }
+        }
+      ],
+      "showInHeader": true,
+      "showInFooter": true,
+      "isPublished": true
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "slug": "privacy-policy",
+      "metaTitle": "Privacy Policy",
+      "metaDescription": "How we protect your personal information.",
+      "sections": [
+        {
+          "id": "privacy-content",
+          "type": "text",
+          "title": "Privacy Policy",
+          "isActive": true,
+          "order": 1,
+          "content": {
+            "title": "Privacy Policy",
+            "text": "We respect your privacy and protect your personal information."
+          }
+        }
+      ],
+      "showInHeader": false,
+      "showInFooter": true,
+      "isPublished": true
+    }
+  },
+  "navigation": {
+    "siteName": "Sparkle Clean",
+    "headerLogo": "/logos/cleaning-logo.png",
+    "headerBgColor": "#f0fdfa",
+    "headerTextColor": "#0f766e",
+    "footerDescription": "Professional eco-friendly cleaning services. Serving homes and businesses since 2010.",
+    "footerCopyright": "© 2024 Sparkle Clean. All rights reserved.",
+    "footerBgColor": "#0f766e",
+    "footerTextColor": "#f0fdfa",
+    "socialLinks": [
+      { "platform": "Facebook", "url": "https://facebook.com/sparkleclean", "icon": "Facebook", "isActive": true },
+      { "platform": "Instagram", "url": "https://instagram.com/sparkleclean", "icon": "Instagram", "isActive": true },
+      { "platform": "Yelp", "url": "https://yelp.com/biz/sparkleclean", "icon": "MessageCircle", "isActive": true }
+    ],
+    "footerColumns": [
+      {
+        "title": "Services",
+        "links": [
+          { "label": "Residential", "url": "/services/residential" },
+          { "label": "Commercial", "url": "/services/commercial" },
+          { "label": "Deep Cleaning", "url": "/services/deep-cleaning" }
+        ]
+      },
+      {
+        "title": "Company",
+        "links": [
+          { "label": "About Us", "url": "/about-us" },
+          { "label": "Careers", "url": "/careers" },
+          { "label": "Blog", "url": "/blog" }
+        ]
+      }
+    ]
+  },
+  "styles": {
+    "primaryColor": "#0d9488",
+    "secondaryColor": "#0f766e",
+    "accentColor": "#5eead4",
+    "fontFamily": "Inter, system-ui, sans-serif"
+  }
+}

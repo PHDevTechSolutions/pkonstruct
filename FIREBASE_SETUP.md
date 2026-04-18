@@ -6,7 +6,7 @@
 
 Go to Firebase Console → Firestore Database → Rules tab
 
-Paste these rules:
+Paste these rules (includes all collections):
 
 ```javascript
 rules_version = '2';
@@ -42,6 +42,36 @@ service cloud.firestore {
       allow read: if false;
       allow create: if true;
       allow update, delete: if false;
+    }
+    
+    // Allow read access to services for everyone
+    match /services/{serviceId} {
+      allow read: if true;
+      allow write: if false;
+    }
+    
+    // Allow read access to team for everyone
+    match /team/{memberId} {
+      allow read: if true;
+      allow write: if false;
+    }
+    
+    // Allow read access to clients for everyone
+    match /clients/{clientId} {
+      allow read: if true;
+      allow write: if false;
+    }
+    
+    // Allow read access to about for everyone
+    match /about/{docId} {
+      allow read: if true;
+      allow write: if false;
+    }
+    
+    // Allow read access to FAQ for everyone
+    match /faq/{faqId} {
+      allow read: if true;
+      allow write: if false;
     }
   }
 }

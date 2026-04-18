@@ -1,8 +1,8 @@
 "use client"
 
 import Link from "next/link"
-import { useState } from "react"
-import { Menu, HardHat } from "lucide-react"
+import { useState, useEffect } from "react"
+import { Menu, HardHat, Loader2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
   Sheet,
@@ -10,28 +10,97 @@ import {
   SheetTrigger,
   SheetClose,
 } from "@/components/ui/sheet"
+import { useNavigation } from "@/hooks/use-navigation"
+import { useSettings } from "@/hooks/use-settings"
+import { db } from "@/lib/firebase"
+import { doc, getDoc } from "firebase/firestore"
 
-const navLinks = [
-  { href: "/#home", label: "Home" },
-  { href: "/#services", label: "Services" },
-  { href: "/#projects", label: "Projects" },
-  { href: "/blog", label: "Blog" },
-  { href: "/#about", label: "About" },
-  { href: "/#contact", label: "Contact" },
-]
+interface NavSettings {
+  siteName: string
+  headerLogo: string
+  headerBgColor: string
+  headerTextColor: string
+}
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
+  const { headerNav, loading: navLoading } = useNavigation()
+  const { settings, loading: settingsLoading } = useSettings()
+  const [navSettings, setNavSettings] = useState<NavSettings | null>(null)
+  const [navSettingsLoading, setNavSettingsLoading] = useState(true)
+
+  // Fetch navigation settings from settings/navigation
+  useEffect(() => {
+    const fetchNavSettings = async () => {
+      try {
+        const docRef = doc(db, "settings", "navigation")
+        const docSnap = await getDoc(docRef)
+        if (docSnap.exists()) {
+          setNavSettings(docSnap.data() as NavSettings)
+        }
+      } catch (err) {
+        console.error("Error fetching nav settings:", err)
+      } finally {
+        setNavSettingsLoading(false)
+      }
+    }
+    fetchNavSettings()
+  }, [])
+
+  // Only show dynamic pages from database
+  const navLinks = headerNav.map(item => ({ 
+    href: item.slug === "home" ? "/" : `/${item.slug}`, 
+    label: item.title 
+  }))
+
+  const headerButtons = settings?.header?.buttons?.filter(b => b.isActive) || []
+
+  const loading = navLoading || settingsLoading || navSettingsLoading
+
+  if (loading) {
+    return (
+      <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+        <div className="container mx-auto flex h-16 items-center justify-between px-4">
+          <Link href="/" className="flex items-center gap-2">
+            <HardHat className="h-8 w-8 text-amber-600" />
+            <span className="text-xl font-bold text-stone-900">
+              {navSettings?.siteName || settings?.header?.logoText || "PKonstruct"}
+            </span>
+          </Link>
+          <Loader2 className="h-5 w-5 animate-spin text-stone-400" />
+        </div>
+      </header>
+    )
+  }
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        <Link href="/" className="flex items-center gap-2">
-          <HardHat className="h-8 w-8 text-amber-600" />
-          <span className="text-xl font-bold text-stone-900">PKonstruct</span>
-        </Link>
+        {/* Logo */}
+        {settings?.header?.showLogo !== false && (
+          <Link href="/" className="flex items-center gap-2">
+            {navSettings?.headerLogo ? (
+              <img 
+                src={navSettings.headerLogo} 
+                alt="Logo" 
+                className="h-8 w-auto"
+              />
+            ) : settings?.header?.logoImage ? (
+              <img 
+                src={settings.header.logoImage} 
+                alt="Logo" 
+                className="h-8 w-auto"
+              />
+            ) : (
+              <HardHat className="h-8 w-8 text-amber-600" />
+            )}
+            <span className="text-xl font-bold text-stone-900">
+              {navSettings?.siteName || settings?.header?.logoText || "PKonstruct"}
+            </span>
+          </Link>
+        )}
 
-        {/* Desktop Navigation */}
+        {/* Desktop Navigation - Only Dynamic Pages */}
         <nav className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
             <Link
@@ -42,9 +111,17 @@ export function Navigation() {
               {link.label}
             </Link>
           ))}
-          <Button asChild>
-            <Link href="#contact">Get Quote</Link>
-          </Button>
+          {/* Dynamic Header Buttons */}
+          {headerButtons.map((btn) => (
+            <Button 
+              key={btn.id} 
+              variant={btn.variant} 
+              asChild
+              className={btn.variant === "default" ? "bg-amber-600 hover:bg-amber-700" : ""}
+            >
+              <Link href={btn.link}>{btn.label}</Link>
+            </Button>
+          ))}
         </nav>
 
         {/* Mobile Navigation */}
@@ -57,10 +134,28 @@ export function Navigation() {
           </SheetTrigger>
           <SheetContent side="right" className="w-[300px]">
             <div className="flex flex-col gap-6 mt-8">
-              <Link href="/" className="flex items-center gap-2">
-                <HardHat className="h-8 w-8 text-amber-600" />
-                <span className="text-xl font-bold text-stone-900">PKonstruct</span>
-              </Link>
+              {settings?.header?.showLogo !== false && (
+                <Link href="/" className="flex items-center gap-2">
+                  {navSettings?.headerLogo ? (
+                    <img 
+                      src={navSettings.headerLogo} 
+                      alt="Logo" 
+                      className="h-8 w-auto"
+                    />
+                  ) : settings?.header?.logoImage ? (
+                    <img 
+                      src={settings.header.logoImage} 
+                      alt="Logo" 
+                      className="h-8 w-auto"
+                    />
+                  ) : (
+                    <HardHat className="h-8 w-8 text-amber-600" />
+                  )}
+                  <span className="text-xl font-bold text-stone-900">
+                    {navSettings?.siteName || settings?.header?.logoText || "PKonstruct"}
+                  </span>
+                </Link>
+              )}
               <nav className="flex flex-col gap-4">
                 {navLinks.map((link) => (
                   <SheetClose asChild key={link.href}>
@@ -73,11 +168,18 @@ export function Navigation() {
                   </SheetClose>
                 ))}
               </nav>
-              <SheetClose asChild>
-                <Button asChild className="w-full">
-                  <Link href="#contact">Get Quote</Link>
-                </Button>
-              </SheetClose>
+              {/* Mobile Buttons */}
+              {headerButtons.map((btn) => (
+                <SheetClose key={btn.id} asChild>
+                  <Button 
+                    variant={btn.variant}
+                    className={btn.variant === "default" ? "bg-amber-600 hover:bg-amber-700" : ""}
+                    asChild
+                  >
+                    <Link href={btn.link}>{btn.label}</Link>
+                  </Button>
+                </SheetClose>
+              ))}
             </div>
           </SheetContent>
         </Sheet>
