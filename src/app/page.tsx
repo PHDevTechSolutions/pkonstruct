@@ -59,7 +59,7 @@ export default async function HomePage() {
   
   return (
     <main className="flex-1">
-      <DynamicPage page={{ sections: page?.sections || [] }} />
+      <DynamicPage sections={page?.sections || []} />
     </main>
   )
 }

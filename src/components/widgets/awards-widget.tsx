@@ -91,10 +91,10 @@ export function AwardsWidget({ section }: AwardsWidgetProps) {
         {contentText && <p className="text-stone-400 text-center max-w-2xl mx-auto mb-12">{contentText}</p>}
         
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-          {awards.map((award) => {
+          {awards.map((award, index) => {
             const IconComponent = iconMap[award.icon || "award"]
             return (
-              <Card key={award.id} className="bg-stone-800 border-stone-700">
+              <Card key={award.id || `award-${index}`} className="bg-stone-800 border-stone-700">
                 <CardContent className="p-6 text-center">
                   <div className="w-16 h-16 bg-amber-600/20 rounded-full flex items-center justify-center mx-auto mb-4">
                     <IconComponent className="h-8 w-8 text-amber-500" />

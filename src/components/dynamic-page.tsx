@@ -53,16 +53,14 @@ interface PageSection {
 }
 
 interface DynamicPageProps {
-  page: {
-    sections: PageSection[]
-  }
+  sections: PageSection[]
 }
 
 // Widget Renderers - All imported from @/components/widgets/
 
 // Main Dynamic Page Renderer
-export function DynamicPage({ page }: DynamicPageProps) {
-  if (!page?.sections) {
+export function DynamicPage({ sections }: DynamicPageProps) {
+  if (!sections?.length) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <p className="text-stone-500">Page content not available</p>
@@ -70,13 +68,13 @@ export function DynamicPage({ page }: DynamicPageProps) {
     )
   }
 
-  const sortedSections = page.sections
-    .filter((section) => section.isActive)
-    .sort((a, b) => a.order - b.order)
+  const sortedSections = sections
+    .filter((section: PageSection) => section.isActive)
+    .sort((a: PageSection, b: PageSection) => a.order - b.order)
 
   return (
     <div className="min-h-screen">
-      {sortedSections.map((section) => (
+      {sortedSections.map((section: PageSection) => (
         <SectionRenderer key={section.id} section={section} />
       ))}
     </div>

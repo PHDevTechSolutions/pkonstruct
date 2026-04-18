@@ -66,7 +66,7 @@ export default async function DynamicPageRoute({ params }: { params: Promise<{ s
   
   return (
     <main className="min-h-screen">
-      <DynamicPage page={{ sections: page.sections }} />
+      <DynamicPage sections={page.sections || []} />
     </main>
   )
 }

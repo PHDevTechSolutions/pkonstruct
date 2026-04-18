@@ -15,6 +15,7 @@ export { CTAWidget } from "./cta-widget"
 export { StatsWidget } from "./stats-widget"
 export { FeaturesWidget } from "./features-widget"
 export { FAQWidget } from "./faq-widget"
+export { AwardsWidget } from "./awards-widget"
 
 // Widget metadata for admin gallery
 export interface WidgetMeta {
@@ -47,4 +48,5 @@ export const widgetRegistry: WidgetMeta[] = [
   { type: "stats", label: "Statistics Counters", icon: "📊", category: "interactive" },
   { type: "features", label: "Features Grid", icon: "⚡", category: "interactive" },
   { type: "faq", label: "FAQ Accordion", icon: "❓", category: "interactive" },
+  { type: "awards", label: "Awards & Recognition", icon: "🏆", category: "interactive" },
 ]

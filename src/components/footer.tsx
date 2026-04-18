@@ -208,7 +208,7 @@ export function Footer() {
                 {column.title}
               </h3>
               <ul className="space-y-2">
-                {column.links.map((link, linkIndex) => (
+                {column.links?.map((link, linkIndex) => (
                   <li key={linkIndex}>
                     <Link 
                       href={link.url || "#"} 

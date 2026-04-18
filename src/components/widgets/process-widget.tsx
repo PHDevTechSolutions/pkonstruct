@@ -93,7 +93,7 @@ export function ProcessWidget({ section }: ProcessWidgetProps) {
             <div className="space-y-8">
               {steps.map((step, index) => (
                 <div 
-                  key={step.id} 
+                  key={step.id || `step-${index}`} 
                   className={`relative flex items-center gap-8 ${
                     index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                   } flex-col`}
