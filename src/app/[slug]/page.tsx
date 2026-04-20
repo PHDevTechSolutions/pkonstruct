@@ -64,9 +64,12 @@ export default async function DynamicPageRoute({ params }: { params: Promise<{ s
     notFound()
   }
   
+  // Serialize sections to ensure no non-serializable Firestore values
+  const serializedSections = JSON.parse(JSON.stringify(page.sections || []))
+
   return (
     <main className="min-h-screen">
-      <DynamicPage sections={page.sections || []} />
+      <DynamicPage sections={serializedSections} />
     </main>
   )
 }
