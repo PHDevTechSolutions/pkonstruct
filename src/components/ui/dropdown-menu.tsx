@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { Slot } from "@radix-ui/react-slot"
 import { cn } from "@/lib/utils"
 
 const DropdownMenu = React.forwardRef<
@@ -43,18 +44,23 @@ function useDropdownMenu() {
   return context
 }
 
+interface DropdownMenuTriggerProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  asChild?: boolean
+}
+
 const DropdownMenuTrigger = React.forwardRef<
   HTMLButtonElement,
-  React.ButtonHTMLAttributes<HTMLButtonElement>
->(({ className, onClick, ...props }, ref) => {
+  DropdownMenuTriggerProps
+>(({ className, onClick, asChild = false, ...props }, ref) => {
   const { open, onOpenChange } = useDropdownMenu()
+  const Comp = asChild ? Slot : "button"
 
   return (
-    <button
+    <Comp
       ref={ref}
-      type="button"
+      type={asChild ? undefined : "button"}
       className={cn("inline-flex items-center justify-center", className)}
-      onClick={(e) => {
+      onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
         onOpenChange(!open)
         onClick?.(e)
       }}

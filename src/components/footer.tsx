@@ -148,79 +148,84 @@ export function Footer() {
             )}
           </div>
 
-          {/* Services - Dynamic from Services Collection */}
-          <div>
-            <h3 className="font-semibold mb-4" style={{ color: navSettings?.footerTextColor || "#ffffff" }}>Services</h3>
-            {loading ? (
-              <Loader2 className="h-4 w-4 animate-spin text-stone-400" />
-            ) : (
-              <ul className="space-y-2">
-                {services.slice(0, 5).map((service) => (
-                  <li key={service.id}>
-                    <Link href={`/services/${service.slug || service.id}`} className="hover:text-amber-500 transition-colors">
-                      {service.title}
-                    </Link>
-                  </li>
-                ))}
-                <li>
-                  <Link href="/services" className="hover:text-amber-500 transition-colors font-medium text-amber-500">
-                    All Services →
-                  </Link>
-                </li>
-              </ul>
-            )}
-          </div>
+          {/* Show default columns OR custom columns from template, not both */}
+          {!navSettings?.footerColumns ? (
+            <>
+              {/* Services - Dynamic from Services Collection */}
+              <div>
+                <h3 className="font-semibold mb-4" style={{ color: navSettings?.footerTextColor || "#ffffff" }}>Services</h3>
+                {loading ? (
+                  <Loader2 className="h-4 w-4 animate-spin text-stone-400" />
+                ) : (
+                  <ul className="space-y-2">
+                    {services.slice(0, 5).map((service) => (
+                      <li key={service.id}>
+                        <Link href={`/services/${service.slug || service.id}`} className="hover:text-amber-500 transition-colors">
+                          {service.title}
+                        </Link>
+                      </li>
+                    ))}
+                    <li>
+                      <Link href="/services" className="hover:text-amber-500 transition-colors font-medium text-amber-500">
+                        All Services →
+                      </Link>
+                    </li>
+                  </ul>
+                )}
+              </div>
 
-          {/* Company - Dynamic from Pages (Hidden if empty) */}
-          {footerNav.length > 0 && (
-            <div>
-              <h3 className="font-semibold mb-4" style={{ color: navSettings?.footerTextColor || "#ffffff" }}>Company</h3>
-              <ul className="space-y-2">
-                {footerNav.map((page) => (
-                  <li key={page.id}>
-                    <Link href={`/${page.slug}`} className="hover:text-amber-500 transition-colors">
-                      {page.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+              {/* Company - Dynamic from Pages (Hidden if empty) */}
+              {footerNav.length > 0 && (
+                <div>
+                  <h3 className="font-semibold mb-4" style={{ color: navSettings?.footerTextColor || "#ffffff" }}>Company</h3>
+                  <ul className="space-y-2">
+                    {footerNav.map((page) => (
+                      <li key={page.id}>
+                        <Link href={`/${page.slug}`} className="hover:text-amber-500 transition-colors">
+                          {page.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* Legal - Can be customized via admin settings */}
+              <div>
+                <h3 className="font-semibold mb-4" style={{ color: navSettings?.footerTextColor || "#ffffff" }}>Legal</h3>
+                <ul className="space-y-2">
+                  {legalLinks.map((link, index) => (
+                    <li key={index}>
+                      <Link href={link.href} className="hover:text-amber-500 transition-colors">
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </>
+          ) : (
+            /* Custom Footer Columns from Navigation Settings (Template) */
+            navSettings.footerColumns.map((column, index) => (
+              <div key={index}>
+                <h3 className="font-semibold mb-4" style={{ color: navSettings?.footerTextColor || "#ffffff" }}>
+                  {column.title}
+                </h3>
+                <ul className="space-y-2">
+                  {column.links?.map((link, linkIndex) => (
+                    <li key={linkIndex}>
+                      <Link 
+                        href={link.url || "#"} 
+                        className="hover:text-amber-500 transition-colors"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))
           )}
-
-          {/* Legal - Can be customized via admin settings */}
-          <div>
-            <h3 className="font-semibold mb-4" style={{ color: navSettings?.footerTextColor || "#ffffff" }}>Legal</h3>
-            <ul className="space-y-2">
-              {legalLinks.map((link, index) => (
-                <li key={index}>
-                  <Link href={link.href} className="hover:text-amber-500 transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Custom Footer Columns from Navigation Settings */}
-          {navSettings?.footerColumns?.map((column, index) => (
-            <div key={index}>
-              <h3 className="font-semibold mb-4" style={{ color: navSettings?.footerTextColor || "#ffffff" }}>
-                {column.title}
-              </h3>
-              <ul className="space-y-2">
-                {column.links?.map((link, linkIndex) => (
-                  <li key={linkIndex}>
-                    <Link 
-                      href={link.url || "#"} 
-                      className="hover:text-amber-500 transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
         </div>
 
         <Separator className="mb-8" style={{ backgroundColor: navSettings?.footerTextColor ? `${navSettings.footerTextColor}20` : "#292524" }} />

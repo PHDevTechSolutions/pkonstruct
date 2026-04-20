@@ -110,7 +110,17 @@ export function LocationWidget({ section }: LocationWidgetProps) {
                   </div>
                   <div>
                     <h3 className="font-semibold">Business Hours</h3>
-                    <p className="text-stone-600">{location.hours}</p>
+                    {Array.isArray(location.hours) ? (
+                      <div className="space-y-1">
+                        {location.hours.map((h: any, i: number) => (
+                          <p key={i} className="text-stone-600 text-sm">
+                            <span className="font-medium">{h.day}:</span> {h.time}
+                          </p>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="text-stone-600">{location.hours}</p>
+                    )}
                   </div>
                 </div>
               </CardContent>
