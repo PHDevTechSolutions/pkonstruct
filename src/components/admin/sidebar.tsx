@@ -13,20 +13,29 @@ import {
   Users,
   Settings,
   LogOut,
-  HardHat,
+  Sparkles,
   LayoutTemplate,
+  Code2,
+  Database,
+  Globe,
 } from "lucide-react"
 
 const navItems = [
-  { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/admin/pages", label: "Pages", icon: FileText },
-  { href: "/admin/blog", label: "Blog Posts", icon: FileText },
-  { href: "/admin/projects", label: "Projects", icon: FolderKanban },
-  { href: "/admin/services", label: "Services", icon: Briefcase },
-  { href: "/admin/team", label: "Team", icon: Users },
-  { href: "/admin/settings/templates", label: "Templates", icon: LayoutTemplate },
-  { href: "/admin/settings/general", label: "Settings", icon: Settings },
+  { href: "/admin", label: "Dashboard", icon: LayoutDashboard, category: "overview" },
+  { href: "/admin/pages", label: "Pages", icon: Globe, category: "content" },
+  { href: "/admin/blog", label: "Blog Posts", icon: FileText, category: "content" },
+  { href: "/admin/projects", label: "Projects", icon: FolderKanban, category: "content" },
+  { href: "/admin/services", label: "Services", icon: Briefcase, category: "content" },
+  { href: "/admin/team", label: "Team", icon: Users, category: "content" },
+  { href: "/admin/settings/templates", label: "Templates", icon: LayoutTemplate, category: "system" },
+  { href: "/admin/settings/general", label: "Settings", icon: Settings, category: "system" },
 ]
+
+const categoryLabels: Record<string, string> = {
+  overview: "Overview",
+  content: "Content Management",
+  system: "System",
+}
 
 interface AdminSidebarProps {
   mobile?: boolean
@@ -36,56 +45,101 @@ export function AdminSidebar({ mobile }: AdminSidebarProps) {
   const pathname = usePathname()
   const { logout, user } = useAuth()
 
+  // Group nav items by category
+  const groupedItems = navItems.reduce((acc, item) => {
+    if (!acc[item.category]) acc[item.category] = []
+    acc[item.category].push(item)
+    return acc
+  }, {} as Record<string, typeof navItems>)
+
+  const categoryOrder = ["overview", "content", "system"]
+
   return (
     <div className={cn(
-      "h-full bg-stone-900 text-white flex flex-col",
-      mobile ? "w-full" : "w-64 fixed left-0 top-0 h-screen"
+      "h-full bg-[#111111] text-white flex flex-col border-r border-[#222222]",
+      mobile ? "w-full" : "w-72 fixed left-0 top-0 h-screen"
     )}>
       {/* Logo */}
-      <div className="p-6 border-b border-stone-800">
-        <Link href="/admin" className="flex items-center gap-2">
-          <HardHat className="h-8 w-8 text-amber-500" />
-          <span className="text-xl font-bold">Admin</span>
+      <div className="p-6 border-b border-[#222222]">
+        <Link href="/admin" className="flex items-center gap-3">
+          <div className="relative">
+            <div className="absolute inset-0 bg-cyan-500/20 rounded-lg blur-xl" />
+            <div className="relative p-2 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 rounded-lg border border-cyan-500/30">
+              <Sparkles className="h-6 w-6 text-cyan-400" />
+            </div>
+          </div>
+          <div className="flex flex-col">
+            <span className="text-lg font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+              PKonstruct
+            </span>
+            <span className="text-xs text-gray-500 font-mono">AI Admin Console</span>
+          </div>
         </Link>
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 p-4 space-y-1 overflow-auto">
-        {navItems.map((item) => {
-          const Icon = item.icon
-          const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`)
+      <nav className="flex-1 p-4 space-y-6 overflow-auto">
+        {categoryOrder.map((category) => {
+          const items = groupedItems[category]
+          if (!items || items.length === 0) return null
 
           return (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={cn(
-                "flex items-center gap-3 px-4 py-3 rounded-lg transition-colors",
-                isActive
-                  ? "bg-amber-600 text-white"
-                  : "text-stone-400 hover:bg-stone-800 hover:text-white"
-              )}
-            >
-              <Icon className="h-5 w-5" />
-              <span className="font-medium">{item.label}</span>
-            </Link>
+            <div key={category}>
+              <div className="px-4 mb-2 flex items-center gap-2">
+                <div className="h-px flex-1 bg-gradient-to-r from-cyan-500/50 to-transparent" />
+                <span className="text-xs font-mono text-gray-500 uppercase tracking-wider">
+                  {categoryLabels[category]}
+                </span>
+              </div>
+              <div className="space-y-1">
+                {items.map((item) => {
+                  const Icon = item.icon
+                  const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`)
+
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={cn(
+                        "flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 group",
+                        isActive
+                          ? "bg-gradient-to-r from-cyan-500/20 to-purple-500/10 text-cyan-400 border border-cyan-500/30 shadow-[0_0_20px_rgba(6,182,212,0.15)]"
+                          : "text-gray-400 hover:bg-[#1a1a1a] hover:text-gray-200 border border-transparent"
+                      )}
+                    >
+                      <Icon className={cn(
+                        "h-5 w-5 transition-colors",
+                        isActive ? "text-cyan-400" : "text-gray-500 group-hover:text-gray-300"
+                      )} />
+                      <span className="font-medium text-sm">{item.label}</span>
+                      {isActive && (
+                        <div className="ml-auto w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]" />
+                      )}
+                    </Link>
+                  )
+                })}
+              </div>
+            </div>
           )
         })}
       </nav>
 
       {/* User Info & Logout */}
-      <div className="p-4 border-t border-stone-800">
-        <div className="mb-4 px-4">
-          <p className="text-sm text-stone-400">Logged in as</p>
-          <p className="text-sm font-medium text-white truncate">{user?.email}</p>
+      <div className="p-4 border-t border-[#222222] space-y-3">
+        <div className="px-4 py-3 bg-[#1a1a1a] rounded-xl border border-[#333333]">
+          <div className="flex items-center gap-2 mb-1">
+            <Code2 className="h-3 w-3 text-cyan-500" />
+            <span className="text-xs text-gray-500 font-mono">session.active</span>
+          </div>
+          <p className="text-sm text-gray-300 truncate font-mono">{user?.email}</p>
         </div>
         <Button
           variant="ghost"
-          className="w-full justify-start text-stone-400 hover:text-white hover:bg-stone-800"
+          className="w-full justify-start text-gray-400 hover:text-red-400 hover:bg-red-500/10 border border-transparent hover:border-red-500/30 rounded-xl transition-all duration-200"
           onClick={logout}
         >
           <LogOut className="h-5 w-5 mr-3" />
-          Logout
+          <span className="font-mono text-sm">terminate_session()</span>
         </Button>
       </div>
     </div>

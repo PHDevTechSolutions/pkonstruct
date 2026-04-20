@@ -9,7 +9,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ImageUpload } from "@/components/admin/image-upload"
-import { ArrowLeft, Loader2 } from "lucide-react"
+import { ArrowLeft, Loader2, FileEdit, Terminal } from "lucide-react"
+import { cn } from "@/lib/utils"
 
 type BlogPostStatus = "draft" | "published" | "scheduled"
 
@@ -143,106 +144,122 @@ export default function EditBlogPostClient({ id }: { id: string }) {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <Loader2 className="h-8 w-8 animate-spin text-amber-600" />
+        <Loader2 className="h-8 w-8 animate-spin text-cyan-500" />
       </div>
     )
   }
 
   if (!formData) {
-    return <div>Post not found</div>
+    return (
+      <div className="p-6 bg-[#111111] border border-red-500/30 rounded-xl text-red-400 font-mono">
+        <Terminal className="h-5 w-5 inline mr-2" />
+        Error: Post not found
+      </div>
+    )
   }
 
   return (
     <div className="space-y-6">
+      {/* Header */}
       <div className="flex items-center gap-4">
         <Link href="/admin/blog">
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" className="text-gray-400 hover:text-white hover:bg-[#222222]">
             <ArrowLeft className="h-5 w-5" />
           </Button>
         </Link>
         <div>
-          <h2 className="text-2xl font-bold text-stone-900">Edit Blog Post</h2>
-          <p className="text-stone-500">Update blog article</p>
+          <div className="flex items-center gap-3 mb-1">
+            <div className="p-2 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-lg border border-cyan-500/30">
+              <FileEdit className="h-5 w-5 text-cyan-400" />
+            </div>
+            <h1 className="text-2xl font-bold text-white">Edit Blog Post</h1>
+          </div>
+          <p className="text-gray-500 font-mono text-sm">// Update blog article</p>
         </div>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        <Card>
+        <Card className="bg-[#111111] border-[#222222]">
           <CardHeader>
-            <CardTitle>Post Details</CardTitle>
+            <CardTitle className="text-white">Post Details</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-2">
-              <label className="text-sm font-medium">Title</label>
+              <label className="text-sm font-medium text-gray-400 font-mono">Title</label>
               <Input
                 value={formData.title}
                 onChange={handleTitleChange}
                 placeholder="Enter post title"
                 required
+                className="bg-[#1a1a1a] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50"
               />
-              <p className="text-xs text-stone-500">
-                URL: /blog/{formData.slug || "your-post-title"}
+              <p className="text-xs text-gray-600 font-mono">
+                // URL: /blog/{formData.slug || "your-post-title"}
               </p>
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium">Excerpt</label>
+              <label className="text-sm font-medium text-gray-400 font-mono">Excerpt</label>
               <textarea
                 value={formData.excerpt}
                 onChange={(e) => setFormData({ ...formData, excerpt: e.target.value })}
                 placeholder="Brief description of the post"
                 rows={3}
-                className="w-full px-3 py-2 border rounded-md text-sm"
+                className="w-full px-3 py-2 bg-[#1a1a1a] border border-[#333333] rounded-lg text-sm text-white placeholder:text-gray-600 focus:border-cyan-500/50 focus:outline-none"
                 required
               />
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium">Content</label>
+              <label className="text-sm font-medium text-gray-400 font-mono">Content</label>
               <textarea
                 value={formData.content}
                 onChange={(e) => setFormData({ ...formData, content: e.target.value })}
                 placeholder="Full blog post content"
                 rows={10}
-                className="w-full px-3 py-2 border rounded-md text-sm"
+                className="w-full px-3 py-2 bg-[#1a1a1a] border border-[#333333] rounded-lg text-sm text-white placeholder:text-gray-600 focus:border-cyan-500/50 focus:outline-none font-mono"
                 required
               />
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <label className="text-sm font-medium">Category</label>
+                <label className="text-sm font-medium text-gray-400 font-mono">Category</label>
                 <Input
                   value={formData.category}
                   onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                   placeholder="e.g. Construction, Renovation"
                   required
+                  className="bg-[#1a1a1a] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50"
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-medium">Author</label>
+                <label className="text-sm font-medium text-gray-400 font-mono">Author</label>
                 <Input
                   value={formData.author}
                   onChange={(e) => setFormData({ ...formData, author: e.target.value })}
                   placeholder="Author name"
                   required
+                  className="bg-[#1a1a1a] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50"
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium">Featured Image</label>
-              <ImageUpload
-                value={formData.image}
-                onChange={(url) => setFormData({ ...formData, image: url })}
-                folder="pkonstruct/blog"
-              />
+              <label className="text-sm font-medium text-gray-400 font-mono">Featured Image</label>
+              <div className="p-4 bg-[#1a1a1a] border border-[#333333] rounded-lg">
+                <ImageUpload
+                  value={formData.image}
+                  onChange={(url) => setFormData({ ...formData, image: url })}
+                  folder="pkonstruct/blog"
+                />
+              </div>
             </div>
 
             {/* Publishing Status */}
-            <div className="space-y-3 border-t pt-4">
-              <label className="text-sm font-medium">Publishing Status</label>
-              <div className="flex gap-4">
+            <div className="space-y-3 border-t border-[#333333] pt-4">
+              <label className="text-sm font-medium text-gray-400 font-mono">Publishing Status</label>
+              <div className="flex gap-4 flex-wrap">
                 <label className="flex items-center gap-2 cursor-pointer">
                   <input
                     type="radio"
@@ -250,9 +267,9 @@ export default function EditBlogPostClient({ id }: { id: string }) {
                     value="published"
                     checked={formData.status === "published"}
                     onChange={(e) => setFormData({ ...formData, status: e.target.value as "published", published: true })}
-                    className="rounded border-stone-300"
+                    className="rounded border-[#333333] bg-[#1a1a1a] text-cyan-500 focus:ring-cyan-500/20"
                   />
-                  <span className="text-sm">Published</span>
+                  <span className="text-sm text-gray-300">Published</span>
                 </label>
                 <label className="flex items-center gap-2 cursor-pointer">
                   <input
@@ -261,9 +278,9 @@ export default function EditBlogPostClient({ id }: { id: string }) {
                     value="draft"
                     checked={formData.status === "draft"}
                     onChange={(e) => setFormData({ ...formData, status: e.target.value as "draft", published: false })}
-                    className="rounded border-stone-300"
+                    className="rounded border-[#333333] bg-[#1a1a1a] text-cyan-500 focus:ring-cyan-500/20"
                   />
-                  <span className="text-sm">Draft</span>
+                  <span className="text-sm text-gray-300">Draft</span>
                 </label>
                 <label className="flex items-center gap-2 cursor-pointer">
                   <input
@@ -272,26 +289,26 @@ export default function EditBlogPostClient({ id }: { id: string }) {
                     value="scheduled"
                     checked={formData.status === "scheduled"}
                     onChange={(e) => setFormData({ ...formData, status: e.target.value as "scheduled", published: false })}
-                    className="rounded border-stone-300"
+                    className="rounded border-[#333333] bg-[#1a1a1a] text-cyan-500 focus:ring-cyan-500/20"
                   />
-                  <span className="text-sm">Schedule</span>
+                  <span className="text-sm text-gray-300">Schedule</span>
                 </label>
               </div>
               
               {/* Schedule DateTime Picker */}
               {formData.status === "scheduled" && (
                 <div className="space-y-2 pl-6">
-                  <label className="text-sm text-stone-600">Publish Date & Time</label>
+                  <label className="text-sm text-gray-500 font-mono">Publish Date & Time</label>
                   <input
                     type="datetime-local"
                     value={formData.scheduledAt ? formData.scheduledAt.slice(0, 16) : ""}
                     onChange={(e) => setFormData({ ...formData, scheduledAt: e.target.value })}
                     min={new Date().toISOString().slice(0, 16)}
-                    className="w-full px-3 py-2 border border-stone-200 rounded-md text-sm"
+                    className="w-full px-3 py-2 bg-[#1a1a1a] border border-[#333333] rounded-lg text-sm text-white focus:border-cyan-500/50 focus:outline-none"
                     required={formData.status === "scheduled"}
                   />
-                  <p className="text-xs text-stone-500">
-                    Post will be visible starting from this date and time
+                  <p className="text-xs text-gray-600 font-mono">
+                    // Post will be visible starting from this date and time
                   </p>
                 </div>
               )}
@@ -300,28 +317,28 @@ export default function EditBlogPostClient({ id }: { id: string }) {
         </Card>
 
         {/* Gallery Images */}
-        <Card>
+        <Card className="bg-[#111111] border-[#222222]">
           <CardHeader>
-            <CardTitle>Gallery Images</CardTitle>
+            <CardTitle className="text-white">Gallery Images</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-4 gap-2">
               {(formData.gallery || []).map((img, index) => (
                 <div key={index} className="relative">
-                  <img src={img} alt="" className="w-full h-24 object-cover rounded" />
+                  <img src={img} alt="" className="w-full h-24 object-cover rounded-lg border border-[#333333]" />
                   <button
                     type="button"
                     onClick={() => setFormData({
                       ...formData,
                       gallery: formData.gallery?.filter((_, i) => i !== index) || []
                     })}
-                    className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white rounded-full text-xs"
+                    className="absolute -top-2 -right-2 w-6 h-6 bg-red-500/80 text-white rounded-full text-xs hover:bg-red-500 transition-colors"
                   >
                     ×
                   </button>
                 </div>
               ))}
-              <div className="border-2 border-dashed border-stone-300 rounded h-24 flex items-center justify-center">
+              <div className="border-2 border-dashed border-[#333333] rounded-lg h-24 flex items-center justify-center hover:border-cyan-500/50 hover:bg-[#1a1a1a] transition-colors">
                 <ImageUpload
                   value=""
                   onChange={(url) => setFormData({
@@ -336,50 +353,52 @@ export default function EditBlogPostClient({ id }: { id: string }) {
         </Card>
 
         {/* SEO Settings */}
-        <Card>
+        <Card className="bg-[#111111] border-[#222222]">
           <CardHeader>
-            <CardTitle>SEO Settings</CardTitle>
+            <CardTitle className="text-white">SEO Settings</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-2">
-              <label className="text-sm font-medium">Meta Title (SEO)</label>
+              <label className="text-sm font-medium text-gray-400 font-mono">Meta Title (SEO)</label>
               <Input
                 value={formData.metaTitle || ""}
                 onChange={(e) => setFormData({ ...formData, metaTitle: e.target.value })}
                 placeholder="SEO title (H1 tag) - max 60 characters"
                 maxLength={60}
+                className="bg-[#1a1a1a] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50"
               />
-              <p className="text-xs text-stone-500">{(formData.metaTitle || "").length}/60 characters</p>
+              <p className="text-xs text-gray-600 font-mono">{(formData.metaTitle || "").length}/60 chars</p>
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium">Meta Description (SEO)</label>
+              <label className="text-sm font-medium text-gray-400 font-mono">Meta Description (SEO)</label>
               <textarea
                 value={formData.metaDescription || ""}
                 onChange={(e) => setFormData({ ...formData, metaDescription: e.target.value })}
                 placeholder="SEO description for search engines - max 160 characters"
                 rows={3}
-                className="w-full px-3 py-2 border rounded-md text-sm"
+                className="w-full px-3 py-2 bg-[#1a1a1a] border border-[#333333] rounded-lg text-sm text-white placeholder:text-gray-600 focus:border-cyan-500/50 focus:outline-none"
                 maxLength={160}
               />
-              <p className="text-xs text-stone-500">{(formData.metaDescription || "").length}/160 characters</p>
+              <p className="text-xs text-gray-600 font-mono">{(formData.metaDescription || "").length}/160 chars</p>
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium">URL Slug</label>
+              <label className="text-sm font-medium text-gray-400 font-mono">URL Slug</label>
               <Input
                 value={formData.slug || ""}
                 onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
                 placeholder="e.g. sustainable-building-practices"
+                className="bg-[#1a1a1a] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50 font-mono"
               />
-              <p className="text-xs text-stone-500">Used in URL: /blog/your-slug</p>
+              <p className="text-xs text-gray-600 font-mono">// Used in URL: /blog/your-slug</p>
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium">Tags</label>
+              <label className="text-sm font-medium text-gray-400 font-mono">Tags</label>
               <div className="flex gap-2">
                 <Input
-                  placeholder="Add a tag"
+                  placeholder="Add a tag and press Enter"
                   onKeyPress={(e) => {
                     if (e.key === "Enter") {
                       e.preventDefault()
@@ -393,13 +412,14 @@ export default function EditBlogPostClient({ id }: { id: string }) {
                       }
                     }
                   }}
+                  className="bg-[#1a1a1a] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50"
                 />
               </div>
               <div className="flex flex-wrap gap-2 mt-2">
                 {(formData.tags || []).map((tag, index) => (
                   <span
                     key={index}
-                    className="inline-flex items-center gap-1 px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm"
+                    className="inline-flex items-center gap-1 px-3 py-1 bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 rounded-full text-sm"
                   >
                     #{tag}
                     <button
@@ -408,7 +428,7 @@ export default function EditBlogPostClient({ id }: { id: string }) {
                         ...formData,
                         tags: formData.tags?.filter((_, i) => i !== index) || []
                       })}
-                      className="text-blue-600 hover:text-red-600"
+                      className="text-cyan-400 hover:text-red-400 transition-colors"
                     >
                       ×
                     </button>
@@ -420,7 +440,11 @@ export default function EditBlogPostClient({ id }: { id: string }) {
         </Card>
 
         <div className="flex gap-4">
-          <Button type="submit" disabled={saving} className="bg-amber-600 hover:bg-amber-700">
+          <Button 
+            type="submit" 
+            disabled={saving} 
+            className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white border-0 shadow-[0_0_20px_rgba(6,182,212,0.3)]"
+          >
             {saving ? (
               <>
                 <Loader2 className="h-4 w-4 mr-2 animate-spin" />
@@ -431,7 +455,9 @@ export default function EditBlogPostClient({ id }: { id: string }) {
             )}
           </Button>
           <Link href="/admin/blog">
-            <Button variant="outline" type="button">Cancel</Button>
+            <Button variant="outline" type="button" className="border-[#333333] text-gray-400 hover:text-white hover:bg-[#222222] hover:border-[#444444]">
+              Cancel
+            </Button>
           </Link>
         </div>
       </form>

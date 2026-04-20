@@ -55,32 +55,32 @@ function GalleryEditor({ content, onChange }: { content: string, onChange: (cont
   
   return (
     <div className="space-y-2">
-      <div className="text-xs text-stone-500 mb-2">Add image URLs for the gallery</div>
+      <div className="text-xs text-gray-500 mb-2 font-mono">// Add image URLs for the gallery</div>
       {images.map((url, index) => (
         <div key={index} className="flex items-center gap-2">
           <div className="flex flex-col gap-0.5">
-            <Button variant="ghost" size="sm" onClick={() => moveImage(index, 'up')} disabled={index === 0} className="h-5 w-5 p-0">
+            <Button variant="ghost" size="sm" onClick={() => moveImage(index, 'up')} disabled={index === 0} className="h-5 w-5 p-0 text-gray-400 hover:text-white hover:bg-[#222222]">
               <ChevronUp className="h-3 w-3" />
             </Button>
-            <Button variant="ghost" size="sm" onClick={() => moveImage(index, 'down')} disabled={index === images.length - 1} className="h-5 w-5 p-0">
+            <Button variant="ghost" size="sm" onClick={() => moveImage(index, 'down')} disabled={index === images.length - 1} className="h-5 w-5 p-0 text-gray-400 hover:text-white hover:bg-[#222222]">
               <ChevronDown className="h-3 w-3" />
             </Button>
           </div>
-          <div className="w-12 h-12 bg-stone-100 rounded overflow-hidden flex-shrink-0">
+          <div className="w-12 h-12 bg-[#222222] rounded overflow-hidden flex-shrink-0 border border-[#333333]">
             {url && <img src={url} alt="" className="w-full h-full object-cover" onError={(e) => (e.target as HTMLImageElement).style.display = 'none'} />}
           </div>
           <Input 
             value={url} 
             onChange={(e) => updateImage(index, e.target.value)} 
             placeholder={`Image ${index + 1} URL`}
-            className="flex-1 h-9 text-sm"
+            className="flex-1 h-9 text-sm bg-[#1a1a1a] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50"
           />
-          <Button variant="ghost" size="sm" onClick={() => removeImage(index)} className="text-red-500 h-8 w-8 p-0">
+          <Button variant="ghost" size="sm" onClick={() => removeImage(index)} className="text-red-400 hover:text-red-300 hover:bg-red-500/10 h-8 w-8 p-0">
             <Trash2 className="h-4 w-4" />
           </Button>
         </div>
       ))}
-      <Button onClick={addImage} variant="outline" size="sm" className="w-full">
+      <Button onClick={addImage} variant="outline" size="sm" className="w-full border-[#333333] text-gray-400 hover:text-white hover:bg-[#222222] hover:border-[#444444]">
         <Plus className="h-4 w-4 mr-1" />
         Add Image
       </Button>
@@ -120,28 +120,28 @@ function BeforeAfterEditor({ content, onChange }: { content: string, onChange: (
   return (
     <div className="space-y-3">
       <div className="space-y-1.5">
-        <label className="text-xs font-medium text-stone-600">Title</label>
-        <Input value={data.title} onChange={(e) => updateField('title', e.target.value)} placeholder="e.g., Kitchen Renovation" />
+        <label className="text-xs font-medium text-gray-400 font-mono">Title</label>
+        <Input value={data.title} onChange={(e) => updateField('title', e.target.value)} placeholder="e.g., Kitchen Renovation" className="bg-[#1a1a1a] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50" />
       </div>
       <div className="space-y-1.5">
-        <label className="text-xs font-medium text-stone-600">Description</label>
-        <Input value={data.description} onChange={(e) => updateField('description', e.target.value)} placeholder="Brief description" />
+        <label className="text-xs font-medium text-gray-400 font-mono">Description</label>
+        <Input value={data.description} onChange={(e) => updateField('description', e.target.value)} placeholder="Brief description" className="bg-[#1a1a1a] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50" />
       </div>
       <div className="grid grid-cols-2 gap-2">
         <div className="space-y-1.5">
-          <label className="text-xs font-medium text-stone-600">Before Image URL</label>
-          <Input value={data.beforeImage} onChange={(e) => updateField('beforeImage', e.target.value)} placeholder="https://..." />
+          <label className="text-xs font-medium text-gray-400 font-mono">Before Image URL</label>
+          <Input value={data.beforeImage} onChange={(e) => updateField('beforeImage', e.target.value)} placeholder="https://..." className="bg-[#1a1a1a] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50 font-mono" />
           {data.beforeImage && (
-            <div className="h-20 bg-stone-100 rounded overflow-hidden">
+            <div className="h-20 bg-[#222222] rounded overflow-hidden border border-[#333333]">
               <img src={data.beforeImage} alt="Before" className="w-full h-full object-cover" onError={(e) => (e.target as HTMLImageElement).style.display = 'none'} />
             </div>
           )}
         </div>
         <div className="space-y-1.5">
-          <label className="text-xs font-medium text-stone-600">After Image URL</label>
-          <Input value={data.afterImage} onChange={(e) => updateField('afterImage', e.target.value)} placeholder="https://..." />
+          <label className="text-xs font-medium text-gray-400 font-mono">After Image URL</label>
+          <Input value={data.afterImage} onChange={(e) => updateField('afterImage', e.target.value)} placeholder="https://..." className="bg-[#1a1a1a] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50 font-mono" />
           {data.afterImage && (
-            <div className="h-20 bg-stone-100 rounded overflow-hidden">
+            <div className="h-20 bg-[#222222] rounded overflow-hidden border border-[#333333]">
               <img src={data.afterImage} alt="After" className="w-full h-full object-cover" onError={(e) => (e.target as HTMLImageElement).style.display = 'none'} />
             </div>
           )}
@@ -221,38 +221,38 @@ function PricingEditor({ content, onChange }: { content: string, onChange: (cont
   return (
     <div className="space-y-3">
       {plans.map((plan, planIndex) => (
-        <div key={plan.id} className="border rounded p-3 bg-stone-50">
+        <div key={plan.id} className="border border-[#333333] rounded-lg p-3 bg-[#1a1a1a]">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-medium">Plan {planIndex + 1}</span>
-            <Button variant="ghost" size="sm" onClick={() => removePlan(planIndex)} className="text-red-500 h-6 w-6 p-0">
+            <span className="text-xs font-medium text-gray-300">Plan {planIndex + 1}</span>
+            <Button variant="ghost" size="sm" onClick={() => removePlan(planIndex)} className="text-red-400 hover:text-red-300 hover:bg-red-500/10 h-6 w-6 p-0">
               <Trash2 className="h-3 w-3" />
             </Button>
           </div>
           <div className="grid grid-cols-2 gap-2 mb-2">
-            <Input value={plan.name} onChange={(e) => updatePlan(planIndex, 'name', e.target.value)} placeholder="Plan Name" className="h-8 text-sm" />
-            <Input value={plan.price} onChange={(e) => updatePlan(planIndex, 'price', e.target.value)} placeholder="Price (e.g., ₱50,000)" className="h-8 text-sm" />
+            <Input value={plan.name} onChange={(e) => updatePlan(planIndex, 'name', e.target.value)} placeholder="Plan Name" className="h-8 text-sm bg-[#222222] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50" />
+            <Input value={plan.price} onChange={(e) => updatePlan(planIndex, 'price', e.target.value)} placeholder="Price (e.g., ₱50,000)" className="h-8 text-sm bg-[#222222] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50" />
           </div>
           <div className="grid grid-cols-2 gap-2 mb-2">
-            <Input value={plan.period} onChange={(e) => updatePlan(planIndex, 'period', e.target.value)} placeholder="Period (e.g., per month)" className="h-8 text-sm" />
-            <Input value={plan.buttonText} onChange={(e) => updatePlan(planIndex, 'buttonText', e.target.value)} placeholder="Button Text" className="h-8 text-sm" />
+            <Input value={plan.period} onChange={(e) => updatePlan(planIndex, 'period', e.target.value)} placeholder="Period (e.g., per month)" className="h-8 text-sm bg-[#222222] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50" />
+            <Input value={plan.buttonText} onChange={(e) => updatePlan(planIndex, 'buttonText', e.target.value)} placeholder="Button Text" className="h-8 text-sm bg-[#222222] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50" />
           </div>
           <div className="space-y-1">
-            <span className="text-xs text-stone-500">Features:</span>
+            <span className="text-xs text-gray-500 font-mono">Features:</span>
             {plan.features?.map((feature: string, featureIndex: number) => (
               <div key={featureIndex} className="flex items-center gap-1">
-                <Input value={feature} onChange={(e) => updateFeature(planIndex, featureIndex, e.target.value)} placeholder={`Feature ${featureIndex + 1}`} className="h-7 text-sm flex-1" />
-                <Button variant="ghost" size="sm" onClick={() => removeFeature(planIndex, featureIndex)} className="text-red-500 h-6 w-6 p-0">
+                <Input value={feature} onChange={(e) => updateFeature(planIndex, featureIndex, e.target.value)} placeholder={`Feature ${featureIndex + 1}`} className="h-7 text-sm flex-1 bg-[#222222] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50" />
+                <Button variant="ghost" size="sm" onClick={() => removeFeature(planIndex, featureIndex)} className="text-red-400 hover:text-red-300 hover:bg-red-500/10 h-6 w-6 p-0">
                   <Trash2 className="h-3 w-3" />
                 </Button>
               </div>
             ))}
-            <Button onClick={() => addFeature(planIndex)} variant="outline" size="sm" className="w-full h-7 text-xs">
+            <Button onClick={() => addFeature(planIndex)} variant="outline" size="sm" className="w-full h-7 text-xs border-[#333333] text-gray-400 hover:text-white hover:bg-[#222222] hover:border-[#444444]">
               <Plus className="h-3 w-3 mr-1" /> Add Feature
             </Button>
           </div>
         </div>
       ))}
-      <Button onClick={addPlan} variant="outline" size="sm" className="w-full">
+      <Button onClick={addPlan} variant="outline" size="sm" className="w-full border-[#333333] text-gray-400 hover:text-white hover:bg-[#222222] hover:border-[#444444]">
         <Plus className="h-4 w-4 mr-1" /> Add Pricing Plan
       </Button>
     </div>
@@ -307,31 +307,31 @@ function ProcessEditor({ content, onChange }: { content: string, onChange: (cont
   
   return (
     <div className="space-y-2">
-      <div className="text-xs text-stone-500 mb-2">Process Steps</div>
+      <div className="text-xs text-gray-500 mb-2 font-mono">// Process Steps</div>
       {steps.map((step, index) => (
-        <div key={step.id} className="flex items-start gap-2 border rounded p-2">
+        <div key={step.id} className="flex items-start gap-2 border border-[#333333] rounded-lg p-2 bg-[#1a1a1a]">
           <div className="flex flex-col gap-0.5">
-            <Button variant="ghost" size="sm" onClick={() => moveStep(index, 'up')} disabled={index === 0} className="h-5 w-5 p-0">
+            <Button variant="ghost" size="sm" onClick={() => moveStep(index, 'up')} disabled={index === 0} className="h-5 w-5 p-0 text-gray-400 hover:text-white hover:bg-[#222222]">
               <ChevronUp className="h-3 w-3" />
             </Button>
-            <div className="w-6 h-6 rounded-full bg-amber-600 text-white flex items-center justify-center text-xs font-bold">
+            <div className="w-6 h-6 rounded-full bg-cyan-600 text-white flex items-center justify-center text-xs font-bold">
               {index + 1}
             </div>
-            <Button variant="ghost" size="sm" onClick={() => moveStep(index, 'down')} disabled={index === steps.length - 1} className="h-5 w-5 p-0">
+            <Button variant="ghost" size="sm" onClick={() => moveStep(index, 'down')} disabled={index === steps.length - 1} className="h-5 w-5 p-0 text-gray-400 hover:text-white hover:bg-[#222222]">
               <ChevronDown className="h-3 w-3" />
             </Button>
           </div>
           <div className="flex-1 space-y-1">
-            <Input value={step.title} onChange={(e) => updateStep(index, 'title', e.target.value)} placeholder="Step Title" className="h-8 text-sm" />
-            <Input value={step.description} onChange={(e) => updateStep(index, 'description', e.target.value)} placeholder="Description" className="h-8 text-sm" />
-            <Input value={step.duration} onChange={(e) => updateStep(index, 'duration', e.target.value)} placeholder="Duration (e.g., 1-2 weeks)" className="h-8 text-sm" />
+            <Input value={step.title} onChange={(e) => updateStep(index, 'title', e.target.value)} placeholder="Step Title" className="h-8 text-sm bg-[#222222] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50" />
+            <Input value={step.description} onChange={(e) => updateStep(index, 'description', e.target.value)} placeholder="Description" className="h-8 text-sm bg-[#222222] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50" />
+            <Input value={step.duration} onChange={(e) => updateStep(index, 'duration', e.target.value)} placeholder="Duration (e.g., 1-2 weeks)" className="h-8 text-sm bg-[#222222] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50" />
           </div>
-          <Button variant="ghost" size="sm" onClick={() => removeStep(index)} className="text-red-500 h-6 w-6 p-0">
+          <Button variant="ghost" size="sm" onClick={() => removeStep(index)} className="text-red-400 hover:text-red-300 hover:bg-red-500/10 h-6 w-6 p-0">
             <Trash2 className="h-3 w-3" />
           </Button>
         </div>
       ))}
-      <Button onClick={addStep} variant="outline" size="sm" className="w-full">
+      <Button onClick={addStep} variant="outline" size="sm" className="w-full border-[#333333] text-gray-400 hover:text-white hover:bg-[#222222] hover:border-[#444444]">
         <Plus className="h-4 w-4 mr-1" /> Add Step
       </Button>
     </div>

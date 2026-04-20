@@ -46,46 +46,49 @@ import {
   Pencil,
   GripVertical,
   X,
-  Loader2
+  Loader2,
+  Layers,
+  Terminal
 } from "lucide-react"
 import Link from "next/link"
 import { WidgetPreview } from "@/components/widgets/widget-preview"
 import { ContentEditor } from "@/components/widgets/content-editor"
+import { cn } from "@/lib/utils"
 
-// Widget Gallery Thumbnail Component
+// Widget Gallery Thumbnail Component - Dark Theme
 function WidgetGalleryThumbnail({ type }: { type: string }) {
   const thumbs: Record<string, React.ReactNode> = {
-    hero: <div className="h-8 bg-gradient-to-r from-amber-600 to-amber-500 rounded" />,
-    text: <div className="space-y-1"><div className="h-2 bg-stone-200 rounded w-3/4" /><div className="h-2 bg-stone-200 rounded w-1/2" /></div>,
-    image: <div className="h-8 bg-stone-200 rounded flex items-center justify-center text-stone-400 text-xs">🖼️</div>,
-    gallery: <div className="grid grid-cols-3 gap-0.5"><div className="h-2 bg-stone-200 rounded" /><div className="h-2 bg-stone-200 rounded" /><div className="h-2 bg-stone-200 rounded" /></div>,
-    video: <div className="h-8 bg-stone-800 rounded flex items-center justify-center text-white text-xs">▶</div>,
-    projects: <div className="grid grid-cols-2 gap-0.5"><div className="h-4 bg-stone-200 rounded" /><div className="h-4 bg-stone-200 rounded" /></div>,
-    services: <div className="flex gap-0.5"><div className="h-8 flex-1 bg-stone-100 rounded border" /><div className="h-8 flex-1 bg-stone-100 rounded border" /></div>,
-    testimonials: <div className="h-8 bg-stone-50 rounded border p-1"><div className="flex gap-1"><div className="w-4 h-4 bg-stone-200 rounded-full" /><div className="flex-1 space-y-0.5"><div className="h-1.5 bg-stone-200 rounded w-2/3" /><div className="h-1 bg-stone-200 rounded w-full" /></div></div></div>,
-    team: <div className="flex justify-center gap-1"><div className="w-5 h-5 bg-stone-200 rounded-full" /><div className="w-5 h-5 bg-stone-200 rounded-full" /></div>,
-    blog: <div className="space-y-1"><div className="flex gap-1"><div className="w-6 h-4 bg-stone-200 rounded" /><div className="flex-1 space-y-0.5"><div className="h-1.5 bg-stone-200 rounded w-full" /></div></div></div>,
-    clients: <div className="flex gap-1 justify-center"><div className="h-3 w-6 bg-stone-200 rounded" /><div className="h-3 w-6 bg-stone-200 rounded" /></div>,
-    contact: <div className="space-y-0.5"><div className="h-2 bg-stone-100 rounded" /><div className="h-2 bg-stone-100 rounded" /><div className="h-1.5 w-8 bg-amber-600 rounded" /></div>,
-    cta: <div className="h-8 bg-amber-600 rounded flex items-center justify-center text-white text-[8px] font-bold">CTA</div>,
-    stats: <div className="flex gap-1 justify-around"><div className="text-center"><div className="text-xs font-bold text-amber-600">100</div><div className="text-[6px] text-stone-400">Stat</div></div><div className="text-center"><div className="text-xs font-bold text-amber-600">50</div></div></div>,
-    features: <div className="grid grid-cols-2 gap-0.5"><div className="h-3 bg-stone-50 rounded flex items-center gap-0.5 px-1"><div className="w-2 h-2 bg-amber-100 rounded" /><div className="h-1.5 bg-stone-200 rounded w-6" /></div><div className="h-3 bg-stone-50 rounded" /></div>,
-    faq: <div className="space-y-0.5"><div className="h-2.5 bg-stone-100 rounded px-1 flex justify-between items-center text-[6px]">Q <span>▼</span></div><div className="h-2.5 bg-stone-100 rounded" /></div>,
-    "before-after": <div className="h-8 flex"><div className="flex-1 bg-stone-300" /><div className="flex-1 bg-amber-100" /><div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full flex items-center justify-center text-[6px]">↔</div></div>,
-    pricing: <div className="flex gap-0.5"><div className="flex-1 h-8 bg-white border rounded" /><div className="flex-1 h-8 bg-amber-50 border-2 border-amber-500 rounded" /></div>,
-    process: <div className="flex items-center justify-center gap-0.5"><div className="w-4 h-4 rounded-full bg-amber-600 text-white text-[8px] flex items-center justify-center">1</div><div className="w-2 h-0.5 bg-amber-200" /><div className="w-4 h-4 rounded-full bg-amber-600 text-white text-[8px] flex items-center justify-center">2</div></div>,
-    location: <div className="flex gap-1"><div className="w-8 h-8 bg-stone-100 rounded flex items-center justify-center text-xs">🗺️</div><div className="flex-1 space-y-0.5"><div className="h-1.5 bg-stone-200 rounded w-full" /><div className="h-1.5 bg-stone-200 rounded w-2/3" /></div></div>,
-    newsletter: <div className="h-8 bg-amber-600 rounded flex items-center justify-center gap-1 px-2"><div className="flex-1 h-2 bg-white/30 rounded" /><div className="h-2 w-6 bg-stone-900 rounded text-[6px] text-white flex items-center justify-center">Join</div></div>,
+    hero: <div className="h-8 bg-gradient-to-r from-cyan-600 to-blue-500 rounded" />,
+    text: <div className="space-y-1"><div className="h-2 bg-[#333333] rounded w-3/4" /><div className="h-2 bg-[#333333] rounded w-1/2" /></div>,
+    image: <div className="h-8 bg-[#222222] rounded flex items-center justify-center text-gray-500 text-xs">🖼️</div>,
+    gallery: <div className="grid grid-cols-3 gap-0.5"><div className="h-2 bg-[#333333] rounded" /><div className="h-2 bg-[#333333] rounded" /><div className="h-2 bg-[#333333] rounded" /></div>,
+    video: <div className="h-8 bg-[#111111] rounded flex items-center justify-center text-cyan-400 text-xs">▶</div>,
+    projects: <div className="grid grid-cols-2 gap-0.5"><div className="h-4 bg-[#333333] rounded" /><div className="h-4 bg-[#333333] rounded" /></div>,
+    services: <div className="flex gap-0.5"><div className="h-8 flex-1 bg-[#1a1a1a] rounded border border-[#333333]" /><div className="h-8 flex-1 bg-[#1a1a1a] rounded border border-[#333333]" /></div>,
+    testimonials: <div className="h-8 bg-[#1a1a1a] rounded border border-[#333333] p-1"><div className="flex gap-1"><div className="w-4 h-4 bg-[#333333] rounded-full" /><div className="flex-1 space-y-0.5"><div className="h-1.5 bg-[#333333] rounded w-2/3" /><div className="h-1 bg-[#333333] rounded w-full" /></div></div></div>,
+    team: <div className="flex justify-center gap-1"><div className="w-5 h-5 bg-[#333333] rounded-full" /><div className="w-5 h-5 bg-[#333333] rounded-full" /></div>,
+    blog: <div className="space-y-1"><div className="flex gap-1"><div className="w-6 h-4 bg-[#333333] rounded" /><div className="flex-1 space-y-0.5"><div className="h-1.5 bg-[#333333] rounded w-full" /></div></div></div>,
+    clients: <div className="flex gap-1 justify-center"><div className="h-3 w-6 bg-[#333333] rounded" /><div className="h-3 w-6 bg-[#333333] rounded" /></div>,
+    contact: <div className="space-y-0.5"><div className="h-2 bg-[#222222] rounded" /><div className="h-2 bg-[#222222] rounded" /><div className="h-1.5 w-8 bg-cyan-600 rounded" /></div>,
+    cta: <div className="h-8 bg-cyan-600 rounded flex items-center justify-center text-white text-[8px] font-bold">CTA</div>,
+    stats: <div className="flex gap-1 justify-around"><div className="text-center"><div className="text-xs font-bold text-cyan-400">100</div><div className="text-[6px] text-gray-500">Stat</div></div><div className="text-center"><div className="text-xs font-bold text-cyan-400">50</div></div></div>,
+    features: <div className="grid grid-cols-2 gap-0.5"><div className="h-3 bg-[#1a1a1a] rounded flex items-center gap-0.5 px-1"><div className="w-2 h-2 bg-cyan-500/20 rounded" /><div className="h-1.5 bg-[#333333] rounded w-6" /></div><div className="h-3 bg-[#1a1a1a] rounded" /></div>,
+    faq: <div className="space-y-0.5"><div className="h-2.5 bg-[#222222] rounded px-1 flex justify-between items-center text-[6px] text-gray-400">Q <span>▼</span></div><div className="h-2.5 bg-[#222222] rounded" /></div>,
+    "before-after": <div className="h-8 flex"><div className="flex-1 bg-[#333333]" /><div className="flex-1 bg-cyan-500/20" /><div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-[#111111] rounded-full flex items-center justify-center text-[6px] border border-[#333333]">↔</div></div>,
+    pricing: <div className="flex gap-0.5"><div className="flex-1 h-8 bg-[#1a1a1a] border border-[#333333] rounded" /><div className="flex-1 h-8 bg-cyan-500/10 border border-cyan-500/30 rounded" /></div>,
+    process: <div className="flex items-center justify-center gap-0.5"><div className="w-4 h-4 rounded-full bg-cyan-600 text-white text-[8px] flex items-center justify-center">1</div><div className="w-2 h-0.5 bg-cyan-500/30" /><div className="w-4 h-4 rounded-full bg-cyan-600 text-white text-[8px] flex items-center justify-center">2</div></div>,
+    location: <div className="flex gap-1"><div className="w-8 h-8 bg-[#222222] rounded flex items-center justify-center text-xs">🗺️</div><div className="flex-1 space-y-0.5"><div className="h-1.5 bg-[#333333] rounded w-full" /><div className="h-1.5 bg-[#333333] rounded w-2/3" /></div></div>,
+    newsletter: <div className="h-8 bg-cyan-600 rounded flex items-center justify-center gap-1 px-2"><div className="flex-1 h-2 bg-white/30 rounded" /><div className="h-2 w-6 bg-[#111111] rounded text-[6px] text-white flex items-center justify-center">Join</div></div>,
     awards: <div className="flex justify-center gap-1"><div className="text-lg">🏆</div><div className="text-lg">🏆</div></div>,
-    downloads: <div className="space-y-0.5"><div className="h-3 bg-white border rounded flex items-center gap-1 px-1"><div className="w-2 h-2 bg-red-100 rounded text-[6px] text-red-500">P</div><div className="flex-1 h-1.5 bg-stone-200 rounded" /></div></div>,
+    downloads: <div className="space-y-0.5"><div className="h-3 bg-[#1a1a1a] border border-[#333333] rounded flex items-center gap-1 px-1"><div className="w-2 h-2 bg-red-500/20 rounded text-[6px] text-red-400">P</div><div className="flex-1 h-1.5 bg-[#333333] rounded" /></div></div>,
     "social-links": <div className="flex justify-center gap-1"><div className="w-4 h-4 bg-[#1877F2] rounded text-white text-[6px] flex items-center justify-center">f</div><div className="w-4 h-4 bg-gradient-to-tr from-purple-500 to-orange-500 rounded text-white text-[6px] flex items-center justify-center">📷</div></div>,
-    partners: <div className="space-y-0.5"><div className="text-[6px] text-stone-400">Materials</div><div className="flex gap-1"><div className="h-3 w-8 bg-stone-200 rounded" /><div className="h-3 w-8 bg-stone-200 rounded" /></div></div>,
-    comparison: <div className="border rounded overflow-hidden"><div className="grid grid-cols-3 text-[6px] bg-stone-50"><div className="p-0.5">Feat</div><div className="p-0.5 text-center">A</div><div className="p-0.5 text-center">B</div></div><div className="grid grid-cols-3 text-[6px]"><div className="p-0.5">Item</div><div className="p-0.5 text-center text-green-600">✓</div><div className="p-0.5 text-center text-green-600">✓</div></div></div>
+    partners: <div className="space-y-0.5"><div className="text-[6px] text-gray-500">Materials</div><div className="flex gap-1"><div className="h-3 w-8 bg-[#333333] rounded" /><div className="h-3 w-8 bg-[#333333] rounded" /></div></div>,
+    comparison: <div className="border border-[#333333] rounded overflow-hidden"><div className="grid grid-cols-3 text-[6px] bg-[#1a1a1a]"><div className="p-0.5 text-gray-400">Feat</div><div className="p-0.5 text-center text-gray-400">A</div><div className="p-0.5 text-center text-gray-400">B</div></div><div className="grid grid-cols-3 text-[6px]"><div className="p-0.5 text-gray-400">Item</div><div className="p-0.5 text-center text-emerald-400">✓</div><div className="p-0.5 text-center text-emerald-400">✓</div></div></div>
   }
   
   return (
-    <div className="h-8 w-full relative overflow-hidden rounded bg-stone-50 mb-2">
-      {thumbs[type] || <div className="h-full bg-stone-100 flex items-center justify-center text-stone-300 text-xs">📦</div>}
+    <div className="h-8 w-full relative overflow-hidden rounded bg-[#1a1a1a] border border-[#333333] mb-2">
+      {thumbs[type] || <div className="h-full bg-[#222222] flex items-center justify-center text-gray-500 text-xs">📦</div>}
     </div>
   )
 }
@@ -826,8 +829,8 @@ export default function PagesManagement() {
       <div className="space-y-6">
         {/* Save Changes Button - Sticky Top */}
         {hasChanges && (
-          <div className="sticky top-4 z-50 bg-amber-50 border border-amber-200 rounded-lg p-4 flex items-center justify-between shadow-lg">
-            <span className="text-amber-800 font-medium">You have unsaved changes</span>
+          <div className="sticky top-4 z-50 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/30 rounded-xl p-4 flex items-center justify-between shadow-[0_0_30px_rgba(6,182,212,0.15)]">
+            <span className="text-cyan-400 font-medium font-mono">// You have unsaved changes</span>
             <div className="flex gap-2">
               <Button
                 variant="outline"
@@ -836,13 +839,14 @@ export default function PagesManagement() {
                   setHasChanges(false)
                 }}
                 disabled={loadingNavSettings}
+                className="border-[#333333] text-gray-400 hover:text-white hover:bg-[#222222]"
               >
                 Reset
               </Button>
               <Button
                 onClick={handleSaveAll}
                 disabled={loadingNavSettings}
-                className="bg-amber-600 hover:bg-amber-700"
+                className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white border-0 shadow-[0_0_20px_rgba(6,182,212,0.3)]"
               >
                 {loadingNavSettings ? (
                   <>
@@ -861,33 +865,34 @@ export default function PagesManagement() {
         )}
 
         {/* Header Customization */}
-        <Card>
+        <Card className="bg-[#111111] border-[#222222]">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+            <CardTitle className="flex items-center gap-2 text-white">
               <span className="text-lg">🎨</span> Header Appearance
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             {/* Site Name */}
             <div className="space-y-2">
-              <label className="text-sm font-medium">Site Name</label>
+              <label className="text-sm font-medium text-gray-400 font-mono">Site Name</label>
               <Input
                 value={formState.siteName}
                 onChange={(e) => updateFormState({ siteName: e.target.value })}
                 placeholder="Your Company Name"
+                className="bg-[#1a1a1a] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50"
               />
-              <p className="text-xs text-stone-500">Company name shown in header and footer</p>
+              <p className="text-xs text-gray-600 font-mono">// Company name shown in header and footer</p>
             </div>
             
             {/* Logo Upload */}
             <div className="space-y-2">
-              <label className="text-sm font-medium">Logo</label>
+              <label className="text-sm font-medium text-gray-400 font-mono">Logo</label>
               <div className="flex items-center gap-4">
                 {formState.headerLogo && (
                   <img 
                     src={formState.headerLogo} 
                     alt="Current Logo" 
-                    className="h-12 w-auto rounded border"
+                    className="h-12 w-auto rounded border border-[#333333]"
                   />
                 )}
                 <div className="flex-1">
@@ -902,41 +907,43 @@ export default function PagesManagement() {
             
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <label className="text-sm font-medium">Background Color</label>
+                <label className="text-sm font-medium text-gray-400 font-mono">Background Color</label>
                 <div className="flex gap-2">
                   <input
                     type="color"
                     value={formState.headerBgColor}
                     onChange={(e) => updateFormState({ headerBgColor: e.target.value })}
-                    className="h-10 w-20 rounded border"
+                    className="h-10 w-20 rounded bg-[#1a1a1a] border border-[#333333]"
                   />
                   <Input
                     value={formState.headerBgColor}
                     onChange={(e) => updateFormState({ headerBgColor: e.target.value })}
                     placeholder="#ffffff"
+                    className="bg-[#1a1a1a] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50 font-mono"
                   />
                 </div>
               </div>
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-medium">Text Color</label>
+              <label className="text-sm font-medium text-gray-400 font-mono">Text Color</label>
               <div className="flex gap-2">
                 <input
                   type="color"
                   value={formState.headerTextColor}
                   onChange={(e) => updateFormState({ headerTextColor: e.target.value })}
-                  className="h-10 w-20 rounded border"
+                  className="h-10 w-20 rounded bg-[#1a1a1a] border border-[#333333]"
                 />
                 <Input
                   value={formState.headerTextColor}
                   onChange={(e) => updateFormState({ headerTextColor: e.target.value })}
                   placeholder="#1c1917"
+                  className="bg-[#1a1a1a] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50 font-mono"
                 />
               </div>
             </div>
             {/* Preview */}
             <div 
-              className="p-4 rounded-lg border mt-4"
+              className="p-4 rounded-lg border border-[#333333] mt-4"
               style={{ 
                 backgroundColor: formState.headerBgColor,
                 color: formState.headerTextColor 
@@ -949,26 +956,26 @@ export default function PagesManagement() {
                   <span className="font-bold text-lg">{formState.siteName.charAt(0)}</span>
                 )}
                 <span className="font-bold text-lg">{formState.siteName}</span>
-                <span className="text-sm opacity-75 ml-auto">Navigation Preview</span>
+                <span className="text-sm opacity-75 ml-auto font-mono">// Navigation Preview</span>
               </div>
             </div>
           </CardContent>
         </Card>
 
         {/* Header Navigation */}
-        <Card>
+        <Card className="bg-[#111111] border-[#222222]">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+            <CardTitle className="flex items-center gap-2 text-white">
               <span className="text-lg">📍</span> Header Navigation
             </CardTitle>
           </CardHeader>
           <CardContent>
             {headerPages.length === 0 ? (
-              <p className="text-stone-500 text-center py-4">No pages set to show in header. Enable "Show in Header" in page settings.</p>
+              <p className="text-gray-500 text-center py-4 font-mono">// No pages set to show in header. Enable &quot;Show in Header&quot; in page settings.</p>
             ) : (
               <div className="space-y-2">
                 {headerPages.map((page, index) => (
-                  <div key={page.id} className="flex items-center justify-between p-3 bg-stone-50 rounded-lg">
+                  <div key={page.id} className="flex items-center justify-between p-3 bg-[#1a1a1a] border border-[#333333] rounded-lg">
                     <div className="flex items-center gap-3">
                       <div className="flex flex-col gap-1">
                         <Button
@@ -976,7 +983,7 @@ export default function PagesManagement() {
                           size="sm"
                           onClick={() => moveNavItem(page.id, 'up', true)}
                           disabled={index === 0}
-                          className="h-6 w-6 p-0"
+                          className="h-6 w-6 p-0 text-gray-400 hover:text-white hover:bg-[#222222]"
                         >
                           <ArrowUp className="h-4 w-4" />
                         </Button>
@@ -985,18 +992,18 @@ export default function PagesManagement() {
                           size="sm"
                           onClick={() => moveNavItem(page.id, 'down', true)}
                           disabled={index === headerPages.length - 1}
-                          className="h-6 w-6 p-0"
+                          className="h-6 w-6 p-0 text-gray-400 hover:text-white hover:bg-[#222222]"
                         >
                           <ArrowDown className="h-4 w-4" />
                         </Button>
                       </div>
                       <div>
-                        <p className="font-medium">{page.title}</p>
-                        <p className="text-sm text-stone-500">/{page.slug}</p>
+                        <p className="font-medium text-gray-300">{page.title}</p>
+                        <p className="text-sm text-gray-500 font-mono">/{page.slug}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="text-sm text-stone-400">Order: {page.order}</span>
+                      <span className="text-sm text-gray-500 font-mono">Order: {page.order}</span>
                       <input
                         type="checkbox"
                         checked={page.showInHeader}
@@ -1005,7 +1012,7 @@ export default function PagesManagement() {
                           setPages(pages.map((p) => (p.id === page.id ? updated : p)))
                           await handleSavePage(updated)
                         }}
-                        className="rounded border-stone-300"
+                        className="rounded border-[#333333] bg-[#1a1a1a] text-cyan-500 focus:ring-cyan-500/20"
                       />
                     </div>
                   </div>
@@ -1016,19 +1023,19 @@ export default function PagesManagement() {
         </Card>
 
         {/* Footer Navigation */}
-        <Card>
+        <Card className="bg-[#111111] border-[#222222]">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+            <CardTitle className="flex items-center gap-2 text-white">
               <span className="text-lg">🦶</span> Footer Navigation
             </CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="text-white">
             {footerPages.length === 0 ? (
-              <p className="text-stone-500 text-center py-4">No pages set to show in footer. Enable "Show in Footer" in page settings.</p>
+              <p className="text-gray-500 text-center py-4 font-mono">// No pages set to show in footer. Enable &quot;Show in Footer&quot; in page settings.</p>
             ) : (
               <div className="space-y-2">
                 {footerPages.map((page, index) => (
-                  <div key={page.id} className="flex items-center justify-between p-3 bg-stone-50 rounded-lg">
+                  <div key={page.id} className="flex items-center justify-between p-3 bg-[#1a1a1a] border border-[#333333] rounded-lg">
                     <div className="flex items-center gap-3">
                       <div className="flex flex-col gap-1">
                         <Button
@@ -1036,7 +1043,7 @@ export default function PagesManagement() {
                           size="sm"
                           onClick={() => moveNavItem(page.id, 'up', false)}
                           disabled={index === 0}
-                          className="h-6 w-6 p-0"
+                          className="h-6 w-6 p-0 text-gray-400 hover:text-white hover:bg-[#222222]"
                         >
                           <ArrowUp className="h-4 w-4" />
                         </Button>
@@ -1045,18 +1052,18 @@ export default function PagesManagement() {
                           size="sm"
                           onClick={() => moveNavItem(page.id, 'down', false)}
                           disabled={index === footerPages.length - 1}
-                          className="h-6 w-6 p-0"
+                          className="h-6 w-6 p-0 text-gray-400 hover:text-white hover:bg-[#222222]"
                         >
                           <ArrowDown className="h-4 w-4" />
                         </Button>
                       </div>
                       <div>
-                        <p className="font-medium">{page.title}</p>
-                        <p className="text-sm text-stone-500">/{page.slug}</p>
+                        <p className="font-medium text-gray-300">{page.title}</p>
+                        <p className="text-sm text-gray-500 font-mono">/{page.slug}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="text-sm text-stone-400">Order: {page.order}</span>
+                      <span className="text-sm text-gray-500 font-mono">Order: {page.order}</span>
                       <input
                         type="checkbox"
                         checked={page.showInFooter}
@@ -1065,7 +1072,7 @@ export default function PagesManagement() {
                           setPages(pages.map((p) => (p.id === page.id ? updated : p)))
                           await handleSavePage(updated)
                         }}
-                        className="rounded border-stone-300"
+                        className="rounded border-[#333333] bg-[#1a1a1a] text-cyan-500 focus:ring-cyan-500/20"
                       />
                     </div>
                   </div>
@@ -1076,28 +1083,28 @@ export default function PagesManagement() {
         </Card>
 
         {/* Footer Customization */}
-        <Card>
+        <Card className="bg-[#111111] border-[#222222]">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+            <CardTitle className="flex items-center gap-2 text-white">
               <span className="text-lg">🎨</span> Footer Appearance
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
             {/* Footer Description */}
             <div className="space-y-2">
-              <label className="text-sm font-medium">Footer Description / Tagline</label>
+              <label className="text-sm font-medium text-gray-400 font-mono">Footer Description / Tagline</label>
               <textarea
                 value={formState.footerDescription}
                 onChange={(e) => updateFormState({ footerDescription: e.target.value })}
                 placeholder="Brief description of your company..."
                 rows={3}
-                className="w-full px-3 py-2 border border-stone-200 rounded-md text-sm resize-none"
+                className="w-full px-3 py-2 bg-[#1a1a1a] border border-[#333333] rounded-lg text-sm text-white placeholder:text-gray-600 focus:border-cyan-500/50 focus:outline-none resize-none"
               />
             </div>
 
             {/* Social Media Links */}
             <div className="space-y-3">
-              <label className="text-sm font-medium">Social Media Links</label>
+              <label className="text-sm font-medium text-gray-400 font-mono">Social Media Links</label>
               <div className="space-y-2">
                 {formState.socialLinks.map((social, index) => (
                   <div key={social.platform} className="flex items-center gap-2">
@@ -1109,9 +1116,9 @@ export default function PagesManagement() {
                         newLinks[index] = { ...social, isActive: e.target.checked }
                         updateFormState({ socialLinks: newLinks })
                       }}
-                      className="rounded border-stone-300"
+                      className="rounded border-[#333333] bg-[#1a1a1a] text-cyan-500 focus:ring-cyan-500/20"
                     />
-                    <span className="text-sm w-24">{social.platform}</span>
+                    <span className="text-sm w-24 text-gray-400">{social.platform}</span>
                     <Input
                       value={social.url}
                       onChange={(e) => {
@@ -1120,7 +1127,7 @@ export default function PagesManagement() {
                         updateFormState({ socialLinks: newLinks })
                       }}
                       placeholder={`https://${social.platform.toLowerCase()}.com/yourpage`}
-                      className="flex-1"
+                      className="flex-1 bg-[#1a1a1a] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50"
                     />
                   </div>
                 ))}
@@ -1129,18 +1136,19 @@ export default function PagesManagement() {
 
             {/* Copyright */}
             <div className="space-y-2">
-              <label className="text-sm font-medium">Copyright Text</label>
+              <label className="text-sm font-medium text-gray-400 font-mono">Copyright Text</label>
               <Input
                 value={formState.footerCopyright}
                 onChange={(e) => updateFormState({ footerCopyright: e.target.value })}
                 placeholder="© 2024 Your Company. All rights reserved."
+                className="bg-[#1a1a1a] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50"
               />
             </div>
 
             {/* Footer Columns */}
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <label className="text-sm font-medium">Footer Columns</label>
+                <label className="text-sm font-medium text-gray-400 font-mono">Footer Columns</label>
                 <Button
                   variant="outline"
                   size="sm"
@@ -1149,14 +1157,15 @@ export default function PagesManagement() {
                     updateFormState({ footerColumns: newColumns })
                   }}
                   disabled={formState.footerColumns.length >= 4}
+                  className="border-[#333333] text-gray-400 hover:text-white hover:bg-[#222222] hover:border-[#444444]"
                 >
                   + Add Column
                 </Button>
               </div>
-              <p className="text-xs text-stone-500">Custom columns appear beside Services, Company, and Legal sections</p>
+              <p className="text-xs text-gray-600 font-mono">// Custom columns appear beside Services, Company, and Legal sections</p>
               
               {formState.footerColumns.map((column, colIndex) => (
-                <div key={colIndex} className="border rounded-lg p-3 space-y-2 bg-stone-50">
+                <div key={colIndex} className="border border-[#333333] rounded-lg p-3 space-y-2 bg-[#1a1a1a]">
                   <div className="flex items-center gap-2">
                     <Input
                       value={column.title}
@@ -1166,7 +1175,7 @@ export default function PagesManagement() {
                         updateFormState({ footerColumns: newColumns })
                       }}
                       placeholder="Column Title"
-                      className="flex-1"
+                      className="flex-1 bg-[#222222] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50"
                     />
                     <Button
                       variant="ghost"
@@ -1181,31 +1190,31 @@ export default function PagesManagement() {
                   </div>
                   
                   <div className="space-y-1">
-                    {column.links.map((link, linkIndex) => (
+                    {(column.links || []).map((link, linkIndex) => (
                       <div key={linkIndex} className="flex items-center gap-2">
                         <Input
                           value={link.label}
                           onChange={(e) => {
                             const newColumns = [...formState.footerColumns]
-                            const newLinks = [...column.links]
+                            const newLinks = [...(column.links || [])]
                             newLinks[linkIndex] = { ...link, label: e.target.value }
                             newColumns[colIndex] = { ...column, links: newLinks }
                             updateFormState({ footerColumns: newColumns })
                           }}
                           placeholder="Link Label"
-                          className="flex-1"
+                          className="flex-1 bg-[#222222] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50"
                         />
                         <Input
                           value={link.url}
                           onChange={(e) => {
                             const newColumns = [...formState.footerColumns]
-                            const newLinks = [...column.links]
+                            const newLinks = [...(column.links || [])]
                             newLinks[linkIndex] = { ...link, url: e.target.value }
                             newColumns[colIndex] = { ...column, links: newLinks }
                             updateFormState({ footerColumns: newColumns })
                           }}
                           placeholder="URL"
-                          className="flex-1"
+                          className="flex-1 bg-[#222222] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50"
                         />
                         <Button
                           variant="ghost"
@@ -1214,10 +1223,11 @@ export default function PagesManagement() {
                             const newColumns = [...formState.footerColumns]
                             newColumns[colIndex] = { 
                               ...column, 
-                              links: column.links.filter((_, i) => i !== linkIndex) 
+                              links: (column.links || []).filter((_, i) => i !== linkIndex) 
                             }
                             updateFormState({ footerColumns: newColumns })
                           }}
+                          className="text-gray-400 hover:text-red-400 hover:bg-red-500/10"
                         >
                           ✕
                         </Button>
@@ -1226,12 +1236,12 @@ export default function PagesManagement() {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="w-full"
+                      className="w-full border-[#333333] text-gray-400 hover:text-white hover:bg-[#222222] hover:border-[#444444]"
                       onClick={() => {
                         const newColumns = [...formState.footerColumns]
                         newColumns[colIndex] = { 
                           ...column, 
-                          links: [...column.links, { label: "", url: "" }] 
+                          links: [...(column.links || []), { label: "", url: "" }] 
                         }
                         updateFormState({ footerColumns: newColumns })
                       }}
@@ -1317,31 +1327,37 @@ export default function PagesManagement() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-amber-600"></div>
+        <Loader2 className="h-8 w-8 animate-spin text-cyan-500" />
       </div>
     )
   }
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      {/* Header */}
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">
-            {activeView === "navigation" ? "Navigation Manager" : "Pages"}
-          </h1>
-          <p className="text-stone-500">
+          <div className="flex items-center gap-3 mb-2">
+            <div className="p-2 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-lg border border-cyan-500/30">
+              <Layers className="h-5 w-5 text-cyan-400" />
+            </div>
+            <h1 className="text-2xl font-bold text-white">
+              {activeView === "navigation" ? "Navigation Manager" : "Pages"}
+            </h1>
+          </div>
+          <p className="text-gray-500 font-mono text-sm">
             {activeView === "navigation" 
-              ? "Manage header and footer navigation order" 
-              : "Manage website pages and content"}
+              ? "// Manage header and footer navigation order" 
+              : "// Manage website pages and content"}
           </p>
         </div>
         <div className="flex items-center gap-2">
-          <div className="flex bg-stone-100 rounded-lg p-1">
+          <div className="flex bg-[#111111] rounded-lg p-1 border border-[#222222]">
             <Button
               variant={activeView === "pages" ? "default" : "ghost"}
               size="sm"
               onClick={() => setActiveView("pages")}
-              className={activeView === "pages" ? "bg-amber-600" : ""}
+              className={activeView === "pages" ? "bg-cyan-600 text-white hover:bg-cyan-500" : "text-gray-400 hover:text-white hover:bg-[#222222]"}
             >
               Pages
             </Button>
@@ -1349,7 +1365,7 @@ export default function PagesManagement() {
               variant={activeView === "navigation" ? "default" : "ghost"}
               size="sm"
               onClick={() => setActiveView("navigation")}
-              className={activeView === "navigation" ? "bg-amber-600" : ""}
+              className={activeView === "navigation" ? "bg-cyan-600 text-white hover:bg-cyan-500" : "text-gray-400 hover:text-white hover:bg-[#222222]"}
             >
               Navigation
             </Button>
@@ -1360,7 +1376,7 @@ export default function PagesManagement() {
                 setSelectedTemplate(null)
                 setTemplateDialogOpen(true)
               }} 
-              className="bg-amber-600 hover:bg-amber-700"
+              className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white border-0 shadow-[0_0_20px_rgba(6,182,212,0.3)]"
             >
               <Plus className="mr-2 h-4 w-4" />
               Create Custom Page
@@ -1370,9 +1386,10 @@ export default function PagesManagement() {
       </div>
 
       {error && (
-        <Alert variant="destructive">
-          <AlertDescription>{error}</AlertDescription>
-        </Alert>
+        <div className="p-4 bg-red-500/10 border border-red-500/30 rounded-xl text-red-400 font-mono flex items-center gap-2">
+          <Terminal className="h-4 w-4" />
+          {error}
+        </div>
       )}
 
       {/* Search and Filter Bar */}
@@ -1386,7 +1403,7 @@ export default function PagesManagement() {
                 setSearchQuery(e.target.value)
                 setCurrentPage(1)
               }}
-              className="w-full"
+              className="w-full bg-[#1a1a1a] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50"
             />
           </div>
           <div className="flex gap-2">
@@ -1396,7 +1413,7 @@ export default function PagesManagement() {
                 setStatusFilter(e.target.value as "all" | "published" | "draft")
                 setCurrentPage(1)
               }}
-              className="px-3 py-2 border border-stone-200 rounded-md text-sm bg-white"
+              className="px-3 py-2 bg-[#1a1a1a] border border-[#333333] rounded-lg text-sm text-white focus:border-cyan-500/50 focus:outline-none"
             >
               <option value="all">All Status</option>
               <option value="published">Published</option>
@@ -1433,26 +1450,26 @@ export default function PagesManagement() {
           <>
             {/* Results count */}
             <div className="flex items-center justify-between mb-4">
-              <p className="text-sm text-stone-500">
-                Showing {paginatedPages.length} of {filteredPages.length} pages
+              <p className="text-sm text-gray-500 font-mono">
+                // Showing {paginatedPages.length} of {filteredPages.length} pages
               </p>
             </div>
             
             <div className="space-y-4">
               {paginatedPages.map((page) => (
-          <Card key={page.id} className={expandedPage === page.id ? "border-amber-600" : ""}>
+          <Card key={page.id} className={cn("bg-[#111111] border-[#222222]", expandedPage === page.id ? "border-cyan-500 ring-1 ring-cyan-500/20" : "")}>
             <CardHeader className="pb-3">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
                   <div>
-                    <CardTitle className="text-lg">{page.title}</CardTitle>
-                    <p className="text-sm text-stone-500">/{page.slug}</p>
+                    <CardTitle className="text-lg text-white">{page.title}</CardTitle>
+                    <p className="text-sm text-gray-500 font-mono">/{page.slug}</p>
                   </div>
                   <span
                     className={`px-2 py-1 rounded-full text-xs font-medium ${
                       page.isPublished
-                        ? "bg-green-100 text-green-800"
-                        : "bg-stone-100 text-stone-800"
+                        ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"
+                        : "bg-[#1a1a1a] text-gray-400 border border-[#333333]"
                     }`}
                   >
                     {page.isPublished ? "Published" : "Draft"}
@@ -1460,7 +1477,7 @@ export default function PagesManagement() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Link href={`/${page.slug}`} target="_blank">
-                    <Button variant="ghost" size="sm" title="View page">
+                    <Button variant="ghost" size="sm" title="View page" className="text-gray-400 hover:text-white hover:bg-[#222222]">
                       <Eye className="h-4 w-4" />
                     </Button>
                   </Link>
@@ -1468,17 +1485,17 @@ export default function PagesManagement() {
                     <Button 
                       variant="ghost" 
                       size="sm" 
-                      className="hover:bg-amber-50"
+                      className="text-cyan-400 hover:text-cyan-300 hover:bg-cyan-500/10"
                       title="Edit page content"
                     >
-                      <Settings className="h-4 w-4 text-amber-600" />
+                      <Settings className="h-4 w-4" />
                     </Button>
                   </Link>
                   <Button
                     variant="ghost"
                     size="sm"
                     onClick={() => confirmDelete(page.id, page.title)}
-                    className="text-red-600 hover:text-red-700"
+                    className="text-red-400 hover:text-red-300 hover:bg-red-500/10"
                     title="Delete page"
                   >
                     <Trash2 className="h-4 w-4" />
@@ -1490,8 +1507,8 @@ export default function PagesManagement() {
             <CardContent className="pt-0">
               <div className="space-y-6">
                 {/* Quick Settings Row */}
-                <div className="flex items-center gap-4 py-2 border-b border-stone-100">
-                  <label className="flex items-center gap-2 text-sm">
+                <div className="flex items-center gap-4 py-2 border-b border-[#222222]">
+                  <label className="flex items-center gap-2 text-sm text-gray-300">
                     <input
                       type="checkbox"
                       checked={page.isPublished}
@@ -1500,11 +1517,11 @@ export default function PagesManagement() {
                         setPages(pages.map((p) => (p.id === page.id ? updated : p)))
                         await handleSavePage(updated)
                       }}
-                      className="rounded border-stone-300"
+                      className="rounded border-[#333333] bg-[#1a1a1a] text-cyan-500 focus:ring-cyan-500/20"
                     />
                     Published
                   </label>
-                  <label className="flex items-center gap-2 text-sm">
+                  <label className="flex items-center gap-2 text-sm text-gray-300">
                     <input
                       type="checkbox"
                       checked={page.showInHeader}
@@ -1513,11 +1530,11 @@ export default function PagesManagement() {
                         setPages(pages.map((p) => (p.id === page.id ? updated : p)))
                         await handleSavePage(updated)
                       }}
-                      className="rounded border-stone-300"
+                      className="rounded border-[#333333] bg-[#1a1a1a] text-cyan-500 focus:ring-cyan-500/20"
                     />
                     Show in Header
                   </label>
-                  <label className="flex items-center gap-2 text-sm">
+                  <label className="flex items-center gap-2 text-sm text-gray-300">
                     <input
                       type="checkbox"
                       checked={page.showInFooter}
@@ -1526,19 +1543,19 @@ export default function PagesManagement() {
                         setPages(pages.map((p) => (p.id === page.id ? updated : p)))
                         await handleSavePage(updated)
                       }}
-                      className="rounded border-stone-300"
+                      className="rounded border-[#333333] bg-[#1a1a1a] text-cyan-500 focus:ring-cyan-500/20"
                     />
                     Show in Footer
                   </label>
                 </div>
 
                 {/* Page Content Preview & Edit Link */}
-                <div className="bg-stone-50 rounded-lg p-4 border border-stone-200">
+                <div className="bg-[#1a1a1a] rounded-lg p-4 border border-[#333333]">
                   <div className="flex items-center justify-between mb-4">
                     <div>
-                      <span className="text-sm text-stone-500">{page.sections.length} section(s)</span>
-                      <span className="mx-2 text-stone-300">•</span>
-                      <span className="text-sm text-stone-500">
+                      <span className="text-sm text-gray-500">{page.sections.length} section(s)</span>
+                      <span className="mx-2 text-[#333333]">•</span>
+                      <span className="text-sm text-gray-500">
                         {page.sections.filter(s => s.isActive).length} active
                       </span>
                     </div>
@@ -1546,7 +1563,7 @@ export default function PagesManagement() {
                       <Button 
                         variant="outline" 
                         size="sm"
-                        className="bg-white hover:bg-amber-50"
+                        className="border-[#333333] text-gray-400 hover:text-white hover:bg-[#222222] hover:border-[#444444]"
                       >
                         <Settings className="h-4 w-4 mr-1" />
                         Manage Content
@@ -1563,31 +1580,31 @@ export default function PagesManagement() {
                         <div 
                           key={section.id} 
                           className={`flex items-center gap-2 p-2 rounded ${
-                            section.isActive ? 'bg-white' : 'bg-stone-100 opacity-50'
+                            section.isActive ? 'bg-[#222222] border border-[#333333]' : 'bg-[#1a1a1a] opacity-50'
                           }`}
                         >
                           <span className="text-sm">
                             {sectionTypes.find((t) => t.type === section.type)?.icon || "📦"}
                           </span>
-                          <span className="text-sm text-stone-700">
+                          <span className="text-sm text-gray-300">
                             {sectionTypes.find((t) => t.type === section.type)?.label || section.type}
                           </span>
                           {section.title && (
-                            <span className="text-sm text-stone-400">- {section.title}</span>
+                            <span className="text-sm text-gray-500">- {section.title}</span>
                           )}
                           {!section.isActive && (
-                            <span className="text-xs text-stone-400 ml-auto">(inactive)</span>
+                            <span className="text-xs text-gray-500 ml-auto">(inactive)</span>
                           )}
                         </div>
                       ))}
                     {page.sections.length > 3 && (
-                      <p className="text-sm text-stone-400 text-center py-1">
+                      <p className="text-sm text-gray-500 text-center py-1 font-mono">
                         +{page.sections.length - 3} more sections...
                       </p>
                     )}
                     {page.sections.length === 0 && (
-                      <p className="text-sm text-stone-400 text-center py-4">
-                        No sections yet. Click "Manage Content" to add widgets.
+                      <p className="text-sm text-gray-500 text-center py-4 font-mono">
+                        // No sections yet. Click "Manage Content" to add widgets.
                       </p>
                     )}
                   </div>
@@ -1606,17 +1623,19 @@ export default function PagesManagement() {
                   size="sm"
                   onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
                   disabled={currentPage === 1}
+                  className="border-[#333333] text-gray-400 hover:text-white hover:bg-[#222222] hover:border-[#444444]"
                 >
                   Previous
                 </Button>
-                <span className="text-sm text-stone-600">
-                  Page {currentPage} of {totalPages}
+                <span className="text-sm text-gray-500 font-mono">
+                  // Page {currentPage} of {totalPages}
                 </span>
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
                   disabled={currentPage === totalPages}
+                  className="border-[#333333] text-gray-400 hover:text-white hover:bg-[#222222] hover:border-[#444444]"
                 >
                   Next
                 </Button>
@@ -1630,19 +1649,24 @@ export default function PagesManagement() {
 
       {/* Delete Confirmation Dialog */}
       <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
-        <AlertDialogContent>
+        <AlertDialogContent className="bg-[#111111] border-[#222222] text-white">
           <AlertDialogHeader>
-            <AlertDialogTitle>Delete Page</AlertDialogTitle>
-            <AlertDialogDescription>
-              Are you sure you want to delete &quot;{pageToDelete?.title}&quot;? This action cannot be undone.
+            <AlertDialogTitle className="text-white">Delete Page</AlertDialogTitle>
+            <AlertDialogDescription className="text-gray-400">
+              Are you sure you want to delete <strong className="text-cyan-400">&quot;{pageToDelete?.title}&quot;</strong>? This action cannot be undone.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel onClick={() => setPageToDelete(null)}>Cancel</AlertDialogCancel>
+            <AlertDialogCancel 
+              onClick={() => setPageToDelete(null)}
+              className="border-[#333333] text-gray-400 hover:text-white hover:bg-[#222222]"
+            >
+              Cancel
+            </AlertDialogCancel>
             <AlertDialogAction
               onClick={handleDelete}
               disabled={deleting}
-              className="bg-red-600 hover:bg-red-700"
+              className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white border-0"
             >
               {deleting ? (
                 <>
@@ -1659,11 +1683,14 @@ export default function PagesManagement() {
 
       {/* Template Selection Dialog */}
       <Dialog open={templateDialogOpen} onOpenChange={setTemplateDialogOpen}>
-        <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto bg-[#111111] border-[#222222] text-white">
           <DialogHeader>
-            <DialogTitle className="text-2xl">Choose a Page Template</DialogTitle>
-            <DialogDescription>
-              Select a template to start with pre-built sections, or start blank.
+            <DialogTitle className="text-2xl text-white flex items-center gap-2">
+              <Layers className="h-6 w-6 text-cyan-400" />
+              Choose a Page Template
+            </DialogTitle>
+            <DialogDescription className="text-gray-500 font-mono">
+              // Select a template to start with pre-built sections, or start blank.
             </DialogDescription>
           </DialogHeader>
           
@@ -1672,30 +1699,30 @@ export default function PagesManagement() {
             <button
               onClick={() => createCustomPage("blank")}
               disabled={creatingWithTemplate}
-              className="group relative flex flex-col items-center p-6 border-2 border-dashed border-stone-300 rounded-xl hover:border-amber-500 hover:bg-amber-50 transition-all text-center"
+              className="group relative flex flex-col items-center p-6 border-2 border-dashed border-[#333333] rounded-xl hover:border-cyan-500 hover:bg-[#1a1a1a] transition-all text-center"
             >
-              <div className="w-16 h-16 mb-4 rounded-lg bg-stone-100 flex items-center justify-center group-hover:bg-white">
-                <Plus className="h-8 w-8 text-stone-400 group-hover:text-amber-600" />
+              <div className="w-16 h-16 mb-4 rounded-lg bg-[#1a1a1a] flex items-center justify-center group-hover:bg-[#222222]">
+                <Plus className="h-8 w-8 text-gray-500 group-hover:text-cyan-400" />
               </div>
-              <h3 className="font-semibold text-stone-900">Blank Page</h3>
-              <p className="text-sm text-stone-500 mt-1">Start from scratch</p>
+              <h3 className="font-semibold text-white">Blank Page</h3>
+              <p className="text-sm text-gray-500 mt-1 font-mono">// Start from scratch</p>
             </button>
 
             {/* Homepage Template */}
             <button
               onClick={() => createCustomPage("homepage")}
               disabled={creatingWithTemplate}
-              className="group relative flex flex-col p-6 border rounded-xl hover:border-amber-500 hover:shadow-lg transition-all text-left"
+              className="group relative flex flex-col p-6 border border-[#333333] bg-[#111111] rounded-xl hover:border-cyan-500 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] transition-all text-left"
             >
-              <div className="w-full h-24 mb-4 rounded-lg bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center">
+              <div className="w-full h-24 mb-4 rounded-lg bg-gradient-to-br from-cyan-600 to-blue-600 flex items-center justify-center">
                 <span className="text-white font-bold">Home</span>
               </div>
-              <h3 className="font-semibold text-stone-900">Homepage</h3>
-              <p className="text-sm text-stone-500 mt-1">Hero, Services, Projects, Testimonials, CTA</p>
+              <h3 className="font-semibold text-white">Homepage</h3>
+              <p className="text-sm text-gray-500 mt-1">Hero, Services, Projects, Testimonials, CTA</p>
               <div className="flex flex-wrap gap-1 mt-2">
-                <span className="text-xs px-2 py-0.5 bg-stone-100 rounded">Hero</span>
-                <span className="text-xs px-2 py-0.5 bg-stone-100 rounded">Services</span>
-                <span className="text-xs px-2 py-0.5 bg-stone-100 rounded">Projects</span>
+                <span className="text-xs px-2 py-0.5 bg-[#1a1a1a] border border-[#333333] rounded text-gray-400">Hero</span>
+                <span className="text-xs px-2 py-0.5 bg-[#1a1a1a] border border-[#333333] rounded text-gray-400">Services</span>
+                <span className="text-xs px-2 py-0.5 bg-[#1a1a1a] border border-[#333333] rounded text-gray-400">Projects</span>
               </div>
             </button>
 
@@ -1703,17 +1730,17 @@ export default function PagesManagement() {
             <button
               onClick={() => createCustomPage("about")}
               disabled={creatingWithTemplate}
-              className="group relative flex flex-col p-6 border rounded-xl hover:border-amber-500 hover:shadow-lg transition-all text-left"
+              className="group relative flex flex-col p-6 border border-[#333333] bg-[#111111] rounded-xl hover:border-cyan-500 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] transition-all text-left"
             >
-              <div className="w-full h-24 mb-4 rounded-lg bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
+              <div className="w-full h-24 mb-4 rounded-lg bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center">
                 <span className="text-white font-bold">About</span>
               </div>
-              <h3 className="font-semibold text-stone-900">About Us</h3>
-              <p className="text-sm text-stone-500 mt-1">Hero, Story, Team, Stats</p>
+              <h3 className="font-semibold text-white">About Us</h3>
+              <p className="text-sm text-gray-500 mt-1">Hero, Story, Team, Stats</p>
               <div className="flex flex-wrap gap-1 mt-2">
-                <span className="text-xs px-2 py-0.5 bg-stone-100 rounded">Hero</span>
-                <span className="text-xs px-2 py-0.5 bg-stone-100 rounded">Team</span>
-                <span className="text-xs px-2 py-0.5 bg-stone-100 rounded">Stats</span>
+                <span className="text-xs px-2 py-0.5 bg-[#1a1a1a] border border-[#333333] rounded text-gray-400">Hero</span>
+                <span className="text-xs px-2 py-0.5 bg-[#1a1a1a] border border-[#333333] rounded text-gray-400">Team</span>
+                <span className="text-xs px-2 py-0.5 bg-[#1a1a1a] border border-[#333333] rounded text-gray-400">Stats</span>
               </div>
             </button>
 
@@ -1721,17 +1748,17 @@ export default function PagesManagement() {
             <button
               onClick={() => createCustomPage("services")}
               disabled={creatingWithTemplate}
-              className="group relative flex flex-col p-6 border rounded-xl hover:border-amber-500 hover:shadow-lg transition-all text-left"
+              className="group relative flex flex-col p-6 border border-[#333333] bg-[#111111] rounded-xl hover:border-cyan-500 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] transition-all text-left"
             >
-              <div className="w-full h-24 mb-4 rounded-lg bg-gradient-to-br from-green-500 to-green-700 flex items-center justify-center">
+              <div className="w-full h-24 mb-4 rounded-lg bg-gradient-to-br from-emerald-600 to-teal-600 flex items-center justify-center">
                 <span className="text-white font-bold">Services</span>
               </div>
-              <h3 className="font-semibold text-stone-900">Services Page</h3>
-              <p className="text-sm text-stone-500 mt-1">Hero, Service List, Features, CTA</p>
+              <h3 className="font-semibold text-white">Services Page</h3>
+              <p className="text-sm text-gray-500 mt-1">Hero, Service List, Features, CTA</p>
               <div className="flex flex-wrap gap-1 mt-2">
-                <span className="text-xs px-2 py-0.5 bg-stone-100 rounded">Services</span>
-                <span className="text-xs px-2 py-0.5 bg-stone-100 rounded">Features</span>
-                <span className="text-xs px-2 py-0.5 bg-stone-100 rounded">CTA</span>
+                <span className="text-xs px-2 py-0.5 bg-[#1a1a1a] border border-[#333333] rounded text-gray-400">Services</span>
+                <span className="text-xs px-2 py-0.5 bg-[#1a1a1a] border border-[#333333] rounded text-gray-400">Features</span>
+                <span className="text-xs px-2 py-0.5 bg-[#1a1a1a] border border-[#333333] rounded text-gray-400">CTA</span>
               </div>
             </button>
 
@@ -1739,17 +1766,17 @@ export default function PagesManagement() {
             <button
               onClick={() => createCustomPage("projects")}
               disabled={creatingWithTemplate}
-              className="group relative flex flex-col p-6 border rounded-xl hover:border-amber-500 hover:shadow-lg transition-all text-left"
+              className="group relative flex flex-col p-6 border border-[#333333] bg-[#111111] rounded-xl hover:border-cyan-500 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] transition-all text-left"
             >
-              <div className="w-full h-24 mb-4 rounded-lg bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center">
+              <div className="w-full h-24 mb-4 rounded-lg bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center">
                 <span className="text-white font-bold">Projects</span>
               </div>
-              <h3 className="font-semibold text-stone-900">Projects Portfolio</h3>
-              <p className="text-sm text-stone-500 mt-1">Hero, Project Gallery, CTA</p>
+              <h3 className="font-semibold text-white">Projects Portfolio</h3>
+              <p className="text-sm text-gray-500 mt-1">Hero, Project Gallery, CTA</p>
               <div className="flex flex-wrap gap-1 mt-2">
-                <span className="text-xs px-2 py-0.5 bg-stone-100 rounded">Hero</span>
-                <span className="text-xs px-2 py-0.5 bg-stone-100 rounded">Projects</span>
-                <span className="text-xs px-2 py-0.5 bg-stone-100 rounded">CTA</span>
+                <span className="text-xs px-2 py-0.5 bg-[#1a1a1a] border border-[#333333] rounded text-gray-400">Hero</span>
+                <span className="text-xs px-2 py-0.5 bg-[#1a1a1a] border border-[#333333] rounded text-gray-400">Projects</span>
+                <span className="text-xs px-2 py-0.5 bg-[#1a1a1a] border border-[#333333] rounded text-gray-400">CTA</span>
               </div>
             </button>
 
@@ -1757,16 +1784,16 @@ export default function PagesManagement() {
             <button
               onClick={() => createCustomPage("blog")}
               disabled={creatingWithTemplate}
-              className="group relative flex flex-col p-6 border rounded-xl hover:border-amber-500 hover:shadow-lg transition-all text-left"
+              className="group relative flex flex-col p-6 border border-[#333333] bg-[#111111] rounded-xl hover:border-cyan-500 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] transition-all text-left"
             >
-              <div className="w-full h-24 mb-4 rounded-lg bg-gradient-to-br from-orange-500 to-orange-700 flex items-center justify-center">
+              <div className="w-full h-24 mb-4 rounded-lg bg-gradient-to-br from-orange-600 to-amber-600 flex items-center justify-center">
                 <span className="text-white font-bold">Blog</span>
               </div>
-              <h3 className="font-semibold text-stone-900">Blog Page</h3>
-              <p className="text-sm text-stone-500 mt-1">Hero, Blog Posts Grid</p>
+              <h3 className="font-semibold text-white">Blog Page</h3>
+              <p className="text-sm text-gray-500 mt-1">Hero, Blog Posts Grid</p>
               <div className="flex flex-wrap gap-1 mt-2">
-                <span className="text-xs px-2 py-0.5 bg-stone-100 rounded">Hero</span>
-                <span className="text-xs px-2 py-0.5 bg-stone-100 rounded">Blog Grid</span>
+                <span className="text-xs px-2 py-0.5 bg-[#1a1a1a] border border-[#333333] rounded text-gray-400">Hero</span>
+                <span className="text-xs px-2 py-0.5 bg-[#1a1a1a] border border-[#333333] rounded text-gray-400">Blog Grid</span>
               </div>
             </button>
 
@@ -1774,16 +1801,16 @@ export default function PagesManagement() {
             <button
               onClick={() => createCustomPage("contact")}
               disabled={creatingWithTemplate}
-              className="group relative flex flex-col p-6 border rounded-xl hover:border-amber-500 hover:shadow-lg transition-all text-left"
+              className="group relative flex flex-col p-6 border border-[#333333] bg-[#111111] rounded-xl hover:border-cyan-500 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] transition-all text-left"
             >
-              <div className="w-full h-24 mb-4 rounded-lg bg-gradient-to-br from-teal-500 to-teal-700 flex items-center justify-center">
+              <div className="w-full h-24 mb-4 rounded-lg bg-gradient-to-br from-teal-600 to-cyan-600 flex items-center justify-center">
                 <span className="text-white font-bold">Contact</span>
               </div>
-              <h3 className="font-semibold text-stone-900">Contact Us</h3>
-              <p className="text-sm text-stone-500 mt-1">Hero, Contact Form, Office Info</p>
+              <h3 className="font-semibold text-white">Contact Us</h3>
+              <p className="text-sm text-gray-500 mt-1">Hero, Contact Form, Office Info</p>
               <div className="flex flex-wrap gap-1 mt-2">
-                <span className="text-xs px-2 py-0.5 bg-stone-100 rounded">Hero</span>
-                <span className="text-xs px-2 py-0.5 bg-stone-100 rounded">Contact Form</span>
+                <span className="text-xs px-2 py-0.5 bg-[#1a1a1a] border border-[#333333] rounded text-gray-400">Hero</span>
+                <span className="text-xs px-2 py-0.5 bg-[#1a1a1a] border border-[#333333] rounded text-gray-400">Contact Form</span>
               </div>
             </button>
 
@@ -1791,17 +1818,17 @@ export default function PagesManagement() {
             <button
               onClick={() => createCustomPage("quote")}
               disabled={creatingWithTemplate}
-              className="group relative flex flex-col p-6 border rounded-xl hover:border-amber-500 hover:shadow-lg transition-all text-left"
+              className="group relative flex flex-col p-6 border border-[#333333] bg-[#111111] rounded-xl hover:border-cyan-500 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] transition-all text-left"
             >
-              <div className="w-full h-24 mb-4 rounded-lg bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center">
+              <div className="w-full h-24 mb-4 rounded-lg bg-gradient-to-br from-rose-600 to-pink-600 flex items-center justify-center">
                 <span className="text-white font-bold">Quote</span>
               </div>
-              <h3 className="font-semibold text-stone-900">Get Quote</h3>
-              <p className="text-sm text-stone-500 mt-1">Hero, Quote Form, FAQ</p>
+              <h3 className="font-semibold text-white">Get Quote</h3>
+              <p className="text-sm text-gray-500 mt-1">Hero, Quote Form, FAQ</p>
               <div className="flex flex-wrap gap-1 mt-2">
-                <span className="text-xs px-2 py-0.5 bg-stone-100 rounded">Hero</span>
-                <span className="text-xs px-2 py-0.5 bg-stone-100 rounded">Quote Form</span>
-                <span className="text-xs px-2 py-0.5 bg-stone-100 rounded">FAQ</span>
+                <span className="text-xs px-2 py-0.5 bg-[#1a1a1a] border border-[#333333] rounded text-gray-400">Hero</span>
+                <span className="text-xs px-2 py-0.5 bg-[#1a1a1a] border border-[#333333] rounded text-gray-400">Quote Form</span>
+                <span className="text-xs px-2 py-0.5 bg-[#1a1a1a] border border-[#333333] rounded text-gray-400">FAQ</span>
               </div>
             </button>
 
@@ -1809,54 +1836,54 @@ export default function PagesManagement() {
             <button
               onClick={() => createCustomPage("careers")}
               disabled={creatingWithTemplate}
-              className="group relative flex flex-col p-6 border rounded-xl hover:border-amber-500 hover:shadow-lg transition-all text-left"
+              className="group relative flex flex-col p-6 border border-[#333333] bg-[#111111] rounded-xl hover:border-cyan-500 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] transition-all text-left"
             >
-              <div className="w-full h-24 mb-4 rounded-lg bg-gradient-to-br from-indigo-500 to-indigo-700 flex items-center justify-center">
+              <div className="w-full h-24 mb-4 rounded-lg bg-gradient-to-br from-violet-600 to-purple-600 flex items-center justify-center">
                 <span className="text-white font-bold">Careers</span>
               </div>
-              <h3 className="font-semibold text-stone-900">Careers</h3>
-              <p className="text-sm text-stone-500 mt-1">Hero, Why Work Here, Apply CTA</p>
+              <h3 className="font-semibold text-white">Careers</h3>
+              <p className="text-sm text-gray-500 mt-1">Hero, Why Work Here, Apply CTA</p>
               <div className="flex flex-wrap gap-1 mt-2">
-                <span className="text-xs px-2 py-0.5 bg-stone-100 rounded">Hero</span>
-                <span className="text-xs px-2 py-0.5 bg-stone-100 rounded">Benefits</span>
+                <span className="text-xs px-2 py-0.5 bg-[#1a1a1a] border border-[#333333] rounded text-gray-400">Hero</span>
+                <span className="text-xs px-2 py-0.5 bg-[#1a1a1a] border border-[#333333] rounded text-gray-400">Benefits</span>
               </div>
             </button>
 
             {/* Legal Pages Group */}
             <div className="col-span-2 md:col-span-3 mt-4">
-              <h4 className="text-sm font-medium text-stone-500 mb-3">Legal Pages</h4>
+              <h4 className="text-sm font-medium text-gray-500 mb-3 font-mono">// Legal Pages</h4>
               <div className="grid grid-cols-3 gap-4">
                 <button
                   onClick={() => createCustomPage("privacy")}
                   disabled={creatingWithTemplate}
-                  className="group flex flex-col p-4 border rounded-lg hover:border-amber-500 transition-all text-left"
+                  className="group flex flex-col p-4 border border-[#333333] bg-[#111111] rounded-lg hover:border-cyan-500 transition-all text-left"
                 >
-                  <div className="w-full h-16 mb-3 rounded bg-stone-200 flex items-center justify-center">
-                    <span className="text-stone-600 font-medium text-sm">Privacy</span>
+                  <div className="w-full h-16 mb-3 rounded bg-[#1a1a1a] flex items-center justify-center">
+                    <span className="text-gray-400 font-medium text-sm">Privacy</span>
                   </div>
-                  <h3 className="font-medium text-stone-900 text-sm">Privacy Policy</h3>
+                  <h3 className="font-medium text-white text-sm">Privacy Policy</h3>
                 </button>
 
                 <button
                   onClick={() => createCustomPage("terms")}
                   disabled={creatingWithTemplate}
-                  className="group flex flex-col p-4 border rounded-lg hover:border-amber-500 transition-all text-left"
+                  className="group flex flex-col p-4 border border-[#333333] bg-[#111111] rounded-lg hover:border-cyan-500 transition-all text-left"
                 >
-                  <div className="w-full h-16 mb-3 rounded bg-stone-200 flex items-center justify-center">
-                    <span className="text-stone-600 font-medium text-sm">Terms</span>
+                  <div className="w-full h-16 mb-3 rounded bg-[#1a1a1a] flex items-center justify-center">
+                    <span className="text-gray-400 font-medium text-sm">Terms</span>
                   </div>
-                  <h3 className="font-medium text-stone-900 text-sm">Terms of Service</h3>
+                  <h3 className="font-medium text-white text-sm">Terms of Service</h3>
                 </button>
 
                 <button
                   onClick={() => createCustomPage("cookies")}
                   disabled={creatingWithTemplate}
-                  className="group flex flex-col p-4 border rounded-lg hover:border-amber-500 transition-all text-left"
+                  className="group flex flex-col p-4 border border-[#333333] bg-[#111111] rounded-lg hover:border-cyan-500 transition-all text-left"
                 >
-                  <div className="w-full h-16 mb-3 rounded bg-stone-200 flex items-center justify-center">
-                    <span className="text-stone-600 font-medium text-sm">Cookies</span>
+                  <div className="w-full h-16 mb-3 rounded bg-[#1a1a1a] flex items-center justify-center">
+                    <span className="text-gray-400 font-medium text-sm">Cookies</span>
                   </div>
-                  <h3 className="font-medium text-stone-900 text-sm">Cookie Policy</h3>
+                  <h3 className="font-medium text-white text-sm">Cookie Policy</h3>
                 </button>
               </div>
             </div>
@@ -1864,8 +1891,8 @@ export default function PagesManagement() {
 
           {creatingWithTemplate && (
             <div className="flex items-center justify-center py-4">
-              <Loader2 className="h-6 w-6 animate-spin text-amber-600" />
-              <span className="ml-2 text-stone-600">Creating page...</span>
+              <Loader2 className="h-6 w-6 animate-spin text-cyan-500" />
+              <span className="ml-2 text-gray-500 font-mono">// Creating page...</span>
             </div>
           )}
         </DialogContent>
