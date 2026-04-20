@@ -140,7 +140,7 @@ export function HeroWidget({ section }: HeroWidgetProps) {
   if (heroSlides.length === 1) {
     const slide = heroSlides[0]
     return (
-      <section className="relative min-h-[70vh] md:min-h-[80vh] flex items-center bg-stone-900 text-white overflow-hidden">
+      <section className="relative min-h-[70vh] md:min-h-[80vh] flex items-center bg-background text-foreground overflow-hidden">
         {slide.image && (
           <div className="absolute inset-0 z-0">
             <Image 
@@ -158,7 +158,7 @@ export function HeroWidget({ section }: HeroWidgetProps) {
           <div className={`flex flex-col min-h-[70vh] md:min-h-[80vh] py-20 ${getButtonPosition(slide.buttonPosition)}`}>
             <div className="max-w-3xl">
               {subheadline && (
-                <p className="text-amber-400 font-medium mb-4 text-lg">{subheadline}</p>
+                <p className="text-primary font-medium mb-4 text-lg">{subheadline}</p>
               )}
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
                 {slide.title}
@@ -168,7 +168,7 @@ export function HeroWidget({ section }: HeroWidgetProps) {
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button 
-                  className="bg-amber-600 hover:bg-amber-700 text-white px-8 py-6 text-lg"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg"
                   asChild
                 >
                   <a href={slide.buttonLink}>
@@ -178,7 +178,7 @@ export function HeroWidget({ section }: HeroWidgetProps) {
                 {secondaryButtonText && (
                   <Button 
                     variant="outline" 
-                    className="border-white text-white hover:bg-white hover:text-stone-900 px-8 py-6 text-lg"
+                    className="border-border text-foreground hover:bg-accent hover:text-accent-foreground px-8 py-6 text-lg"
                     asChild
                   >
                     <a href={secondaryButtonLink || "#"}>{secondaryButtonText}</a>
@@ -190,7 +190,7 @@ export function HeroWidget({ section }: HeroWidgetProps) {
           
           {showScrollIndicator && (
             <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-              <ChevronDown className="h-8 w-8 text-white/60" />
+              <ChevronDown className="h-8 w-8 text-foreground/60" />
             </div>
           )}
         </div>
@@ -200,7 +200,7 @@ export function HeroWidget({ section }: HeroWidgetProps) {
   
   // Multi-slide hero with slider
   return (
-    <section className="relative min-h-[70vh] md:min-h-[80vh] bg-stone-900 text-white overflow-hidden">
+    <section className="relative min-h-[70vh] md:min-h-[80vh] bg-background text-foreground overflow-hidden">
       {/* Slides */}
       <div className="relative h-full">
         {heroSlides.map((slide, index) => (
@@ -222,7 +222,7 @@ export function HeroWidget({ section }: HeroWidgetProps) {
                   style={{ opacity: (100 - overlayOpacity) / 100 }}
                   priority={index === 0}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-stone-900/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/40 to-transparent" />
               </div>
             )}
             
@@ -232,12 +232,12 @@ export function HeroWidget({ section }: HeroWidgetProps) {
                   <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
                     {slide.title || section.title}
                   </h1>
-                  <p className="text-xl md:text-2xl text-stone-300 mb-8 max-w-2xl">
+                  <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl">
                     {slide.description}
                   </p>
                   {slide.buttonText && (
                     <Button 
-                      className="bg-amber-600 hover:bg-amber-700 text-white px-8 py-6 text-lg"
+                      className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg"
                       asChild
                     >
                       <a href={slide.buttonLink}>
@@ -278,7 +278,7 @@ export function HeroWidget({ section }: HeroWidgetProps) {
               key={index}
               onClick={() => goToSlide(index)}
               className={`w-3 h-3 rounded-full transition-colors ${
-                index === currentSlide ? "bg-amber-600" : "bg-white/50 hover:bg-white/70"
+                index === currentSlide ? "bg-primary" : "bg-foreground/50 hover:bg-foreground/70"
               }`}
             />
           ))}

@@ -32,27 +32,27 @@ export function NewsletterWidget({ section }: NewsletterWidgetProps) {
   }
 
   return (
-    <section className="py-16 bg-amber-600">
+    <section className="py-16 bg-primary">
       <div className="container mx-auto px-4">
         <div className="max-w-2xl mx-auto text-center">
-          <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
-            <Mail className="h-8 w-8 text-white" />
+          <div className="w-16 h-16 bg-primary-foreground/20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <Mail className="h-8 w-8 text-primary-foreground" />
           </div>
           
           {section.title && (
-            <h2 className="text-3xl font-bold text-white mb-4">
+            <h2 className="text-3xl font-bold text-primary-foreground mb-4">
               {section.title}
             </h2>
           )}
           
           {contentText && (
-            <p className="text-amber-100 text-lg mb-8">
+            <p className="text-primary-foreground/80 text-lg mb-8">
               {contentText}
             </p>
           )}
 
           {status === "success" ? (
-            <div className="flex items-center justify-center gap-2 text-white">
+            <div className="flex items-center justify-center gap-2 text-primary-foreground">
               <CheckCircle className="h-6 w-6" />
               <span className="text-lg">Thank you for subscribing!</span>
             </div>
@@ -64,12 +64,12 @@ export function NewsletterWidget({ section }: NewsletterWidgetProps) {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="flex-1 bg-white border-0 h-12"
+                className="flex-1 bg-background border-0 h-12 text-foreground"
               />
               <Button 
                 type="submit" 
                 disabled={status === "loading"}
-                className="bg-stone-900 hover:bg-stone-800 text-white h-12 px-8"
+                className="bg-secondary hover:bg-secondary/80 text-secondary-foreground h-12 px-8"
               >
                 {status === "loading" ? (
                   <>
@@ -83,7 +83,7 @@ export function NewsletterWidget({ section }: NewsletterWidgetProps) {
             </form>
           )}
 
-          <p className="text-amber-200 text-sm mt-4">
+          <p className="text-primary-foreground/60 text-sm mt-4">
             We respect your privacy. Unsubscribe at any time.
           </p>
         </div>

@@ -95,25 +95,25 @@ export function ComparisonWidget({ section }: ComparisonWidgetProps) {
       return value ? (
         <Check className="h-5 w-5 text-green-500 mx-auto" />
       ) : (
-        <X className="h-5 w-5 text-stone-300 mx-auto" />
+        <X className="h-5 w-5 text-muted-foreground/30 mx-auto" />
       )
     }
-    return <span className="text-stone-700 font-medium">{value}</span>
+    return <span className="text-card-foreground font-medium">{value}</span>
   }
 
   // Handle content as string or object
   const contentText = typeof section.content === 'string' ? section.content : section.content?.text || ''
 
   return (
-    <section className="py-16 bg-stone-50">
+    <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
-        {section.title && <h2 className="text-3xl font-bold mb-4 text-center">{section.title}</h2>}
-        {contentText && <p className="text-stone-600 text-center max-w-2xl mx-auto mb-12">{contentText}</p>}
+        {section.title && <h2 className="text-3xl font-bold mb-4 text-center text-foreground">{section.title}</h2>}
+        {contentText && <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">{contentText}</p>}
         
         <div className="max-w-5xl mx-auto overflow-x-auto">
-          <table className="w-full bg-white rounded-lg shadow-sm overflow-hidden">
+          <table className="w-full bg-card rounded-lg shadow-sm overflow-hidden border border-border">
             <thead>
-              <tr className="bg-stone-900 text-white">
+              <tr className="bg-primary text-primary-foreground">
                 <th className="text-left p-4 font-semibold">Features</th>
                 {data.options.map((option) => (
                   <th key={option} className="p-4 font-semibold text-center min-w-[150px]">
@@ -126,15 +126,15 @@ export function ComparisonWidget({ section }: ComparisonWidgetProps) {
               {data.items.map((item, index) => (
                 <tr 
                   key={item.id} 
-                  className={index % 2 === 0 ? "bg-white" : "bg-stone-50"}
+                  className={index % 2 === 0 ? "bg-card" : "bg-muted/30"}
                 >
                   <td className="p-4">
                     <div className="flex items-start gap-2">
-                      <span className="font-medium">{item.feature}</span>
+                      <span className="font-medium text-card-foreground">{item.feature}</span>
                       {item.description && (
                         <div className="group relative">
-                          <HelpCircle className="h-4 w-4 text-stone-400 shrink-0 mt-0.5 cursor-help" />
-                          <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block w-48 p-2 bg-stone-800 text-white text-xs rounded shadow-lg z-10">
+                          <HelpCircle className="h-4 w-4 text-muted-foreground shrink-0 mt-0.5 cursor-help" />
+                          <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block w-48 p-2 bg-popover text-popover-foreground text-xs rounded shadow-lg z-10">
                             {item.description}
                           </div>
                         </div>

@@ -54,7 +54,7 @@ const platformColors = {
   instagram: "bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#F77737]",
   linkedin: "bg-[#0A66C2] hover:bg-[#0958a8]",
   youtube: "bg-[#FF0000] hover:bg-[#e60000]",
-  website: "bg-amber-600 hover:bg-amber-700"
+  website: "bg-primary hover:bg-primary/90"
 }
 
 export function SocialLinksWidget({ section }: SocialLinksWidgetProps) {
@@ -91,10 +91,10 @@ export function SocialLinksWidget({ section }: SocialLinksWidgetProps) {
     : section.content?.text || ''
 
   return (
-    <section className="py-12 bg-white">
+    <section className="py-12 bg-background">
       <div className="container mx-auto px-4">
-        {section.title && <h2 className="text-2xl font-bold mb-2 text-center">{section.title}</h2>}
-        {contentText && <p className="text-stone-600 text-center mb-8">{contentText}</p>}
+        {section.title && <h2 className="text-2xl font-bold mb-2 text-center text-foreground">{section.title}</h2>}
+        {contentText && <p className="text-muted-foreground text-center mb-8">{contentText}</p>}
         
         <div className="flex flex-wrap justify-center gap-4">
           {links.map((link) => {

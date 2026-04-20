@@ -53,7 +53,7 @@ export function BlogWidget({ section }: BlogWidgetProps) {
   // Get unique categories for filters
   const categories = [...new Set(posts.map(p => p.category))]
   
-  if (loading) return <div className="py-16 text-center"><Loader2 className="h-8 w-8 animate-spin mx-auto" /></div>
+  if (loading) return <div className="py-16 text-center"><Loader2 className="h-8 w-8 animate-spin mx-auto text-muted-foreground" /></div>
 
   // Grid Layout
   if (layoutConfig.layout === "grid") {
@@ -68,14 +68,14 @@ export function BlogWidget({ section }: BlogWidgetProps) {
     console.log("[BlogWidget] Rendering GRID layout with", layoutConfig.columns, "columns. Applied class:", appliedCols)
     
     return (
-      <section className="py-16 bg-stone-50">
+      <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
-          {section.title && <h2 className="text-3xl font-bold mb-12 text-center">{section.title}</h2>}
+          {section.title && <h2 className="text-3xl font-bold mb-12 text-center text-foreground">{section.title}</h2>}
           
           {/* Category Filters */}
           {layoutConfig.showFilters && categories.length > 0 && (
             <div className="flex flex-wrap gap-2 justify-center mb-8">
-              <Button variant="outline" size="sm" className="bg-amber-600 text-white">All</Button>
+              <Button variant="outline" size="sm" className="bg-primary text-primary-foreground">All</Button>
               {categories.map(cat => (
                 <Button key={cat} variant="outline" size="sm">{cat}</Button>
               ))}
@@ -84,21 +84,21 @@ export function BlogWidget({ section }: BlogWidgetProps) {
           
           <div className={`grid ${appliedCols} gap-6`}>
             {displayPosts.map((post) => (
-              <Card key={post.id} className="overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow">
-                <div className="relative h-48 bg-stone-200">
+              <Card key={post.id} className="overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow bg-card">
+                <div className="relative h-48 bg-muted">
                   {post.image ? (
                     <Image src={post.image} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
                   ) : (
-                    <div className="absolute inset-0 flex items-center justify-center bg-stone-300">
-                      <span className="text-stone-500">Blog Image</span>
+                    <div className="absolute inset-0 flex items-center justify-center bg-muted/70">
+                      <span className="text-muted-foreground">Blog Image</span>
                     </div>
                   )}
                 </div>
                 <CardContent className="p-4">
-                  <span className="text-xs font-medium text-amber-600 uppercase">{post.category}</span>
-                  <h3 className="font-semibold mt-1 line-clamp-2">{post.title}</h3>
-                  <p className="text-sm text-stone-500 mt-2 line-clamp-2">{post.excerpt}</p>
-                  <div className="flex items-center justify-between mt-4 text-xs text-stone-400">
+                  <span className="text-xs font-medium text-primary uppercase">{post.category}</span>
+                  <h3 className="font-semibold mt-1 line-clamp-2 text-card-foreground">{post.title}</h3>
+                  <p className="text-sm text-muted-foreground mt-2 line-clamp-2">{post.excerpt}</p>
+                  <div className="flex items-center justify-between mt-4 text-xs text-muted-foreground/70">
                     <span>{post.author}</span>
                     <span>{post.date}</span>
                   </div>
@@ -119,27 +119,27 @@ export function BlogWidget({ section }: BlogWidgetProps) {
   // List Layout
   if (layoutConfig.layout === "list") {
     return (
-      <section className="py-16 bg-stone-50">
+      <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
-          {section.title && <h2 className="text-3xl font-bold mb-12 text-center">{section.title}</h2>}
+          {section.title && <h2 className="text-3xl font-bold mb-12 text-center text-foreground">{section.title}</h2>}
           <div className="space-y-4 max-w-4xl mx-auto">
             {displayPosts.map((post) => (
-              <Card key={post.id} className="overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow">
+              <Card key={post.id} className="overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow bg-card">
                 <div className="flex flex-col md:flex-row">
-                  <div className="relative h-48 md:h-auto md:w-64 bg-stone-200 flex-shrink-0">
+                  <div className="relative h-48 md:h-auto md:w-64 bg-muted flex-shrink-0">
                     {post.image ? (
                       <Image src={post.image} alt={post.title} fill className="object-cover" />
                     ) : (
-                      <div className="absolute inset-0 flex items-center justify-center bg-stone-300">
-                        <span className="text-stone-500">Blog Image</span>
+                      <div className="absolute inset-0 flex items-center justify-center bg-muted/70">
+                        <span className="text-muted-foreground">Blog Image</span>
                       </div>
                     )}
                   </div>
                   <CardContent className="p-6 flex-1">
-                    <span className="text-xs font-medium text-amber-600 uppercase">{post.category}</span>
-                    <h3 className="font-semibold text-lg mt-1">{post.title}</h3>
-                    <p className="text-sm text-stone-500 mt-2">{post.excerpt}</p>
-                    <div className="flex items-center justify-between mt-4 text-xs text-stone-400">
+                    <span className="text-xs font-medium text-primary uppercase">{post.category}</span>
+                    <h3 className="font-semibold text-lg mt-1 text-card-foreground">{post.title}</h3>
+                    <p className="text-sm text-muted-foreground mt-2">{post.excerpt}</p>
+                    <div className="flex items-center justify-between mt-4 text-xs text-muted-foreground/70">
                       <span>{post.author}</span>
                       <span>{post.date}</span>
                     </div>
@@ -164,9 +164,9 @@ export function BlogWidget({ section }: BlogWidgetProps) {
     const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + displayPosts.length) % displayPosts.length)
     
     return (
-      <section className="py-16 bg-stone-50">
+      <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
-          {section.title && <h2 className="text-3xl font-bold mb-12 text-center">{section.title}</h2>}
+          {section.title && <h2 className="text-3xl font-bold mb-12 text-center text-foreground">{section.title}</h2>}
           <div className="relative max-w-4xl mx-auto">
             <div className="overflow-hidden rounded-lg">
               <div 
@@ -175,21 +175,21 @@ export function BlogWidget({ section }: BlogWidgetProps) {
               >
                 {displayPosts.map((post) => (
                   <div key={post.id} className="w-full flex-shrink-0">
-                    <Card className="overflow-hidden">
-                      <div className="relative h-64 md:h-96 bg-stone-200">
+                    <Card className="overflow-hidden bg-card">
+                      <div className="relative h-64 md:h-96 bg-muted">
                         {post.image ? (
                           <Image src={post.image} alt={post.title} fill className="object-cover" />
                         ) : (
-                          <div className="absolute inset-0 flex items-center justify-center bg-stone-300">
-                            <span className="text-stone-500">Blog Image</span>
+                          <div className="absolute inset-0 flex items-center justify-center bg-muted/70">
+                            <span className="text-muted-foreground">Blog Image</span>
                           </div>
                         )}
-                        <div className="absolute inset-0 bg-gradient-to-t from-stone-900/80 to-transparent" />
-                        <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                          <span className="text-xs font-medium text-amber-400 uppercase">{post.category}</span>
+                        <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-6 text-foreground">
+                          <span className="text-xs font-medium text-primary uppercase">{post.category}</span>
                           <h3 className="font-semibold text-xl mt-1">{post.title}</h3>
-                          <p className="text-sm text-stone-300 mt-2 line-clamp-2">{post.excerpt}</p>
-                          <div className="flex items-center gap-4 mt-4 text-xs text-stone-300">
+                          <p className="text-sm text-muted-foreground mt-2 line-clamp-2">{post.excerpt}</p>
+                          <div className="flex items-center gap-4 mt-4 text-xs text-muted-foreground">
                             <span>{post.author}</span>
                             <span>{post.date}</span>
                           </div>
@@ -204,11 +204,11 @@ export function BlogWidget({ section }: BlogWidgetProps) {
             {/* Navigation */}
             {displayPosts.length > 1 && (
               <>
-                <button onClick={prevSlide} className="absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/90 hover:bg-white shadow-lg">
-                  <ChevronLeft className="h-6 w-6" />
+                <button onClick={prevSlide} className="absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-background/90 hover:bg-background shadow-lg border border-border">
+                  <ChevronLeft className="h-6 w-6 text-foreground" />
                 </button>
-                <button onClick={nextSlide} className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/90 hover:bg-white shadow-lg">
-                  <ChevronRight className="h-6 w-6" />
+                <button onClick={nextSlide} className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-background/90 hover:bg-background shadow-lg border border-border">
+                  <ChevronRight className="h-6 w-6 text-foreground" />
                 </button>
                 <div className="flex justify-center gap-2 mt-4">
                   {displayPosts.map((_, idx) => (
@@ -216,7 +216,7 @@ export function BlogWidget({ section }: BlogWidgetProps) {
                       key={idx}
                       onClick={() => setCurrentSlide(idx)}
                       className={`w-2 h-2 rounded-full transition-colors ${
-                        idx === currentSlide ? "bg-amber-600" : "bg-stone-300"
+                        idx === currentSlide ? "bg-primary" : "bg-muted-foreground/30"
                       }`}
                     />
                   ))}
@@ -247,26 +247,26 @@ export function BlogWidget({ section }: BlogWidgetProps) {
   console.log("[BlogWidget] Rendering MASONRY (default) layout with", layoutConfig.columns, "columns. Layout value was:", layoutConfig.layout, "Applied class:", appliedMasonryCols)
   
   return (
-    <section className="py-16 bg-stone-50">
+    <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
-        {section.title && <h2 className="text-3xl font-bold mb-12 text-center">{section.title}</h2>}
+        {section.title && <h2 className="text-3xl font-bold mb-12 text-center text-foreground">{section.title}</h2>}
         <div className={`${appliedMasonryCols} gap-6 space-y-6`}>
           {displayPosts.map((post) => (
-            <Card key={post.id} className="overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow break-inside-avoid">
-              <div className="relative h-48 bg-stone-200">
+            <Card key={post.id} className="overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow break-inside-avoid bg-card">
+              <div className="relative h-48 bg-muted">
                 {post.image ? (
                   <Image src={post.image} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
                 ) : (
-                  <div className="absolute inset-0 flex items-center justify-center bg-stone-300">
-                    <span className="text-stone-500">Blog Image</span>
+                  <div className="absolute inset-0 flex items-center justify-center bg-muted/70">
+                    <span className="text-muted-foreground">Blog Image</span>
                   </div>
                 )}
               </div>
               <CardContent className="p-4">
-                <span className="text-xs font-medium text-amber-600 uppercase">{post.category}</span>
-                <h3 className="font-semibold mt-1 line-clamp-2">{post.title}</h3>
-                <p className="text-sm text-stone-500 mt-2 line-clamp-2">{post.excerpt}</p>
-                <div className="flex items-center justify-between mt-4 text-xs text-stone-400">
+                <span className="text-xs font-medium text-primary uppercase">{post.category}</span>
+                <h3 className="font-semibold mt-1 line-clamp-2 text-card-foreground">{post.title}</h3>
+                <p className="text-sm text-muted-foreground mt-2 line-clamp-2">{post.excerpt}</p>
+                <div className="flex items-center justify-between mt-4 text-xs text-muted-foreground/70">
                   <span>{post.author}</span>
                   <span>{post.date}</span>
                 </div>

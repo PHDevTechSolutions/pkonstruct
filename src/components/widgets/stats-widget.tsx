@@ -34,14 +34,14 @@ export function StatsWidget({ section }: StatsWidgetProps) {
   }
 
   return (
-    <section className="py-16 bg-stone-900 text-white">
+    <section className="py-16 bg-background text-foreground">
       <div className="container mx-auto px-4">
         {section.title && <h2 className="text-3xl font-bold mb-12 text-center">{section.title}</h2>}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((stat: any, index: number) => (
             <div key={index} className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-amber-500 mb-2">{stat.value}</div>
-              <div className="text-stone-400">{stat.label}</div>
+              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">{stat.value}</div>
+              <div className="text-muted-foreground">{stat.label}</div>
             </div>
           ))}
         </div>

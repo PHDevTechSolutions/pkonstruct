@@ -36,18 +36,18 @@ export function FeaturesWidget({ section }: FeaturesWidgetProps) {
   }
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
-        {section.title && <h2 className="text-3xl font-bold mb-12 text-center">{section.title}</h2>}
+        {section.title && <h2 className="text-3xl font-bold mb-12 text-center text-foreground">{section.title}</h2>}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature: any, index: number) => (
-            <Card key={index} className="group hover:shadow-lg transition-shadow">
+            <Card key={index} className="group hover:shadow-lg transition-shadow bg-card">
               <CardContent className="p-6">
-                <div className="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-amber-600 transition-colors">
-                  <CheckCircle className="h-6 w-6 text-amber-600 group-hover:text-white transition-colors" />
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
+                  <CheckCircle className="h-6 w-6 text-primary group-hover:text-primary-foreground transition-colors" />
                 </div>
-                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-stone-600">{feature.description}</p>
+                <h3 className="text-xl font-semibold mb-2 text-card-foreground">{feature.title}</h3>
+                <p className="text-muted-foreground">{feature.description}</p>
               </CardContent>
             </Card>
           ))}

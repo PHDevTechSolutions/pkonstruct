@@ -85,31 +85,31 @@ export function AwardsWidget({ section }: AwardsWidgetProps) {
     : section.content?.text || ''
 
   return (
-    <section className="py-16 bg-stone-900 text-white">
+    <section className="py-16 bg-background text-foreground">
       <div className="container mx-auto px-4">
         {section.title && <h2 className="text-3xl font-bold mb-4 text-center">{section.title}</h2>}
-        {contentText && <p className="text-stone-400 text-center max-w-2xl mx-auto mb-12">{contentText}</p>}
+        {contentText && <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">{contentText}</p>}
         
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
           {awards.map((award, index) => {
             const IconComponent = iconMap[award.icon || "award"] || Award
             return (
-              <Card key={award.id || `award-${index}`} className="bg-stone-800 border-stone-700">
+              <Card key={award.id || `award-${index}`} className="bg-card border-border">
                 <CardContent className="p-6 text-center">
-                  <div className="w-16 h-16 bg-amber-600/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <IconComponent className="h-8 w-8 text-amber-500" />
+                  <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <IconComponent className="h-8 w-8 text-primary" />
                   </div>
-                  <div className="text-amber-500 text-sm font-medium mb-2">
+                  <div className="text-primary text-sm font-medium mb-2">
                     {award.year}
                   </div>
-                  <h3 className="text-lg font-semibold text-white mb-2">
+                  <h3 className="text-lg font-semibold text-card-foreground mb-2">
                     {award.title}
                   </h3>
-                  <p className="text-stone-400 text-sm mb-2">
+                  <p className="text-muted-foreground text-sm mb-2">
                     {award.organization}
                   </p>
                   {award.description && (
-                    <p className="text-stone-500 text-sm">
+                    <p className="text-muted-foreground/70 text-sm">
                       {award.description}
                     </p>
                   )}

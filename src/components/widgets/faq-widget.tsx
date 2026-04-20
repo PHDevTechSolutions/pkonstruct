@@ -24,21 +24,21 @@ export function FAQWidget({ section }: FAQWidgetProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   return (
-    <section className="py-16 bg-stone-50">
+    <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
-        {section.title && <h2 className="text-3xl font-bold mb-12 text-center">{section.title}</h2>}
+        {section.title && <h2 className="text-3xl font-bold mb-12 text-center text-foreground">{section.title}</h2>}
         <div className="max-w-3xl mx-auto space-y-4">
           {faqs.map((faq: any, index: number) => (
-            <div key={index} className="bg-white rounded-lg shadow-sm">
+            <div key={index} className="bg-card rounded-lg shadow-sm border border-border">
               <button
                 className="w-full px-6 py-4 flex items-center justify-between text-left"
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
               >
-                <span className="font-semibold">{faq.question}</span>
-                <ChevronDown className={`h-5 w-5 transition-transform ${openIndex === index ? "rotate-180" : ""}`} />
+                <span className="font-semibold text-card-foreground">{faq.question}</span>
+                <ChevronDown className={`h-5 w-5 text-muted-foreground transition-transform ${openIndex === index ? "rotate-180" : ""}`} />
               </button>
               {openIndex === index && (
-                <div className="px-6 pb-4 text-stone-600">{faq.answer}</div>
+                <div className="px-6 pb-4 text-muted-foreground">{faq.answer}</div>
               )}
             </div>
           ))}

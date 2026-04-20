@@ -13,11 +13,11 @@ export function TextWidget({ section }: TextWidgetProps) {
     : section.content?.text || ''
   
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          {section.title && <h2 className="text-3xl font-bold mb-6 text-center">{section.title}</h2>}
-          <div className="prose prose-lg max-w-none text-stone-600">
+          {section.title && <h2 className="text-3xl font-bold mb-6 text-center text-foreground">{section.title}</h2>}
+          <div className="prose prose-lg max-w-none text-muted-foreground">
             {content.split('\n').map((paragraph: string, idx: number) => (
               <p key={idx} className="mb-4">{paragraph}</p>
             ))}

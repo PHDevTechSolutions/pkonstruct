@@ -13,9 +13,9 @@ export function GalleryWidget({ section }: GalleryWidgetProps) {
   const images = contentStr ? contentStr.split(',').map(url => url.trim()) : []
 
   return (
-    <section className="py-16 bg-stone-50">
+    <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
-        {section.title && <h2 className="text-3xl font-bold mb-12 text-center">{section.title}</h2>}
+        {section.title && <h2 className="text-3xl font-bold mb-12 text-center text-foreground">{section.title}</h2>}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {images.map((url, index) => (
             <div key={index} className="relative aspect-square rounded-lg overflow-hidden group">

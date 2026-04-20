@@ -31,9 +31,9 @@ export function VideoWidget({ section }: VideoWidgetProps) {
   const embedUrl = videoUrl ? getEmbedUrl(videoUrl) : null
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
-        {section.title && <h2 className="text-3xl font-bold mb-8 text-center">{section.title}</h2>}
+        {section.title && <h2 className="text-3xl font-bold mb-8 text-center text-foreground">{section.title}</h2>}
         {embedUrl ? (
           <div className="relative aspect-video max-w-4xl mx-auto rounded-lg overflow-hidden">
             <iframe
@@ -45,7 +45,7 @@ export function VideoWidget({ section }: VideoWidgetProps) {
             />
           </div>
         ) : (
-          <div className="text-center text-stone-500">No video URL provided</div>
+          <div className="text-center text-muted-foreground">No video URL provided</div>
         )}
       </div>
     </section>

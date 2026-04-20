@@ -55,32 +55,32 @@ function GalleryEditor({ content, onChange }: { content: string, onChange: (cont
   
   return (
     <div className="space-y-2">
-      <div className="text-xs text-gray-500 mb-2 font-mono">// Add image URLs for the gallery</div>
+      <div className="text-xs text-muted-foreground mb-2 font-mono">// Add image URLs for the gallery</div>
       {images.map((url, index) => (
         <div key={index} className="flex items-center gap-2">
           <div className="flex flex-col gap-0.5">
-            <Button variant="ghost" size="sm" onClick={() => moveImage(index, 'up')} disabled={index === 0} className="h-5 w-5 p-0 text-gray-400 hover:text-white hover:bg-[#222222]">
+            <Button variant="ghost" size="sm" onClick={() => moveImage(index, 'up')} disabled={index === 0} className="h-5 w-5 p-0 text-muted-foreground hover:text-foreground hover:bg-accent">
               <ChevronUp className="h-3 w-3" />
             </Button>
-            <Button variant="ghost" size="sm" onClick={() => moveImage(index, 'down')} disabled={index === images.length - 1} className="h-5 w-5 p-0 text-gray-400 hover:text-white hover:bg-[#222222]">
+            <Button variant="ghost" size="sm" onClick={() => moveImage(index, 'down')} disabled={index === images.length - 1} className="h-5 w-5 p-0 text-muted-foreground hover:text-foreground hover:bg-accent">
               <ChevronDown className="h-3 w-3" />
             </Button>
           </div>
-          <div className="w-12 h-12 bg-[#222222] rounded overflow-hidden flex-shrink-0 border border-[#333333]">
+          <div className="w-12 h-12 bg-muted rounded overflow-hidden flex-shrink-0 border border-border">
             {url && <img src={url} alt="" className="w-full h-full object-cover" onError={(e) => (e.target as HTMLImageElement).style.display = 'none'} />}
           </div>
           <Input 
             value={url} 
             onChange={(e) => updateImage(index, e.target.value)} 
             placeholder={`Image ${index + 1} URL`}
-            className="flex-1 h-9 text-sm bg-[#1a1a1a] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50"
+            className="flex-1 h-9 text-sm bg-card border-input text-card-foreground placeholder:text-muted-foreground focus:ring-1 focus:ring-ring"
           />
-          <Button variant="ghost" size="sm" onClick={() => removeImage(index)} className="text-red-400 hover:text-red-300 hover:bg-red-500/10 h-8 w-8 p-0">
+          <Button variant="ghost" size="sm" onClick={() => removeImage(index)} className="text-destructive hover:text-destructive hover:bg-destructive/10 h-8 w-8 p-0">
             <Trash2 className="h-4 w-4" />
           </Button>
         </div>
       ))}
-      <Button onClick={addImage} variant="outline" size="sm" className="w-full border-[#333333] text-gray-400 hover:text-white hover:bg-[#222222] hover:border-[#444444]">
+      <Button onClick={addImage} variant="outline" size="sm" className="w-full border-border text-muted-foreground hover:text-foreground hover:bg-accent hover:border-border/80">
         <Plus className="h-4 w-4 mr-1" />
         Add Image
       </Button>
@@ -120,28 +120,28 @@ function BeforeAfterEditor({ content, onChange }: { content: string, onChange: (
   return (
     <div className="space-y-3">
       <div className="space-y-1.5">
-        <label className="text-xs font-medium text-gray-400 font-mono">Title</label>
-        <Input value={data.title} onChange={(e) => updateField('title', e.target.value)} placeholder="e.g., Kitchen Renovation" className="bg-[#1a1a1a] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50" />
+        <label className="text-xs font-medium text-muted-foreground font-mono">Title</label>
+        <Input value={data.title} onChange={(e) => updateField('title', e.target.value)} placeholder="e.g., Kitchen Renovation" />
       </div>
       <div className="space-y-1.5">
-        <label className="text-xs font-medium text-gray-400 font-mono">Description</label>
-        <Input value={data.description} onChange={(e) => updateField('description', e.target.value)} placeholder="Brief description" className="bg-[#1a1a1a] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50" />
+        <label className="text-xs font-medium text-muted-foreground font-mono">Description</label>
+        <Input value={data.description} onChange={(e) => updateField('description', e.target.value)} placeholder="Brief description" />
       </div>
       <div className="grid grid-cols-2 gap-2">
         <div className="space-y-1.5">
-          <label className="text-xs font-medium text-gray-400 font-mono">Before Image URL</label>
-          <Input value={data.beforeImage} onChange={(e) => updateField('beforeImage', e.target.value)} placeholder="https://..." className="bg-[#1a1a1a] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50 font-mono" />
+          <label className="text-xs font-medium text-muted-foreground font-mono">Before Image URL</label>
+          <Input value={data.beforeImage} onChange={(e) => updateField('beforeImage', e.target.value)} placeholder="https://..." className="font-mono" />
           {data.beforeImage && (
-            <div className="h-20 bg-[#222222] rounded overflow-hidden border border-[#333333]">
+            <div className="h-20 bg-muted rounded overflow-hidden border border-border">
               <img src={data.beforeImage} alt="Before" className="w-full h-full object-cover" onError={(e) => (e.target as HTMLImageElement).style.display = 'none'} />
             </div>
           )}
         </div>
         <div className="space-y-1.5">
-          <label className="text-xs font-medium text-gray-400 font-mono">After Image URL</label>
-          <Input value={data.afterImage} onChange={(e) => updateField('afterImage', e.target.value)} placeholder="https://..." className="bg-[#1a1a1a] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50 font-mono" />
+          <label className="text-xs font-medium text-muted-foreground font-mono">After Image URL</label>
+          <Input value={data.afterImage} onChange={(e) => updateField('afterImage', e.target.value)} placeholder="https://..." className="font-mono" />
           {data.afterImage && (
-            <div className="h-20 bg-[#222222] rounded overflow-hidden border border-[#333333]">
+            <div className="h-20 bg-muted rounded overflow-hidden border border-border">
               <img src={data.afterImage} alt="After" className="w-full h-full object-cover" onError={(e) => (e.target as HTMLImageElement).style.display = 'none'} />
             </div>
           )}
@@ -221,38 +221,38 @@ function PricingEditor({ content, onChange }: { content: string, onChange: (cont
   return (
     <div className="space-y-3">
       {plans.map((plan, planIndex) => (
-        <div key={plan.id} className="border border-[#333333] rounded-lg p-3 bg-[#1a1a1a]">
+        <div key={plan.id} className="border border-border rounded-lg p-3 bg-card">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-medium text-gray-300">Plan {planIndex + 1}</span>
-            <Button variant="ghost" size="sm" onClick={() => removePlan(planIndex)} className="text-red-400 hover:text-red-300 hover:bg-red-500/10 h-6 w-6 p-0">
+            <span className="text-xs font-medium text-muted-foreground">Plan {planIndex + 1}</span>
+            <Button variant="ghost" size="sm" onClick={() => removePlan(planIndex)} className="text-destructive hover:text-destructive hover:bg-destructive/10 h-6 w-6 p-0">
               <Trash2 className="h-3 w-3" />
             </Button>
           </div>
           <div className="grid grid-cols-2 gap-2 mb-2">
-            <Input value={plan.name} onChange={(e) => updatePlan(planIndex, 'name', e.target.value)} placeholder="Plan Name" className="h-8 text-sm bg-[#222222] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50" />
-            <Input value={plan.price} onChange={(e) => updatePlan(planIndex, 'price', e.target.value)} placeholder="Price (e.g., ₱50,000)" className="h-8 text-sm bg-[#222222] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50" />
+            <Input value={plan.name} onChange={(e) => updatePlan(planIndex, 'name', e.target.value)} placeholder="Plan Name" className="h-8 text-sm" />
+            <Input value={plan.price} onChange={(e) => updatePlan(planIndex, 'price', e.target.value)} placeholder="Price (e.g., ₱50,000)" className="h-8 text-sm" />
           </div>
           <div className="grid grid-cols-2 gap-2 mb-2">
-            <Input value={plan.period} onChange={(e) => updatePlan(planIndex, 'period', e.target.value)} placeholder="Period (e.g., per month)" className="h-8 text-sm bg-[#222222] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50" />
-            <Input value={plan.buttonText} onChange={(e) => updatePlan(planIndex, 'buttonText', e.target.value)} placeholder="Button Text" className="h-8 text-sm bg-[#222222] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50" />
+            <Input value={plan.period} onChange={(e) => updatePlan(planIndex, 'period', e.target.value)} placeholder="Period (e.g., per month)" className="h-8 text-sm" />
+            <Input value={plan.buttonText} onChange={(e) => updatePlan(planIndex, 'buttonText', e.target.value)} placeholder="Button Text" className="h-8 text-sm" />
           </div>
           <div className="space-y-1">
-            <span className="text-xs text-gray-500 font-mono">Features:</span>
+            <span className="text-xs text-muted-foreground font-mono">Features:</span>
             {plan.features?.map((feature: string, featureIndex: number) => (
               <div key={featureIndex} className="flex items-center gap-1">
-                <Input value={feature} onChange={(e) => updateFeature(planIndex, featureIndex, e.target.value)} placeholder={`Feature ${featureIndex + 1}`} className="h-7 text-sm flex-1 bg-[#222222] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50" />
-                <Button variant="ghost" size="sm" onClick={() => removeFeature(planIndex, featureIndex)} className="text-red-400 hover:text-red-300 hover:bg-red-500/10 h-6 w-6 p-0">
+                <Input value={feature} onChange={(e) => updateFeature(planIndex, featureIndex, e.target.value)} placeholder={`Feature ${featureIndex + 1}`} className="h-7 text-sm flex-1" />
+                <Button variant="ghost" size="sm" onClick={() => removeFeature(planIndex, featureIndex)} className="text-destructive hover:text-destructive hover:bg-destructive/10 h-6 w-6 p-0">
                   <Trash2 className="h-3 w-3" />
                 </Button>
               </div>
             ))}
-            <Button onClick={() => addFeature(planIndex)} variant="outline" size="sm" className="w-full h-7 text-xs border-[#333333] text-gray-400 hover:text-white hover:bg-[#222222] hover:border-[#444444]">
+            <Button onClick={() => addFeature(planIndex)} variant="outline" size="sm" className="w-full h-7 text-xs border-border text-muted-foreground hover:text-foreground hover:bg-accent hover:border-border/80">
               <Plus className="h-3 w-3 mr-1" /> Add Feature
             </Button>
           </div>
         </div>
       ))}
-      <Button onClick={addPlan} variant="outline" size="sm" className="w-full border-[#333333] text-gray-400 hover:text-white hover:bg-[#222222] hover:border-[#444444]">
+      <Button onClick={addPlan} variant="outline" size="sm" className="w-full border-border text-muted-foreground hover:text-foreground hover:bg-accent hover:border-border/80">
         <Plus className="h-4 w-4 mr-1" /> Add Pricing Plan
       </Button>
     </div>
@@ -307,31 +307,31 @@ function ProcessEditor({ content, onChange }: { content: string, onChange: (cont
   
   return (
     <div className="space-y-2">
-      <div className="text-xs text-gray-500 mb-2 font-mono">// Process Steps</div>
+      <div className="text-xs text-muted-foreground mb-2 font-mono">// Process Steps</div>
       {steps.map((step, index) => (
-        <div key={step.id} className="flex items-start gap-2 border border-[#333333] rounded-lg p-2 bg-[#1a1a1a]">
+        <div key={step.id} className="flex items-start gap-2 border border-border rounded-lg p-2 bg-card">
           <div className="flex flex-col gap-0.5">
-            <Button variant="ghost" size="sm" onClick={() => moveStep(index, 'up')} disabled={index === 0} className="h-5 w-5 p-0 text-gray-400 hover:text-white hover:bg-[#222222]">
+            <Button variant="ghost" size="sm" onClick={() => moveStep(index, 'up')} disabled={index === 0} className="h-5 w-5 p-0 text-muted-foreground hover:text-foreground hover:bg-accent">
               <ChevronUp className="h-3 w-3" />
             </Button>
-            <div className="w-6 h-6 rounded-full bg-cyan-600 text-white flex items-center justify-center text-xs font-bold">
+            <div className="w-6 h-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-bold">
               {index + 1}
             </div>
-            <Button variant="ghost" size="sm" onClick={() => moveStep(index, 'down')} disabled={index === steps.length - 1} className="h-5 w-5 p-0 text-gray-400 hover:text-white hover:bg-[#222222]">
+            <Button variant="ghost" size="sm" onClick={() => moveStep(index, 'down')} disabled={index === steps.length - 1} className="h-5 w-5 p-0 text-muted-foreground hover:text-foreground hover:bg-accent">
               <ChevronDown className="h-3 w-3" />
             </Button>
           </div>
           <div className="flex-1 space-y-1">
-            <Input value={step.title} onChange={(e) => updateStep(index, 'title', e.target.value)} placeholder="Step Title" className="h-8 text-sm bg-[#222222] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50" />
-            <Input value={step.description} onChange={(e) => updateStep(index, 'description', e.target.value)} placeholder="Description" className="h-8 text-sm bg-[#222222] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50" />
-            <Input value={step.duration} onChange={(e) => updateStep(index, 'duration', e.target.value)} placeholder="Duration (e.g., 1-2 weeks)" className="h-8 text-sm bg-[#222222] border-[#333333] text-white placeholder:text-gray-600 focus:border-cyan-500/50" />
+            <Input value={step.title} onChange={(e) => updateStep(index, 'title', e.target.value)} placeholder="Step Title" className="h-8 text-sm" />
+            <Input value={step.description} onChange={(e) => updateStep(index, 'description', e.target.value)} placeholder="Description" className="h-8 text-sm" />
+            <Input value={step.duration} onChange={(e) => updateStep(index, 'duration', e.target.value)} placeholder="Duration (e.g., 1-2 weeks)" className="h-8 text-sm" />
           </div>
-          <Button variant="ghost" size="sm" onClick={() => removeStep(index)} className="text-red-400 hover:text-red-300 hover:bg-red-500/10 h-6 w-6 p-0">
+          <Button variant="ghost" size="sm" onClick={() => removeStep(index)} className="text-destructive hover:text-destructive hover:bg-destructive/10 h-6 w-6 p-0">
             <Trash2 className="h-3 w-3" />
           </Button>
         </div>
       ))}
-      <Button onClick={addStep} variant="outline" size="sm" className="w-full border-[#333333] text-gray-400 hover:text-white hover:bg-[#222222] hover:border-[#444444]">
+      <Button onClick={addStep} variant="outline" size="sm" className="w-full border-border text-muted-foreground hover:text-foreground hover:bg-accent hover:border-border/80">
         <Plus className="h-4 w-4 mr-1" /> Add Step
       </Button>
     </div>
@@ -388,11 +388,11 @@ function LocationEditor({ content, onChange }: { content: string, onChange: (con
       </div>
       <Input value={data.hours} onChange={(e) => updateField('hours', e.target.value)} placeholder="Business Hours (e.g., Mon-Fri 9AM-6PM)" className="h-9 text-sm" />
       <div className="space-y-1">
-        <label className="text-xs text-stone-500">Google Maps Embed URL (optional)</label>
+        <label className="text-xs text-muted-foreground">Google Maps Embed URL (optional)</label>
         <Input value={data.mapUrl} onChange={(e) => updateField('mapUrl', e.target.value)} placeholder="https://www.google.com/maps/embed..." className="h-9 text-sm" />
       </div>
       <div className="space-y-1">
-        <label className="text-xs text-stone-500">Directions URL (optional)</label>
+        <label className="text-xs text-muted-foreground">Directions URL (optional)</label>
         <Input value={data.directionsUrl} onChange={(e) => updateField('directionsUrl', e.target.value)} placeholder="https://maps.google.com/directions..." className="h-9 text-sm" />
       </div>
     </div>
@@ -434,10 +434,10 @@ function DownloadsEditor({ content, onChange }: { content: string, onChange: (co
   return (
     <div className="space-y-2">
       {files.map((file, index) => (
-        <div key={file.id} className="border rounded p-3 bg-stone-50">
+        <div key={file.id} className="border rounded p-3 bg-muted/50">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-medium">File {index + 1}</span>
-            <Button variant="ghost" size="sm" onClick={() => removeFile(index)} className="text-red-500 h-6 w-6 p-0">
+            <span className="text-xs font-medium text-muted-foreground">File {index + 1}</span>
+            <Button variant="ghost" size="sm" onClick={() => removeFile(index)} className="text-destructive h-6 w-6 p-0">
               <Trash2 className="h-3 w-3" />
             </Button>
           </div>
@@ -449,7 +449,7 @@ function DownloadsEditor({ content, onChange }: { content: string, onChange: (co
               <select 
                 value={file.fileType} 
                 onChange={(e) => updateFile(index, 'fileType', e.target.value)}
-                className="h-8 text-sm border rounded px-2"
+                className="h-8 text-sm border border-input rounded px-2 bg-background"
               >
                 <option value="pdf">PDF</option>
                 <option value="doc">Word</option>
@@ -520,13 +520,13 @@ function SocialLinksEditor({ content, onChange }: { content: string, onChange: (
           <select 
             value={link.platform} 
             onChange={(e) => updateLink(index, 'platform', e.target.value)}
-            className="h-9 text-sm border rounded px-2 w-28"
+            className="h-9 text-sm border border-input rounded px-2 w-28 bg-background"
           >
             {platforms.map(p => <option key={p.value} value={p.value}>{p.label}</option>)}
           </select>
           <Input value={link.label} onChange={(e) => updateLink(index, 'label', e.target.value)} placeholder="Label" className="h-9 text-sm flex-1" />
           <Input value={link.url} onChange={(e) => updateLink(index, 'url', e.target.value)} placeholder="https://..." className="h-9 text-sm flex-1" />
-          <Button variant="ghost" size="sm" onClick={() => removeLink(index)} className="text-red-500 h-8 w-8 p-0">
+          <Button variant="ghost" size="sm" onClick={() => removeLink(index)} className="text-destructive h-8 w-8 p-0">
             <Trash2 className="h-4 w-4" />
           </Button>
         </div>
@@ -580,18 +580,18 @@ function AwardsEditor({ content, onChange }: { content: string, onChange: (conte
   return (
     <div className="space-y-2">
       {awards.map((award, index) => (
-        <div key={award.id} className="border rounded p-3 bg-stone-50">
+        <div key={award.id} className="border rounded p-3 bg-muted/50">
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-2">
               <select 
                 value={award.icon} 
                 onChange={(e) => updateAward(index, 'icon', e.target.value)}
-                className="h-8 text-sm border rounded px-1"
+                className="h-8 text-sm border border-input rounded px-1 bg-background"
               >
                 {icons.map(i => <option key={i.value} value={i.value}>{i.label}</option>)}
               </select>
             </div>
-            <Button variant="ghost" size="sm" onClick={() => removeAward(index)} className="text-red-500 h-6 w-6 p-0">
+            <Button variant="ghost" size="sm" onClick={() => removeAward(index)} className="text-destructive h-6 w-6 p-0">
               <Trash2 className="h-3 w-3" />
             </Button>
           </div>
@@ -649,10 +649,10 @@ function PartnersEditor({ content, onChange }: { content: string, onChange: (con
   return (
     <div className="space-y-2">
       {partners.map((partner, index) => (
-        <div key={partner.id} className="border rounded p-3 bg-stone-50">
+        <div key={partner.id} className="border rounded p-3 bg-muted/50">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-medium">Partner {index + 1}</span>
-            <Button variant="ghost" size="sm" onClick={() => removePartner(index)} className="text-red-500 h-6 w-6 p-0">
+            <span className="text-xs font-medium text-muted-foreground">Partner {index + 1}</span>
+            <Button variant="ghost" size="sm" onClick={() => removePartner(index)} className="text-destructive h-6 w-6 p-0">
               <Trash2 className="h-3 w-3" />
             </Button>
           </div>
@@ -661,7 +661,7 @@ function PartnersEditor({ content, onChange }: { content: string, onChange: (con
             <select 
               value={partner.category} 
               onChange={(e) => updatePartner(index, 'category', e.target.value)}
-              className="h-8 text-sm border rounded px-2 w-full"
+              className="h-8 text-sm border border-input rounded px-2 w-full bg-background"
             >
               {categories.map(c => <option key={c} value={c}>{c}</option>)}
             </select>
@@ -773,7 +773,7 @@ function ContactEditor({ content, onChange }: { content: string, onChange: (cont
       </div>
       
       <div className="border-t pt-3">
-        <div className="text-sm font-medium text-stone-700 mb-2">Form Fields</div>
+        <div className="text-sm font-medium mb-2">Form Fields</div>
         <div className="space-y-2">
           <label className="flex items-center gap-2">
             <input type="checkbox" checked={data.showName} onChange={() => toggleField('showName')} className="rounded" />
@@ -851,14 +851,14 @@ function VideoEditor({ content, onChange }: { content: string, onChange: (conten
   return (
     <div className="space-y-4">
       <div className="space-y-1.5">
-        <label className="text-xs font-medium text-stone-600">Video URL</label>
+        <label className="text-xs font-medium text-muted-foreground">Video URL</label>
         <Input 
           value={data.videoUrl} 
           onChange={(e) => updateField('videoUrl', e.target.value)} 
           placeholder="Paste YouTube or Vimeo URL (e.g., https://youtube.com/watch?v=...)"
           className="h-9 text-sm"
         />
-        <div className="text-xs text-stone-400">Supports: YouTube, Vimeo, or direct video file URLs</div>
+        <div className="text-xs text-muted-foreground">Supports: YouTube, Vimeo, or direct video file URLs</div>
       </div>
       
       {videoInfo && (
@@ -869,8 +869,8 @@ function VideoEditor({ content, onChange }: { content: string, onChange: (conten
       
       <Input value={data.title} onChange={(e) => updateField('title', e.target.value)} placeholder="Video Title (optional)" className="h-9 text-sm" />
       
-      <div className="border-t pt-3">
-        <div className="text-sm font-medium text-stone-700 mb-2">Video Options</div>
+      <div className="border-t border-border pt-3">
+        <div className="text-sm font-medium mb-2">Video Options</div>
         <div className="grid grid-cols-2 gap-2">
           <label className="flex items-center gap-2 text-sm">
             <input type="checkbox" checked={data.autoplay} onChange={() => updateField('autoplay', !data.autoplay)} className="rounded" />
@@ -886,11 +886,11 @@ function VideoEditor({ content, onChange }: { content: string, onChange: (conten
           </label>
         </div>
         <div className="mt-2">
-          <label className="text-xs text-stone-500">Aspect Ratio</label>
+          <label className="text-xs text-muted-foreground">Aspect Ratio</label>
           <select 
             value={data.aspectRatio} 
             onChange={(e) => updateField('aspectRatio', e.target.value)}
-            className="w-full h-8 text-sm border rounded px-2 mt-1"
+            className="w-full h-8 text-sm border border-input rounded px-2 mt-1 bg-background"
           >
             <option value="16:9">16:9 (Widescreen)</option>
             <option value="4:3">4:3 (Standard)</option>
@@ -952,9 +952,9 @@ function StatsEditor({ content, onChange }: { content: string, onChange: (conten
   
   return (
     <div className="space-y-3">
-      <div className="text-xs text-stone-500 mb-2">Statistics/Numbers</div>
+      <div className="text-xs text-muted-foreground mb-2">Statistics/Numbers</div>
       {stats.map((stat, index) => (
-        <div key={stat.id} className="flex items-start gap-2 border rounded p-2 bg-stone-50">
+        <div key={stat.id} className="flex items-start gap-2 border border-border rounded p-2 bg-muted/50">
           <div className="flex flex-col gap-0.5">
             <Button variant="ghost" size="sm" onClick={() => moveStat(index, 'up')} disabled={index === 0} className="h-5 w-5 p-0">
               <ChevronUp className="h-3 w-3" />
@@ -968,7 +968,7 @@ function StatsEditor({ content, onChange }: { content: string, onChange: (conten
             <Input value={stat.suffix} onChange={(e) => updateStat(index, 'suffix', e.target.value)} placeholder="Suffix (+, %, K)" className="h-8 text-sm" />
             <Input value={stat.label} onChange={(e) => updateStat(index, 'label', e.target.value)} placeholder="Label" className="h-8 text-sm" />
           </div>
-          <Button variant="ghost" size="sm" onClick={() => removeStat(index)} className="text-red-500 h-6 w-6 p-0">
+          <Button variant="ghost" size="sm" onClick={() => removeStat(index)} className="text-destructive h-6 w-6 p-0">
             <Trash2 className="h-3 w-3" />
           </Button>
         </div>
@@ -1028,9 +1028,9 @@ function FeaturesEditor({ content, onChange }: { content: string, onChange: (con
   
   return (
     <div className="space-y-3">
-      <div className="text-xs text-stone-500 mb-2">Feature Items</div>
+      <div className="text-xs text-muted-foreground mb-2">Feature Items</div>
       {features.map((feature, index) => (
-        <div key={feature.id} className="flex items-start gap-2 border rounded p-2 bg-stone-50">
+        <div key={feature.id} className="flex items-start gap-2 border border-border rounded p-2 bg-muted/50">
           <div className="flex flex-col gap-0.5">
             <Button variant="ghost" size="sm" onClick={() => moveFeature(index, 'up')} disabled={index === 0} className="h-5 w-5 p-0">
               <ChevronUp className="h-3 w-3" />
@@ -1046,7 +1046,7 @@ function FeaturesEditor({ content, onChange }: { content: string, onChange: (con
             </div>
             <Input value={feature.description} onChange={(e) => updateFeature(index, 'description', e.target.value)} placeholder="Description" className="h-8 text-sm" />
           </div>
-          <Button variant="ghost" size="sm" onClick={() => removeFeature(index)} className="text-red-500 h-6 w-6 p-0">
+          <Button variant="ghost" size="sm" onClick={() => removeFeature(index)} className="text-destructive h-6 w-6 p-0">
             <Trash2 className="h-3 w-3" />
           </Button>
         </div>
@@ -1105,9 +1105,9 @@ function FAQEditor({ content, onChange }: { content: string, onChange: (content:
   
   return (
     <div className="space-y-3">
-      <div className="text-xs text-stone-500 mb-2">FAQ Items</div>
+      <div className="text-xs text-muted-foreground mb-2">FAQ Items</div>
       {faqs.map((faq, index) => (
-        <div key={faq.id} className="border rounded p-2 bg-stone-50">
+        <div key={faq.id} className="border border-border rounded p-2 bg-muted/50">
           <div className="flex items-center gap-2 mb-2">
             <div className="flex flex-col gap-0.5">
               <Button variant="ghost" size="sm" onClick={() => moveFaq(index, 'up')} disabled={index === 0} className="h-5 w-5 p-0">
@@ -1117,8 +1117,8 @@ function FAQEditor({ content, onChange }: { content: string, onChange: (content:
                 <ChevronDown className="h-3 w-3" />
               </Button>
             </div>
-            <div className="flex-1 text-sm font-medium text-stone-600">Q{index + 1}</div>
-            <Button variant="ghost" size="sm" onClick={() => removeFaq(index)} className="text-red-500 h-6 w-6 p-0">
+            <div className="flex-1 text-sm font-medium text-muted-foreground">Q{index + 1}</div>
+            <Button variant="ghost" size="sm" onClick={() => removeFaq(index)} className="text-destructive h-6 w-6 p-0">
               <Trash2 className="h-3 w-3" />
             </Button>
           </div>
@@ -1129,7 +1129,7 @@ function FAQEditor({ content, onChange }: { content: string, onChange: (content:
               onChange={(e) => updateFaq(index, 'answer', e.target.value)} 
               placeholder="Answer" 
               rows={2}
-              className="w-full px-2 py-1 border rounded text-sm"
+              className="w-full px-2 py-1 border border-input rounded text-sm bg-background"
             />
           </div>
         </div>
@@ -1216,9 +1216,9 @@ function ComparisonEditor({ content, onChange }: { content: string, onChange: (c
       </div>
       
       <div className="space-y-2">
-        <div className="text-xs text-stone-500">Features to Compare</div>
+        <div className="text-xs text-muted-foreground">Features to Compare</div>
         {data.features.map((feature, index) => (
-          <div key={feature.id} className="flex items-center gap-2 border rounded p-2 bg-stone-50">
+          <div key={feature.id} className="flex items-center gap-2 border border-border rounded p-2 bg-muted/50">
             <div className="flex flex-col gap-0.5">
               <Button variant="ghost" size="sm" onClick={() => moveFeature(index, 'up')} disabled={index === 0} className="h-5 w-5 p-0">
                 <ChevronUp className="h-3 w-3" />
@@ -1236,7 +1236,7 @@ function ComparisonEditor({ content, onChange }: { content: string, onChange: (c
               <input type="checkbox" checked={feature.option2} onChange={(e) => updateFeature(index, 'option2', e.target.checked)} className="rounded" />
               {data.option2Name.slice(0, 8)}...
             </label>
-            <Button variant="ghost" size="sm" onClick={() => removeFeature(index)} className="text-red-500 h-6 w-6 p-0">
+            <Button variant="ghost" size="sm" onClick={() => removeFeature(index)} className="text-destructive h-6 w-6 p-0">
               <Trash2 className="h-3 w-3" />
             </Button>
           </div>
@@ -1286,9 +1286,9 @@ function HeroEditor({ content, onChange }: { content: string, onChange: (content
   
   return (
     <div className="space-y-4">
-      <div className="p-3 bg-amber-50 rounded border border-amber-200">
-        <div className="text-sm text-amber-800 font-medium mb-1">Hero Banner Settings</div>
-        <div className="text-xs text-amber-600">Uses Section Title as main heading. Set Image URL below.</div>
+      <div className="p-3 bg-accent rounded border border-border">
+        <div className="text-sm font-medium mb-1">Hero Banner Settings</div>
+        <div className="text-xs text-muted-foreground">Uses Section Title as main heading. Set Image URL below.</div>
       </div>
       
       <div className="space-y-2">
@@ -1310,7 +1310,7 @@ function HeroEditor({ content, onChange }: { content: string, onChange: (content
             Show scroll down indicator
           </label>
           <div>
-            <label className="text-xs text-stone-500">Overlay Opacity: {data.overlayOpacity}%</label>
+            <label className="text-xs text-muted-foreground">Overlay Opacity: {data.overlayOpacity}%</label>
             <input 
               type="range" 
               min="0" 
@@ -1419,26 +1419,26 @@ function HeroSliderEditor({ content, onChange }: { content: string, onChange: (c
   
   return (
     <div className="space-y-4">
-      <div className="p-3 bg-amber-50 rounded border border-amber-200">
-        <div className="text-sm text-amber-800 font-medium mb-1">Hero Slider Settings</div>
-        <div className="text-xs text-amber-600">Multiple slides with customizable content and animations</div>
+      <div className="p-3 bg-accent rounded border border-border">
+        <div className="text-sm font-medium mb-1">Hero Slider Settings</div>
+        <div className="text-xs text-muted-foreground">Multiple slides with customizable content and animations</div>
       </div>
       
       {/* Slider Settings */}
       <div className="space-y-3 border-b pb-3">
         <div className="grid grid-cols-2 gap-2">
           <div>
-            <label className="text-xs text-stone-500">Animation Type</label>
+            <label className="text-xs text-muted-foreground">Animation Type</label>
             <select 
               value={data.sliderType} 
               onChange={(e) => updateField('sliderType', e.target.value)}
-              className="w-full h-8 text-sm border rounded px-2"
+              className="w-full h-8 text-sm border border-input rounded px-2 bg-background"
             >
               {sliderTypes.map(t => <option key={t.value} value={t.value}>{t.label}</option>)}
             </select>
           </div>
           <div>
-            <label className="text-xs text-stone-500">Auto-play Delay (seconds)</label>
+            <label className="text-xs text-muted-foreground">Auto-play Delay (seconds)</label>
             <Input 
               type="number" 
               value={data.autoPlayDelay} 
@@ -1468,9 +1468,9 @@ function HeroSliderEditor({ content, onChange }: { content: string, onChange: (c
       
       {/* Slides */}
       <div className="space-y-2">
-        <div className="text-sm font-medium text-stone-700">Slides ({data.slides.length})</div>
+        <div className="text-sm font-medium">Slides ({data.slides.length})</div>
         {data.slides.map((slide, index) => (
-          <div key={slide.id} className="border rounded p-3 bg-stone-50">
+          <div key={slide.id} className="border border-border rounded p-3 bg-muted/50">
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-1">
                 <Button variant="ghost" size="sm" onClick={() => moveSlide(index, 'up')} disabled={index === 0} className="h-5 w-5 p-0">
@@ -1481,7 +1481,7 @@ function HeroSliderEditor({ content, onChange }: { content: string, onChange: (c
                   <ChevronDown className="h-3 w-3" />
                 </Button>
               </div>
-              <Button variant="ghost" size="sm" onClick={() => removeSlide(index)} className="text-red-500 h-6 w-6 p-0">
+              <Button variant="ghost" size="sm" onClick={() => removeSlide(index)} className="text-destructive h-6 w-6 p-0">
                 <Trash2 className="h-3 w-3" />
               </Button>
             </div>
@@ -1494,7 +1494,7 @@ function HeroSliderEditor({ content, onChange }: { content: string, onChange: (c
                 className="h-8 text-sm"
               />
               {slide.image && (
-                <div className="h-16 bg-stone-200 rounded overflow-hidden">
+                <div className="h-16 bg-muted rounded overflow-hidden">
                   <img src={slide.image} alt="" className="w-full h-full object-cover" onError={(e) => (e.target as HTMLImageElement).style.display = 'none'} />
                 </div>
               )}
@@ -1505,11 +1505,11 @@ function HeroSliderEditor({ content, onChange }: { content: string, onChange: (c
                 <Input value={slide.buttonLink} onChange={(e) => updateSlide(index, 'buttonLink', e.target.value)} placeholder="Button Link" className="h-8 text-sm" />
               </div>
               <div>
-                <label className="text-xs text-stone-500">Button Position</label>
+                <label className="text-xs text-muted-foreground">Button Position</label>
                 <select 
                   value={slide.buttonPosition} 
                   onChange={(e) => updateSlide(index, 'buttonPosition', e.target.value)}
-                  className="w-full h-8 text-sm border rounded px-2"
+                  className="w-full h-8 text-sm border border-input rounded px-2 bg-background"
                 >
                   {buttonPositions.map(p => <option key={p.value} value={p.value}>{p.label}</option>)}
                 </select>
@@ -1599,13 +1599,13 @@ function VideoCollectionEditor({ content, onChange }: { content: string, onChang
   return (
     <div className="space-y-4">
       {/* Layout Settings */}
-      <div className="space-y-2 border-b pb-3">
+      <div className="space-y-2 border-b border-border pb-3">
         <div className="flex items-center gap-2">
-          <label className="text-sm font-medium text-stone-700">Layout:</label>
+          <label className="text-sm font-medium">Layout:</label>
           <select 
             value={data.layout} 
             onChange={(e) => updateField('layout', e.target.value)}
-            className="h-8 text-sm border rounded px-2"
+            className="h-8 text-sm border border-input rounded px-2 bg-background"
           >
             {layouts.map(l => <option key={l.value} value={l.value}>{l.label}</option>)}
           </select>
@@ -1613,11 +1613,11 @@ function VideoCollectionEditor({ content, onChange }: { content: string, onChang
         
         {data.layout === "grid" && (
           <div className="flex items-center gap-2">
-            <label className="text-xs text-stone-500">Columns:</label>
+            <label className="text-xs text-muted-foreground">Columns:</label>
             <select 
               value={data.columns} 
               onChange={(e) => updateField('columns', parseInt(e.target.value))}
-              className="h-7 text-sm border rounded px-2"
+              className="h-7 text-sm border border-input rounded px-2 bg-background"
             >
               <option value={1}>1</option>
               <option value={2}>2</option>
@@ -1630,20 +1630,20 @@ function VideoCollectionEditor({ content, onChange }: { content: string, onChang
       
       {/* Videos */}
       <div className="space-y-2">
-        <div className="text-sm font-medium text-stone-700">Videos ({data.videos.length})</div>
+        <div className="text-sm font-medium">Videos ({data.videos.length})</div>
         {data.videos.map((video, index) => (
-          <div key={video.id} className="border rounded p-2 bg-stone-50">
+          <div key={video.id} className="border border-border rounded p-2 bg-muted/50">
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-1">
                 <Button variant="ghost" size="sm" onClick={() => moveVideo(index, 'up')} disabled={index === 0} className="h-5 w-5 p-0">
                   <ChevronUp className="h-3 w-3" />
                 </Button>
-                <span className="text-xs font-medium">Video {index + 1}</span>
+                <span className="text-xs font-medium text-muted-foreground">Video {index + 1}</span>
                 <Button variant="ghost" size="sm" onClick={() => moveVideo(index, 'down')} disabled={index === data.videos.length - 1} className="h-5 w-5 p-0">
                   <ChevronDown className="h-3 w-3" />
                 </Button>
               </div>
-              <Button variant="ghost" size="sm" onClick={() => removeVideo(index)} className="text-red-500 h-6 w-6 p-0">
+              <Button variant="ghost" size="sm" onClick={() => removeVideo(index)} className="text-destructive h-6 w-6 p-0">
                 <Trash2 className="h-3 w-3" />
               </Button>
             </div>
@@ -1717,7 +1717,7 @@ function LayoutSelector({ content, onChange, itemType, showItemCount = true }: L
     <div className="space-y-4">
       {/* Layout Selection */}
       <div className="space-y-2">
-        <label className="text-sm font-medium text-stone-700">Display Layout</label>
+        <label className="text-sm font-medium">Display Layout</label>
         <div className="grid grid-cols-4 gap-2">
           {layouts.map((layout) => (
             <button
@@ -1725,8 +1725,8 @@ function LayoutSelector({ content, onChange, itemType, showItemCount = true }: L
               onClick={() => updateField('layout', layout.value)}
               className={`p-2 rounded border text-xs font-medium transition-colors ${
                 data.layout === layout.value 
-                  ? "bg-amber-100 border-amber-500 text-amber-800" 
-                  : "bg-white border-stone-200 text-stone-600 hover:border-amber-300"
+                  ? "bg-primary border-primary text-primary-foreground" 
+                  : "bg-background border-border text-muted-foreground hover:border-primary/50"
               }`}
             >
               <div className="text-lg mb-1">{layout.icon}</div>
@@ -1740,11 +1740,11 @@ function LayoutSelector({ content, onChange, itemType, showItemCount = true }: L
       <div className="space-y-3 border-t pt-3">
         {(data.layout === "grid" || data.layout === "masonry") && (
           <div className="flex items-center gap-3">
-            <label className="text-xs text-stone-500 w-24">Columns:</label>
+            <label className="text-xs text-muted-foreground w-24">Columns:</label>
             <select 
               value={data.columns} 
               onChange={(e) => updateField('columns', parseInt(e.target.value))}
-              className="h-8 text-sm border rounded px-2 flex-1"
+              className="h-8 text-sm border border-input rounded px-2 flex-1 bg-background"
             >
               <option value={1}>1 Column</option>
               <option value={2}>2 Columns</option>
@@ -1757,7 +1757,7 @@ function LayoutSelector({ content, onChange, itemType, showItemCount = true }: L
         
         {showItemCount && (
           <div className="flex items-center gap-3">
-            <label className="text-xs text-stone-500 w-24">Items per page:</label>
+            <label className="text-xs text-muted-foreground w-24">Items per page:</label>
             <Input 
               type="number" 
               value={data.itemsPerPage} 
@@ -1783,7 +1783,7 @@ function LayoutSelector({ content, onChange, itemType, showItemCount = true }: L
       </div>
       
       {/* Preview description */}
-      <div className="p-2 bg-stone-100 rounded text-xs text-stone-600">
+      <div className="p-2 bg-muted rounded text-xs text-muted-foreground">
         {data.layout === "grid" && `Display ${itemType} in a ${data.columns}-column grid layout`}
         {data.layout === "masonry" && `Display ${itemType} in a Pinterest-style masonry layout`}
         {data.layout === "list" && `Display ${itemType} as a vertical list`}
@@ -1882,8 +1882,8 @@ function AdvancedGalleryEditor({ content, onChange }: { content: string, onChang
               onClick={() => updateField('layout', layout.value)}
               className={`p-2 rounded border text-xs font-medium transition-colors ${
                 data.layout === layout.value 
-                  ? "bg-amber-100 border-amber-500 text-amber-800" 
-                  : "bg-white border-stone-200 text-stone-600 hover:border-amber-300"
+                  ? "bg-primary border-primary text-primary-foreground" 
+                  : "bg-background border-border text-muted-foreground hover:border-primary/50"
               }`}
             >
               <div className="text-lg mb-1">{layout.icon}</div>
@@ -1894,11 +1894,11 @@ function AdvancedGalleryEditor({ content, onChange }: { content: string, onChang
         
         {(data.layout === "grid" || data.layout === "masonry") && (
           <div className="flex items-center gap-3">
-            <label className="text-xs text-stone-500">Columns:</label>
+            <label className="text-xs text-muted-foreground">Columns:</label>
             <select 
               value={data.columns} 
               onChange={(e) => updateField('columns', parseInt(e.target.value))}
-              className="h-7 text-sm border rounded px-2"
+              className="h-7 text-sm border border-input rounded px-2 bg-background"
             >
               <option value={2}>2</option>
               <option value={3}>3</option>
@@ -1916,27 +1916,27 @@ function AdvancedGalleryEditor({ content, onChange }: { content: string, onChang
       
       {/* Images */}
       <div className="space-y-2">
-        <div className="text-sm font-medium text-stone-700">Images ({data.images.length})</div>
+        <div className="text-sm font-medium">Images ({data.images.length})</div>
         <div className="grid grid-cols-3 gap-1">
           {data.images.map((image, index) => (
             <div key={image.id} className="relative group">
-              <div className="aspect-square bg-stone-100 rounded overflow-hidden">
+              <div className="aspect-square bg-muted rounded overflow-hidden">
                 {image.url ? (
                   <img src={image.url} alt="" className="w-full h-full object-cover" onError={(e) => (e.target as HTMLImageElement).style.display = 'none'} />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center text-stone-400 text-xs">
+                  <div className="w-full h-full flex items-center justify-center text-muted-foreground text-xs">
                     No image
                   </div>
                 )}
               </div>
-              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-1">
-                <Button variant="ghost" size="sm" onClick={() => moveImage(index, 'up')} disabled={index === 0} className="h-6 w-6 p-0 text-white">
+              <div className="absolute inset-0 bg-foreground/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-1">
+                <Button variant="ghost" size="sm" onClick={() => moveImage(index, 'up')} disabled={index === 0} className="h-6 w-6 p-0 text-background">
                   <ChevronUp className="h-3 w-3" />
                 </Button>
-                <Button variant="ghost" size="sm" onClick={() => moveImage(index, 'down')} disabled={index === data.images.length - 1} className="h-6 w-6 p-0 text-white">
+                <Button variant="ghost" size="sm" onClick={() => moveImage(index, 'down')} disabled={index === data.images.length - 1} className="h-6 w-6 p-0 text-background">
                   <ChevronDown className="h-3 w-3" />
                 </Button>
-                <Button variant="ghost" size="sm" onClick={() => removeImage(index)} className="h-6 w-6 p-0 text-red-400">
+                <Button variant="ghost" size="sm" onClick={() => removeImage(index)} className="h-6 w-6 p-0 text-destructive">
                   <Trash2 className="h-3 w-3" />
                 </Button>
               </div>
@@ -1944,7 +1944,7 @@ function AdvancedGalleryEditor({ content, onChange }: { content: string, onChang
           ))}
           <button 
             onClick={addImage}
-            className="aspect-square border-2 border-dashed border-stone-300 rounded flex flex-col items-center justify-center text-stone-400 hover:border-amber-500 hover:text-amber-600 transition-colors"
+            className="aspect-square border-2 border-dashed border-border rounded flex flex-col items-center justify-center text-muted-foreground hover:border-primary hover:text-primary transition-colors"
           >
             <Plus className="h-5 w-5 mb-1" />
             <span className="text-xs">Add Image</span>
@@ -1954,10 +1954,10 @@ function AdvancedGalleryEditor({ content, onChange }: { content: string, onChang
         {/* Edit selected image details */}
         {data.images.length > 0 && (
           <div className="space-y-2 mt-3">
-            <div className="text-xs font-medium text-stone-600">Edit Image Details:</div>
+            <div className="text-xs font-medium text-muted-foreground">Edit Image Details:</div>
             {data.images.map((image, index) => (
               <div key={`edit-${image.id}`} className="flex items-center gap-2 text-sm">
-                <span className="text-xs text-stone-400 w-6">#{index + 1}</span>
+                <span className="text-xs text-muted-foreground w-6">#{index + 1}</span>
                 <Input 
                   value={image.url} 
                   onChange={(e) => updateImage(index, 'url', e.target.value)} 
@@ -2055,13 +2055,13 @@ function ClientLogosEditor({ content, onChange }: { content: string, onChange: (
   return (
     <div className="space-y-4">
       {/* Layout Settings */}
-      <div className="space-y-3 border-b pb-3">
+      <div className="space-y-3 border-b border-border pb-3">
         <div className="flex items-center gap-2">
-          <label className="text-sm font-medium text-stone-700">Layout:</label>
+          <label className="text-sm font-medium">Layout:</label>
           <select 
             value={data.layout} 
             onChange={(e) => updateField('layout', e.target.value)}
-            className="h-8 text-sm border rounded px-2"
+            className="h-8 text-sm border border-input rounded px-2 bg-background"
           >
             {layouts.map(l => <option key={l.value} value={l.value}>{l.label}</option>)}
           </select>
@@ -2069,11 +2069,11 @@ function ClientLogosEditor({ content, onChange }: { content: string, onChange: (
         
         {data.layout === "grid" && (
           <div className="flex items-center gap-2">
-            <label className="text-xs text-stone-500">Columns:</label>
+            <label className="text-xs text-muted-foreground">Columns:</label>
             <select 
               value={data.columns} 
               onChange={(e) => updateField('columns', parseInt(e.target.value))}
-              className="h-7 text-sm border rounded px-2"
+              className="h-7 text-sm border border-input rounded px-2 bg-background"
             >
               <option value={2}>2</option>
               <option value={3}>3</option>
@@ -2092,11 +2092,11 @@ function ClientLogosEditor({ content, onChange }: { content: string, onChange: (
       
       {/* Logos */}
       <div className="space-y-2">
-        <div className="text-sm font-medium text-stone-700">Client Logos ({data.logos.length})</div>
+        <div className="text-sm font-medium">Client Logos ({data.logos.length})</div>
         <div className="grid grid-cols-4 gap-2">
           {data.logos.map((logo, index) => (
-            <div key={logo.id} className="relative group border rounded p-2 bg-white">
-              <div className="aspect-[3/2] bg-stone-50 rounded overflow-hidden flex items-center justify-center">
+            <div key={logo.id} className="relative group border border-border rounded p-2 bg-card">
+              <div className="aspect-[3/2] bg-muted rounded overflow-hidden flex items-center justify-center">
                 {logo.url ? (
                   <img 
                     src={logo.url} 
@@ -2105,20 +2105,20 @@ function ClientLogosEditor({ content, onChange }: { content: string, onChange: (
                     onError={(e) => (e.target as HTMLImageElement).style.display = 'none'} 
                   />
                 ) : (
-                  <span className="text-stone-300 text-xs">No logo</span>
+                  <span className="text-muted-foreground/50 text-xs">No logo</span>
                 )}
               </div>
               <div className="absolute top-1 right-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                <Button variant="ghost" size="sm" onClick={() => removeLogo(index)} className="text-red-500 h-5 w-5 p-0 bg-white">
+                <Button variant="ghost" size="sm" onClick={() => removeLogo(index)} className="text-destructive h-5 w-5 p-0 bg-background">
                   <Trash2 className="h-3 w-3" />
                 </Button>
               </div>
-              <div className="mt-1 text-xs text-center truncate">{logo.name || `Logo ${index + 1}`}</div>
+              <div className="mt-1 text-xs text-center truncate text-muted-foreground">{logo.name || `Logo ${index + 1}`}</div>
             </div>
           ))}
           <button 
             onClick={addLogo}
-            className="aspect-[3/2] border-2 border-dashed border-stone-300 rounded flex flex-col items-center justify-center text-stone-400 hover:border-amber-500 hover:text-amber-600 transition-colors"
+            className="aspect-[3/2] border-2 border-dashed border-border rounded flex flex-col items-center justify-center text-muted-foreground hover:border-primary hover:text-primary transition-colors"
           >
             <Plus className="h-5 w-5" />
           </button>
@@ -2127,7 +2127,7 @@ function ClientLogosEditor({ content, onChange }: { content: string, onChange: (
         {/* Edit logo details */}
         {data.logos.length > 0 && (
           <div className="space-y-2 mt-3">
-            <div className="text-xs font-medium text-stone-600">Edit Logo Details:</div>
+            <div className="text-xs font-medium text-muted-foreground">Edit Logo Details:</div>
             {data.logos.map((logo, index) => (
               <div key={`edit-${logo.id}`} className="grid grid-cols-3 gap-2 text-sm">
                 <Input 
@@ -2161,15 +2161,15 @@ function ClientLogosEditor({ content, onChange }: { content: string, onChange: (
 function TextEditor({ content, onChange }: { content: string, onChange: (content: string) => void }) {
   return (
     <div className="space-y-2">
-      <div className="text-xs text-stone-500">Text Content (supports basic HTML)</div>
+      <div className="text-xs text-muted-foreground">Text Content (supports basic HTML)</div>
       <textarea
         value={content}
         onChange={(e) => onChange(e.target.value)}
         rows={10}
-        className="w-full px-3 py-2 border rounded-md text-sm bg-stone-50 focus:bg-white transition-colors"
+        className="w-full px-3 py-2 border border-input rounded-md text-sm bg-muted/50 focus:bg-background transition-colors"
         placeholder="Enter your text content here...&#10;&#10;You can use basic formatting like:&#10;- <strong>bold</strong>&#10;- <em>italic</em>&#10;- <br/> for line breaks&#10;- <a href='...'>links</a>"
       />
-      <div className="text-xs text-stone-400">Tip: Use HTML tags for formatting. Text widgets display content directly.</div>
+      <div className="text-xs text-muted-foreground">Tip: Use HTML tags for formatting. Text widgets display content directly.</div>
     </div>
   )
 }
@@ -2251,14 +2251,14 @@ export function ContentEditor({ type, content, onChange }: ContentEditorProps) {
       // Default textarea editor for other types
       return (
         <div className="space-y-2">
-          <div className="text-xs text-stone-500">
+          <div className="text-xs text-muted-foreground">
             Content Data (JSON format)
           </div>
           <textarea
             value={content}
             onChange={(e) => onChange(e.target.value)}
             rows={8}
-            className="w-full px-3 py-2 border rounded-md text-sm font-mono bg-stone-50 focus:bg-white transition-colors"
+            className="w-full px-3 py-2 border border-input rounded-md text-sm font-mono bg-muted/50 focus:bg-background transition-colors"
             placeholder="Enter widget content data..."
           />
         </div>

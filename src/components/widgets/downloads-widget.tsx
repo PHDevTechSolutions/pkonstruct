@@ -78,24 +78,24 @@ export function DownloadsWidget({ section }: DownloadsWidgetProps) {
   const contentText = typeof section.content === 'string' ? section.content : section.content?.text || ''
 
   return (
-    <section className="py-16 bg-stone-50">
+    <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
-        {section.title && <h2 className="text-3xl font-bold mb-4 text-center">{section.title}</h2>}
-        {contentText && <p className="text-stone-600 text-center max-w-2xl mx-auto mb-12">{contentText}</p>}
+        {section.title && <h2 className="text-3xl font-bold mb-4 text-center text-foreground">{section.title}</h2>}
+        {contentText && <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">{contentText}</p>}
         
         <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
           {files.map((file) => {
             const IconComponent = iconMap[file.fileType]
             return (
-              <Card key={file.id} className="hover:shadow-md transition-shadow">
+              <Card key={file.id} className="hover:shadow-md transition-shadow bg-card">
                 <CardContent className="p-4 flex items-center gap-4">
                   <div className={`w-12 h-12 rounded-lg flex items-center justify-center shrink-0 ${typeColors[file.fileType]}`}>
                     <IconComponent className="h-6 w-6" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-semibold truncate">{file.title}</h3>
-                    <p className="text-stone-500 text-sm">{file.description}</p>
-                    <span className="text-xs text-stone-400">{file.fileSize}</span>
+                    <h3 className="font-semibold truncate text-card-foreground">{file.title}</h3>
+                    <p className="text-muted-foreground text-sm">{file.description}</p>
+                    <span className="text-xs text-muted-foreground/70">{file.fileSize}</span>
                   </div>
                   <Button 
                     variant="outline" 

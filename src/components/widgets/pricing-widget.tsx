@@ -98,29 +98,29 @@ export function PricingWidget({ section }: PricingWidgetProps) {
     : section.content?.text || ''
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
-        {section.title && <h2 className="text-3xl font-bold mb-4 text-center">{section.title}</h2>}
-        {contentText && <p className="text-stone-600 text-center max-w-2xl mx-auto mb-12">{contentText}</p>}
+        {section.title && <h2 className="text-3xl font-bold mb-4 text-center text-foreground">{section.title}</h2>}
+        {contentText && <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">{contentText}</p>}
         
         <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {plans.map((plan) => (
             <Card 
               key={plan.id} 
-              className={`relative ${plan.isPopular ? "border-amber-500 border-2 shadow-lg" : ""}`}
+              className={`relative bg-card ${plan.isPopular ? "border-primary border-2 shadow-lg" : ""}`}
             >
               {plan.isPopular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-500 text-white px-4 py-1 rounded-full text-sm font-medium">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-medium">
                   Most Popular
                 </div>
               )}
               <CardHeader className="text-center pb-4">
-                <h3 className="text-xl font-semibold text-stone-900">{plan.name}</h3>
-                <p className="text-stone-600 text-sm mt-1">{plan.description}</p>
+                <h3 className="text-xl font-semibold text-card-foreground">{plan.name}</h3>
+                <p className="text-muted-foreground text-sm mt-1">{plan.description}</p>
                 <div className="mt-4">
-                  <span className="text-4xl font-bold text-stone-900">{plan.price}</span>
+                  <span className="text-4xl font-bold text-card-foreground">{plan.price}</span>
                   {plan.period && (
-                    <span className="text-stone-500 ml-1">/{plan.period}</span>
+                    <span className="text-muted-foreground ml-1">/{plan.period}</span>
                   )}
                 </div>
               </CardHeader>
@@ -129,21 +129,21 @@ export function PricingWidget({ section }: PricingWidgetProps) {
                   {plan.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start gap-2">
                       <Check className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
-                      <span className="text-stone-700">{feature}</span>
+                      <span className="text-card-foreground">{feature}</span>
                     </li>
                   ))}
                   {plan.notIncluded?.map((feature, idx) => (
                     <li key={`not-${idx}`} className="flex items-start gap-2 opacity-50">
-                      <X className="h-5 w-5 text-stone-400 shrink-0 mt-0.5" />
-                      <span className="text-stone-500 line-through">{feature}</span>
+                      <X className="h-5 w-5 text-muted-foreground shrink-0 mt-0.5" />
+                      <span className="text-muted-foreground line-through">{feature}</span>
                     </li>
                   ))}
                 </ul>
                 <Button 
                   className={`w-full mt-6 ${
                     plan.isPopular 
-                      ? "bg-amber-600 hover:bg-amber-700 text-white" 
-                      : "bg-stone-100 hover:bg-stone-200 text-stone-900"
+                      ? "bg-primary hover:bg-primary/90 text-primary-foreground" 
+                      : "bg-secondary hover:bg-secondary/80 text-secondary-foreground"
                   }`}
                 >
                   {plan.buttonText}

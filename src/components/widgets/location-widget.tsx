@@ -40,13 +40,13 @@ export function LocationWidget({ section }: LocationWidgetProps) {
   }
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
-        {section.title && <h2 className="text-3xl font-bold mb-4 text-center">{section.title}</h2>}
+        {section.title && <h2 className="text-3xl font-bold mb-4 text-center text-foreground">{section.title}</h2>}
         
         <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {/* Map */}
-          <div className="relative h-96 lg:h-auto rounded-lg overflow-hidden bg-stone-100 min-h-[300px]">
+          <div className="relative h-96 lg:h-auto rounded-lg overflow-hidden bg-muted min-h-[300px]">
             {location.mapEmbed ? (
               <iframe
                 src={location.mapEmbed}
@@ -58,9 +58,9 @@ export function LocationWidget({ section }: LocationWidgetProps) {
                 title="Office Location"
               />
             ) : (
-              <div className="absolute inset-0 flex flex-col items-center justify-center bg-stone-100">
-                <MapPin className="h-16 w-16 text-amber-600 mb-4" />
-                <p className="text-stone-600 text-center max-w-xs">
+              <div className="absolute inset-0 flex flex-col items-center justify-center bg-muted">
+                <MapPin className="h-16 w-16 text-primary mb-4" />
+                <p className="text-muted-foreground text-center max-w-xs">
                   Interactive map would be displayed here.<br/>
                   Add a Google Maps embed URL in the content.
                 </p>
@@ -70,56 +70,56 @@ export function LocationWidget({ section }: LocationWidgetProps) {
 
           {/* Contact Info */}
           <div className="space-y-6">
-            <Card>
+            <Card className="bg-card">
               <CardContent className="p-6 space-y-4">
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center shrink-0">
-                    <MapPin className="h-5 w-5 text-amber-600" />
+                  <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                    <MapPin className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold">Address</h3>
-                    <p className="text-stone-600">{location.address}</p>
-                    <p className="text-stone-600">{location.city}</p>
-                    <p className="text-stone-600">{location.country}</p>
+                    <h3 className="font-semibold text-card-foreground">Address</h3>
+                    <p className="text-muted-foreground">{location.address}</p>
+                    <p className="text-muted-foreground">{location.city}</p>
+                    <p className="text-muted-foreground">{location.country}</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center shrink-0">
-                    <Phone className="h-5 w-5 text-amber-600" />
+                  <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                    <Phone className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold">Phone</h3>
-                    <p className="text-stone-600">{location.phone}</p>
+                    <h3 className="font-semibold text-card-foreground">Phone</h3>
+                    <p className="text-muted-foreground">{location.phone}</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center shrink-0">
-                    <Mail className="h-5 w-5 text-amber-600" />
+                  <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                    <Mail className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold">Email</h3>
-                    <p className="text-stone-600">{location.email}</p>
+                    <h3 className="font-semibold text-card-foreground">Email</h3>
+                    <p className="text-muted-foreground">{location.email}</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center shrink-0">
-                    <Clock className="h-5 w-5 text-amber-600" />
+                  <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                    <Clock className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold">Business Hours</h3>
+                    <h3 className="font-semibold text-card-foreground">Business Hours</h3>
                     {Array.isArray(location.hours) ? (
                       <div className="space-y-1">
                         {location.hours.map((h: any, i: number) => (
-                          <p key={i} className="text-stone-600 text-sm">
+                          <p key={i} className="text-muted-foreground text-sm">
                             <span className="font-medium">{h.day}:</span> {h.time}
                           </p>
                         ))}
                       </div>
                     ) : (
-                      <p className="text-stone-600">{location.hours}</p>
+                      <p className="text-muted-foreground">{location.hours}</p>
                     )}
                   </div>
                 </div>
@@ -128,7 +128,7 @@ export function LocationWidget({ section }: LocationWidgetProps) {
 
             {location.directionsUrl && (
               <Button 
-                className="w-full bg-amber-600 hover:bg-amber-700"
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
                 asChild
               >
                 <a href={location.directionsUrl} target="_blank" rel="noopener noreferrer">

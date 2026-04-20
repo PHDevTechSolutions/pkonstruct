@@ -80,15 +80,15 @@ export function ProcessWidget({ section }: ProcessWidgetProps) {
     : section.content?.text || ''
 
   return (
-    <section className="py-16 bg-stone-50">
+    <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
-        {section.title && <h2 className="text-3xl font-bold mb-4 text-center">{section.title}</h2>}
-        {contentText && <p className="text-stone-600 text-center max-w-2xl mx-auto mb-12">{contentText}</p>}
+        {section.title && <h2 className="text-3xl font-bold mb-4 text-center text-foreground">{section.title}</h2>}
+        {contentText && <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">{contentText}</p>}
         
         <div className="max-w-5xl mx-auto">
           <div className="relative">
             {/* Timeline Line */}
-            <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-amber-200 hidden md:block" />
+            <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-primary/20 hidden md:block" />
             
             <div className="space-y-8">
               {steps.map((step, index) => (
@@ -100,27 +100,27 @@ export function ProcessWidget({ section }: ProcessWidgetProps) {
                 >
                   {/* Content Card */}
                   <div className="flex-1 md:text-right">
-                    <div className={`bg-white p-6 rounded-lg shadow-sm ${
+                    <div className={`bg-card p-6 rounded-lg shadow-sm border border-border ${
                       index % 2 === 0 ? "md:mr-8" : "md:ml-8"
                     }`}>
                       <div className={`flex items-center gap-2 mb-2 ${
                         index % 2 === 0 ? "md:justify-end" : ""
                       }`}>
-                        <span className="text-amber-600 font-bold text-lg">0{index + 1}</span>
+                        <span className="text-primary font-bold text-lg">0{index + 1}</span>
                         {step.duration && (
-                          <span className="text-xs text-stone-500 bg-stone-100 px-2 py-0.5 rounded">
+                          <span className="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded">
                             {step.duration}
                           </span>
                         )}
                       </div>
-                      <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
-                      <p className="text-stone-600">{step.description}</p>
+                      <h3 className="text-xl font-semibold mb-2 text-card-foreground">{step.title}</h3>
+                      <p className="text-muted-foreground">{step.description}</p>
                     </div>
                   </div>
 
                   {/* Center Icon */}
                   <div className="relative z-10 flex-shrink-0">
-                    <div className="w-12 h-12 bg-amber-600 rounded-full flex items-center justify-center text-white shadow-lg">
+                    <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-primary-foreground shadow-lg">
                       <CheckCircle2 className="h-6 w-6" />
                     </div>
                   </div>
