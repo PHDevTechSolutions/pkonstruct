@@ -11,6 +11,12 @@ export const AVAILABLE_TEMPLATES = [
     description: "Template for cleaning and maintenance companies with eco-friendly focus",
     folder: "cleaning-services",
   },
+  {
+    id: "it-consultant",
+    name: "IT Consultant & Technology",
+    description: "Premium template for IT consulting firms with dark theme, digital transformation focus, and enterprise solutions",
+    folder: "it-consultant",
+  },
 ] as const
 
 export type TemplateId = typeof AVAILABLE_TEMPLATES[number]["id"]

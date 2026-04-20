@@ -1,0 +1,1082 @@
+{
+  "id": "it-consultant",
+  "name": "IT Consultant & Technology Solutions",
+  "description": "Premium template for IT consultants, technology firms, and digital transformation experts. Features modern dark theme, comprehensive service offerings, case studies, and professional team profiles with stunning visuals.",
+  "thumbnail": "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "category": "technology",
+  "pages": {
+    "homepage": {
+      "title": "Homepage",
+      "slug": "home",
+      "metaTitle": "TechVision Consulting | Digital Transformation Experts",
+      "metaDescription": "Award-winning IT consulting firm specializing in digital transformation, cloud solutions, cybersecurity, and enterprise software development. Transform your business with cutting-edge technology.",
+      "sections": [
+        {
+          "id": "hero-1",
+          "type": "hero",
+          "title": "Hero Banner",
+          "isActive": true,
+          "order": 1,
+          "content": {
+            "headline": "Transform Your Business with Technology",
+            "subheadline": "We help enterprises navigate digital transformation with cutting-edge IT solutions, cloud infrastructure, and cybersecurity. From strategy to implementation, we deliver results that drive growth.",
+            "ctaText": "Start Your Transformation",
+            "ctaLink": "#contact",
+            "secondaryButtonText": "View Case Studies",
+            "secondaryButtonLink": "#projects",
+            "backgroundImage": "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1920",
+            "showBadge": true,
+            "badge": "🏆 50+ Enterprise Transformations"
+          }
+        },
+        {
+          "id": "trust-badges",
+          "type": "clients",
+          "title": "Trusted By Industry Leaders",
+          "isActive": true,
+          "order": 2,
+          "content": {
+            "title": "Trusted By Industry Leaders",
+            "subtitle": "Proudly serving Fortune 500 companies, innovative startups, and government agencies worldwide",
+            "showLogoCloud": true
+          }
+        },
+        {
+          "id": "services-1",
+          "type": "services",
+          "title": "Our IT Services",
+          "isActive": true,
+          "order": 3,
+          "content": {
+            "title": "Comprehensive Technology Solutions",
+            "subtitle": "End-to-end IT consulting services designed to accelerate your digital transformation journey",
+            "layout": "detailed-cards",
+            "services": [
+              {
+                "title": "Digital Transformation",
+                "description": "Modernize your business with our comprehensive digital transformation strategy. We assess your current state, design future-ready architectures, and implement solutions that drive operational excellence.",
+                "icon": "Zap",
+                "features": ["Legacy System Modernization", "Process Automation", "Digital Strategy", "Change Management", "ROI Optimization", "Enterprise Architecture"]
+              },
+              {
+                "title": "Cloud Solutions",
+                "description": "Seamlessly migrate to the cloud with our expert cloud consulting services. We design scalable, secure, and cost-effective cloud architectures on AWS, Azure, and Google Cloud.",
+                "icon": "Cloud",
+                "features": ["Cloud Migration", "Multi-Cloud Strategy", "Cloud Security", "Cost Optimization", "DevOps Integration", "Serverless Architecture"]
+              },
+              {
+                "title": "Cybersecurity",
+                "description": "Protect your digital assets with enterprise-grade security solutions. From threat assessment to incident response, we safeguard your business against evolving cyber threats.",
+                "icon": "Shield",
+                "features": ["Security Assessment", "Penetration Testing", "SOC Implementation", "Compliance (GDPR, HIPAA, SOC2)", "Security Training", "Incident Response"]
+              },
+              {
+                "title": "Software Development",
+                "description": "Custom software solutions built for your unique business needs. Our agile development teams deliver scalable applications using modern technologies and best practices.",
+                "icon": "Code",
+                "features": ["Custom Applications", "Mobile Development", "API Integration", "Legacy Modernization", "Quality Assurance", "Maintenance & Support"]
+              }
+            ]
+          }
+        },
+        {
+          "id": "why-choose-us",
+          "type": "features",
+          "title": "Why Choose TechVision",
+          "isActive": true,
+          "order": 4,
+          "content": {
+            "title": "The TechVision Advantage",
+            "subtitle": "What sets us apart in the IT consulting landscape",
+            "layout": "icon-grid",
+            "features": [
+              {
+                "icon": "Award",
+                "title": "Certified Experts",
+                "description": "200+ certified professionals including AWS Solutions Architects, CISSP security experts, and Scrum Masters"
+              },
+              {
+                "icon": "Clock",
+                "title": "Rapid Delivery",
+                "description": "Agile methodologies with 40% faster time-to-market using our proven delivery frameworks"
+              },
+              {
+                "icon": "Shield",
+                "title": "Enterprise Security",
+                "description": "ISO 27001 certified processes with zero security breaches across 500+ projects"
+              },
+              {
+                "icon": "Users",
+                "title": "Strategic Partnership",
+                "description": "Long-term partnerships with 90% client retention rate and dedicated account management"
+              },
+              {
+                "icon": "TrendingUp",
+                "title": "Measurable ROI",
+                "description": "Average 300% ROI within 18 months with detailed analytics and performance tracking"
+              },
+              {
+                "icon": "Headphones",
+                "title": "24/7 Support",
+                "description": "Round-the-clock global support with 99.9% uptime SLA and 15-minute response guarantee"
+              }
+            ]
+          }
+        },
+        {
+          "id": "featured-projects",
+          "type": "projects",
+          "title": "Success Stories",
+          "isActive": true,
+          "order": 5,
+          "content": {
+            "title": "Transformation Success Stories",
+            "subtitle": "Real results from real clients who trusted us with their digital transformation",
+            "layout": "featured-grid",
+            "limit": 6,
+            "showFilters": true,
+            "featured": [
+              {
+                "title": "Global Bank Digital Transformation",
+                "category": "Digital Transformation",
+                "description": "Migrated legacy banking systems to cloud-native architecture, reducing operational costs by 60% and improving transaction speed by 400%",
+                "location": "New York, USA",
+                "value": "$50M Project",
+                "duration": "18 months",
+                "image": "https://images.pexels.com/photos/4482900/pexels-photo-4482900.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              },
+              {
+                "title": "Healthcare Cybersecurity Overhaul",
+                "category": "Cybersecurity",
+                "description": "Implemented zero-trust security architecture for a hospital network serving 2M+ patients, achieving HIPAA compliance and preventing $10M in potential breach costs",
+                "location": "California, USA",
+                "value": "$8M Project",
+                "duration": "12 months",
+                "image": "https://images.pexels.com/photos/40568/medical-equipment-doctor-healthcare-40568.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              },
+              {
+                "title": "E-Commerce Platform Modernization",
+                "category": "Software Development",
+                "description": "Built a scalable microservices platform handling $2B annual transactions with 99.99% uptime and sub-100ms response times",
+                "location": "London, UK",
+                "value": "$15M Project",
+                "duration": "24 months",
+                "image": "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              }
+            ]
+          }
+        },
+        {
+          "id": "stats-counter",
+          "type": "stats",
+          "title": "By The Numbers",
+          "isActive": true,
+          "order": 6,
+          "content": {
+            "title": "Our Impact in Numbers",
+            "subtitle": "Over a decade of delivering technology excellence",
+            "stats": [
+              { "label": "Projects Delivered", "value": "500+", "suffix": "Projects" },
+              { "label": "Client Retention", "value": "90", "suffix": "%" },
+              { "label": "Certified Experts", "value": "200+", "suffix": "Experts" },
+              { "label": "Countries Served", "value": "25", "suffix": "+" },
+              { "label": "Uptime SLA", "value": "99.9", "suffix": "%" },
+              { "label": "Years Experience", "value": "12", "suffix": "Years" }
+            ]
+          }
+        },
+        {
+          "id": "process-steps",
+          "type": "process",
+          "title": "Our Consulting Process",
+          "isActive": true,
+          "order": 7,
+          "content": {
+            "title": "How We Deliver Excellence",
+            "subtitle": "Our proven 5-step methodology ensures every technology initiative succeeds",
+            "steps": [
+              {
+                "title": "Discovery & Assessment",
+                "description": "Deep-dive analysis of your current technology landscape, business objectives, and pain points. We identify opportunities and create a transformation roadmap.",
+                "icon": "Search",
+                "duration": "2-4 weeks"
+              },
+              {
+                "title": "Strategy & Architecture",
+                "description": "Design future-ready technology architecture aligned with your business goals. We create detailed implementation plans with risk mitigation strategies.",
+                "icon": "Layout",
+                "duration": "4-6 weeks"
+              },
+              {
+                "title": "Agile Implementation",
+                "description": "Execute in sprints with continuous delivery. Our cross-functional teams work transparently with daily standups and bi-weekly demos.",
+                "icon": "Rocket",
+                "duration": "3-24 months"
+              },
+              {
+                "title": "Quality Assurance",
+                "description": "Rigorous testing at every layer - security scans, performance testing, user acceptance, and compliance validation before production.",
+                "icon": "CheckCircle",
+                "duration": "Ongoing"
+              },
+              {
+                "title": "Continuous Optimization",
+                "description": "Post-launch monitoring, optimization, and support. We analyze metrics, gather feedback, and continuously improve your technology stack.",
+                "icon": "RefreshCw",
+                "duration": "Ongoing"
+              }
+            ]
+          }
+        },
+        {
+          "id": "testimonials",
+          "type": "testimonials",
+          "title": "Client Success Stories",
+          "isActive": true,
+          "order": 8,
+          "content": {
+            "title": "What Our Clients Say",
+            "subtitle": "Feedback from enterprise leaders who transformed their businesses with us",
+            "testimonials": [
+              {
+                "name": "Jennifer Martinez",
+                "title": "CTO, Global Finance Corp",
+                "quote": "TechVision didn't just implement technology - they transformed our entire operating model. Our cloud migration was completed 3 months ahead of schedule with zero downtime. The ROI exceeded our projections by 200%.",
+                "rating": 5,
+                "project": "Enterprise Cloud Transformation",
+                "image": "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=200"
+              },
+              {
+                "name": "David Chen",
+                "title": "VP of Technology, HealthPlus Systems",
+                "quote": "The cybersecurity implementation by TechVision has been bulletproof. We sleep better knowing our patient data is protected by enterprise-grade security. Their team's expertise is unmatched.",
+                "rating": 5,
+                "project": "Healthcare Security Infrastructure",
+                "image": "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=200"
+              },
+              {
+                "name": "Sarah Thompson",
+                "title": "CEO, Retail Innovations Inc",
+                "quote": "Our custom e-commerce platform built by TechVision handles 10x our peak traffic effortlessly. The microservices architecture they designed has enabled us to scale globally with confidence.",
+                "rating": 5,
+                "project": "Scalable E-Commerce Platform",
+                "image": "https://images.pexels.com/photos/1181695/pexels-photo-1181695.jpeg?auto=compress&cs=tinysrgb&w=200"
+              }
+            ]
+          }
+        },
+        {
+          "id": "team-spotlight",
+          "type": "team",
+          "title": "Meet Our Leadership",
+          "isActive": true,
+          "order": 9,
+          "content": {
+            "title": "Experts Behind Every Solution",
+            "subtitle": "Our leadership team brings decades of experience from top technology firms and consulting companies",
+            "showFeaturedOnly": true,
+            "members": [
+              {
+                "name": "Alexandra Morrison",
+                "role": "Chief Executive Officer",
+                "bio": "Former Partner at McKinsey Digital with 20+ years in technology strategy. Led digital transformations for Fortune 100 companies.",
+                "image": "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=400",
+                "linkedin": "linkedin.com/in/alexandramorrison"
+              },
+              {
+                "name": "James Nakamura",
+                "role": "Chief Technology Officer",
+                "bio": "Ex-Amazon Principal Engineer with expertise in distributed systems and cloud architecture. 15+ patents in scalable computing.",
+                "image": "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400",
+                "linkedin": "linkedin.com/in/jamesnakamura"
+              },
+              {
+                "name": "Priya Sharma",
+                "role": "VP of Cybersecurity",
+                "bio": "Former CISO at a major bank. CISSP, CISM certified. Led security programs protecting $50B+ in assets.",
+                "image": "https://images.pexels.com/photos/1181691/pexels-photo-1181691.jpeg?auto=compress&cs=tinysrgb&w=400",
+                "linkedin": "linkedin.com/in/priyasharma"
+              }
+            ]
+          }
+        },
+        {
+          "id": "blog-insights",
+          "type": "blog",
+          "title": "Latest Insights",
+          "isActive": true,
+          "order": 10,
+          "content": {
+            "title": "Technology Insights",
+            "subtitle": "Stay ahead with our latest thinking on digital transformation, emerging technologies, and industry trends",
+            "layout": "grid",
+            "showCategoryFilter": true,
+            "posts": [
+              {
+                "title": "The Future of Cloud-Native Architecture in 2024",
+                "excerpt": "Exploring containerization, Kubernetes, and serverless trends shaping enterprise infrastructure decisions.",
+                "category": "Cloud",
+                "date": "2024-01-15",
+                "image": "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=800",
+                "readTime": "8 min read"
+              },
+              {
+                "title": "Zero Trust Security: Implementation Guide",
+                "excerpt": "A comprehensive roadmap for implementing zero-trust architecture in enterprise environments.",
+                "category": "Cybersecurity",
+                "date": "2024-01-10",
+                "image": "https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=800",
+                "readTime": "12 min read"
+              },
+              {
+                "title": "AI-Powered Digital Transformation",
+                "excerpt": "How leading enterprises are leveraging AI and machine learning to drive operational excellence.",
+                "category": "AI & ML",
+                "date": "2024-01-05",
+                "image": "https://images.pexels.com/photos/8386434/pexels-photo-8386434.jpeg?auto=compress&cs=tinysrgb&w=800",
+                "readTime": "10 min read"
+              }
+            ]
+          }
+        },
+        {
+          "id": "final-cta",
+          "type": "cta",
+          "title": "Ready to Transform?",
+          "isActive": true,
+          "order": 11,
+          "content": {
+            "title": "Let's Build Your Digital Future",
+            "subtitle": "Whether you're planning a cloud migration, cybersecurity overhaul, or custom software development, our team is ready to deliver. Get a free consultation and detailed roadmap today.",
+            "buttonText": "Schedule Free Consultation",
+            "buttonLink": "#contact",
+            "secondaryButtonText": "Call (555) 234-5678",
+            "secondaryButtonLink": "tel:+15552345678",
+            "backgroundImage": "https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&w=1920",
+            "showTrustBadges": true,
+            "trustBadges": ["ISO 27001 Certified", "AWS Premier Partner", "24/7 Global Support"]
+          }
+        },
+        {
+          "id": "newsletter",
+          "type": "newsletter",
+          "title": "Stay Updated",
+          "isActive": true,
+          "order": 12,
+          "content": {
+            "title": "Technology Insights Delivered",
+            "text": "Subscribe to our newsletter for the latest insights on digital transformation, cloud computing, cybersecurity, and emerging technologies.",
+            "buttonText": "Subscribe",
+            "privacyNote": "We respect your privacy. Unsubscribe anytime."
+          }
+        }
+      ],
+      "showInHeader": true,
+      "showInFooter": false,
+      "isPublished": true,
+      "isDefault": true
+    },
+    "about": {
+      "title": "About Us",
+      "slug": "about-us",
+      "metaTitle": "About TechVision | Leading IT Consulting Firm",
+      "metaDescription": "Learn about TechVision's 12-year journey, our commitment to technology excellence, and the expert team behind our award-winning digital transformation projects.",
+      "sections": [
+        {
+          "id": "hero-about",
+          "type": "hero",
+          "title": "About Us Hero",
+          "isActive": true,
+          "order": 1,
+          "content": {
+            "headline": "Technology Meets Vision",
+            "subheadline": "For over a decade, we've been bridging the gap between business challenges and technology solutions",
+            "backgroundImage": "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1920"
+          }
+        },
+        {
+          "id": "our-story",
+          "type": "text",
+          "title": "Our Story",
+          "isActive": true,
+          "order": 2,
+          "content": {
+            "title": "Our Journey Since 2012",
+            "layout": "two-column",
+            "content": [
+              {
+                "heading": "From Startup to Industry Leader",
+                "text": "TechVision began as a small team of three engineers with a bold vision: to help businesses harness technology for competitive advantage. What started in a tiny co-working space has grown into a global consulting firm with offices in 5 countries and a team of 200+ certified technology experts."
+              },
+              {
+                "heading": "Innovation at Our Core",
+                "text": "We've consistently stayed ahead of technology curves - from early cloud adoption to AI integration. Our research division explores emerging technologies, ensuring our clients always have access to cutting-edge solutions that deliver measurable business value."
+              },
+              {
+                "heading": "Global Impact",
+                "text": "Today, TechVision has delivered 500+ successful projects across 25 countries. We've helped startups become unicorns, enabled enterprises to pivot digitally, and protected critical infrastructure for government agencies. But despite our growth, we remain committed to personalized service and long-term client partnerships."
+              }
+            ]
+          }
+        },
+        {
+          "id": "mission-values",
+          "type": "features",
+          "title": "Mission & Values",
+          "isActive": true,
+          "order": 3,
+          "content": {
+            "title": "Our Core Values",
+            "subtitle": "The principles that guide every technology solution we deliver",
+            "layout": "mission-cards",
+            "values": [
+              {
+                "title": "Excellence in Execution",
+                "description": "We don't just deliver projects - we deliver excellence. Every solution undergoes rigorous testing, security validation, and performance optimization.",
+                "icon": "Target"
+              },
+              {
+                "title": "Client Success First",
+                "description": "Your success is our success. We measure our performance by your business outcomes, not just project completion.",
+                "icon": "Heart"
+              },
+              {
+                "title": "Continuous Innovation",
+                "description": "Technology never stands still, and neither do we. We invest 20% of revenue in R&D to stay at the forefront of innovation.",
+                "icon": "Lightbulb"
+              },
+              {
+                "title": "Integrity Always",
+                "description": "Transparent pricing, honest timelines, and ethical recommendations. We build trust through consistent, principled behavior.",
+                "icon": "Shield"
+              }
+            ]
+          }
+        },
+        {
+          "id": "leadership-team",
+          "type": "team",
+          "title": "Our Leadership Team",
+          "isActive": true,
+          "order": 4,
+          "content": {
+            "title": "Meet the Experts",
+            "subtitle": "Our leadership brings decades of experience from top technology firms, consulting companies, and innovative startups",
+            "showFullTeam": true,
+            "members": [
+              {
+                "name": "Alexandra Morrison",
+                "role": "Chief Executive Officer",
+                "bio": "Former Partner at McKinsey Digital with 20+ years in technology strategy. Led digital transformations for Fortune 100 companies including 3 of the top 10 banks. MBA from Harvard Business School, BS in Computer Science from MIT.",
+                "image": "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=400",
+                "linkedin": "linkedin.com/in/alexandramorrison"
+              },
+              {
+                "name": "James Nakamura",
+                "role": "Chief Technology Officer",
+                "bio": "Ex-Amazon Principal Engineer who led the team behind AWS Lambda. Expert in distributed systems and cloud-native architecture. Holds 15 patents in scalable computing. Ph.D. in Computer Science from Stanford.",
+                "image": "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400",
+                "linkedin": "linkedin.com/in/jamesnakamura"
+              },
+              {
+                "name": "Priya Sharma",
+                "role": "VP of Cybersecurity",
+                "bio": "Former CISO at a Fortune 500 financial services firm. Led security programs protecting $50B+ in assets. CISSP, CISM, and GSE certified. Recognized as 'CISO of the Year' by Cybersecurity Excellence Awards.",
+                "image": "https://images.pexels.com/photos/1181691/pexels-photo-1181691.jpeg?auto=compress&cs=tinysrgb&w=400",
+                "linkedin": "linkedin.com/in/priyasharma"
+              },
+              {
+                "name": "Michael Torres",
+                "role": "VP of Cloud Solutions",
+                "bio": "Former AWS Solutions Architect who designed cloud architectures for 100+ enterprise clients. AWS certified with all 12 certifications. Expert in multi-cloud strategy and cloud cost optimization.",
+                "image": "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=400",
+                "linkedin": "linkedin.com/in/michaeltorres"
+              },
+              {
+                "name": "Dr. Sarah Kim",
+                "role": "Head of AI & Data Science",
+                "bio": "Former Google AI researcher specializing in machine learning systems. Led development of recommendation algorithms serving 1B+ users. Ph.D. in Machine Learning from Carnegie Mellon.",
+                "image": "https://images.pexels.com/photos/1181695/pexels-photo-1181695.jpeg?auto=compress&cs=tinysrgb&w=400",
+                "linkedin": "linkedin.com/in/drsarahkim"
+              },
+              {
+                "name": "Robert Andersen",
+                "role": "VP of Engineering",
+                "bio": "Former Engineering Director at Microsoft with 18 years in software development. Expert in agile transformation and engineering team scaling. Led teams of 200+ engineers delivering $500M+ products.",
+                "image": "https://images.pexels.com/photos/3778680/pexels-photo-3778680.jpeg?auto=compress&cs=tinysrgb&w=400",
+                "linkedin": "linkedin.com/in/robertandersen"
+              }
+            ]
+          }
+        },
+        {
+          "id": "awards-recognition",
+          "type": "awards",
+          "title": "Awards & Recognition",
+          "isActive": true,
+          "order": 5,
+          "content": {
+            "title": "Industry Recognition",
+            "subtitle": "Our commitment to technology excellence has earned recognition from leading industry organizations",
+            "awards": [
+              {
+                "title": "Cloud Partner of the Year",
+                "organization": "Amazon Web Services",
+                "year": "2023",
+                "icon": "Cloud"
+              },
+              {
+                "title": "Best Cybersecurity Implementation",
+                "organization": "SC Awards",
+                "year": "2022",
+                "icon": "Shield"
+              },
+              {
+                "title": "Digital Transformation Excellence",
+                "organization": "CIO 100 Awards",
+                "year": "2022",
+                "icon": "Zap"
+              },
+              {
+                "title": "Top 100 IT Consultants",
+                "organization": "Consulting Magazine",
+                "year": "2021-2023",
+                "icon": "Award"
+              }
+            ]
+          }
+        },
+        {
+          "id": "certifications",
+          "type": "partners",
+          "title": "Certifications & Partnerships",
+          "isActive": true,
+          "order": 6,
+          "content": {
+            "title": "Certified & Trusted",
+            "subtitle": "We maintain the highest industry certifications and strategic partnerships with leading technology vendors",
+            "certifications": [
+              {
+                "name": "AWS Premier Partner",
+                "logo": "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=200"
+              },
+              {
+                "name": "Microsoft Gold Partner",
+                "logo": "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=200"
+              },
+              {
+                "name": "Google Cloud Partner",
+                "logo": "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=200"
+              },
+              {
+                "name": "ISO 27001 Certified",
+                "logo": "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=200"
+              }
+            ]
+          }
+        }
+      ],
+      "showInHeader": true,
+      "showInFooter": true,
+      "isPublished": true
+    },
+    "services": {
+      "title": "Services",
+      "slug": "services",
+      "metaTitle": "IT Consulting Services | Cloud, Security, Development",
+      "metaDescription": "Comprehensive IT consulting services including digital transformation, cloud migration, cybersecurity, custom software development, and technology strategy.",
+      "sections": [
+        {
+          "id": "hero-services",
+          "type": "hero",
+          "title": "Services Hero",
+          "isActive": true,
+          "order": 1,
+          "content": {
+            "headline": "Enterprise Technology Solutions",
+            "subheadline": "End-to-end IT consulting services designed to accelerate your digital transformation and drive measurable business outcomes",
+            "backgroundImage": "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=1920"
+          }
+        },
+        {
+          "id": "services-overview",
+          "type": "services",
+          "title": "All Our Services",
+          "isActive": true,
+          "order": 2,
+          "content": {
+            "title": "Comprehensive Service Portfolio",
+            "subtitle": "From strategy to implementation, we deliver technology solutions that transform businesses",
+            "layout": "detailed",
+            "services": [
+              {
+                "title": "Digital Transformation Consulting",
+                "description": "Navigate the complexities of digital transformation with our strategic consulting services. We assess your current technology landscape, identify optimization opportunities, and create a comprehensive roadmap for modernization. Our approach combines business process reengineering with cutting-edge technology implementation to deliver sustainable competitive advantage.",
+                "features": ["Digital Maturity Assessment", "Technology Roadmap Development", "Legacy System Modernization", "Business Process Automation", "Change Management", "ROI Analysis & Tracking"],
+                "startingPrice": "From $75,000",
+                "timeline": "8-16 weeks",
+                "image": "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800"
+              },
+              {
+                "title": "Cloud Architecture & Migration",
+                "description": "Seamlessly transition to the cloud with our expert migration services. We design scalable, secure, and cost-effective cloud architectures tailored to your workloads. Whether you're moving to AWS, Azure, or Google Cloud, or implementing a multi-cloud strategy, we ensure zero-downtime migration and optimize your infrastructure for performance and cost.",
+                "features": ["Cloud Readiness Assessment", "Multi-Cloud Architecture Design", "Zero-Downtime Migration", "Cloud Cost Optimization", "DevOps Implementation", "Container Orchestration (K8s)"],
+                "startingPrice": "From $100,000",
+                "timeline": "3-12 months",
+                "image": "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=800"
+              },
+              {
+                "title": "Enterprise Cybersecurity",
+                "description": "Protect your organization from evolving cyber threats with our comprehensive security services. From initial risk assessment to ongoing security operations, we implement defense-in-depth strategies. Our team includes certified security experts who understand both the technical and business aspects of cybersecurity.",
+                "features": ["Security Risk Assessment", "Zero Trust Architecture", "SOC Implementation", "Penetration Testing", "Compliance (GDPR, HIPAA, SOC2)", "Security Awareness Training"],
+                "startingPrice": "From $50,000",
+                "timeline": "Ongoing engagement",
+                "image": "https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=800"
+              },
+              {
+                "title": "Custom Software Development",
+                "description": "Build bespoke software solutions that perfectly match your business requirements. Our agile development teams use modern technologies and best practices to deliver scalable, secure applications. From mobile apps to enterprise systems, we handle the full development lifecycle including design, development, testing, and maintenance.",
+                "features": ["Enterprise Applications", "Mobile Development (iOS/Android)", "API Development & Integration", "Legacy System Integration", "Quality Assurance & Testing", "24/7 Support & Maintenance"],
+                "startingPrice": "From $150,000",
+                "timeline": "4-18 months",
+                "image": "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=800"
+              },
+              {
+                "title": "Data Engineering & Analytics",
+                "description": "Unlock the power of your data with our comprehensive data services. We build modern data pipelines, implement data warehouses, and create advanced analytics solutions. Our team specializes in both traditional BI and modern machine learning approaches to deliver actionable insights that drive decision-making.",
+                "features": ["Data Warehouse Implementation", "ETL/ELT Pipeline Development", "Business Intelligence Solutions", "Machine Learning Models", "Real-time Analytics", "Data Governance"],
+                "startingPrice": "From $80,000",
+                "timeline": "3-9 months",
+                "image": "https://images.pexels.com/photos/8386434/pexels-photo-8386434.jpeg?auto=compress&cs=tinysrgb&w=800"
+              },
+              {
+                "title": "IT Strategy & Governance",
+                "description": "Align your technology investments with business objectives through our strategic IT consulting. We help organizations establish IT governance frameworks, optimize technology spend, and create sustainable IT operating models. Our advisory services ensure your technology strategy supports long-term business growth.",
+                "features": ["IT Strategy Development", "Technology Portfolio Management", "Vendor Selection & Management", "IT Governance Frameworks", "Budget Optimization", "Risk Management"],
+                "startingPrice": "From $40,000",
+                "timeline": "4-8 weeks",
+                "image": "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800"
+              }
+            ]
+          }
+        },
+        {
+          "id": "comparison",
+          "type": "comparison",
+          "title": "Service Tiers",
+          "isActive": true,
+          "order": 3,
+          "content": {
+            "title": "Choose Your Engagement Model",
+            "subtitle": "Flexible engagement options to match your project needs and budget",
+            "options": ["Starter", "Professional", "Enterprise"],
+            "items": [
+              {
+                "feature": "Discovery & Assessment",
+                "Starter": "2-week assessment",
+                "Professional": "4-week deep dive",
+                "Enterprise": "Comprehensive 6-week analysis"
+              },
+              {
+                "feature": "Strategy & Roadmap",
+                "Starter": "High-level roadmap",
+                "Professional": "Detailed 12-month plan",
+                "Enterprise": "Multi-year transformation plan"
+              },
+              {
+                "feature": "Implementation Support",
+                "Starter": "40 hours/month",
+                "Professional": "Full-time dedicated team",
+                "Enterprise": "Multi-team scaled engagement"
+              },
+              {
+                "feature": "Ongoing Support",
+                "Starter": "Email support",
+                "Professional": "Priority support + SLA",
+                "Enterprise": "24/7 dedicated support"
+              },
+              {
+                "feature": "Knowledge Transfer",
+                "Starter": "Documentation",
+                "Professional": "Training sessions",
+                "Enterprise": "Comprehensive enablement"
+              }
+            ]
+          }
+        },
+        {
+          "id": "process",
+          "type": "process",
+          "title": "Our Delivery Process",
+          "isActive": true,
+          "order": 4,
+          "content": {
+            "title": "How We Deliver Excellence",
+            "subtitle": "Our proven methodology ensures every technology initiative succeeds",
+            "steps": [
+              {
+                "title": "Discovery Phase",
+                "description": "Comprehensive assessment of your current technology stack, business processes, and strategic objectives. We identify pain points, opportunities, and define success metrics.",
+                "icon": "Search",
+                "duration": "2-4 weeks"
+              },
+              {
+                "title": "Solution Design",
+                "description": "Our architects design tailored solutions aligned with your requirements. We create detailed technical specifications, project plans, and risk mitigation strategies.",
+                "icon": "PenTool",
+                "duration": "2-4 weeks"
+              },
+              {
+                "title": "Agile Implementation",
+                "description": "Execute in iterative sprints with continuous integration and delivery. You'll have full visibility with daily standups, sprint demos, and real-time progress tracking.",
+                "icon": "Rocket",
+                "duration": "Project dependent"
+              },
+              {
+                "title": "Quality Assurance",
+                "description": "Rigorous testing including security scans, performance testing, user acceptance testing, and compliance validation. We ensure production-ready quality.",
+                "icon": "CheckCircle",
+                "duration": "Ongoing"
+              },
+              {
+                "title": "Deployment & Support",
+                "description": "Seamless production deployment with rollback strategies. Post-launch, we provide comprehensive support, monitoring, and continuous optimization.",
+                "icon": "LifeBuoy",
+                "duration": "Ongoing"
+              }
+            ]
+          }
+        }
+      ],
+      "showInHeader": true,
+      "showInFooter": true,
+      "isPublished": true
+    },
+    "case-studies": {
+      "title": "Case Studies",
+      "slug": "case-studies",
+      "metaTitle": "IT Consulting Case Studies | Success Stories",
+      "metaDescription": "Explore our portfolio of successful digital transformation projects. Real results from enterprise cloud migrations, cybersecurity implementations, and custom software development.",
+      "sections": [
+        {
+          "id": "hero-case-studies",
+          "type": "hero",
+          "title": "Case Studies Hero",
+          "isActive": true,
+          "order": 1,
+          "content": {
+            "headline": "Real Results, Real Impact",
+            "subheadline": "Explore how we've helped organizations across industries transform their technology landscape and achieve measurable business outcomes",
+            "backgroundImage": "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1920"
+          }
+        },
+        {
+          "id": "projects-grid",
+          "type": "projects",
+          "title": "All Case Studies",
+          "isActive": true,
+          "order": 2,
+          "content": {
+            "title": "Transformation Success Stories",
+            "subtitle": "Detailed case studies showcasing our approach, solutions, and measurable results",
+            "layout": "detailed-cards",
+            "showFilters": true,
+            "projects": [
+              {
+                "title": "Fortune 500 Bank Cloud Migration",
+                "category": "Cloud Solutions",
+                "description": "Migrated 500+ applications from on-premise data centers to AWS cloud infrastructure. Implemented microservices architecture, containerization with Kubernetes, and established DevOps pipelines. Reduced infrastructure costs by 65% and improved application availability to 99.99%.",
+                "results": ["65% cost reduction", "99.99% uptime achieved", "70% faster deployments", "$40M annual savings"],
+                "technologies": ["AWS", "Kubernetes", "Docker", "Terraform", "Jenkins"],
+                "duration": "18 months",
+                "image": "https://images.pexels.com/photos/4482900/pexels-photo-4482900.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              },
+              {
+                "title": "Healthcare Security Infrastructure",
+                "category": "Cybersecurity",
+                "description": "Designed and implemented zero-trust security architecture for a hospital network serving 2M+ patients. Deployed SIEM, endpoint protection, network segmentation, and identity management. Achieved HIPAA compliance and SOC 2 Type II certification.",
+                "results": ["Zero security breaches", "SOC 2 Type II certified", "100% HIPAA compliant", "$10M breach prevention"],
+                "technologies": ["Splunk", "CrowdStrike", "Okta", "Palo Alto Networks", "HashiCorp Vault"],
+                "duration": "12 months",
+                "image": "https://images.pexels.com/photos/40568/medical-equipment-doctor-healthcare-40568.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              },
+              {
+                "title": "Global E-Commerce Platform",
+                "category": "Software Development",
+                "description": "Built a scalable microservices-based e-commerce platform handling $2B in annual transactions. Implemented event-driven architecture, real-time inventory management, and AI-powered recommendation engine.",
+                "results": ["10x traffic capacity", "Sub-100ms response time", "40% conversion increase", "99.99% uptime"],
+                "technologies": ["Node.js", "React", "Kafka", "Redis", "Elasticsearch", "TensorFlow"],
+                "duration": "24 months",
+                "image": "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              },
+              {
+                "title": "Manufacturing IoT Implementation",
+                "category": "Digital Transformation",
+                "description": "Deployed IoT sensors across 12 manufacturing facilities to enable predictive maintenance and real-time production monitoring. Created unified data platform for operational analytics.",
+                "results": ["45% downtime reduction", "30% efficiency gain", "$25M cost savings", "Real-time visibility"],
+                "technologies": ["Azure IoT", "Power BI", "ML.NET", "PostgreSQL", "Apache Spark"],
+                "duration": "14 months",
+                "image": "https://images.pexels.com/photos/2219024/pexels-photo-2219024.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              },
+              {
+                "title": "Insurance Claims Automation",
+                "category": "AI & Automation",
+                "description": "Developed AI-powered claims processing system using computer vision and NLP. Automated document processing, fraud detection, and claim routing. Integrated with legacy mainframe systems.",
+                "results": ["80% faster processing", "95% accuracy rate", "60% cost reduction", "24/7 operation"],
+                "technologies": ["Python", "TensorFlow", "OpenCV", "AWS Lambda", "API Gateway"],
+                "duration": "10 months",
+                "image": "https://images.pexels.com/photos/3184298/pexels-photo-3184298.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              },
+              {
+                "title": "Government Digital Services Platform",
+                "category": "Digital Transformation",
+                "description": "Built citizen-facing digital services platform processing 5M+ transactions annually. Implemented high-security standards, accessibility compliance (WCAG 2.1), and multi-language support.",
+                "results": ["5M+ annual users", "WCAG 2.1 AA compliant", "99.95% uptime", "Citizen satisfaction: 4.8/5"],
+                "technologies": ["Drupal", "React", "PostgreSQL", "AWS", "GovCloud"],
+                "duration": "16 months",
+                "image": "https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              }
+            ]
+          }
+        }
+      ],
+      "showInHeader": true,
+      "showInFooter": true,
+      "isPublished": true
+    },
+    "contact": {
+      "title": "Contact",
+      "slug": "contact",
+      "metaTitle": "Contact TechVision | Free IT Consultation",
+      "metaDescription": "Get in touch with our technology experts. Schedule a free consultation to discuss your digital transformation, cloud migration, or software development needs.",
+      "sections": [
+        {
+          "id": "contact-hero",
+          "type": "hero",
+          "title": "Contact Hero",
+          "isActive": true,
+          "order": 1,
+          "content": {
+            "headline": "Let's Start a Conversation",
+            "subheadline": "Ready to transform your technology landscape? Our experts are here to help you navigate your digital journey.",
+            "backgroundImage": "https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg?auto=compress&cs=tinysrgb&w=1920"
+          }
+        },
+        {
+          "id": "contact-info",
+          "type": "contact",
+          "title": "Get In Touch",
+          "isActive": true,
+          "order": 2,
+          "content": {
+            "title": "Connect With Our Team",
+            "subtitle": "Multiple ways to reach us. Choose what works best for you.",
+            "contactMethods": [
+              {
+                "type": "phone",
+                "title": "Call Us",
+                "value": "+1 (555) 234-5678",
+                "description": "Available 24/7 for existing clients"
+              },
+              {
+                "type": "email",
+                "title": "Email Us",
+                "value": "solutions@techvision.com",
+                "description": "We respond within 4 hours"
+              },
+              {
+                "type": "location",
+                "title": "Visit Us",
+                "value": "350 Mission Street, San Francisco, CA 94105",
+                "description": "By appointment only"
+              },
+              {
+                "type": "chat",
+                "title": "Live Chat",
+                "value": "Start Chat",
+                "description": "Available during business hours"
+              }
+            ]
+          }
+        },
+        {
+          "id": "contact-form",
+          "type": "contact",
+          "title": "Request Consultation",
+          "isActive": true,
+          "order": 3,
+          "content": {
+            "title": "Request a Free Consultation",
+            "subtitle": "Tell us about your project and we'll schedule a strategy session with our experts",
+            "formFields": [
+              {
+                "name": "fullName",
+                "label": "Full Name",
+                "type": "text",
+                "required": true
+              },
+              {
+                "name": "email",
+                "label": "Business Email",
+                "type": "email",
+                "required": true
+              },
+              {
+                "name": "company",
+                "label": "Company Name",
+                "type": "text",
+                "required": true
+              },
+              {
+                "name": "phone",
+                "label": "Phone Number",
+                "type": "tel",
+                "required": false
+              },
+              {
+                "name": "service",
+                "label": "Service Interest",
+                "type": "select",
+                "options": ["Digital Transformation", "Cloud Migration", "Cybersecurity", "Software Development", "Data Engineering", "IT Strategy"],
+                "required": true
+              },
+              {
+                "name": "budget",
+                "label": "Estimated Budget Range",
+                "type": "select",
+                "options": ["$50K - $100K", "$100K - $500K", "$500K - $1M", "$1M+"],
+                "required": false
+              },
+              {
+                "name": "message",
+                "label": "Tell Us About Your Project",
+                "type": "textarea",
+                "required": true
+              }
+            ]
+          }
+        },
+        {
+          "id": "locations",
+          "type": "location",
+          "title": "Our Offices",
+          "isActive": true,
+          "order": 4,
+          "content": {
+            "title": "Global Presence",
+            "subtitle": "Serving clients worldwide with local expertise",
+            "locations": [
+              {
+                "city": "San Francisco",
+                "country": "USA",
+                "address": "350 Mission Street, Suite 200",
+                "phone": "+1 (555) 234-5678",
+                "image": "https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&w=800"
+              },
+              {
+                "city": "New York",
+                "country": "USA",
+                "address": "1 World Trade Center, Floor 85",
+                "phone": "+1 (555) 987-6543",
+                "image": "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800"
+              },
+              {
+                "city": "London",
+                "country": "UK",
+                "address": "The Shard, Level 25",
+                "phone": "+44 20 7946 0958",
+                "image": "https://images.pexels.com/photos/1837591/pexels-photo-1837591.jpeg?auto=compress&cs=tinysrgb&w=800"
+              },
+              {
+                "city": "Singapore",
+                "country": "Singapore",
+                "address": "Marina Bay Financial Centre",
+                "phone": "+65 6123 4567",
+                "image": "https://images.pexels.com/photos/1842332/pexels-photo-1842332.jpeg?auto=compress&cs=tinysrgb&w=800"
+              }
+            ]
+          }
+        }
+      ],
+      "showInHeader": true,
+      "showInFooter": true,
+      "isPublished": true
+    }
+  },
+  "navigation": {
+    "headerNav": [
+      { "slug": "home", "title": "Home" },
+      { "slug": "about-us", "title": "About" },
+      { "slug": "services", "title": "Services" },
+      { "slug": "case-studies", "title": "Case Studies" },
+      { "slug": "contact", "title": "Contact" }
+    ],
+    "footerNav": [
+      { "slug": "about-us", "title": "About Us" },
+      { "slug": "services", "title": "Services" },
+      { "slug": "case-studies", "title": "Case Studies" },
+      { "slug": "contact", "title": "Contact" }
+    ],
+    "footerColumns": [
+      {
+        "title": "Services",
+        "links": [
+          { "label": "Digital Transformation", "url": "/services" },
+          { "label": "Cloud Solutions", "url": "/services" },
+          { "label": "Cybersecurity", "url": "/services" },
+          { "label": "Software Development", "url": "/services" }
+        ]
+      },
+      {
+        "title": "Company",
+        "links": [
+          { "label": "About Us", "url": "/about-us" },
+          { "label": "Case Studies", "url": "/case-studies" },
+          { "label": "Careers", "url": "#" },
+          { "label": "Blog", "url": "#" }
+        ]
+      },
+      {
+        "title": "Resources",
+        "links": [
+          { "label": "Documentation", "url": "#" },
+          { "label": "Privacy Policy", "url": "#" },
+          { "label": "Terms of Service", "url": "#" },
+          { "label": "Security", "url": "#" }
+        ]
+      }
+    ]
+  },
+  "settings": {
+    "header": {
+      "showLogo": true,
+      "logoImage": "",
+      "logoText": "TechVision",
+      "buttons": [
+        {
+          "id": "cta-1",
+          "label": "Get a Quote",
+          "link": "/contact",
+          "variant": "default",
+          "isActive": true
+        }
+      ]
+    },
+    "footer": {
+      "showSocialLinks": true,
+      "socialLinks": [
+        { "id": "1", "platform": "linkedin", "url": "https://linkedin.com/company/techvision", "isActive": true },
+        { "id": "2", "platform": "twitter", "url": "https://twitter.com/techvision", "isActive": true },
+        { "id": "3", "platform": "youtube", "url": "https://youtube.com/techvision", "isActive": true }
+      ],
+      "companyName": "TechVision Consulting",
+      "copyright": "© 2024 TechVision Consulting. All rights reserved.",
+      "tagline": "Transforming businesses through technology excellence."
+    }
+  },
+  "seo": {
+    "siteName": "TechVision Consulting",
+    "siteDescription": "Award-winning IT consulting firm specializing in digital transformation, cloud solutions, and enterprise software development.",
+    "defaultMetaImage": "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1200"
+  }
+}
