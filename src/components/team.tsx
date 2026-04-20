@@ -10,7 +10,7 @@ export function Team() {
 
   if (loading) {
     return (
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <Skeleton className="h-4 w-32 mx-auto mb-4" />
@@ -35,10 +35,10 @@ export function Team() {
 
   if (error) {
     return (
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <p className="text-red-600">Failed to load team members. Please try again later.</p>
+            <p className="text-destructive">Failed to load team members. Please try again later.</p>
           </div>
         </div>
       </section>
@@ -46,21 +46,21 @@ export function Team() {
   }
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-amber-600 font-semibold text-sm uppercase tracking-wider">Our Team</span>
-          <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mt-2 mb-4">
+          <span className="text-primary font-semibold text-sm uppercase tracking-wider">Our Team</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2 mb-4">
             Meet the Experts
           </h2>
-          <p className="text-stone-600 text-lg">
+          <p className="text-muted-foreground text-lg">
             Our leadership team brings decades of combined experience in construction, architecture, and project management.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {members.map((member) => (
-            <Card key={member.id} className="group hover:shadow-lg transition-shadow duration-300">
+            <Card key={member.id} className="group hover:shadow-lg transition-shadow duration-300 bg-card">
               <CardContent className="p-6">
                 {member.image ? (
                   <img
@@ -69,32 +69,32 @@ export function Team() {
                     className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
                   />
                 ) : (
-                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-amber-500 to-amber-700 mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold">
+                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary to-primary/70 mx-auto mb-4 flex items-center justify-center text-primary-foreground text-2xl font-bold">
                     {member.name.split(' ').map(n => n[0]).join('')}
                   </div>
                 )}
 
                 <div className="text-center mb-4">
-                  <h3 className="font-bold text-lg text-stone-900">{member.name}</h3>
-                  <p className="text-amber-600 text-sm font-medium">{member.role}</p>
-                  <p className="text-stone-400 text-xs mt-1">{member.experience} experience</p>
+                  <h3 className="font-bold text-lg text-card-foreground">{member.name}</h3>
+                  <p className="text-primary text-sm font-medium">{member.role}</p>
+                  <p className="text-muted-foreground text-xs mt-1">{member.experience} experience</p>
                 </div>
 
-                <p className="text-stone-600 text-sm text-center mb-4 line-clamp-3">
+                <p className="text-muted-foreground text-sm text-center mb-4 line-clamp-3">
                   {member.bio}
                 </p>
 
-                <div className="flex justify-center gap-3 pt-4 border-t border-stone-100">
+                <div className="flex justify-center gap-3 pt-4 border-t border-border">
                   <a
                     href={`tel:${member.phone}`}
-                    className="p-2 rounded-full bg-stone-100 hover:bg-amber-100 text-stone-600 hover:text-amber-600 transition-colors"
+                    className="p-2 rounded-full bg-muted hover:bg-primary/10 text-muted-foreground hover:text-primary transition-colors"
                     aria-label={`Call ${member.name}`}
                   >
                     <Phone className="h-4 w-4" />
                   </a>
                   <a
                     href={`mailto:${member.email}`}
-                    className="p-2 rounded-full bg-stone-100 hover:bg-amber-100 text-stone-600 hover:text-amber-600 transition-colors"
+                    className="p-2 rounded-full bg-muted hover:bg-primary/10 text-muted-foreground hover:text-primary transition-colors"
                     aria-label={`Email ${member.name}`}
                   >
                     <Mail className="h-4 w-4" />
@@ -102,7 +102,7 @@ export function Team() {
                   {member.socialLinks?.linkedin && (
                     <a
                       href={member.socialLinks.linkedin}
-                      className="p-2 rounded-full bg-stone-100 hover:bg-amber-100 text-stone-600 hover:text-amber-600 transition-colors"
+                      className="p-2 rounded-full bg-muted hover:bg-primary/10 text-muted-foreground hover:text-primary transition-colors"
                       aria-label={`${member.name} LinkedIn`}
                     >
                       <Link2 className="h-4 w-4" />

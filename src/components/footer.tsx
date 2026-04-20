@@ -66,7 +66,7 @@ export function Footer() {
   }, [])
   return (
     <footer 
-      className="text-stone-300"
+      className="text-muted-foreground"
       style={{
         backgroundColor: navSettings?.footerBgColor || "#1c1917",
         color: navSettings?.footerTextColor || "#d6d3d1"
@@ -90,7 +90,7 @@ export function Footer() {
                   className="h-8 w-auto"
                 />
               ) : (
-                <HardHat className="h-8 w-8 text-amber-500" />
+                <HardHat className="h-8 w-8 text-primary" />
               )}
               <span 
                 className="text-xl font-bold"
@@ -137,7 +137,7 @@ export function Footer() {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-amber-600 transition-colors"
+                      className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary transition-colors"
                       aria-label={social.platform}
                     >
                       <IconComponent className="h-5 w-5" />
@@ -155,18 +155,18 @@ export function Footer() {
               <div>
                 <h3 className="font-semibold mb-4" style={{ color: navSettings?.footerTextColor || "#ffffff" }}>Services</h3>
                 {loading ? (
-                  <Loader2 className="h-4 w-4 animate-spin text-stone-400" />
+                  <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
                 ) : (
                   <ul className="space-y-2">
                     {services.slice(0, 5).map((service) => (
                       <li key={service.id}>
-                        <Link href={`/services/${service.slug || service.id}`} className="hover:text-amber-500 transition-colors">
+                        <Link href={`/services/${service.slug || service.id}`} className="hover:text-primary transition-colors">
                           {service.title}
                         </Link>
                       </li>
                     ))}
                     <li>
-                      <Link href="/services" className="hover:text-amber-500 transition-colors font-medium text-amber-500">
+                      <Link href="/services" className="hover:text-primary transition-colors font-medium text-primary">
                         All Services →
                       </Link>
                     </li>
@@ -181,7 +181,7 @@ export function Footer() {
                   <ul className="space-y-2">
                     {footerNav.map((page) => (
                       <li key={page.id}>
-                        <Link href={`/${page.slug}`} className="hover:text-amber-500 transition-colors">
+                        <Link href={`/${page.slug}`} className="hover:text-primary transition-colors">
                           {page.title}
                         </Link>
                       </li>
@@ -196,7 +196,7 @@ export function Footer() {
                 <ul className="space-y-2">
                   {legalLinks.map((link, index) => (
                     <li key={index}>
-                      <Link href={link.href} className="hover:text-amber-500 transition-colors">
+                      <Link href={link.href} className="hover:text-primary transition-colors">
                         {link.label}
                       </Link>
                     </li>
@@ -216,7 +216,7 @@ export function Footer() {
                     <li key={linkIndex}>
                       <Link 
                         href={link.url || "#"} 
-                        className="hover:text-amber-500 transition-colors"
+                        className="hover:text-primary transition-colors"
                       >
                         {link.label}
                       </Link>

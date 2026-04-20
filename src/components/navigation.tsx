@@ -59,22 +59,22 @@ export function Navigation() {
 
   if (loading) {
     return (
-      <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <Link href="/" className="flex items-center gap-2">
-            <HardHat className="h-8 w-8 text-amber-600" />
-            <span className="text-xl font-bold text-stone-900">
+            <HardHat className="h-8 w-8 text-primary" />
+            <span className="text-xl font-bold text-foreground">
               {navSettings?.siteName || settings?.header?.logoText || "PKonstruct"}
             </span>
           </Link>
-          <Loader2 className="h-5 w-5 animate-spin text-stone-400" />
+          <Loader2 className="h-5 w-5 animate-spin text-muted-foreground" />
         </div>
       </header>
     )
   }
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
         {settings?.header?.showLogo !== false && (
@@ -92,9 +92,9 @@ export function Navigation() {
                 className="h-8 w-auto"
               />
             ) : (
-              <HardHat className="h-8 w-8 text-amber-600" />
+              <HardHat className="h-8 w-8 text-primary" />
             )}
-            <span className="text-xl font-bold text-stone-900">
+            <span className="text-xl font-bold text-foreground">
               {navSettings?.siteName || settings?.header?.logoText || "PKonstruct"}
             </span>
           </Link>
@@ -106,7 +106,7 @@ export function Navigation() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
               {link.label}
             </Link>
@@ -117,7 +117,7 @@ export function Navigation() {
               key={btn.id} 
               variant={btn.variant} 
               asChild
-              className={btn.variant === "default" ? "bg-amber-600 hover:bg-amber-700" : ""}
+              className={btn.variant === "default" ? "bg-primary hover:bg-primary/90" : ""}
             >
               <Link href={btn.link}>{btn.label}</Link>
             </Button>
@@ -149,9 +149,9 @@ export function Navigation() {
                       className="h-8 w-auto"
                     />
                   ) : (
-                    <HardHat className="h-8 w-8 text-amber-600" />
+                    <HardHat className="h-8 w-8 text-primary" />
                   )}
-                  <span className="text-xl font-bold text-stone-900">
+                  <span className="text-xl font-bold text-foreground">
                     {navSettings?.siteName || settings?.header?.logoText || "PKonstruct"}
                   </span>
                 </Link>
@@ -161,7 +161,7 @@ export function Navigation() {
                   <SheetClose asChild key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-lg font-medium text-stone-600 hover:text-stone-900 transition-colors"
+                      className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -173,7 +173,7 @@ export function Navigation() {
                 <SheetClose key={btn.id} asChild>
                   <Button 
                     variant={btn.variant}
-                    className={btn.variant === "default" ? "bg-amber-600 hover:bg-amber-700" : ""}
+                    className={btn.variant === "default" ? "bg-primary hover:bg-primary/90" : ""}
                     asChild
                   >
                     <Link href={btn.link}>{btn.label}</Link>

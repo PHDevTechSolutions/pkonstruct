@@ -65,42 +65,42 @@ export function Testimonials() {
   }
 
   return (
-    <section className="py-20 bg-stone-100">
+    <section className="py-20 bg-muted/50">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-amber-600 font-semibold text-sm uppercase tracking-wider">Testimonials</span>
-          <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mt-2 mb-4">
+          <span className="text-primary font-semibold text-sm uppercase tracking-wider">Testimonials</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2 mb-4">
             What Our Clients Say
           </h2>
-          <p className="text-stone-600 text-lg">
+          <p className="text-muted-foreground text-lg">
             Don't just take our word for it. Here's what our satisfied clients have to say about working with us.
           </p>
         </div>
 
         <div className="max-w-4xl mx-auto">
-          <Card className="relative">
+          <Card className="relative bg-card">
             <CardContent className="p-8 md:p-12">
-              <Quote className="absolute top-6 right-6 h-16 w-16 text-amber-100" />
+              <Quote className="absolute top-6 right-6 h-16 w-16 text-primary/10" />
               
               <div className="flex gap-1 mb-6">
                 {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                  <Star key={i} className="h-5 w-5 fill-amber-500 text-amber-500" />
+                  <Star key={i} className="h-5 w-5 fill-primary text-primary" />
                 ))}
               </div>
 
-              <blockquote className="text-xl md:text-2xl text-stone-700 mb-8 leading-relaxed relative z-10">
+              <blockquote className="text-xl md:text-2xl text-card-foreground mb-8 leading-relaxed relative z-10">
                 "{testimonials[currentIndex].text}"
               </blockquote>
 
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="font-semibold text-stone-900 text-lg">
+                  <div className="font-semibold text-card-foreground text-lg">
                     {testimonials[currentIndex].name}
                   </div>
-                  <div className="text-stone-500">
+                  <div className="text-muted-foreground">
                     {testimonials[currentIndex].role}
                   </div>
-                  <div className="text-amber-600 text-sm mt-1">
+                  <div className="text-primary text-sm mt-1">
                     Project: {testimonials[currentIndex].project}
                   </div>
                 </div>
@@ -133,8 +133,8 @@ export function Testimonials() {
                     onClick={() => setCurrentIndex(index)}
                     className={`h-2 rounded-full transition-all ${
                       index === currentIndex
-                        ? "w-8 bg-amber-600"
-                        : "w-2 bg-stone-300 hover:bg-stone-400"
+                        ? "w-8 bg-primary"
+                        : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"
                     }`}
                   />
                 ))}

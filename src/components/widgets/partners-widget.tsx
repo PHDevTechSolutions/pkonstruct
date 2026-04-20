@@ -58,15 +58,15 @@ export function PartnersWidget({ section }: PartnersWidgetProps) {
     : section.content?.text || ''
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
-        {section.title && <h2 className="text-3xl font-bold mb-4 text-center">{section.title}</h2>}
-        {contentText && <p className="text-stone-600 text-center max-w-2xl mx-auto mb-12">{contentText}</p>}
+        {section.title && <h2 className="text-3xl font-bold mb-4 text-center text-foreground">{section.title}</h2>}
+        {contentText && <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">{contentText}</p>}
         
         <div className="space-y-10 max-w-5xl mx-auto">
           {Object.entries(grouped).map(([category, categoryPartners]) => (
             <div key={category}>
-              <h3 className="text-lg font-semibold text-stone-500 mb-4 flex items-center gap-2">
+              <h3 className="text-lg font-semibold text-muted-foreground mb-4 flex items-center gap-2">
                 <Handshake className="h-5 w-5" />
                 {category}
               </h3>
@@ -79,7 +79,7 @@ export function PartnersWidget({ section }: PartnersWidgetProps) {
                     rel={partner.website ? "noopener noreferrer" : undefined}
                     className="group"
                   >
-                    <div className="h-20 px-6 bg-stone-50 border border-stone-200 rounded-lg flex items-center justify-center min-w-[180px] hover:border-amber-300 hover:shadow-sm transition-all">
+                    <div className="h-20 px-6 bg-muted border border-border rounded-lg flex items-center justify-center min-w-[180px] hover:border-primary/50 hover:shadow-sm transition-all">
                       {partner.logo ? (
                         <Image 
                           src={partner.logo} 
@@ -89,7 +89,7 @@ export function PartnersWidget({ section }: PartnersWidgetProps) {
                           className="object-contain grayscale group-hover:grayscale-0 transition-all"
                         />
                       ) : (
-                        <span className="text-stone-600 font-medium text-center">
+                        <span className="text-muted-foreground font-medium text-center">
                           {partner.name}
                         </span>
                       )}

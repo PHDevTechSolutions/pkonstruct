@@ -84,28 +84,28 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="py-20 bg-stone-50">
+    <section id="contact" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-amber-600 font-semibold text-sm uppercase tracking-wider">Get In Touch</span>
-          <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mt-2 mb-4">
+          <span className="text-primary font-semibold text-sm uppercase tracking-wider">Get In Touch</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2 mb-4">
             Start Your Project Today
           </h2>
-          <p className="text-stone-600 text-lg">
+          <p className="text-muted-foreground text-lg">
             Ready to build your dream project? Contact us for a free consultation and quote.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8 mb-16">
           {contactInfo.map((info, index) => (
-            <Card key={index} className="text-center">
+            <Card key={index} className="text-center bg-card">
               <CardContent className="p-6">
-                <div className="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center mx-auto mb-4">
-                  <info.icon className="h-6 w-6 text-amber-600" />
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                  <info.icon className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="font-semibold text-stone-900 mb-2">{info.title}</h3>
+                <h3 className="font-semibold text-card-foreground mb-2">{info.title}</h3>
                 {info.details.map((detail, i) => (
-                  <p key={i} className="text-stone-600 text-sm">{detail}</p>
+                  <p key={i} className="text-muted-foreground text-sm">{detail}</p>
                 ))}
               </CardContent>
             </Card>
@@ -114,16 +114,16 @@ export function Contact() {
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Form */}
-          <Card>
+          <Card className="bg-card">
             <CardHeader>
-              <CardTitle>Send Us a Message</CardTitle>
+              <CardTitle className="text-card-foreground">Send Us a Message</CardTitle>
             </CardHeader>
             <CardContent>
               {isSubmitted ? (
                 <div className="text-center py-8">
                   <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
-                  <h3 className="text-xl font-bold text-stone-900 mb-2">Message Sent!</h3>
-                  <p className="text-stone-600">Thank you for your inquiry. We will contact you shortly.</p>
+                  <h3 className="text-xl font-bold text-card-foreground mb-2">Message Sent!</h3>
+                  <p className="text-muted-foreground">Thank you for your inquiry. We will contact you shortly.</p>
                   <Button 
                     variant="outline" 
                     className="mt-4"
@@ -189,13 +189,13 @@ export function Contact() {
                     />
                   </div>
                   {error && (
-                    <div className="p-3 bg-red-50 text-red-600 text-sm rounded-md">
+                    <div className="p-3 bg-destructive/10 text-destructive text-sm rounded-md">
                       {error}
                     </div>
                   )}
                   <Button 
                     type="submit" 
-                    className="w-full bg-amber-600 hover:bg-amber-700"
+                    className="w-full bg-primary hover:bg-primary/90"
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? (
@@ -217,12 +217,12 @@ export function Contact() {
 
           {/* FAQ Section */}
           <div>
-            <h3 className="text-2xl font-bold text-stone-900 mb-6">Frequently Asked Questions</h3>
+            <h3 className="text-2xl font-bold text-foreground mb-6">Frequently Asked Questions</h3>
             <Accordion type="single" collapsible className="w-full">
               {faqs.map((faq, index) => (
                 <AccordionItem key={index} value={`item-${index}`}>
                   <AccordionTrigger className="text-left">{faq.question}</AccordionTrigger>
-                  <AccordionContent className="text-stone-600">
+                  <AccordionContent className="text-muted-foreground">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>

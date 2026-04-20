@@ -9,7 +9,7 @@ export function Home() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-background">
         <Skeleton className="h-screen w-full" />
       </div>
     )
@@ -18,7 +18,7 @@ export function Home() {
   if (error || !home) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p className="text-red-500">Failed to load home page</p>
+        <p className="text-destructive">Failed to load home page</p>
       </div>
     )
   }

@@ -9,7 +9,7 @@ export function About() {
 
   if (loading) {
     return (
-      <section id="about" className="py-20 bg-stone-900 text-white">
+      <section id="about" className="py-20 bg-background text-foreground">
         <div className="container mx-auto px-4">
           <Skeleton className="h-64 w-full mb-8" />
           <Skeleton className="h-10 w-3/4 mx-auto mb-6" />
@@ -21,10 +21,10 @@ export function About() {
 
   if (error || !about) {
     return (
-      <section id="about" className="py-20 bg-stone-900 text-white">
+      <section id="about" className="py-20 bg-background text-foreground">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <p className="text-red-400">Failed to load about information. Please try again later.</p>
+            <p className="text-destructive">Failed to load about information. Please try again later.</p>
           </div>
         </div>
       </section>

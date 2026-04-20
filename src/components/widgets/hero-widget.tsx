@@ -151,7 +151,7 @@ export function HeroWidget({ section }: HeroWidgetProps) {
               style={{ opacity: (100 - overlayOpacity) / 100 }}
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-stone-900/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/40 to-transparent" />
           </div>
         )}
         <div className="container mx-auto px-4 relative z-10">
@@ -163,7 +163,7 @@ export function HeroWidget({ section }: HeroWidgetProps) {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
                 {slide.title}
               </h1>
-              <p className="text-xl md:text-2xl text-stone-300 mb-8 max-w-2xl">
+              <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl">
                 {slide.description}
               </p>
               <div className="flex flex-wrap gap-4">
@@ -257,13 +257,13 @@ export function HeroWidget({ section }: HeroWidgetProps) {
         <>
           <button
             onClick={prevSlide}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-white/20 hover:bg-white/40 text-white transition-colors"
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-background/20 hover:bg-background/40 text-foreground transition-colors"
           >
             <ChevronLeft className="h-8 w-8" />
           </button>
           <button
             onClick={nextSlide}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-white/20 hover:bg-white/40 text-white transition-colors"
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-background/20 hover:bg-background/40 text-foreground transition-colors"
           >
             <ChevronRight className="h-8 w-8" />
           </button>

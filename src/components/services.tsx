@@ -12,7 +12,7 @@ export function Services() {
 
   if (loading) {
     return (
-      <section id="services" className="py-20 bg-stone-50">
+      <section id="services" className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <Skeleton className="h-4 w-32 mx-auto mb-4" />
@@ -36,10 +36,10 @@ export function Services() {
 
   if (error) {
     return (
-      <section id="services" className="py-20 bg-stone-50">
+      <section id="services" className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <p className="text-red-600">Failed to load services. Please try again later.</p>
+            <p className="text-destructive">Failed to load services. Please try again later.</p>
           </div>
         </div>
       </section>
@@ -47,14 +47,14 @@ export function Services() {
   }
 
   return (
-    <section id="services" className="py-20 bg-stone-50">
+    <section id="services" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-amber-600 font-semibold text-sm uppercase tracking-wider">Our Services</span>
-          <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mt-2 mb-4">
+          <span className="text-primary font-semibold text-sm uppercase tracking-wider">Our Services</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2 mb-4">
             Comprehensive Construction Solutions
           </h2>
-          <p className="text-stone-600 text-lg">
+          <p className="text-muted-foreground text-lg">
             From concept to completion, we offer a full range of construction services to meet all your building needs.
           </p>
         </div>
@@ -64,18 +64,18 @@ export function Services() {
             const IconComponent = getIcon(service.icon)
             return (
               <Link key={service.id} href={`/services/${service.id}`}>
-                <Card className="group hover:shadow-lg transition-shadow duration-300 h-full cursor-pointer">
+                <Card className="group hover:shadow-lg transition-shadow duration-300 h-full cursor-pointer bg-card">
                   <CardHeader className="pb-3">
-                    <div className="w-12 h-12 rounded-lg bg-amber-100 flex items-center justify-center mb-4 group-hover:bg-amber-600 transition-colors duration-300">
-                      <IconComponent className="h-6 w-6 text-amber-600 group-hover:text-white transition-colors duration-300" />
+                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary transition-colors duration-300">
+                      <IconComponent className="h-6 w-6 text-primary group-hover:text-primary-foreground transition-colors duration-300" />
                     </div>
-                    <CardTitle className="text-lg">{service.title}</CardTitle>
+                    <CardTitle className="text-lg text-card-foreground">{service.title}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-stone-600 text-sm leading-relaxed">
+                    <p className="text-muted-foreground text-sm leading-relaxed">
                       {service.description}
                     </p>
-                    <div className="mt-4 flex items-center text-amber-600 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="mt-4 flex items-center text-primary text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
                       Learn more <ArrowRight className="ml-1 h-4 w-4" />
                     </div>
                   </CardContent>

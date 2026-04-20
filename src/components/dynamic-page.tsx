@@ -74,7 +74,7 @@ export function DynamicPage({ sections }: DynamicPageProps) {
   if (!sections?.length) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p className="text-stone-500">Page content not available</p>
+        <p className="text-muted-foreground">Page content not available</p>
       </div>
     )
   }
@@ -89,9 +89,9 @@ export function DynamicPage({ sections }: DynamicPageProps) {
         const Widget = widgetMap[section.type]
         if (!Widget) {
           return (
-            <section key={section.id} className="py-16 bg-stone-100">
+            <section key={section.id} className="py-16 bg-muted/50">
               <div className="container mx-auto px-4">
-                <p className="text-stone-500">Unknown section type: {section.type}</p>
+                <p className="text-muted-foreground">Unknown section type: {section.type}</p>
               </div>
             </section>
           )
