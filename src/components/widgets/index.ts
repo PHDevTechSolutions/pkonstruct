@@ -16,6 +16,15 @@ export { StatsWidget } from "./stats-widget"
 export { FeaturesWidget } from "./features-widget"
 export { FAQWidget } from "./faq-widget"
 export { AwardsWidget } from "./awards-widget"
+export { BeforeAfterWidget } from "./before-after-widget"
+export { PricingWidget } from "./pricing-widget"
+export { ProcessWidget } from "./process-widget"
+export { LocationWidget } from "./location-widget"
+export { NewsletterWidget } from "./newsletter-widget"
+export { DownloadsWidget } from "./downloads-widget"
+export { SocialLinksWidget } from "./social-links-widget"
+export { PartnersWidget } from "./partners-widget"
+export { ComparisonWidget } from "./comparison-widget"
 
 // Widget metadata for admin gallery
 export interface WidgetMeta {
@@ -49,4 +58,13 @@ export const widgetRegistry: WidgetMeta[] = [
   { type: "features", label: "Features Grid", icon: "⚡", category: "interactive" },
   { type: "faq", label: "FAQ Accordion", icon: "❓", category: "interactive" },
   { type: "awards", label: "Awards & Recognition", icon: "🏆", category: "interactive" },
+  { type: "before-after", label: "Before & After", icon: "🔄", category: "interactive" },
+  { type: "pricing", label: "Pricing Table", icon: "💰", category: "interactive" },
+  { type: "process", label: "Process Steps", icon: "📋", category: "interactive" },
+  { type: "location", label: "Location/Map", icon: "📍", category: "interactive" },
+  { type: "newsletter", label: "Newsletter Signup", icon: "📬", category: "interactive" },
+  { type: "downloads", label: "Downloads", icon: "📥", category: "interactive" },
+  { type: "social-links", label: "Social Links", icon: "🔗", category: "interactive" },
+  { type: "partners", label: "Partners", icon: "🤝", category: "interactive" },
+  { type: "comparison", label: "Comparison Table", icon: "⚖️", category: "interactive" },
 ]
