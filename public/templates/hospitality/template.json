@@ -1,0 +1,624 @@
+{
+  "id": "hospitality",
+  "name": "Hotels & Residences",
+  "description": "Elegant template for hotels, serviced apartments, luxury condominiums, and vacation rentals. Features booking inquiries, room showcases, amenities highlights, and premium property presentations.",
+  "thumbnail": "https://images.pexels.com/photos/189296/pexels-photo-189296.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "pages": {
+    "homepage": {
+      "title": "Homepage",
+      "slug": "home",
+      "metaTitle": "Grand Stay | Premium Hotels & Serviced Residences",
+      "metaDescription": "Experience luxury living at our premium hotels and serviced apartments. Fully furnished residences, world-class amenities, and personalized service for discerning guests.",
+      "sections": [
+        {
+          "id": "hero-1",
+          "type": "hero",
+          "title": "Welcome Hero",
+          "isActive": true,
+          "order": 1,
+          "content": {
+            "headline": "Your Home Away From Home",
+            "subheadline": "Discover premium furnished residences and luxury hotel accommodations designed for comfort, convenience, and exceptional living experiences.",
+            "ctaText": "View Residences",
+            "ctaLink": "#residences",
+            "secondaryButtonText": "Book a Tour",
+            "secondaryButtonLink": "#contact",
+            "backgroundImage": "https://images.pexels.com/photos/189296/pexels-photo-189296.jpeg?auto=compress&cs=tinysrgb&w=1920",
+            "showBadge": true,
+            "badge": "Now Accepting Reservations"
+          }
+        },
+        {
+          "id": "residences-showcase",
+          "type": "gallery",
+          "title": "Featured Residences",
+          "isActive": true,
+          "order": 2,
+          "content": {
+            "title": "Premium Residences",
+            "subtitle": "Fully furnished apartments and suites designed for modern living",
+            "layout": "featured-grid",
+            "gallery": [
+              {
+                "title": "Studio Premier",
+                "description": "Perfect for solo travelers and business guests. 35 sqm with city views.",
+                "image": "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=800",
+                "price": "From ₱2,500/night",
+                "features": ["35 SQM", "City View", "Kitchenette", "Work Desk"]
+              },
+              {
+                "title": "One Bedroom Suite",
+                "description": "Spacious suite with separate living area. Ideal for extended stays.",
+                "image": "https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=800",
+                "price": "From ₱4,500/night",
+                "features": ["55 SQM", "Living Room", "Full Kitchen", "Balcony"]
+              },
+              {
+                "title": "Two Bedroom Deluxe",
+                "description": "Family-friendly space with two bedrooms and premium amenities.",
+                "image": "https://images.pexels.com/photos/271660/pexels-photo-271660.jpeg?auto=compress&cs=tinysrgb&w=800",
+                "price": "From ₱6,500/night",
+                "features": ["85 SQM", "2 Bedrooms", "2 Bathrooms", "Dining Area"]
+              },
+              {
+                "title": "Penthouse Suite",
+                "description": "Ultimate luxury with panoramic views and exclusive amenities.",
+                "image": "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800",
+                "price": "From ₱15,000/night",
+                "features": ["150 SQM", "Panoramic View", "Private Pool", "Butler Service"]
+              }
+            ]
+          }
+        },
+        {
+          "id": "amenities-highlights",
+          "type": "features",
+          "title": "World-Class Amenities",
+          "isActive": true,
+          "order": 3,
+          "content": {
+            "title": "Exceptional Amenities",
+            "subtitle": "Everything you need for a comfortable and productive stay",
+            "layout": "icon-grid",
+            "features": [
+              {
+                "icon": "Wifi",
+                "title": "High-Speed WiFi",
+                "description": "Complimentary fiber internet throughout the property"
+              },
+              {
+                "icon": "Dumbbell",
+                "title": "Fitness Center",
+                "description": "24/7 access to state-of-the-art gym and wellness facilities"
+              },
+              {
+                "icon": "Utensils",
+                "title": "In-House Dining",
+                "description": "Restaurant and room service with gourmet cuisine"
+              },
+              {
+                "icon": "Car",
+                "title": "Secure Parking",
+                "description": "Underground parking with 24/7 security monitoring"
+              },
+              {
+                "icon": "Shield",
+                "title": "24/7 Security",
+                "description": "Round-the-clock security and concierge services"
+              },
+              {
+                "icon": "Wind",
+                "title": "Swimming Pool",
+                "description": "Rooftop infinity pool with stunning city views"
+              },
+              {
+                "icon": "Briefcase",
+                "title": "Business Center",
+                "description": "Meeting rooms and co-working spaces available"
+              },
+              {
+                "icon": "Sparkles",
+                "title": "Housekeeping",
+                "description": "Daily housekeeping and linen change services"
+              }
+            ]
+          }
+        },
+        {
+          "id": "location-highlights",
+          "type": "text",
+          "title": "Prime Location",
+          "isActive": true,
+          "order": 4,
+          "content": {
+            "text": "<h3>Prime Location</h3><p>Situated in the heart of the central business district with easy access to shopping centers, restaurants, and transportation hubs.</p><ul><li>5 minutes to CBD</li><li>10 minutes to airport</li><li>Walking distance to malls</li><li>Near major hospitals</li></ul>"
+          }
+        },
+        {
+          "id": "testimonials",
+          "type": "testimonials",
+          "title": "Guest Reviews",
+          "isActive": true,
+          "order": 5,
+          "content": {
+            "title": "What Our Guests Say",
+            "subtitle": "Real experiences from our valued residents and guests",
+            "testimonials": [
+              {
+                "name": "Maria Santos",
+                "title": "Business Traveler",
+                "quote": "The perfect place for extended business stays. The staff is incredibly attentive and the amenities are top-notch. Felt like home away from home.",
+                "rating": 5,
+                "stayDuration": "2 months"
+              },
+              {
+                "name": "John Chen",
+                "title": "Expatriate",
+                "quote": "Moved here while looking for permanent housing. Ended up staying 6 months because it was so comfortable. Highly recommend for expats!",
+                "rating": 5,
+                "stayDuration": "6 months"
+              },
+              {
+                "name": "Sarah Williams",
+                "title": "Family Vacation",
+                "quote": "Spacious two-bedroom unit was perfect for our family. Kids loved the pool and the location made exploring the city so easy.",
+                "rating": 5,
+                "stayDuration": "2 weeks"
+              }
+            ]
+          }
+        },
+        {
+          "id": "booking-cta",
+          "type": "cta",
+          "title": "Book Your Stay",
+          "isActive": true,
+          "order": 6,
+          "content": {
+            "title": "Ready to Experience Luxury Living?",
+            "subtitle": "Contact us today to inquire about availability, rates, and special packages for extended stays.",
+            "buttonText": "Inquire Now",
+            "buttonLink": "#contact",
+            "secondaryButtonText": "View All Rooms",
+            "secondaryButtonLink": "#residences",
+            "showTrustBadges": true,
+            "trustBadges": ["Flexible Cancellation", "Best Rate Guarantee", "24/7 Support"]
+          }
+        }
+      ],
+      "showInHeader": true,
+      "showInFooter": false,
+      "isPublished": true,
+      "isDefault": true
+    },
+    "residences": {
+      "title": "Our Residences",
+      "slug": "residences",
+      "metaTitle": "Room Types & Rates | Serviced Apartments & Hotel Suites",
+      "metaDescription": "Browse our selection of studio, one-bedroom, two-bedroom suites and penthouses. Fully furnished with premium amenities for short and long-term stays.",
+      "sections": [
+        {
+          "id": "hero-residences",
+          "type": "hero",
+          "title": "Residences Hero",
+          "isActive": true,
+          "order": 1,
+          "content": {
+            "headline": "Your Perfect Space Awaits",
+            "subheadline": "From cozy studios to expansive penthouses, find the ideal residence for your stay",
+            "backgroundImage": "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=1920"
+          }
+        },
+        {
+          "id": "all-rooms",
+          "type": "gallery",
+          "title": "All Room Types",
+          "isActive": true,
+          "order": 2,
+          "content": {
+            "title": "Browse All Residences",
+            "subtitle": "Detailed information about each room type and amenities",
+            "layout": "detailed-list",
+            "gallery": [
+              {
+                "title": "Studio Standard",
+                "description": "Compact and efficient studio perfect for short stays and solo travelers. Features a comfortable queen bed, work desk, and kitchenette.",
+                "image": "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=800",
+                "price": "₱2,000/night",
+                "size": "30 SQM",
+                "maxGuests": "2 Guests",
+                "amenities": ["Queen Bed", "Kitchenette", "Work Desk", "Smart TV", "City View"]
+              },
+              {
+                "title": "Studio Premier",
+                "description": "Upgraded studio with premium finishes, larger bathroom, and better views. Ideal for business travelers seeking comfort and convenience.",
+                "image": "https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=800",
+                "price": "₱2,500/night",
+                "size": "35 SQM",
+                "maxGuests": "2 Guests",
+                "amenities": ["King Bed", "Full Kitchenette", "Ergonomic Workstation", "Premium Toiletries", "Pool View"]
+              },
+              {
+                "title": "One Bedroom Suite",
+                "description": "Separate living and sleeping areas provide extra space and privacy. Perfect for extended stays and couples.",
+                "image": "https://images.pexels.com/photos/271660/pexels-photo-271660.jpeg?auto=compress&cs=tinysrgb&w=800",
+                "price": "₱4,500/night",
+                "size": "55 SQM",
+                "maxGuests": "3 Guests",
+                "amenities": ["King Bed", "Living Room", "Full Kitchen", "Washer/Dryer", "Balcony"]
+              },
+              {
+                "title": "Two Bedroom Deluxe",
+                "description": "Spacious family accommodation with two separate bedrooms, two bathrooms, and a generous living area.",
+                "image": "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800",
+                "price": "₱6,500/night",
+                "size": "85 SQM",
+                "maxGuests": "5 Guests",
+                "amenities": ["2 King Beds", "2 Bathrooms", "Dining Area", "Full Kitchen", "City Skyline View"]
+              },
+              {
+                "title": "Executive Suite",
+                "description": "Luxury suite with premium furnishings, separate dining room, and exclusive access to executive lounge.",
+                "image": "https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=800",
+                "price": "₱10,000/night",
+                "size": "120 SQM",
+                "maxGuests": "4 Guests",
+                "amenities": ["Master Bedroom", "Guest Room", "Dining Room", "Kitchen", "Executive Lounge Access"]
+              },
+              {
+                "title": "Penthouse Suite",
+                "description": "The ultimate in luxury living. Expansive space with private rooftop access, jacuzzi, and panoramic views.",
+                "image": "https://images.pexels.com/photos/2219024/pexels-photo-2219024.jpeg?auto=compress&cs=tinysrgb&w=800",
+                "price": "₱15,000/night",
+                "size": "150 SQM",
+                "maxGuests": "6 Guests",
+                "amenities": ["2 Master Bedrooms", "Private Pool", "Rooftop Terrace", "Personal Butler", "Chef Service"]
+              }
+            ]
+          }
+        },
+        {
+          "id": "long-term-rates",
+          "type": "features",
+          "title": "Extended Stay Packages",
+          "isActive": true,
+          "order": 3,
+          "content": {
+            "title": "Special Rates for Extended Stays",
+            "subtitle": "Enjoy significant savings when you stay longer",
+            "layout": "pricing-cards",
+            "features": [
+              {
+                "title": "Weekly Stay",
+                "description": "Stay 7 nights and save 15% on your accommodation",
+                "price": "15% Off"
+              },
+              {
+                "title": "Monthly Stay",
+                "description": "Stay 30 nights and save 25% with included utilities",
+                "price": "25% Off"
+              },
+              {
+                "title": "Quarterly Stay",
+                "description": "Stay 90 nights and save 35% with full housekeeping",
+                "price": "35% Off"
+              },
+              {
+                "title": "Corporate Rate",
+                "description": "Special rates for business travelers and companies",
+                "price": "Custom"
+              }
+            ]
+          }
+        }
+      ],
+      "showInHeader": true,
+      "showInFooter": true,
+      "isPublished": true
+    },
+    "amenities": {
+      "title": "Amenities",
+      "slug": "amenities",
+      "metaTitle": "Hotel Amenities & Facilities | Pool, Gym, Dining & More",
+      "metaDescription": "Explore our world-class amenities including rooftop pool, fitness center, restaurant, business facilities, and personalized concierge services.",
+      "sections": [
+        {
+          "id": "hero-amenities",
+          "type": "hero",
+          "title": "Amenities Hero",
+          "isActive": true,
+          "order": 1,
+          "content": {
+            "headline": "World-Class Facilities",
+            "subheadline": "Everything you need for a comfortable, productive, and enjoyable stay",
+            "backgroundImage": "https://images.pexels.com/photos/261388/pexels-photo-261388.jpeg?auto=compress&cs=tinysrgb&w=1920"
+          }
+        },
+        {
+          "id": "all-amenities",
+          "type": "features",
+          "title": "All Amenities",
+          "isActive": true,
+          "order": 2,
+          "content": {
+            "title": "Comprehensive Facilities",
+            "subtitle": "Designed for your comfort and convenience",
+            "layout": "detailed-grid",
+            "features": [
+              {
+                "icon": "Waves",
+                "title": "Rooftop Infinity Pool",
+                "description": "Take a refreshing dip in our stunning rooftop pool with panoramic city views. Open daily from 6 AM to 10 PM. Poolside loungers and cabanas available.",
+                "image": "https://images.pexels.com/photos/261388/pexels-photo-261388.jpeg?auto=compress&cs=tinysrgb&w=800"
+              },
+              {
+                "icon": "Dumbbell",
+                "title": "Fitness & Wellness Center",
+                "description": "State-of-the-art gym equipment, yoga studio, and wellness programs. Personal trainers available upon request. Open 24/7 for residents.",
+                "image": "https://images.pexels.com/photos/1571463/pexels-photo-1571463.jpeg?auto=compress&cs=tinysrgb&w=800"
+              },
+              {
+                "icon": "ChefHat",
+                "title": "In-House Restaurant",
+                "description": "Savor exquisite cuisine at our signature restaurant featuring local and international dishes. Breakfast buffet, lunch specials, and fine dining dinner service.",
+                "image": "https://images.pexels.com/photos/1571462/pexels-photo-1571462.jpeg?auto=compress&cs=tinysrgb&w=800"
+              },
+              {
+                "icon": "Coffee",
+                "title": "Café & Lounge",
+                "description": "Relax and unwind at our café serving premium coffee, pastries, and light meals. Perfect for casual meetings or quiet time with a book.",
+                "image": "https://images.pexels.com/photos/280012/pexels-photo-280012.jpeg?auto=compress&cs=tinysrgb&w=800"
+              },
+              {
+                "icon": "Briefcase",
+                "title": "Business Center",
+                "description": "Fully equipped business center with meeting rooms, printing services, and high-speed internet. Board rooms available for corporate events.",
+                "image": "https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=800"
+              },
+              {
+                "icon": "Car",
+                "title": "Parking & Transport",
+                "description": "Secure underground parking with EV charging stations. Airport transfers and car rental services available through our concierge.",
+                "image": "https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=800"
+              },
+              {
+                "icon": "Shield",
+                "title": "Security & Safety",
+                "description": "24/7 security personnel, CCTV monitoring, keycard access, and in-room safes. Fire safety systems and emergency response protocols in place.",
+                "image": "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800"
+              },
+              {
+                "icon": "Sparkles",
+                "title": "Housekeeping & Laundry",
+                "description": "Daily housekeeping service, fresh linens, and towel replacement. On-site laundry facilities and professional dry cleaning services available.",
+                "image": "https://images.pexels.com/photos/1571463/pexels-photo-1571463.jpeg?auto=compress&cs=tinysrgb&w=800"
+              }
+            ]
+          }
+        }
+      ],
+      "showInHeader": true,
+      "showInFooter": true,
+      "isPublished": true
+    },
+    "about": {
+      "title": "About Us",
+      "slug": "about-us",
+      "metaTitle": "About Grand Stay | Premium Serviced Residences",
+      "metaDescription": "Learn about our commitment to providing exceptional hospitality and premium furnished residences for business and leisure travelers.",
+      "sections": [
+        {
+          "id": "hero-about",
+          "type": "hero",
+          "title": "About Hero",
+          "isActive": true,
+          "order": 1,
+          "content": {
+            "headline": "Redefining Urban Living",
+            "subheadline": "Setting new standards in serviced residences and hospitality since 2015",
+            "backgroundImage": "https://images.pexels.com/photos/189296/pexels-photo-189296.jpeg?auto=compress&cs=tinysrgb&w=1920"
+          }
+        },
+        {
+          "id": "our-story",
+          "type": "text",
+          "title": "Our Story",
+          "isActive": true,
+          "order": 2,
+          "content": {
+            "text": "<h3>Our Story</h3><p>Grand Stay was founded with a simple vision: to provide travelers and residents with the comfort of home combined with the luxury of a premium hotel. Since opening our first property in 2015, we have grown to become a trusted name in serviced residences.</p><p>We understand that whether you're traveling for business, relocating to a new city, or enjoying an extended vacation, you deserve a space that feels like home. That's why every detail of our residences is designed with your comfort in mind.</p>"
+          }
+        },
+        {
+          "id": "why-choose-us",
+          "type": "features",
+          "title": "Why Choose Us",
+          "isActive": true,
+          "order": 3,
+          "content": {
+            "title": "The Grand Stay Difference",
+            "subtitle": "What sets us apart from ordinary hotels and apartments",
+            "layout": "icon-grid",
+            "features": [
+              {
+                "icon": "Home",
+                "title": "Home-Like Comfort",
+                "description": "Fully furnished spaces with living areas, kitchens, and separate bedrooms - not just a room, but a complete home."
+              },
+              {
+                "icon": "Clock",
+                "title": "Flexible Stays",
+                "description": "Stay a night, a week, or a year. Our flexible booking options cater to your unique needs with competitive long-term rates."
+              },
+              {
+                "icon": "MapPin",
+                "title": "Prime Locations",
+                "description": "All our properties are strategically located near business districts, shopping centers, and transportation hubs."
+              },
+              {
+                "icon": "Users",
+                "title": "Personalized Service",
+                "description": "Our dedicated team is available 24/7 to assist with everything from housekeeping requests to local recommendations."
+              },
+              {
+                "icon": "CreditCard",
+                "title": "Transparent Pricing",
+                "description": "No hidden fees or surprise charges. What you see is what you pay, with all utilities and amenities included."
+              },
+              {
+                "icon": "Award",
+                "title": "Quality Assured",
+                "description": "Regular maintenance, premium furnishings, and rigorous cleanliness standards ensure a consistently excellent experience."
+              }
+            ]
+          }
+        }
+      ],
+      "showInHeader": true,
+      "showInFooter": true,
+      "isPublished": true
+    },
+    "contact": {
+      "title": "Contact & Book",
+      "slug": "contact",
+      "metaTitle": "Book Your Stay | Reservations & Inquiries",
+      "metaDescription": "Contact us for room reservations, extended stay inquiries, corporate bookings, and special packages. Our team is ready to assist you.",
+      "sections": [
+        {
+          "id": "hero-contact",
+          "type": "hero",
+          "title": "Contact Hero",
+          "isActive": true,
+          "order": 1,
+          "content": {
+            "headline": "Let's Connect",
+            "subheadline": "Ready to book or have questions? We're here to help you find the perfect residence.",
+            "backgroundImage": "https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=1920"
+          }
+        },
+        {
+          "id": "contact-form",
+          "type": "contact",
+          "title": "Booking Inquiry",
+          "isActive": true,
+          "order": 2,
+          "content": {
+            "title": "Send Us a Message",
+            "subtitle": "Fill out the form below and our reservations team will get back to you within 24 hours",
+            "formFields": [
+              { "name": "name", "label": "Full Name", "type": "text", "required": true },
+              { "name": "email", "label": "Email Address", "type": "email", "required": true },
+              { "name": "phone", "label": "Phone Number", "type": "tel", "required": true },
+              { "name": "roomType", "label": "Preferred Room Type", "type": "text", "required": false },
+              { "name": "checkIn", "label": "Check-in Date", "type": "date", "required": false },
+              { "name": "checkOut", "label": "Check-out Date", "type": "date", "required": false },
+              { "name": "guests", "label": "Number of Guests", "type": "number", "required": false },
+              { "name": "message", "label": "Special Requests or Questions", "type": "textarea", "required": false }
+            ],
+            "showPhone": true,
+            "showAddress": false,
+            "showFileUpload": false,
+            "submitButtonText": "Send Inquiry",
+            "successMessage": "Thank you! Our reservations team will contact you shortly."
+          }
+        },
+        {
+          "id": "contact-info",
+          "type": "text",
+          "title": "Contact Information",
+          "isActive": true,
+          "order": 3,
+          "content": {
+            "text": "<h3>Contact Information</h3><p><strong>Grand Stay Residences</strong></p><p>123 CBD Avenue, Makati City<br>Metro Manila, Philippines</p><p><strong>Phone:</strong> +63 2 8123 4567<br><strong>Email:</strong> reservations@grandstay.com</p><p><strong>Front Desk:</strong> 24/7<br><strong>Reservations:</strong> Mon-Sat 8AM-8PM</p>"
+          }
+        }
+      ],
+      "showInHeader": true,
+      "showInFooter": true,
+      "isPublished": true
+    }
+  },
+  "navigation": {
+    "siteName": "Grand Stay",
+    "siteDescription": "Premium Hotels & Serviced Residences",
+    "headerLogo": "",
+    "headerBgColor": "#ffffff",
+    "headerTextColor": "#111827",
+    "footerDescription": "Grand Stay offers premium furnished residences and luxury hotel accommodations designed for comfort and convenience. Experience exceptional living with world-class amenities and personalized service.",
+    "footerCopyright": "© 2024 Grand Stay Residences. All rights reserved.",
+    "footerBgColor": "#111827",
+    "footerTextColor": "#ffffff",
+    "socialLinks": [
+      { "platform": "Facebook", "url": "https://facebook.com/grandstay", "isActive": true },
+      { "platform": "Instagram", "url": "https://instagram.com/grandstay", "isActive": true },
+      { "platform": "Twitter", "url": "https://twitter.com/grandstay", "isActive": true },
+      { "platform": "LinkedIn", "url": "https://linkedin.com/company/grandstay", "isActive": false }
+    ],
+    "footerColumns": [
+      {
+        "title": "Residences",
+        "links": [
+          { "label": "Studio Premier", "url": "#residences" },
+          { "label": "One Bedroom Suite", "url": "#residences" },
+          { "label": "Two Bedroom Deluxe", "url": "#residences" },
+          { "label": "Penthouse Suite", "url": "#residences" }
+        ]
+      },
+      {
+        "title": "Amenities",
+        "links": [
+          { "label": "Swimming Pool", "url": "/amenities" },
+          { "label": "Fitness Center", "url": "/amenities" },
+          { "label": "Restaurant", "url": "/amenities" },
+          { "label": "Business Center", "url": "/amenities" }
+        ]
+      },
+      {
+        "title": "Company",
+        "links": [
+          { "label": "About Us", "url": "/about-us" },
+          { "label": "Residences", "url": "/residences" },
+          { "label": "Amenities", "url": "/amenities" },
+          { "label": "Contact", "url": "/contact" }
+        ]
+      },
+      {
+        "title": "Contact",
+        "contactInfo": {
+          "address": "123 CBD Avenue, Makati City, Metro Manila, Philippines",
+          "phone": "+63 2 8123 4567",
+          "email": "reservations@grandstay.com",
+          "hours": "Front Desk: 24/7 | Reservations: Mon-Sat 8AM-8PM"
+        }
+      }
+    ],
+    "headerNavigation": [
+      { "label": "Home", "url": "/", "showInHeader": true },
+      { "label": "Residences", "url": "/residences", "showInHeader": true },
+      { "label": "Amenities", "url": "/amenities", "showInHeader": true },
+      { "label": "About", "url": "/about-us", "showInHeader": true },
+      { "label": "Contact", "url": "/contact", "showInHeader": true, "highlight": true }
+    ],
+    "footerNavigation": [
+      { "label": "Privacy Policy", "url": "/privacy-policy", "showInFooter": true },
+      { "label": "Terms of Service", "url": "/terms-of-service", "showInFooter": true },
+      { "label": "Cookie Policy", "url": "/cookie-policy", "showInFooter": true }
+    ]
+  },
+  "styles": {
+    "primaryColor": "#111827",
+    "primaryHover": "#1f2937",
+    "secondaryColor": "#f59e0b",
+    "accentColor": "#d97706",
+    "textColor": "#111827",
+    "lightTextColor": "#6b7280",
+    "backgroundColor": "#ffffff",
+    "cardBgColor": "#ffffff",
+    "borderColor": "#e5e7eb",
+    "fontFamily": "Inter, system-ui, -apple-system, sans-serif",
+    "headingFontFamily": "Inter, system-ui, sans-serif",
+    "borderRadius": "0px",
+    "shadow": "none",
+    "shadowLarge": "0 4px 6px -1px rgb(0 0 0 / 0.1)"
+  }
+}

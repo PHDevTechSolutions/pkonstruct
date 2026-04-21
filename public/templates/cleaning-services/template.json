@@ -2,7 +2,7 @@
   "id": "cleaning-services",
   "name": "Cleaning Services",
   "description": "Professional template for cleaning and maintenance companies",
-  "thumbnail": "/templates/cleaning-services/thumbnail.jpg",
+  "thumbnail": "https://images.pexels.com/photos/6195273/pexels-photo-6195273.jpeg?auto=compress&cs=tinysrgb&w=800",
   "pages": {
     "homepage": {
       "title": "Homepage",
@@ -17,12 +17,15 @@
           "isActive": true,
           "order": 1,
           "content": {
-            "headline": "A Cleaner, Healthier Space",
-            "subheadline": "Professional cleaning services for homes and businesses",
-            "ctaText": "Book Now",
+            "headline": "Professional Cleaning Services",
+            "subheadline": "Transform your space with our trusted team of cleaning experts. We deliver spotless results for homes and businesses using eco-friendly products.",
+            "ctaText": "Get a Quote",
             "ctaLink": "/quote",
-            "backgroundImage": "/images/cleaning-hero.jpg",
-            "badge": "Eco-Friendly Products"
+            "secondaryButtonText": "Our Services",
+            "secondaryButtonLink": "/services",
+            "backgroundImage": "https://images.pexels.com/photos/6195273/pexels-photo-6195273.jpeg?auto=compress&cs=tinysrgb&w=1920",
+            "showBadge": true,
+            "badge": "Eco-Friendly & Non-Toxic"
           }
         },
         {
@@ -32,14 +35,34 @@
           "isActive": true,
           "order": 2,
           "content": {
-            "title": "Cleaning Services We Offer",
-            "subtitle": "From residential to commercial",
-            "layout": "cards",
+            "title": "Our Cleaning Services",
+            "subtitle": "Comprehensive cleaning solutions tailored to your needs",
+            "layout": "grid",
             "services": [
-              { "title": "Residential Cleaning", "icon": "Home" },
-              { "title": "Office Cleaning", "icon": "Building" },
-              { "title": "Deep Cleaning", "icon": "Sparkles" },
-              { "title": "Move-in/Move-out", "icon": "Truck" }
+              {
+                "title": "Residential Cleaning",
+                "description": "Regular home cleaning services including dusting, vacuuming, mopping, and sanitizing all living spaces.",
+                "icon": "Home",
+                "features": ["Kitchen & Bathrooms", "Living Areas", "Bedrooms", "Dusting & Vacuuming"]
+              },
+              {
+                "title": "Office Cleaning",
+                "description": "Professional commercial cleaning for offices, retail spaces, and workplaces.",
+                "icon": "Building2",
+                "features": ["Desks & Workstations", "Common Areas", "Restrooms", "Trash Removal"]
+              },
+              {
+                "title": "Deep Cleaning",
+                "description": "Intensive cleaning targeting hard-to-reach areas and built-up grime.",
+                "icon": "Sparkles",
+                "features": ["Baseboards & Trim", "Inside Appliances", "Cabinet Interiors", "Grout Cleaning"]
+              },
+              {
+                "title": "Move-in/Move-out",
+                "description": "Complete cleaning service for transitions between properties.",
+                "icon": "Truck",
+                "features": ["Full Sanitization", "Cabinet Cleaning", "Floor Treatment", "Final Inspection"]
+              }
             ]
           }
         },
@@ -50,12 +73,40 @@
           "isActive": true,
           "order": 3,
           "content": {
-            "title": "Why Sparkle Clean?",
+            "title": "Why Choose Sparkle Clean?",
+            "subtitle": "The trusted choice for spotless spaces",
+            "layout": "icon-grid",
             "features": [
-              { "title": "Trusted Team", "description": "Background-checked, trained professionals" },
-              { "title": "Eco-Friendly", "description": "Safe, sustainable cleaning products" },
-              { "title": "Satisfaction Guaranteed", "description": "100% satisfaction or we re-clean" },
-              { "title": "Flexible Scheduling", "description": "Book online, 24/7 availability" }
+              {
+                "icon": "ShieldCheck",
+                "title": "Trusted & Vetted Team",
+                "description": "All cleaners undergo thorough background checks and extensive training before entering your space."
+              },
+              {
+                "icon": "Leaf",
+                "title": "Eco-Friendly Products",
+                "description": "We use only non-toxic, biodegradable cleaning solutions that are safe for your family and pets."
+              },
+              {
+                "icon": "Award",
+                "title": "Satisfaction Guaranteed",
+                "description": "Not 100% satisfied? We'll return to re-clean any areas that don't meet your expectations."
+              },
+              {
+                "icon": "Clock",
+                "title": "Flexible Scheduling",
+                "description": "Book online anytime. We offer morning, afternoon, and evening appointments 7 days a week."
+              },
+              {
+                "icon": "CreditCard",
+                "title": "Transparent Pricing",
+                "description": "No hidden fees or surprises. Get an instant quote online with our upfront pricing."
+              },
+              {
+                "icon": "Headphones",
+                "title": "24/7 Support",
+                "description": "Our customer service team is always available to answer questions and handle special requests."
+              }
             ]
           }
         },
@@ -67,7 +118,30 @@
           "order": 4,
           "content": {
             "title": "What Our Customers Say",
-            "subtitle": "Rated 4.9/5 from over 2,000 reviews"
+            "subtitle": "Real reviews from satisfied clients",
+            "testimonials": [
+              {
+                "name": "Jennifer Martinez",
+                "title": "Homeowner",
+                "quote": "Sparkle Clean has been cleaning our home monthly for over a year. Their attention to detail is incredible. I always come home to a spotless house!",
+                "rating": 5,
+                "service": "Residential Cleaning"
+              },
+              {
+                "name": "Robert Chen",
+                "title": "Office Manager",
+                "quote": "We switched to Sparkle Clean for our office and the difference was immediate. The team is professional, thorough, and always on time.",
+                "rating": 5,
+                "service": "Office Cleaning"
+              },
+              {
+                "name": "Amanda Foster",
+                "title": "Property Manager",
+                "quote": "I manage 15 rental units and Sparkle Clean handles all move-out cleanings. They make turnovers fast and our tenants love the results.",
+                "rating": 5,
+                "service": "Move-out Cleaning"
+              }
+            ]
           }
         },
         {
@@ -77,11 +151,14 @@
           "isActive": true,
           "order": 5,
           "content": {
-            "title": "Ready for a Sparkling Clean Space?",
-            "subtitle": "Book your first cleaning and get 20% off",
-            "buttonText": "Get Instant Quote",
+            "title": "Ready for a Spotless Space?",
+            "subtitle": "Get your free quote today. First-time customers save 20% on their initial cleaning.",
+            "buttonText": "Get Free Quote",
             "buttonLink": "/quote",
-            "backgroundColor": "#0d9488"
+            "secondaryButtonText": "Call (555) 123-4567",
+            "secondaryButtonLink": "tel:+15551234567",
+            "showTrustBadges": true,
+            "trustBadges": ["Licensed & Insured", "Satisfaction Guaranteed", "Eco-Friendly Products"]
           }
         }
       ],
@@ -102,9 +179,9 @@
           "isActive": true,
           "order": 1,
           "content": {
-            "headline": "About Sparkle Clean",
-            "subheadline": "Making spaces sparkle since 2010",
-            "backgroundImage": "/images/about-cleaning.jpg"
+            "headline": "Our Story",
+            "subheadline": "Dedicated to cleaner, healthier spaces since 2010",
+            "backgroundImage": "https://images.pexels.com/photos/4021256/pexels-photo-4021256.jpeg?auto=compress&cs=tinysrgb&w=1920"
           }
         },
         {
@@ -114,9 +191,7 @@
           "isActive": true,
           "order": 2,
           "content": {
-            "title": "Our Mission",
-            "text": "We believe everyone deserves a clean, healthy living and working environment. That's why we use only eco-friendly products and employ trained professionals who treat your space with care.",
-            "layout": "centered"
+            "text": "<h3>Our Mission</h3><p>At Sparkle Clean, we believe everyone deserves a clean, healthy living and working environment. Founded in 2010, we've grown from a small family business to a trusted cleaning service provider serving hundreds of homes and businesses.</p><p>Our commitment to using only eco-friendly, non-toxic cleaning products ensures the safety of your family, pets, and employees while delivering exceptional results. Every member of our team undergoes rigorous training and background checks because we understand that trust is earned.</p><p>We're not just cleaning spaces – we're creating healthier environments where people can thrive.</p>"
           }
         },
         {
@@ -126,8 +201,25 @@
           "isActive": true,
           "order": 3,
           "content": {
-            "title": "Meet Our Team",
-            "subtitle": "Professional, friendly, and thorough"
+            "title": "Meet Our Cleaning Experts",
+            "subtitle": "Professional, friendly, and dedicated to excellence",
+            "members": [
+              {
+                "name": "Sarah Johnson",
+                "role": "Founder & CEO",
+                "bio": "Sarah started Sparkle Clean in 2010 with a mission to provide eco-friendly cleaning services. She oversees operations and ensures quality standards."
+              },
+              {
+                "name": "Michael Torres",
+                "role": "Operations Manager",
+                "bio": "Michael manages our team of 50+ cleaners and ensures every job meets our high standards. He specializes in commercial cleaning operations."
+              },
+              {
+                "name": "Lisa Wong",
+                "role": "Training Director",
+                "bio": "Lisa develops our training programs and certifies all new team members in our eco-friendly cleaning protocols and safety standards."
+              }
+            ]
           }
         }
       ],
@@ -148,9 +240,9 @@
           "isActive": true,
           "order": 1,
           "content": {
-            "headline": "Our Services",
-            "subheadline": "Comprehensive cleaning solutions",
-            "backgroundImage": "/images/services-cleaning.jpg"
+            "headline": "Cleaning Services",
+            "subheadline": "Professional solutions for every space",
+            "backgroundImage": "https://images.pexels.com/photos/4107120/pexels-photo-4107120.jpeg?auto=compress&cs=tinysrgb&w=1920"
           }
         },
         {
@@ -160,9 +252,9 @@
           "isActive": true,
           "order": 2,
           "content": {
-            "title": "Cleaning Services",
-            "layout": "detailed",
-            "showPricing": true
+            "title": "Service Details",
+            "subtitle": "Choose the right cleaning package for your needs",
+            "layout": "detailed-cards"
           }
         },
         {
@@ -172,10 +264,31 @@
           "isActive": true,
           "order": 3,
           "content": {
+            "title": "Simple, Transparent Pricing",
+            "subtitle": "Choose the package that fits your needs",
             "plans": [
-              { "name": "Basic", "price": "$99", "period": "per visit" },
-              { "name": "Standard", "price": "$149", "period": "per visit" },
-              { "name": "Deep Clean", "price": "$249", "period": "per visit" }
+              {
+                "name": "Basic Clean",
+                "price": "$99",
+                "period": "per visit",
+                "description": "Perfect for regular maintenance cleaning",
+                "features": ["2 Hours of Cleaning", "2 Cleaners", "All Supplies Included", "Kitchen & Bathrooms", "Living Areas"]
+              },
+              {
+                "name": "Standard Clean",
+                "price": "$149",
+                "period": "per visit",
+                "description": "Our most popular option for homes and offices",
+                "features": ["3 Hours of Cleaning", "2 Cleaners", "All Supplies Included", "All Rooms", "Interior Windows"],
+                "recommended": true
+              },
+              {
+                "name": "Deep Clean",
+                "price": "$249",
+                "period": "per visit",
+                "description": "Intensive cleaning for neglected spaces",
+                "features": ["5 Hours of Cleaning", "3 Cleaners", "All Supplies Included", "Inside Appliances", "Baseboards & Trim", "Grout Scrubbing"]
+              }
             ]
           }
         }
@@ -198,8 +311,8 @@
           "order": 1,
           "content": {
             "headline": "Get Your Free Quote",
-            "subheadline": "Instant estimate in 2 minutes",
-            "badge": "20% Off First Clean"
+            "subheadline": "Fill out the form below and we'll send you a personalized estimate within 24 hours",
+            "badge": "Save 20% on First Clean"
           }
         },
         {
@@ -209,10 +322,23 @@
           "isActive": true,
           "order": 2,
           "content": {
-            "title": "Calculate Your Price",
-            "formType": "quote",
-            "fields": ["serviceType", "propertySize", "rooms", "frequency", "name", "email", "phone"],
-            "showPricing": true
+            "title": "Request a Quote",
+            "subtitle": "Tell us about your space and cleaning needs",
+            "formFields": [
+              { "name": "name", "label": "Full Name", "type": "text", "required": true },
+              { "name": "email", "label": "Email Address", "type": "email", "required": true },
+              { "name": "phone", "label": "Phone Number", "type": "tel", "required": true },
+              { "name": "serviceType", "label": "Service Type", "type": "text", "required": false, "placeholder": "Residential, Office, Deep Clean, etc." },
+              { "name": "propertySize", "label": "Property Size (sq ft)", "type": "number", "required": false },
+              { "name": "rooms", "label": "Number of Rooms", "type": "number", "required": false },
+              { "name": "frequency", "label": "Preferred Frequency", "type": "text", "required": false, "placeholder": "One-time, Weekly, Bi-weekly, Monthly" },
+              { "name": "message", "label": "Additional Details", "type": "textarea", "required": false }
+            ],
+            "showPhone": true,
+            "showAddress": false,
+            "showFileUpload": false,
+            "submitButtonText": "Request Quote",
+            "successMessage": "Thank you! We'll send your personalized quote within 24 hours."
           }
         }
       ],
@@ -233,8 +359,8 @@
           "isActive": true,
           "order": 1,
           "content": {
-            "headline": "Contact Us",
-            "subheadline": "We're here to help"
+            "headline": "Get in Touch",
+            "subheadline": "Have questions? We're here to help you get the clean space you deserve"
           }
         },
         {
@@ -244,8 +370,20 @@
           "isActive": true,
           "order": 2,
           "content": {
-            "title": "Send us a Message",
-            "fields": ["name", "email", "phone", "subject", "message"]
+            "title": "Send Us a Message",
+            "subtitle": "Fill out the form below and we'll respond within 24 hours",
+            "formFields": [
+              { "name": "name", "label": "Full Name", "type": "text", "required": true },
+              { "name": "email", "label": "Email Address", "type": "email", "required": true },
+              { "name": "phone", "label": "Phone Number", "type": "tel", "required": false },
+              { "name": "subject", "label": "Subject", "type": "text", "required": false },
+              { "name": "message", "label": "Message", "type": "textarea", "required": true }
+            ],
+            "showPhone": false,
+            "showAddress": false,
+            "showFileUpload": false,
+            "submitButtonText": "Send Message",
+            "successMessage": "Thank you for reaching out! We'll get back to you within 24 hours."
           }
         }
       ],
@@ -278,41 +416,83 @@
   },
   "navigation": {
     "siteName": "Sparkle Clean",
-    "headerLogo": "/logos/cleaning-logo.png",
-    "headerBgColor": "#f0fdfa",
-    "headerTextColor": "#0f766e",
-    "footerDescription": "Professional eco-friendly cleaning services. Serving homes and businesses since 2010.",
+    "siteDescription": "Professional Eco-Friendly Cleaning Services",
+    "headerLogo": "",
+    "headerBgColor": "#ffffff",
+    "headerTextColor": "#111827",
+    "footerDescription": "Professional eco-friendly cleaning services for homes and businesses. Serving the community with trusted, thorough cleaning since 2010.",
     "footerCopyright": "© 2024 Sparkle Clean. All rights reserved.",
-    "footerBgColor": "#0f766e",
-    "footerTextColor": "#f0fdfa",
+    "footerBgColor": "#111827",
+    "footerTextColor": "#ffffff",
     "socialLinks": [
-      { "platform": "Facebook", "url": "https://facebook.com/sparkleclean", "icon": "Facebook", "isActive": true },
-      { "platform": "Instagram", "url": "https://instagram.com/sparkleclean", "icon": "Instagram", "isActive": true },
-      { "platform": "Yelp", "url": "https://yelp.com/biz/sparkleclean", "icon": "MessageCircle", "isActive": true }
+      { "platform": "Facebook", "url": "https://facebook.com/sparkleclean", "isActive": true },
+      { "platform": "Instagram", "url": "https://instagram.com/sparkleclean", "isActive": true },
+      { "platform": "Twitter", "url": "https://twitter.com/sparkleclean", "isActive": true },
+      { "platform": "Yelp", "url": "https://yelp.com/biz/sparkleclean", "isActive": true }
     ],
     "footerColumns": [
       {
         "title": "Services",
         "links": [
-          { "label": "Residential", "url": "/services/residential" },
-          { "label": "Commercial", "url": "/services/commercial" },
-          { "label": "Deep Cleaning", "url": "/services/deep-cleaning" }
+          { "label": "Residential Cleaning", "url": "/services" },
+          { "label": "Office Cleaning", "url": "/services" },
+          { "label": "Deep Cleaning", "url": "/services" },
+          { "label": "Move-in/Move-out", "url": "/services" }
         ]
       },
       {
         "title": "Company",
         "links": [
           { "label": "About Us", "url": "/about-us" },
-          { "label": "Careers", "url": "/careers" },
-          { "label": "Blog", "url": "/blog" }
+          { "label": "Services", "url": "/services" },
+          { "label": "Get a Quote", "url": "/quote" },
+          { "label": "Contact", "url": "/contact" }
         ]
+      },
+      {
+        "title": "Support",
+        "links": [
+          { "label": "FAQ", "url": "/#faq" },
+          { "label": "Privacy Policy", "url": "/privacy-policy" },
+          { "label": "Terms of Service", "url": "/terms-of-service" }
+        ]
+      },
+      {
+        "title": "Contact",
+        "contactInfo": {
+          "phone": "(555) 123-4567",
+          "email": "hello@sparkleclean.com",
+          "hours": "Mon-Sat: 8AM-6PM"
+        }
       }
+    ],
+    "headerNavigation": [
+      { "label": "Home", "url": "/", "showInHeader": true },
+      { "label": "Services", "url": "/services", "showInHeader": true },
+      { "label": "About", "url": "/about-us", "showInHeader": true },
+      { "label": "Quote", "url": "/quote", "showInHeader": true },
+      { "label": "Contact", "url": "/contact", "showInHeader": true, "highlight": true }
+    ],
+    "footerNavigation": [
+      { "label": "Privacy Policy", "url": "/privacy-policy", "showInFooter": true },
+      { "label": "Terms of Service", "url": "/terms-of-service", "showInFooter": true },
+      { "label": "Cookie Policy", "url": "/cookie-policy", "showInFooter": true }
     ]
   },
   "styles": {
-    "primaryColor": "#0d9488",
-    "secondaryColor": "#0f766e",
-    "accentColor": "#5eead4",
-    "fontFamily": "Inter, system-ui, sans-serif"
+    "primaryColor": "#111827",
+    "primaryHover": "#1f2937",
+    "secondaryColor": "#059669",
+    "accentColor": "#10b981",
+    "textColor": "#111827",
+    "lightTextColor": "#6b7280",
+    "backgroundColor": "#ffffff",
+    "cardBgColor": "#ffffff",
+    "borderColor": "#e5e7eb",
+    "fontFamily": "Inter, system-ui, -apple-system, sans-serif",
+    "headingFontFamily": "Inter, system-ui, sans-serif",
+    "borderRadius": "0px",
+    "shadow": "none",
+    "shadowLarge": "0 4px 6px -1px rgb(0 0 0 / 0.1)"
   }
 }
