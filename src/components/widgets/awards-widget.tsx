@@ -1,7 +1,6 @@
 "use client"
 
-import { Award, Trophy, Star, Medal } from "lucide-react"
-import { Card, CardContent } from "@/components/ui/card"
+import { Award, Trophy, Star, Medal, ArrowUpRight } from "lucide-react"
 import type { PageSection } from "./types"
 
 interface AwardsWidgetProps {
@@ -85,36 +84,52 @@ export function AwardsWidget({ section }: AwardsWidgetProps) {
     : section.content?.text || ''
 
   return (
-    <section className="py-16 bg-background text-foreground">
+    <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
-        {section.title && <h2 className="text-3xl font-bold mb-4 text-center">{section.title}</h2>}
-        {contentText && <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">{contentText}</p>}
+        {/* Clean Header */}
+        <div className="mb-16">
+          {section.title && (
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{section.title}</h2>
+          )}
+          <div className="w-20 h-1 bg-gray-900 rounded-full" />
+          {contentText && (
+            <p className="text-gray-600 mt-4 max-w-2xl">{contentText}</p>
+          )}
+        </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+        {/* Awards Grid - Minimal Cards */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {awards.map((award, index) => {
             const IconComponent = iconMap[award.icon || "award"] || Award
             return (
-              <Card key={award.id || `award-${index}`} className="bg-card border-border">
-                <CardContent className="p-6 text-center">
-                  <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <IconComponent className="h-8 w-8 text-primary" />
-                  </div>
-                  <div className="text-primary text-sm font-medium mb-2">
+              <div 
+                key={award.id || `award-${index}`} 
+                className="group border border-gray-200 hover:border-gray-900 transition-all duration-300 bg-white"
+              >
+                <div className="p-6">
+                  {/* Year badge */}
+                  <span className="text-xs font-mono text-gray-400 mb-4 block">
                     {award.year}
+                  </span>
+                  
+                  {/* Icon */}
+                  <div className="w-12 h-12 bg-gray-100 flex items-center justify-center mb-4 group-hover:bg-gray-900 transition-colors duration-300">
+                    <IconComponent className="h-6 w-6 text-gray-600 group-hover:text-white transition-colors" />
                   </div>
-                  <h3 className="text-lg font-semibold text-card-foreground mb-2">
+                  
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
                     {award.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm mb-2">
+                  <p className="text-gray-500 text-sm mb-2">
                     {award.organization}
                   </p>
                   {award.description && (
-                    <p className="text-muted-foreground/70 text-sm">
+                    <p className="text-gray-400 text-xs">
                       {award.description}
                     </p>
                   )}
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             )
           })}
         </div>

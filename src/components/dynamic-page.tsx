@@ -1,5 +1,6 @@
 "use client"
 
+import { usePathname } from "next/navigation"
 import { HeroWidget } from "@/components/widgets/hero-widget"
 import { TextWidget } from "@/components/widgets/text-widget"
 import { ImageWidget } from "@/components/widgets/image-widget"
@@ -26,6 +27,7 @@ import { DownloadsWidget } from "@/components/widgets/downloads-widget"
 import { SocialLinksWidget } from "@/components/widgets/social-links-widget"
 import { PartnersWidget } from "@/components/widgets/partners-widget"
 import { ComparisonWidget } from "@/components/widgets/comparison-widget"
+import { ChatWidget } from "@/components/chatbot/chat-widget"
 
 interface PageSection {
   id: string
@@ -71,6 +73,8 @@ const widgetMap: Record<string, React.FC<{ section: PageSection }>> = {
 }
 
 export function DynamicPage({ sections }: DynamicPageProps) {
+  const pathname = usePathname()
+
   if (!sections?.length) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -93,11 +97,15 @@ export function DynamicPage({ sections }: DynamicPageProps) {
               <div className="container mx-auto px-4">
                 <p className="text-muted-foreground">Unknown section type: {section.type}</p>
               </div>
+              
             </section>
+            
           )
         }
         return <Widget key={section.id} section={section} />
       })}
+      <ChatWidget pageUrl={pathname || ''} />
     </div>
+    
   )
 }

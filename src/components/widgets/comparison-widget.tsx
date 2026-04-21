@@ -1,6 +1,8 @@
 "use client"
 
-import { Check, X, HelpCircle } from "lucide-react"
+import { useState } from "react"
+import { Check, X, HelpCircle, ArrowRight, Sparkles } from "lucide-react"
+import { Button } from "@/components/ui/button"
 import type { PageSection } from "./types"
 
 interface ComparisonWidgetProps {
@@ -90,66 +92,125 @@ export function ComparisonWidget({ section }: ComparisonWidgetProps) {
     }
   }
 
-  const renderValue = (value: boolean | string) => {
+  const renderValue = (value: boolean | string, isHovered: boolean) => {
     if (typeof value === "boolean") {
       return value ? (
-        <Check className="h-5 w-5 text-green-500 mx-auto" />
+        <div className={`w-8 h-8 rounded-full flex items-center justify-center mx-auto transition-all duration-300 ${
+          isHovered ? 'bg-primary text-primary-foreground scale-110' : 'bg-emerald-500/10 text-emerald-500'
+        }`}>
+          <Check className="h-4 w-4" />
+        </div>
       ) : (
-        <X className="h-5 w-5 text-muted-foreground/30 mx-auto" />
+        <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center mx-auto">
+          <X className="h-4 w-4 text-muted-foreground/50" />
+        </div>
       )
     }
-    return <span className="text-card-foreground font-medium">{value}</span>
+    return <span className="text-foreground font-medium">{value}</span>
   }
 
-  // Handle content as string or object
   const contentText = typeof section.content === 'string' ? section.content : section.content?.text || ''
+  const [hoveredColumn, setHoveredColumn] = useState<number | null>(null)
+  const [hoveredRow, setHoveredRow] = useState<number | null>(null)
 
   return (
-    <section className="py-16 bg-background">
+    <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
-        {section.title && <h2 className="text-3xl font-bold mb-4 text-center text-foreground">{section.title}</h2>}
-        {contentText && <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">{contentText}</p>}
-        
-        <div className="max-w-5xl mx-auto overflow-x-auto">
-          <table className="w-full bg-card rounded-lg shadow-sm overflow-hidden border border-border">
-            <thead>
-              <tr className="bg-primary text-primary-foreground">
-                <th className="text-left p-4 font-semibold">Features</th>
-                {data.options.map((option) => (
-                  <th key={option} className="p-4 font-semibold text-center min-w-[150px]">
-                    {option}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {data.items.map((item, index) => (
-                <tr 
-                  key={item.id} 
-                  className={index % 2 === 0 ? "bg-card" : "bg-muted/30"}
-                >
-                  <td className="p-4">
-                    <div className="flex items-start gap-2">
-                      <span className="font-medium text-card-foreground">{item.feature}</span>
-                      {item.description && (
-                        <div className="group relative">
-                          <HelpCircle className="h-4 w-4 text-muted-foreground shrink-0 mt-0.5 cursor-help" />
-                          <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block w-48 p-2 bg-popover text-popover-foreground text-xs rounded shadow-lg z-10">
-                            {item.description}
-                          </div>
+        {/* Clean Header */}
+        <div className="mb-12">
+          {section.title && (
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{section.title}</h2>
+          )}
+          <div className="w-20 h-1 bg-gray-900 rounded-full" />
+          {contentText && (
+            <p className="text-gray-600 mt-4 max-w-2xl">{contentText}</p>
+          )}
+        </div>
+
+        {/* Comparison Table - Clean Design */}
+        <div className="max-w-5xl mx-auto">
+          <div className="border border-gray-200 overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b border-gray-200 bg-gray-50">
+                    <th className="text-left p-6 font-semibold text-gray-900 sticky left-0 z-10 bg-gray-50">
+                      <div className="flex items-center gap-2">
+                        <span>Features</span>
+                      </div>
+                    </th>
+                    {data.options.map((option, idx) => (
+                      <th 
+                        key={option} 
+                        className={`p-6 font-bold text-center min-w-[160px] transition-colors duration-200 ${
+                          hoveredColumn === idx 
+                            ? 'bg-gray-100 text-gray-900' 
+                            : 'text-gray-900'
+                        }`}
+                        onMouseEnter={() => setHoveredColumn(idx)}
+                        onMouseLeave={() => setHoveredColumn(null)}
+                      >
+                        <span className="text-lg">{option}</span>
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {data.items.map((item, rowIndex) => (
+                    <tr 
+                      key={item.id}
+                      className={`border-b border-gray-100 transition-colors duration-200 ${
+                        hoveredRow === rowIndex ? 'bg-gray-50' : ''
+                      }`}
+                      onMouseEnter={() => setHoveredRow(rowIndex)}
+                      onMouseLeave={() => setHoveredRow(null)}
+                    >
+                      <td className="p-6 bg-white sticky left-0 z-10">
+                        <div className="flex items-start gap-3">
+                          <span className="font-semibold text-gray-900">{item.feature}</span>
+                          {item.description && (
+                            <div className="group relative">
+                              <HelpCircle className="h-4 w-4 text-gray-400 shrink-0 mt-0.5 cursor-help hover:text-gray-900 transition-colors" />
+                              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-56 p-3 bg-white border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                                <p className="text-sm text-gray-600">{item.description}</p>
+                              </div>
+                            </div>
+                          )}
                         </div>
-                      )}
-                    </div>
-                  </td>
-                  {data.options.map((option) => (
-                    <td key={option} className="p-4 text-center">
-                      {renderValue(item.options[option])}
-                    </td>
+                      </td>
+                      {data.options.map((option, colIndex) => (
+                        <td 
+                          key={option} 
+                          className={`p-6 text-center transition-colors duration-200 ${
+                            hoveredColumn === colIndex 
+                              ? 'bg-gray-50' 
+                              : ''
+                          }`}
+                          onMouseEnter={() => setHoveredColumn(colIndex)}
+                          onMouseLeave={() => setHoveredColumn(null)}
+                        >
+                          {renderValue(item.options[option], hoveredColumn === colIndex)}
+                        </td>
+                      ))}
+                    </tr>
                   ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* CTA Section */}
+          <div className="mt-12 text-center">
+            <p className="text-gray-600 mb-6">
+              Need help choosing? Get a free consultation.
+            </p>
+            <Button 
+              className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-6 border-0"
+            >
+              Get Free Consultation
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </Button>
+          </div>
         </div>
       </div>
     </section>

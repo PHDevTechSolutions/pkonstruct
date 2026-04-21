@@ -49,7 +49,7 @@ export interface ActiveTemplate {
 const AVAILABLE_TEMPLATES = [
   { id: "construction", name: "Construction & Building", description: "Professional template for construction companies", folder: "construction" },
   { id: "cleaning-services", name: "Cleaning Services", description: "Template for cleaning and maintenance companies", folder: "cleaning-services" },
-  // Add more templates here
+  { id: "it-consultant", name: "IT Consultant & Technology", description: "Premium template for IT consulting firms with dark theme and enterprise solutions", folder: "it-consultant" },
 ]
 
 export function useTemplates() {

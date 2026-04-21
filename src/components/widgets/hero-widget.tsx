@@ -140,35 +140,35 @@ export function HeroWidget({ section }: HeroWidgetProps) {
   if (heroSlides.length === 1) {
     const slide = heroSlides[0]
     return (
-      <section className="relative min-h-[70vh] md:min-h-[80vh] flex items-center bg-background text-foreground overflow-hidden">
+      <section className="relative min-h-[70vh] md:min-h-[80vh] flex items-center bg-white text-gray-900 overflow-hidden">
         {slide.image && (
           <div className="absolute inset-0 z-0">
             <Image 
               src={slide.image} 
               alt={slide.title} 
               fill 
-              className="object-cover" 
+              className="object-cover grayscale" 
               style={{ opacity: (100 - overlayOpacity) / 100 }}
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/40 to-transparent" />
+            <div className="absolute inset-0 bg-white/60" />
           </div>
         )}
         <div className="container mx-auto px-4 relative z-10">
           <div className={`flex flex-col min-h-[70vh] md:min-h-[80vh] py-20 ${getButtonPosition(slide.buttonPosition)}`}>
             <div className="max-w-3xl">
               {subheadline && (
-                <p className="text-primary font-medium mb-4 text-lg">{subheadline}</p>
+                <p className="text-gray-500 font-medium mb-4 text-lg font-mono uppercase tracking-wider">{subheadline}</p>
               )}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-gray-900">
                 {slide.title}
               </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl">
+              <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-2xl">
                 {slide.description}
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button 
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg"
+                  className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-6 text-lg border-0"
                   asChild
                 >
                   <a href={slide.buttonLink}>
@@ -178,7 +178,7 @@ export function HeroWidget({ section }: HeroWidgetProps) {
                 {secondaryButtonText && (
                   <Button 
                     variant="outline" 
-                    className="border-border text-foreground hover:bg-accent hover:text-accent-foreground px-8 py-6 text-lg"
+                    className="border-gray-300 text-gray-900 hover:border-gray-900 hover:bg-gray-900 hover:text-white px-8 py-6 text-lg"
                     asChild
                   >
                     <a href={secondaryButtonLink || "#"}>{secondaryButtonText}</a>
@@ -190,7 +190,7 @@ export function HeroWidget({ section }: HeroWidgetProps) {
           
           {showScrollIndicator && (
             <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-              <ChevronDown className="h-8 w-8 text-foreground/60" />
+              <ChevronDown className="h-8 w-8 text-gray-900" />
             </div>
           )}
         </div>
@@ -200,7 +200,7 @@ export function HeroWidget({ section }: HeroWidgetProps) {
   
   // Multi-slide hero with slider
   return (
-    <section className="relative min-h-[70vh] md:min-h-[80vh] bg-background text-foreground overflow-hidden">
+    <section className="relative min-h-[70vh] md:min-h-[80vh] bg-white text-gray-900 overflow-hidden">
       {/* Slides */}
       <div className="relative h-full">
         {heroSlides.map((slide, index) => (
@@ -222,22 +222,22 @@ export function HeroWidget({ section }: HeroWidgetProps) {
                   style={{ opacity: (100 - overlayOpacity) / 100 }}
                   priority={index === 0}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/70 to-white/40" />
               </div>
             )}
             
             <div className="container mx-auto px-4 relative z-10 h-full">
               <div className={`flex flex-col min-h-[70vh] md:min-h-[80vh] py-20 ${getButtonPosition(slide.buttonPosition)}`}>
                 <div className="max-w-3xl">
-                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-gray-900">
                     {slide.title || section.title}
                   </h1>
-                  <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl">
+                  <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-2xl">
                     {slide.description}
                   </p>
                   {slide.buttonText && (
                     <Button 
-                      className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg"
+                      className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-6 text-lg border-0"
                       asChild
                     >
                       <a href={slide.buttonLink}>
@@ -257,15 +257,15 @@ export function HeroWidget({ section }: HeroWidgetProps) {
         <>
           <button
             onClick={prevSlide}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-background/20 hover:bg-background/40 text-foreground transition-colors"
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 bg-white/80 hover:bg-white text-gray-900 transition-colors"
           >
-            <ChevronLeft className="h-8 w-8" />
+            <ChevronLeft className="h-6 w-6" />
           </button>
           <button
             onClick={nextSlide}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-background/20 hover:bg-background/40 text-foreground transition-colors"
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 bg-white/80 hover:bg-white text-gray-900 transition-colors"
           >
-            <ChevronRight className="h-8 w-8" />
+            <ChevronRight className="h-6 w-6" />
           </button>
         </>
       )}
@@ -277,8 +277,8 @@ export function HeroWidget({ section }: HeroWidgetProps) {
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-colors ${
-                index === currentSlide ? "bg-primary" : "bg-foreground/50 hover:bg-foreground/70"
+              className={`h-1 transition-all duration-300 ${
+                index === currentSlide ? "w-8 bg-gray-900" : "w-4 bg-gray-300"
               }`}
             />
           ))}

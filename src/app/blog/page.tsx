@@ -97,100 +97,86 @@ export default function BlogPage() {
   return (
     <main className="flex-1">
       {/* Hero */}
-      <section className="py-20 bg-stone-900">
-        <div className="container mx-auto px-4 text-center">
-          <span className="text-amber-500 font-semibold text-sm uppercase tracking-wider">Blog & Insights</span>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mt-4 mb-6">
-            Construction Insights & News
+      <section className="py-20 bg-gray-900">
+        <div className="container mx-auto px-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            Blog & Insights
           </h1>
-          <p className="text-stone-400 text-lg max-w-2xl mx-auto">
-            Stay updated with the latest industry trends, project stories, and expert advice from the PKonstruct team.
+          <div className="w-20 h-1 bg-white rounded-full mb-4" />
+          <p className="text-gray-400 text-lg max-w-2xl">
+            Stay updated with the latest industry trends, project stories, and expert advice.
           </p>
         </div>
       </section>
 
       {/* Blog Posts */}
-      <section className="py-20 bg-stone-50">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           {/* Categories */}
-          <div className="flex flex-wrap justify-center gap-2 mb-12">
+          <div className="flex flex-wrap gap-2 mb-12">
             {categories.map((category) => (
-              <Button
+              <button
                 key={category}
-                variant={activeCategory === category ? "default" : "outline"}
-                size="sm"
-                className={activeCategory === category ? "bg-amber-600 hover:bg-amber-700" : ""}
                 onClick={() => handleCategoryChange(category)}
+                className={`px-4 py-2 text-sm font-medium transition-all ${
+                  activeCategory === category 
+                    ? "bg-gray-900 text-white" 
+                    : "bg-white text-gray-600 border border-gray-200 hover:border-gray-900"
+                }`}
               >
                 {category}
-              </Button>
+              </button>
             ))}
           </div>
 
           {/* Posts Grid */}
           {posts.length === 0 ? (
             <div className="text-center py-12">
-              <p className="text-stone-600">No articles found in this category.</p>
+              <p className="text-gray-600">No articles found in this category.</p>
             </div>
           ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {currentPosts.map((post) => (
-              <Card key={post.id} className="group overflow-hidden hover:shadow-lg transition-shadow">
-                <Link href={`/blog/${post.slug || post.id}`}>
-                  <div className="relative h-48 bg-stone-200">
+              <Link key={post.id} href={`/blog/${post.slug || post.id}`}>
+                <div className="group border border-gray-200 hover:border-gray-900 transition-all duration-300 bg-white cursor-pointer">
+                  <div className="relative h-48 bg-gray-100 overflow-hidden">
                     {post.image ? (
                       <img
                         src={post.image}
                         alt={post.title}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
                       />
                     ) : (
-                      <div className="absolute inset-0 flex items-center justify-center bg-stone-300">
-                        <span className="text-stone-500 font-medium">Blog Image</span>
+                      <div className="absolute inset-0 flex items-center justify-center bg-gray-200">
+                        <span className="text-gray-400 font-medium">Blog Image</span>
                       </div>
                     )}
                     <div className="absolute top-4 left-4">
-                      <span className="px-3 py-1 bg-amber-600 text-white text-sm font-medium rounded-full">
+                      <span className="px-3 py-1 bg-gray-900 text-white text-xs font-medium">
                         {post.category}
                       </span>
                     </div>
                   </div>
-                </Link>
-                <CardHeader className="pb-3">
-                  <div className="flex items-center gap-4 text-sm text-stone-500 mb-3">
-                    <span className="flex items-center gap-1">
-                      <Calendar className="h-4 w-4" />
-                      {post.date}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Clock className="h-4 w-4" />
-                      {post.readTime}
-                    </span>
-                  </div>
-                  <Link href={`/blog/${post.id}`} className="hover:text-amber-600 transition-colors">
-                    <h2 className="text-xl font-bold text-stone-900">
+                  <div className="p-6">
+                    <div className="flex items-center gap-4 text-sm text-gray-400 mb-3 font-mono">
+                      <span>{post.date}</span>
+                      <span>{post.readTime}</span>
+                    </div>
+                    <h2 className="text-lg font-semibold text-gray-900 mb-2">
                       {post.title}
                     </h2>
-                  </Link>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-stone-600 mb-4 line-clamp-3">
-                    {post.excerpt}
-                  </p>
-                  <div className="flex items-center justify-between pt-4 border-t border-stone-100">
-                    <div className="flex items-center gap-2 text-sm text-stone-500">
-                      <User className="h-4 w-4" />
-                      {post.author}
+                    <p className="text-gray-500 text-sm line-clamp-3 mb-4">
+                      {post.excerpt}
+                    </p>
+                    <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                      <span className="text-sm text-gray-400">{post.author}</span>
+                      <span className="text-sm text-gray-900 flex items-center gap-1">
+                        Read <ArrowRight className="h-3 w-3" />
+                      </span>
                     </div>
-                    <Button variant="ghost" size="sm" className="text-amber-600 hover:text-amber-700" asChild>
-                      <Link href={`/blog/${post.slug || post.id}`}>
-                        Read More
-                        <ArrowRight className="ml-1 h-4 w-4" />
-                      </Link>
-                    </Button>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </Link>
             ))}
           </div>
           )}
@@ -198,39 +184,39 @@ export default function BlogPage() {
           {/* Pagination */}
           {totalPages > 1 && (
             <div className="flex justify-center gap-2 mt-12">
-              <Button 
-                variant="outline" 
-                size="sm" 
+              <button
                 onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
                 disabled={currentPage === 1}
+                className="px-4 py-2 border border-gray-200 hover:border-gray-900 hover:bg-gray-900 hover:text-white transition-all disabled:opacity-50"
               >
                 Previous
-              </Button>
+              </button>
               
               {getPageNumbers().map((page, index) => (
                 page === '...' ? (
-                  <span key={`ellipsis-${index}`} className="px-2 py-1 text-stone-500">...</span>
+                  <span key={`ellipsis-${index}`} className="px-4 py-2 text-gray-500">...</span>
                 ) : (
-                  <Button
+                  <button
                     key={page}
-                    variant={currentPage === page ? "default" : "outline"}
-                    size="sm"
-                    className={currentPage === page ? "bg-amber-600 hover:bg-amber-700" : ""}
                     onClick={() => setCurrentPage(page as number)}
+                    className={`px-4 py-2 transition-all ${
+                      currentPage === page 
+                        ? "bg-gray-900 text-white" 
+                        : "border border-gray-200 hover:border-gray-900 hover:bg-gray-900 hover:text-white"
+                    }`}
                   >
                     {page}
-                  </Button>
+                  </button>
                 )
               ))}
               
-              <Button 
-                variant="outline" 
-                size="sm" 
+              <button
                 onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
                 disabled={currentPage === totalPages}
+                className="px-4 py-2 border border-gray-200 hover:border-gray-900 hover:bg-gray-900 hover:text-white transition-all disabled:opacity-50"
               >
                 Next
-              </Button>
+              </button>
             </div>
           )}
         </div>

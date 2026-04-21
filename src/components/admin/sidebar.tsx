@@ -18,10 +18,14 @@ import {
   Code2,
   Database,
   Globe,
+  Mail,
+  MessageCircle,
 } from "lucide-react"
 
 const navItems = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard, category: "overview" },
+  { href: "/admin/inquiries", label: "Inquiries", icon: Mail, category: "overview" },
+  { href: "/admin/messages", label: "Messages", icon: MessageCircle, category: "overview" },
   { href: "/admin/pages", label: "Pages", icon: Globe, category: "content" },
   { href: "/admin/blog", label: "Blog Posts", icon: FileText, category: "content" },
   { href: "/admin/projects", label: "Projects", icon: FolderKanban, category: "content" },

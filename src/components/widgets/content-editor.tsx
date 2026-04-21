@@ -677,14 +677,128 @@ function PartnersEditor({ content, onChange }: { content: string, onChange: (con
   )
 }
 
-// Newsletter Editor
+// Newsletter Editor with full customization
 function NewsletterEditor({ content, onChange }: { content: string, onChange: (content: string) => void }) {
-  // Newsletter typically just needs title and description
+  const [data, setData] = useState({
+    buttonText: "Subscribe",
+    placeholder: "Enter your email",
+    backgroundColor: "#111827",
+    textColor: "#ffffff",
+    buttonColor: "#ffffff",
+    buttonTextColor: "#111827",
+    successMessage: "Thank you for subscribing!",
+    showPrivacyText: true,
+    privacyText: "We respect your privacy. Unsubscribe at any time."
+  })
+  
+  useEffect(() => {
+    try {
+      const parsed = JSON.parse(content || "{}")
+      setData({
+        buttonText: parsed.buttonText || "Subscribe",
+        placeholder: parsed.placeholder || "Enter your email",
+        backgroundColor: parsed.backgroundColor || "#111827",
+        textColor: parsed.textColor || "#ffffff",
+        buttonColor: parsed.buttonColor || "#ffffff",
+        buttonTextColor: parsed.buttonTextColor || "#111827",
+        successMessage: parsed.successMessage || "Thank you for subscribing!",
+        showPrivacyText: parsed.showPrivacyText !== false,
+        privacyText: parsed.privacyText || "We respect your privacy. Unsubscribe at any time."
+      })
+    } catch (e) {
+      // Use defaults
+    }
+  }, [content])
+  
+  const updateField = (field: string, value: any) => {
+    const newData = { ...data, [field]: value }
+    setData(newData)
+    onChange(JSON.stringify(newData))
+  }
+  
   return (
-    <div className="p-3 bg-amber-50 rounded border border-amber-200">
-      <div className="text-sm text-amber-800 font-medium mb-1">Newsletter Subscribe</div>
-      <div className="text-xs text-amber-600">
-        This widget shows a newsletter signup form. Uses the Section Title and Content for the heading and description.
+    <div className="space-y-4">
+      {/* Form Settings */}
+      <div className="space-y-2">
+        <label className="text-xs font-medium text-muted-foreground">Form Settings</label>
+        <Input 
+          value={data.buttonText} 
+          onChange={(e) => updateField('buttonText', e.target.value)} 
+          placeholder="Button Text (e.g., Subscribe)"
+          className="text-sm"
+        />
+        <Input 
+          value={data.placeholder} 
+          onChange={(e) => updateField('placeholder', e.target.value)} 
+          placeholder="Email Placeholder"
+          className="text-sm"
+        />
+        <Input 
+          value={data.successMessage} 
+          onChange={(e) => updateField('successMessage', e.target.value)} 
+          placeholder="Success Message"
+          className="text-sm"
+        />
+      </div>
+      
+      {/* Privacy Text */}
+      <div className="space-y-2 border-t pt-3">
+        <label className="flex items-center gap-2 text-xs font-medium">
+          <input 
+            type="checkbox" 
+            checked={data.showPrivacyText} 
+            onChange={(e) => updateField('showPrivacyText', e.target.checked)}
+            className="rounded"
+          />
+          Show Privacy Text
+        </label>
+        {data.showPrivacyText && (
+          <Input 
+            value={data.privacyText} 
+            onChange={(e) => updateField('privacyText', e.target.value)} 
+            placeholder="Privacy text"
+            className="text-sm"
+          />
+        )}
+      </div>
+      
+      {/* Colors */}
+      <div className="space-y-2 border-t pt-3">
+        <label className="text-xs font-medium text-muted-foreground">Colors</label>
+        <div className="grid grid-cols-2 gap-2">
+          <div>
+            <label className="text-xs text-muted-foreground block mb-1">Background</label>
+            <div className="flex items-center gap-2">
+              <input 
+                type="color" 
+                value={data.backgroundColor} 
+                onChange={(e) => updateField('backgroundColor', e.target.value)}
+                className="w-8 h-8 rounded cursor-pointer"
+              />
+              <Input 
+                value={data.backgroundColor} 
+                onChange={(e) => updateField('backgroundColor', e.target.value)}
+                className="text-xs flex-1"
+              />
+            </div>
+          </div>
+          <div>
+            <label className="text-xs text-muted-foreground block mb-1">Text</label>
+            <div className="flex items-center gap-2">
+              <input 
+                type="color" 
+                value={data.textColor} 
+                onChange={(e) => updateField('textColor', e.target.value)}
+                className="w-8 h-8 rounded cursor-pointer"
+              />
+              <Input 
+                value={data.textColor} 
+                onChange={(e) => updateField('textColor', e.target.value)}
+                className="text-xs flex-1"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )
@@ -692,11 +806,148 @@ function NewsletterEditor({ content, onChange }: { content: string, onChange: (c
 
 // CTA Editor
 function CTAEditor({ content, onChange }: { content: string, onChange: (content: string) => void }) {
+  const [data, setData] = useState({
+    buttonText: "Get Started",
+    buttonLink: "#contact",
+    backgroundColor: "#111827",
+    textColor: "#ffffff",
+    buttonColor: "#ffffff",
+    buttonTextColor: "#111827",
+    showSecondaryButton: false,
+    secondaryButtonText: "Learn More",
+    secondaryButtonLink: "#about",
+    alignment: "center",
+    padding: "large"
+  })
+  
+  useEffect(() => {
+    try {
+      const parsed = JSON.parse(content || "{}")
+      setData({
+        buttonText: parsed.buttonText || "Get Started",
+        buttonLink: parsed.buttonLink || "#contact",
+        backgroundColor: parsed.backgroundColor || "#111827",
+        textColor: parsed.textColor || "#ffffff",
+        buttonColor: parsed.buttonColor || "#ffffff",
+        buttonTextColor: parsed.buttonTextColor || "#111827",
+        showSecondaryButton: parsed.showSecondaryButton === true,
+        secondaryButtonText: parsed.secondaryButtonText || "Learn More",
+        secondaryButtonLink: parsed.secondaryButtonLink || "#about",
+        alignment: parsed.alignment || "center",
+        padding: parsed.padding || "large"
+      })
+    } catch (e) {
+      // Use defaults
+    }
+  }, [content])
+  
+  const updateField = (field: string, value: any) => {
+    const newData = { ...data, [field]: value }
+    setData(newData)
+    onChange(JSON.stringify(newData))
+  }
+  
   return (
-    <div className="p-3 bg-amber-50 rounded border border-amber-200">
-      <div className="text-sm text-amber-800 font-medium mb-1">Call to Action</div>
-      <div className="text-xs text-amber-600">
-        This widget shows a CTA section. Uses the Section Title and Content for the heading and description. You can also add an Image URL for a background image.
+    <div className="space-y-4">
+      {/* Primary Button */}
+      <div className="space-y-2">
+        <label className="text-xs font-medium text-muted-foreground">Primary Button</label>
+        <Input 
+          value={data.buttonText} 
+          onChange={(e) => updateField('buttonText', e.target.value)} 
+          placeholder="Button Text (e.g., Get Started)"
+          className="text-sm"
+        />
+        <Input 
+          value={data.buttonLink} 
+          onChange={(e) => updateField('buttonLink', e.target.value)} 
+          placeholder="Button Link (e.g., #contact or /services)"
+          className="text-sm"
+        />
+      </div>
+      
+      {/* Secondary Button */}
+      <div className="space-y-2 border-t pt-3">
+        <label className="flex items-center gap-2 text-xs font-medium">
+          <input 
+            type="checkbox" 
+            checked={data.showSecondaryButton} 
+            onChange={(e) => updateField('showSecondaryButton', e.target.checked)}
+            className="rounded"
+          />
+          Show Secondary Button
+        </label>
+        {data.showSecondaryButton && (
+          <>
+            <Input 
+              value={data.secondaryButtonText} 
+              onChange={(e) => updateField('secondaryButtonText', e.target.value)} 
+              placeholder="Secondary Button Text"
+              className="text-sm"
+            />
+            <Input 
+              value={data.secondaryButtonLink} 
+              onChange={(e) => updateField('secondaryButtonLink', e.target.value)} 
+              placeholder="Secondary Button Link"
+              className="text-sm"
+            />
+          </>
+        )}
+      </div>
+      
+      {/* Colors */}
+      <div className="space-y-2 border-t pt-3">
+        <label className="text-xs font-medium text-muted-foreground">Styling</label>
+        <div className="grid grid-cols-2 gap-2">
+          <div>
+            <label className="text-xs text-muted-foreground block mb-1">Background</label>
+            <div className="flex items-center gap-2">
+              <input 
+                type="color" 
+                value={data.backgroundColor} 
+                onChange={(e) => updateField('backgroundColor', e.target.value)}
+                className="w-8 h-8 rounded cursor-pointer"
+              />
+              <Input 
+                value={data.backgroundColor} 
+                onChange={(e) => updateField('backgroundColor', e.target.value)}
+                className="text-xs flex-1"
+              />
+            </div>
+          </div>
+          <div>
+            <label className="text-xs text-muted-foreground block mb-1">Text Color</label>
+            <div className="flex items-center gap-2">
+              <input 
+                type="color" 
+                value={data.textColor} 
+                onChange={(e) => updateField('textColor', e.target.value)}
+                className="w-8 h-8 rounded cursor-pointer"
+              />
+              <Input 
+                value={data.textColor} 
+                onChange={(e) => updateField('textColor', e.target.value)}
+                className="text-xs flex-1"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* Alignment */}
+      <div className="space-y-2">
+        <label className="text-xs text-muted-foreground">Alignment</label>
+        <div className="flex gap-2">
+          {['left', 'center', 'right'].map((align) => (
+            <button
+              key={align}
+              onClick={() => updateField('alignment', align)}
+              className={`px-3 py-1 text-xs capitalize rounded ${data.alignment === align ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}
+            >
+              {align}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   )
@@ -712,11 +963,14 @@ function ContactEditor({ content, onChange }: { content: string, onChange: (cont
     showName: true,
     showEmail: true,
     showPhone: true,
+    showAddress: false,
+    showFileUpload: false,
     showSubject: true,
     showMessage: true,
     nameLabel: "Full Name",
     emailLabel: "Email Address",
     phoneLabel: "Phone Number",
+    addressLabel: "Address",
     subjectLabel: "Subject",
     messageLabel: "Your Message",
     recipientEmail: ""
@@ -733,11 +987,14 @@ function ContactEditor({ content, onChange }: { content: string, onChange: (cont
         showName: parsed.showName !== false,
         showEmail: parsed.showEmail !== false,
         showPhone: parsed.showPhone !== false,
+        showAddress: parsed.showAddress === true,
+        showFileUpload: parsed.showFileUpload === true,
         showSubject: parsed.showSubject !== false,
         showMessage: parsed.showMessage !== false,
         nameLabel: parsed.nameLabel || "Full Name",
         emailLabel: parsed.emailLabel || "Email Address",
         phoneLabel: parsed.phoneLabel || "Phone Number",
+        addressLabel: parsed.addressLabel || "Address",
         subjectLabel: parsed.subjectLabel || "Subject",
         messageLabel: parsed.messageLabel || "Your Message",
         recipientEmail: parsed.recipientEmail || ""
@@ -773,7 +1030,7 @@ function ContactEditor({ content, onChange }: { content: string, onChange: (cont
       </div>
       
       <div className="border-t pt-3">
-        <div className="text-sm font-medium mb-2">Form Fields</div>
+        <div className="text-sm font-medium mb-2 text-gray-300">Form Fields</div>
         <div className="space-y-2">
           <label className="flex items-center gap-2">
             <input type="checkbox" checked={data.showName} onChange={() => toggleField('showName')} className="rounded" />
@@ -788,12 +1045,27 @@ function ContactEditor({ content, onChange }: { content: string, onChange: (cont
             <Input value={data.phoneLabel} onChange={(e) => updateField('phoneLabel', e.target.value)} placeholder="Phone Label" className="h-8 text-sm flex-1" disabled={!data.showPhone} />
           </label>
           <label className="flex items-center gap-2">
+            <input type="checkbox" checked={data.showAddress} onChange={() => toggleField('showAddress')} className="rounded" />
+            <Input value={data.addressLabel} onChange={(e) => updateField('addressLabel', e.target.value)} placeholder="Address Label" className="h-8 text-sm flex-1" disabled={!data.showAddress} />
+          </label>
+          <label className="flex items-center gap-2">
             <input type="checkbox" checked={data.showSubject} onChange={() => toggleField('showSubject')} className="rounded" />
             <Input value={data.subjectLabel} onChange={(e) => updateField('subjectLabel', e.target.value)} placeholder="Subject Label" className="h-8 text-sm flex-1" disabled={!data.showSubject} />
           </label>
           <label className="flex items-center gap-2">
             <input type="checkbox" checked={data.showMessage} onChange={() => toggleField('showMessage')} className="rounded" />
             <Input value={data.messageLabel} onChange={(e) => updateField('messageLabel', e.target.value)} placeholder="Message Label" className="h-8 text-sm flex-1" disabled={!data.showMessage} />
+          </label>
+        </div>
+      </div>
+      
+      {/* Additional Options */}
+      <div className="border-t pt-3">
+        <div className="text-sm font-medium mb-2 text-gray-300">Additional Options</div>
+        <div className="space-y-2">
+          <label className="flex items-center gap-2 cursor-pointer">
+            <input type="checkbox" checked={data.showFileUpload} onChange={() => toggleField('showFileUpload')} className="rounded" />
+            <span className="text-sm text-foreground text-white">Enable file attachments (PDF, Word, Images)</span>
           </label>
         </div>
       </div>
@@ -2157,19 +2429,143 @@ function ClientLogosEditor({ content, onChange }: { content: string, onChange: (
   )
 }
 
-// Text Editor (simple rich text)
+// Text Editor with full customization
 function TextEditor({ content, onChange }: { content: string, onChange: (content: string) => void }) {
+  const [data, setData] = useState({
+    text: "",
+    backgroundColor: "#ffffff",
+    textColor: "#111827",
+    textAlign: "left",
+    fontSize: "base",
+    padding: "medium",
+    maxWidth: "full"
+  })
+  
+  useEffect(() => {
+    try {
+      // Handle both string and object content
+      let parsed: any = {}
+      if (typeof content === 'string') {
+        try {
+          parsed = JSON.parse(content || "{}")
+        } catch {
+          parsed = { text: content }
+        }
+      } else if (typeof content === 'object' && content !== null) {
+        parsed = content
+      }
+      
+      setData({
+        text: parsed?.text || (typeof content === 'string' ? content : "") || "",
+        backgroundColor: parsed?.backgroundColor || "#ffffff",
+        textColor: parsed?.textColor || "#111827",
+        textAlign: parsed?.textAlign || "left",
+        fontSize: parsed?.fontSize || "base",
+        padding: parsed?.padding || "medium",
+        maxWidth: parsed?.maxWidth || "full"
+      })
+    } catch (e) {
+      setData(prev => ({ ...prev, text: typeof content === 'string' ? content : "" }))
+    }
+  }, [content])
+  
+  const updateField = (field: string, value: any) => {
+    const newData = { ...data, [field]: value }
+    setData(newData)
+    onChange(JSON.stringify(newData))
+  }
+  
   return (
-    <div className="space-y-2">
-      <div className="text-xs text-muted-foreground">Text Content (supports basic HTML)</div>
-      <textarea
-        value={content}
-        onChange={(e) => onChange(e.target.value)}
-        rows={10}
-        className="w-full px-3 py-2 border border-input rounded-md text-sm bg-muted/50 focus:bg-background transition-colors"
-        placeholder="Enter your text content here...&#10;&#10;You can use basic formatting like:&#10;- <strong>bold</strong>&#10;- <em>italic</em>&#10;- <br/> for line breaks&#10;- <a href='...'>links</a>"
-      />
-      <div className="text-xs text-muted-foreground">Tip: Use HTML tags for formatting. Text widgets display content directly.</div>
+    <div className="space-y-4">
+      {/* Text Content */}
+      <div className="space-y-2">
+        <label className="text-xs font-medium text-muted-foreground">Text Content (supports HTML)</label>
+        <textarea
+          value={data.text}
+          onChange={(e) => updateField('text', e.target.value)}
+          rows={6}
+          className="w-full p-3 text-sm border rounded-md bg-background resize-none"
+          placeholder="Enter your text content here..."
+        />
+      </div>
+      
+      {/* Styling Options */}
+      <div className="space-y-3 border-t pt-3">
+        <label className="text-xs font-medium text-muted-foreground">Styling</label>
+        
+        {/* Colors */}
+        <div className="grid grid-cols-2 gap-2">
+          <div>
+            <label className="text-xs text-muted-foreground block mb-1">Background</label>
+            <div className="flex items-center gap-2">
+              <input 
+                type="color" 
+                value={data.backgroundColor} 
+                onChange={(e) => updateField('backgroundColor', e.target.value)}
+                className="w-8 h-8 rounded cursor-pointer"
+              />
+              <Input 
+                value={data.backgroundColor} 
+                onChange={(e) => updateField('backgroundColor', e.target.value)}
+                className="text-xs flex-1"
+              />
+            </div>
+          </div>
+          <div>
+            <label className="text-xs text-muted-foreground block mb-1">Text Color</label>
+            <div className="flex items-center gap-2">
+              <input 
+                type="color" 
+                value={data.textColor} 
+                onChange={(e) => updateField('textColor', e.target.value)}
+                className="w-8 h-8 rounded cursor-pointer"
+              />
+              <Input 
+                value={data.textColor} 
+                onChange={(e) => updateField('textColor', e.target.value)}
+                className="text-xs flex-1"
+              />
+            </div>
+          </div>
+        </div>
+        
+        {/* Alignment */}
+        <div className="space-y-1">
+          <label className="text-xs text-muted-foreground">Text Alignment</label>
+          <div className="flex gap-2">
+            {['left', 'center', 'right', 'justify'].map((align) => (
+              <button
+                key={align}
+                onClick={() => updateField('textAlign', align)}
+                className={`px-3 py-1 text-xs capitalize rounded ${data.textAlign === align ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}
+              >
+                {align}
+              </button>
+            ))}
+          </div>
+        </div>
+        
+        {/* Font Size */}
+        <div className="space-y-1">
+          <label className="text-xs text-muted-foreground">Font Size</label>
+          <div className="flex gap-2">
+            {[
+              { value: 'sm', label: 'Small' },
+              { value: 'base', label: 'Normal' },
+              { value: 'lg', label: 'Large' },
+              { value: 'xl', label: 'Extra Large' }
+            ].map((size) => (
+              <button
+                key={size.value}
+                onClick={() => updateField('fontSize', size.value)}
+                className={`px-3 py-1 text-xs rounded ${data.fontSize === size.value ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}
+              >
+                {size.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

@@ -1004,18 +1004,19 @@
     }
   },
   "navigation": {
-    "headerNav": [
-      { "slug": "home", "title": "Home" },
-      { "slug": "about-us", "title": "About" },
-      { "slug": "services", "title": "Services" },
-      { "slug": "case-studies", "title": "Case Studies" },
-      { "slug": "contact", "title": "Contact" }
-    ],
-    "footerNav": [
-      { "slug": "about-us", "title": "About Us" },
-      { "slug": "services", "title": "Services" },
-      { "slug": "case-studies", "title": "Case Studies" },
-      { "slug": "contact", "title": "Contact" }
+    "siteName": "TechVision Consulting",
+    "headerLogo": "",
+    "headerBgColor": "#0f172a",
+    "headerTextColor": "#ffffff",
+    "footerDescription": "Award-winning IT consulting firm specializing in digital transformation, cloud solutions, and enterprise software development. Transforming businesses through technology excellence.",
+    "footerCopyright": "© 2024 TechVision Consulting. All rights reserved.",
+    "footerBgColor": "#0f172a",
+    "footerTextColor": "#94a3b8",
+    "socialLinks": [
+      { "platform": "LinkedIn", "url": "https://linkedin.com/company/techvision", "icon": "LinkedIn", "isActive": true },
+      { "platform": "Twitter", "url": "https://twitter.com/techvision", "icon": "Twitter", "isActive": true },
+      { "platform": "YouTube", "url": "https://youtube.com/techvision", "icon": "YouTube", "isActive": true },
+      { "platform": "GitHub", "url": "https://github.com/techvision", "icon": "GitHub", "isActive": false }
     ],
     "footerColumns": [
       {
@@ -1045,6 +1046,19 @@
           { "label": "Security", "url": "#" }
         ]
       }
+    ],
+    "headerNav": [
+      { "slug": "home", "title": "Home" },
+      { "slug": "about-us", "title": "About" },
+      { "slug": "services", "title": "Services" },
+      { "slug": "case-studies", "title": "Case Studies" },
+      { "slug": "contact", "title": "Contact" }
+    ],
+    "footerNav": [
+      { "slug": "about-us", "title": "About Us" },
+      { "slug": "services", "title": "Services" },
+      { "slug": "case-studies", "title": "Case Studies" },
+      { "slug": "contact", "title": "Contact" }
     ]
   },
   "settings": {
@@ -1078,5 +1092,11 @@
     "siteName": "TechVision Consulting",
     "siteDescription": "Award-winning IT consulting firm specializing in digital transformation, cloud solutions, and enterprise software development.",
     "defaultMetaImage": "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1200"
+  },
+  "styles": {
+    "primaryColor": "#0891b2",
+    "secondaryColor": "#06b6d4",
+    "accentColor": "#22d3ee",
+    "fontFamily": "Inter"
   }
 }

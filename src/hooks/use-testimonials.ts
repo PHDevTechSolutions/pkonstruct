@@ -13,6 +13,8 @@ export interface Testimonial {
   text: string
   project: string
   published: boolean
+  avatar?: string
+  company?: string
 }
 
 export function useTestimonials() {

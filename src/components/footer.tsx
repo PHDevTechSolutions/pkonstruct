@@ -100,8 +100,8 @@ export function Footer() {
               </span>
             </Link>
             <p 
-              className="mb-4 max-w-sm"
-              style={{ color: navSettings?.footerTextColor ? `${navSettings.footerTextColor}99` : "#a8a29e" }}
+              className="mb-4 max-w-sm text-muted-foreground"
+              style={{ color: navSettings?.footerTextColor ? `${navSettings.footerTextColor}99` : undefined }}
             >
               {navSettings?.footerDescription || settings?.footer?.tagline || "Building excellence since 2005."}
             </p>
@@ -160,13 +160,20 @@ export function Footer() {
                   <ul className="space-y-2">
                     {services.slice(0, 5).map((service) => (
                       <li key={service.id}>
-                        <Link href={`/services/${service.slug || service.id}`} className="hover:text-primary transition-colors">
+                        <Link 
+                          href={`/services/${service.slug || service.id}`} 
+                          className="text-white/70 hover:text-white transition-colors"
+                          style={{ color: navSettings?.footerTextColor ? `${navSettings.footerTextColor}cc` : undefined }}
+                        >
                           {service.title}
                         </Link>
                       </li>
                     ))}
                     <li>
-                      <Link href="/services" className="hover:text-primary transition-colors font-medium text-primary">
+                      <Link 
+                        href="/services" 
+                        className="text-primary hover:text-primary/80 transition-colors font-medium"
+                      >
                         All Services →
                       </Link>
                     </li>
@@ -181,9 +188,13 @@ export function Footer() {
                   <ul className="space-y-2">
                     {footerNav.map((page) => (
                       <li key={page.id}>
-                        <Link href={`/${page.slug}`} className="hover:text-primary transition-colors">
-                          {page.title}
-                        </Link>
+                        <Link 
+                        href={`/${page.slug}`} 
+                        className="text-white/70 hover:text-white transition-colors"
+                        style={{ color: navSettings?.footerTextColor ? `${navSettings.footerTextColor}cc` : undefined }}
+                      >
+                        {page.title}
+                      </Link>
                       </li>
                     ))}
                   </ul>
@@ -196,9 +207,13 @@ export function Footer() {
                 <ul className="space-y-2">
                   {legalLinks.map((link, index) => (
                     <li key={index}>
-                      <Link href={link.href} className="hover:text-primary transition-colors">
-                        {link.label}
-                      </Link>
+                      <Link 
+                      href={link.href} 
+                      className="text-white/70 hover:text-white transition-colors"
+                      style={{ color: navSettings?.footerTextColor ? `${navSettings.footerTextColor}cc` : undefined }}
+                    >
+                      {link.label}
+                    </Link>
                     </li>
                   ))}
                 </ul>
@@ -215,11 +230,12 @@ export function Footer() {
                   {column.links?.map((link, linkIndex) => (
                     <li key={linkIndex}>
                       <Link 
-                        href={link.url || "#"} 
-                        className="hover:text-primary transition-colors"
-                      >
-                        {link.label}
-                      </Link>
+                      href={link.url || "#"} 
+                      className="text-white/70 hover:text-white transition-colors"
+                      style={{ color: navSettings?.footerTextColor ? `${navSettings.footerTextColor}cc` : undefined }}
+                    >
+                      {link.label}
+                    </Link>
                     </li>
                   ))}
                 </ul>

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from "react"
 import { db } from "@/lib/firebase"
-import { collection, getDocs, doc, updateDoc, addDoc, deleteDoc, query, orderBy, getDoc, setDoc } from "firebase/firestore"
+import { collection, getDocs, doc, updateDoc, addDoc, deleteDoc, query, orderBy, getDoc, setDoc, writeBatch } from "firebase/firestore"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -48,7 +48,8 @@ import {
   X,
   Loader2,
   Layers,
-  Terminal
+  Terminal,
+  AlertTriangle
 } from "lucide-react"
 import Link from "next/link"
 import { WidgetPreview } from "@/components/widgets/widget-preview"
@@ -177,6 +178,10 @@ export default function PagesManagement() {
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false)
   const [pageToDelete, setPageToDelete] = useState<{ id: string; title: string } | null>(null)
   const [deleting, setDeleting] = useState(false)
+  
+  // Delete all confirmation dialog states
+  const [deleteAllDialogOpen, setDeleteAllDialogOpen] = useState(false)
+  const [deletingAll, setDeletingAll] = useState(false)
   
   // Template selection dialog states
   const [templateDialogOpen, setTemplateDialogOpen] = useState(false)
@@ -713,6 +718,46 @@ export default function PagesManagement() {
       setError("Failed to delete page. Please check your permissions.")
     } finally {
       setDeleting(false)
+    }
+  }
+
+  // Execute delete all after confirmation
+  const handleDeleteAll = async () => {
+    setDeletingAll(true)
+    try {
+      setError(null)
+      
+      // Delete pages one by one to ensure they are properly deleted
+      const deletePromises = pages.map(async (page) => {
+        try {
+          await deleteDoc(doc(db, "pages", page.id))
+          return { success: true, id: page.id }
+        } catch (err) {
+          console.error(`Failed to delete page ${page.id}:`, err)
+          return { success: false, id: page.id, error: err }
+        }
+      })
+      
+      const results = await Promise.all(deletePromises)
+      const failedDeletes = results.filter(r => !r.success)
+      
+      if (failedDeletes.length > 0) {
+        console.error("Some pages failed to delete:", failedDeletes)
+        setError(`Failed to delete ${failedDeletes.length} pages. Check console for details.`)
+        // Refetch to see current state
+        await fetchPages()
+      } else {
+        // All deleted successfully
+        setPages([])
+        setDeleteAllDialogOpen(false)
+      }
+    } catch (err) {
+      console.error("Error in delete all operation:", err)
+      setError("Failed to delete all pages. Please check your permissions.")
+      // Refetch to see current state
+      await fetchPages()
+    } finally {
+      setDeletingAll(false)
     }
   }
 
@@ -1419,6 +1464,15 @@ export default function PagesManagement() {
               <option value="published">Published</option>
               <option value="draft">Draft</option>
             </select>
+            <Button
+              variant="outline"
+              onClick={() => setDeleteAllDialogOpen(true)}
+              disabled={pages.length === 0 || deletingAll}
+              className="bg-red-500/10 border-red-500/30 text-red-400 hover:bg-red-500/20 hover:text-red-300"
+            >
+              <Trash2 className="h-4 w-4 mr-2" />
+              Delete All
+            </Button>
           </div>
         </div>
       )}
@@ -1675,6 +1729,43 @@ export default function PagesManagement() {
                 </>
               ) : (
                 "Delete"
+              )}
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      {/* Delete All Confirmation Dialog */}
+      <AlertDialog open={deleteAllDialogOpen} onOpenChange={setDeleteAllDialogOpen}>
+        <AlertDialogContent className="bg-[#111111] border-[#222222] text-white">
+          <AlertDialogHeader>
+            <AlertDialogTitle className="text-white flex items-center gap-2">
+              <AlertTriangle className="h-5 w-5 text-red-400" />
+              Delete All Pages
+            </AlertDialogTitle>
+            <AlertDialogDescription className="text-gray-400">
+              Are you sure you want to delete <strong className="text-red-400">all {pages.length} pages</strong>? This will permanently remove all pages and their content. This action cannot be undone.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel 
+              onClick={() => setDeleteAllDialogOpen(false)}
+              className="border-[#333333] text-gray-400 hover:text-white hover:bg-[#222222]"
+            >
+              Cancel
+            </AlertDialogCancel>
+            <AlertDialogAction
+              onClick={handleDeleteAll}
+              disabled={deletingAll}
+              className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white border-0"
+            >
+              {deletingAll ? (
+                <>
+                  <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                  Deleting All...
+                </>
+              ) : (
+                "Delete All"
               )}
             </AlertDialogAction>
           </AlertDialogFooter>

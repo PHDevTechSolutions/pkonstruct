@@ -90,14 +90,20 @@ export function BeforeAfterWidget({ section }: BeforeAfterWidgetProps) {
     : section.content?.text || ''
 
   return (
-    <section className="py-16 bg-background">
+    <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
-        {section.title && <h2 className="text-3xl font-bold mb-4 text-center text-foreground">{section.title}</h2>}
-        {contentText && <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">{contentText}</p>}
+        {/* Clean Header */}
+        <div className="mb-12">
+          {section.title && (
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{section.title}</h2>
+          )}
+          <div className="w-20 h-1 bg-gray-900 rounded-full" />
+          {contentText && <p className="text-gray-600 mt-4 max-w-2xl">{contentText}</p>}
+        </div>
         
         <div className="max-w-4xl mx-auto">
           {/* Comparison Slider */}
-          <div className="relative aspect-video rounded-lg overflow-hidden bg-muted">
+          <div className="relative aspect-video overflow-hidden bg-gray-100">
             {/* After Image (Full width) */}
             <div className="absolute inset-0">
               {currentItem.afterImage ? (
@@ -108,8 +114,8 @@ export function BeforeAfterWidget({ section }: BeforeAfterWidgetProps) {
                   className="object-cover"
                 />
               ) : (
-                <div className="w-full h-full flex items-center justify-center bg-secondary">
-                  <span className="text-primary font-semibold text-2xl">AFTER</span>
+                <div className="w-full h-full flex items-center justify-center bg-gray-200">
+                  <span className="text-gray-900 font-semibold text-2xl">AFTER</span>
                 </div>
               )}
             </div>
@@ -127,20 +133,20 @@ export function BeforeAfterWidget({ section }: BeforeAfterWidgetProps) {
                   className="object-cover"
                 />
               ) : (
-                <div className="w-full h-full flex items-center justify-center bg-muted">
-                  <span className="text-muted-foreground font-semibold text-2xl">BEFORE</span>
+                <div className="w-full h-full flex items-center justify-center bg-gray-300">
+                  <span className="text-gray-600 font-semibold text-2xl">BEFORE</span>
                 </div>
               )}
             </div>
 
             {/* Slider Handle */}
             <div 
-              className="absolute top-0 bottom-0 w-1 bg-background cursor-ew-resize shadow-lg"
+              className="absolute top-0 bottom-0 w-0.5 bg-white cursor-ew-resize"
               style={{ left: `${sliderPosition}%` }}
             >
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-background rounded-full shadow-lg flex items-center justify-center border border-border">
-                <ChevronLeft className="h-4 w-4 text-foreground" />
-                <ChevronRight className="h-4 w-4 text-foreground" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white flex items-center justify-center border border-gray-200">
+                <ChevronLeft className="h-4 w-4 text-gray-900" />
+                <ChevronRight className="h-4 w-4 text-gray-900" />
               </div>
             </div>
 
@@ -155,30 +161,30 @@ export function BeforeAfterWidget({ section }: BeforeAfterWidgetProps) {
             />
 
             {/* Labels */}
-            <div className="absolute top-4 left-4 bg-foreground/70 text-background px-3 py-1 rounded text-sm font-medium">
-              Before
+            <div className="absolute top-4 left-4 bg-gray-900 text-white px-4 py-2 text-xs font-medium">
+              BEFORE
             </div>
-            <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 rounded text-sm font-medium">
-              After
+            <div className="absolute top-4 right-4 bg-white text-gray-900 px-4 py-2 text-xs font-medium border border-gray-200">
+              AFTER
             </div>
           </div>
 
           {/* Item Info */}
-          <div className="mt-6 text-center">
-            <h3 className="text-xl font-semibold text-foreground">{currentItem.title}</h3>
+          <div className="mt-6">
+            <h3 className="text-xl font-semibold text-gray-900">{currentItem.title}</h3>
             {currentItem.description && (
-              <p className="text-muted-foreground mt-2">{currentItem.description}</p>
+              <p className="text-gray-500 mt-2">{currentItem.description}</p>
             )}
           </div>
 
           {/* Navigation */}
           {items.length > 1 && (
-            <div className="flex items-center justify-center gap-4 mt-6">
+            <div className="flex items-center gap-4 mt-6">
               <button
                 onClick={prevSlide}
-                className="p-2 rounded-full bg-card shadow hover:bg-accent transition-colors border border-border"
+                className="p-3 border border-gray-300 hover:border-gray-900 hover:bg-gray-900 hover:text-white transition-all"
               >
-                <ChevronLeft className="h-5 w-5 text-foreground" />
+                <ChevronLeft className="h-5 w-5" />
               </button>
               <div className="flex gap-2">
                 {items.map((_, idx) => (
@@ -188,17 +194,17 @@ export function BeforeAfterWidget({ section }: BeforeAfterWidgetProps) {
                       setCurrentIndex(idx)
                       setSliderPosition(50)
                     }}
-                    className={`w-2 h-2 rounded-full transition-colors ${
-                      idx === currentIndex ? "bg-primary" : "bg-muted-foreground/30"
+                    className={`h-1 transition-all duration-300 ${
+                      idx === currentIndex ? "w-8 bg-gray-900" : "w-4 bg-gray-300"
                     }`}
                   />
                 ))}
               </div>
               <button
                 onClick={nextSlide}
-                className="p-2 rounded-full bg-card shadow hover:bg-accent transition-colors border border-border"
+                className="p-3 border border-gray-300 hover:border-gray-900 hover:bg-gray-900 hover:text-white transition-all"
               >
-                <ChevronRight className="h-5 w-5 text-foreground" />
+                <ChevronRight className="h-5 w-5" />
               </button>
             </div>
           )}

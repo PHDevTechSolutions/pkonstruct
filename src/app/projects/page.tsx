@@ -132,18 +132,16 @@ export default function ProjectsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-stone-50">
+    <div className="min-h-screen bg-white">
       {/* Hero */}
-      <section className="bg-stone-900 py-20">
+      <section className="bg-gray-900 py-20">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <span className="text-amber-500 font-medium text-sm tracking-wider uppercase">
-              Our Portfolio
-            </span>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mt-4 mb-6">
+          <div className="max-w-3xl">
+            <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
               All Projects
             </h1>
-            <p className="text-stone-400 text-lg">
+            <div className="w-20 h-1 bg-white rounded-full mb-4" />
+            <p className="text-gray-400 text-lg">
               Explore our complete portfolio of construction projects across residential, 
               commercial, and industrial sectors.
             </p>
@@ -152,25 +150,25 @@ export default function ProjectsPage() {
       </section>
 
       {/* Search & Filter Bar */}
-      <section className="bg-white border-b py-6 sticky top-0 z-40">
+      <section className="bg-white border-b border-gray-200 py-6 sticky top-0 z-40">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
             {/* Search */}
             <div className="relative w-full md:w-96">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-stone-400" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
               <Input
                 type="text"
                 placeholder="Search projects..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 pr-10"
+                className="pl-10 pr-10 border-gray-200 rounded-none"
               />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery("")}
                   className="absolute right-3 top-1/2 -translate-y-1/2"
                 >
-                  <X className="h-4 w-4 text-stone-400" />
+                  <X className="h-4 w-4 text-gray-400" />
                 </button>
               )}
             </div>
@@ -178,21 +176,23 @@ export default function ProjectsPage() {
             {/* Category Filters */}
             <div className="flex gap-2 flex-wrap justify-center">
               {categories.map((category) => (
-                <Button
+                <button
                   key={category}
-                  variant={activeCategory === category ? "default" : "outline"}
-                  size="sm"
                   onClick={() => setActiveCategory(category)}
-                  className={activeCategory === category ? "bg-amber-600 hover:bg-amber-700" : ""}
+                  className={`px-4 py-2 text-sm font-medium transition-all ${
+                    activeCategory === category 
+                      ? "bg-gray-900 text-white" 
+                      : "bg-white text-gray-600 border border-gray-200 hover:border-gray-900"
+                  }`}
                 >
                   {category}
-                </Button>
+                </button>
               ))}
             </div>
 
             {/* Results Count */}
-            <div className="text-sm text-stone-500 whitespace-nowrap">
-              {totalProjects} project{totalProjects !== 1 ? 's' : ''} found
+            <div className="text-sm text-gray-500 whitespace-nowrap font-mono">
+              {totalProjects} project{totalProjects !== 1 ? 's' : ''}
             </div>
           </div>
         </div>
@@ -203,8 +203,8 @@ export default function ProjectsPage() {
         <div className="container mx-auto px-4">
           {currentProjects.length === 0 ? (
             <div className="text-center py-20">
-              <p className="text-stone-500 text-lg mb-4">No projects found</p>
-              <Button onClick={clearSearch} variant="outline">
+              <p className="text-gray-500 text-lg mb-4">No projects found</p>
+              <Button onClick={clearSearch} variant="outline" className="rounded-none">
                 Clear Filters
               </Button>
             </div>
@@ -212,45 +212,45 @@ export default function ProjectsPage() {
             <>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {currentProjects.map((project) => (
-                  <Card key={project.id} className="overflow-hidden group hover:shadow-xl transition-shadow duration-300">
-                    <Link href={`/projects/${project.id}`}>
-                      <div className="relative h-56 bg-stone-200">
+                  <Link key={project.id} href={`/projects/${project.id}`}>
+                    <div className="group border border-gray-200 hover:border-gray-900 transition-all duration-300 bg-white cursor-pointer">
+                      <div className="relative aspect-[4/3] bg-gray-100 overflow-hidden">
                         {project.image ? (
                           <img
                             src={project.image}
                             alt={project.title}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
                           />
                         ) : (
-                          <div className="absolute inset-0 flex items-center justify-center bg-stone-300">
-                            <span className="text-stone-500 font-medium">Project Image</span>
+                          <div className="absolute inset-0 flex items-center justify-center bg-gray-200">
+                            <span className="text-gray-400 font-medium">Project Image</span>
                           </div>
                         )}
+                        {/* Hover overlay */}
+                        <div className="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/20 transition-colors duration-300" />
+                        {/* Category badge */}
                         <div className="absolute top-4 left-4">
-                          <span className="px-3 py-1 bg-amber-600 text-white text-sm font-medium rounded-full">
+                          <span className="px-3 py-1 bg-white text-gray-900 text-xs font-medium">
                             {project.category}
                           </span>
                         </div>
+                        {/* Featured badge */}
                         {project.featured && (
                           <div className="absolute top-4 right-4">
-                            <span className="px-2 py-1 bg-white/90 text-amber-600 text-xs font-medium rounded">
+                            <span className="px-2 py-1 bg-gray-900 text-white text-xs font-medium">
                               Featured
                             </span>
                           </div>
                         )}
                       </div>
-                    </Link>
-                    <CardContent className="p-6">
-                      <h3 className="font-bold text-xl text-stone-900 mb-2 group-hover:text-amber-600 transition-colors">
-                        <Link href={`/projects/${project.id}`}>
+                      <div className="p-6">
+                        <h3 className="font-semibold text-lg text-gray-900 mb-2">
                           {project.title}
-                        </Link>
-                      </h3>
-                      <p className="text-stone-600 text-sm line-clamp-2 mb-4">
-                        {project.description}
-                      </p>
-                      <div className="flex items-center justify-between text-sm text-stone-500">
-                        <div className="flex items-center gap-4">
+                        </h3>
+                        <p className="text-gray-500 text-sm line-clamp-2 mb-4">
+                          {project.description}
+                        </p>
+                        <div className="flex items-center gap-4 text-sm text-gray-400">
                           <span className="flex items-center gap-1">
                             <MapPin className="h-4 w-4" />
                             {project.location}
@@ -260,54 +260,48 @@ export default function ProjectsPage() {
                             {project.year}
                           </span>
                         </div>
-                        <Link 
-                          href={`/projects/${project.id}`}
-                          className="text-amber-600 font-medium flex items-center gap-1 hover:gap-2 transition-all"
-                        >
-                          View <ArrowRight className="h-4 w-4" />
-                        </Link>
                       </div>
-                    </CardContent>
-                  </Card>
+                    </div>
+                  </Link>
                 ))}
               </div>
 
               {/* Pagination */}
               {totalPages > 1 && (
                 <div className="flex justify-center gap-2 mt-12">
-                  <Button
-                    variant="outline"
-                    size="sm"
+                  <button
                     onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                     disabled={currentPage === 1}
+                    className="px-4 py-2 border border-gray-200 hover:border-gray-900 hover:bg-gray-900 hover:text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     Previous
-                  </Button>
+                  </button>
 
                   {getPageNumbers().map((page, index) =>
                     page === '...' ? (
-                      <span key={`ellipsis-${index}`} className="px-2 py-1 text-stone-500">...</span>
+                      <span key={`ellipsis-${index}`} className="px-4 py-2 text-gray-500">...</span>
                     ) : (
-                      <Button
+                      <button
                         key={page}
-                        variant={currentPage === page ? "default" : "outline"}
-                        size="sm"
                         onClick={() => setCurrentPage(page as number)}
-                        className={currentPage === page ? "bg-amber-600 hover:bg-amber-700" : ""}
+                        className={`px-4 py-2 transition-all ${
+                          currentPage === page 
+                            ? "bg-gray-900 text-white" 
+                            : "border border-gray-200 hover:border-gray-900 hover:bg-gray-900 hover:text-white"
+                        }`}
                       >
                         {page}
-                      </Button>
+                      </button>
                     )
                   )}
 
-                  <Button
-                    variant="outline"
-                    size="sm"
+                  <button
                     onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
                     disabled={currentPage === totalPages}
+                    className="px-4 py-2 border border-gray-200 hover:border-gray-900 hover:bg-gray-900 hover:text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     Next
-                  </Button>
+                  </button>
                 </div>
               )}
             </>

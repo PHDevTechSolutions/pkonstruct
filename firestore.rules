@@ -36,6 +36,33 @@ service cloud.firestore {
       allow create, update, delete: if isAuthenticated();
     }
     
+    // Inquiries (public can create, only admin can read/update/delete)
+    match /inquiries/{inquiryId} {
+      allow read: if isAuthenticated();
+      allow create: if true;
+      allow update, delete: if isAuthenticated();
+    }
+
+    // Chat Sessions (public can create/update/read for real-time chat)
+    match /chatSessions/{sessionId} {
+      allow read: if true; // Public can read for real-time updates
+      allow create: if true;
+      allow update: if true; // Allow updates from widget
+      allow delete: if isAuthenticated();
+    }
+
+    // Chatbot Config (admin only)
+    match /chatbotConfig/{configId} {
+      allow read: if true; // Public can read config
+      allow create, update, delete: if isAuthenticated();
+    }
+
+    // Chatbot Q&A (public can read, admin can manage)
+    match /chatbotQA/{qaId} {
+      allow read: if true;
+      allow create, update, delete: if isAuthenticated();
+    }
+
     // Contact Submissions (public can create, only admin can read/update/delete)
     match /contactSubmissions/{submissionId} {
       allow read: if isAuthenticated();

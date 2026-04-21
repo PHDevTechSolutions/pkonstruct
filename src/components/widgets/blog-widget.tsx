@@ -2,9 +2,8 @@
 
 import { useState } from "react"
 import { useBlogPosts } from "@/hooks/use-blog"
-import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Loader2, ChevronLeft, ChevronRight } from "lucide-react"
+import { Loader2, ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import type { PageSection } from "./types"
@@ -65,51 +64,83 @@ export function BlogWidget({ section }: BlogWidgetProps) {
       5: "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5"
     }
     const appliedCols = gridCols[layoutConfig.columns as keyof typeof gridCols] || gridCols[3]
-    console.log("[BlogWidget] Rendering GRID layout with", layoutConfig.columns, "columns. Applied class:", appliedCols)
     
     return (
-      <section className="py-16 bg-background">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          {section.title && <h2 className="text-3xl font-bold mb-12 text-center text-foreground">{section.title}</h2>}
+          {/* Clean Header */}
+          <div className="mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+            <div>
+              {section.title && (
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{section.title}</h2>
+              )}
+              <div className="w-20 h-1 bg-gray-900 rounded-full" />
+            </div>
+            
+            <Link href="/blog">
+              <Button variant="outline" className="border-gray-300 hover:border-gray-900 hover:bg-gray-900 hover:text-white transition-all rounded-none">
+                View All Posts
+                <ArrowUpRight className="w-4 h-4 ml-2" />
+              </Button>
+            </Link>
+          </div>
           
           {/* Category Filters */}
           {layoutConfig.showFilters && categories.length > 0 && (
-            <div className="flex flex-wrap gap-2 justify-center mb-8">
-              <Button variant="outline" size="sm" className="bg-primary text-primary-foreground">All</Button>
+            <div className="flex flex-wrap gap-3 mb-10">
+              <button className="px-4 py-2 text-sm font-medium bg-gray-900 text-white">All</button>
               {categories.map(cat => (
-                <Button key={cat} variant="outline" size="sm">{cat}</Button>
+                <button key={cat} className="px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 transition-colors">
+                  {cat}
+                </button>
               ))}
             </div>
           )}
           
-          <div className={`grid ${appliedCols} gap-6`}>
+          {/* Minimal Grid */}
+          <div className={`grid ${appliedCols} gap-8`}>
             {displayPosts.map((post) => (
-              <Card key={post.id} className="overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow bg-card">
-                <div className="relative h-48 bg-muted">
-                  {post.image ? (
-                    <Image src={post.image} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
-                  ) : (
-                    <div className="absolute inset-0 flex items-center justify-center bg-muted/70">
-                      <span className="text-muted-foreground">Blog Image</span>
+              <Link key={post.id} href={`/blog/${post.id}`}>
+                <div className="group cursor-pointer">
+                  {/* Image Container */}
+                  <div className="relative aspect-[4/3] bg-gray-100 overflow-hidden mb-4">
+                    {post.image ? (
+                      <Image 
+                        src={post.image} 
+                        alt={post.title} 
+                        fill 
+                        className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105" 
+                      />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center bg-gray-200">
+                        <span className="text-gray-400 text-sm">Blog Image</span>
+                      </div>
+                    )}
+                    {/* Hover overlay */}
+                    <div className="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/20 transition-colors duration-300" />
+                    <div className="absolute top-4 right-4 w-10 h-10 bg-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                      <ArrowUpRight className="w-5 h-5 text-gray-900" />
                     </div>
-                  )}
-                </div>
-                <CardContent className="p-4">
-                  <span className="text-xs font-medium text-primary uppercase">{post.category}</span>
-                  <h3 className="font-semibold mt-1 line-clamp-2 text-card-foreground">{post.title}</h3>
-                  <p className="text-sm text-muted-foreground mt-2 line-clamp-2">{post.excerpt}</p>
-                  <div className="flex items-center justify-between mt-4 text-xs text-muted-foreground/70">
-                    <span>{post.author}</span>
-                    <span>{post.date}</span>
                   </div>
-                </CardContent>
-              </Card>
+                  
+                  {/* Content */}
+                  <div>
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className="text-xs font-mono text-gray-400 uppercase tracking-wider">{post.category}</span>
+                      <span className="text-gray-300">|</span>
+                      <span className="text-xs text-gray-400">{post.date}</span>
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900 group-hover:text-gray-600 transition-colors line-clamp-2">
+                      {post.title}
+                    </h3>
+                    <p className="text-sm text-gray-500 mt-2 line-clamp-2">{post.excerpt}</p>
+                    <div className="mt-4 text-xs text-gray-400">
+                      By {post.author}
+                    </div>
+                  </div>
+                </div>
+              </Link>
             ))}
-          </div>
-          <div className="text-center mt-8">
-            <Link href="/blog">
-              <Button variant="outline">View All Posts</Button>
-            </Link>
           </div>
         </div>
       </section>
@@ -119,39 +150,70 @@ export function BlogWidget({ section }: BlogWidgetProps) {
   // List Layout
   if (layoutConfig.layout === "list") {
     return (
-      <section className="py-16 bg-background">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          {section.title && <h2 className="text-3xl font-bold mb-12 text-center text-foreground">{section.title}</h2>}
-          <div className="space-y-4 max-w-4xl mx-auto">
-            {displayPosts.map((post) => (
-              <Card key={post.id} className="overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow bg-card">
-                <div className="flex flex-col md:flex-row">
-                  <div className="relative h-48 md:h-auto md:w-64 bg-muted flex-shrink-0">
-                    {post.image ? (
-                      <Image src={post.image} alt={post.title} fill className="object-cover" />
-                    ) : (
-                      <div className="absolute inset-0 flex items-center justify-center bg-muted/70">
-                        <span className="text-muted-foreground">Blog Image</span>
-                      </div>
-                    )}
-                  </div>
-                  <CardContent className="p-6 flex-1">
-                    <span className="text-xs font-medium text-primary uppercase">{post.category}</span>
-                    <h3 className="font-semibold text-lg mt-1 text-card-foreground">{post.title}</h3>
-                    <p className="text-sm text-muted-foreground mt-2">{post.excerpt}</p>
-                    <div className="flex items-center justify-between mt-4 text-xs text-muted-foreground/70">
-                      <span>{post.author}</span>
-                      <span>{post.date}</span>
-                    </div>
-                  </CardContent>
-                </div>
-              </Card>
-            ))}
-          </div>
-          <div className="text-center mt-8">
+          {/* Clean Header */}
+          <div className="mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+            <div>
+              {section.title && (
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{section.title}</h2>
+              )}
+              <div className="w-20 h-1 bg-gray-900 rounded-full" />
+            </div>
+            
             <Link href="/blog">
-              <Button variant="outline">View All Posts</Button>
+              <Button variant="outline" className="border-gray-300 hover:border-gray-900 hover:bg-gray-900 hover:text-white transition-all rounded-none">
+                View All Posts
+                <ArrowUpRight className="w-4 h-4 ml-2" />
+              </Button>
             </Link>
+          </div>
+          
+          <div className="space-y-0 max-w-4xl">
+            {displayPosts.map((post, index) => (
+              <Link key={post.id} href={`/blog/${post.id}`}>
+                <div className="group border-b border-gray-200 py-8 first:pt-0 hover:bg-gray-50 transition-colors cursor-pointer -mx-4 px-4">
+                  <div className="flex flex-col md:flex-row gap-6">
+                    {/* Image */}
+                    <div className="relative h-48 md:h-32 md:w-48 bg-gray-100 flex-shrink-0 overflow-hidden">
+                      {post.image ? (
+                        <Image 
+                          src={post.image} 
+                          alt={post.title} 
+                          fill 
+                          className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500" 
+                        />
+                      ) : (
+                        <div className="absolute inset-0 flex items-center justify-center bg-gray-200">
+                          <span className="text-gray-400 text-sm">Blog Image</span>
+                        </div>
+                      )}
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="flex-1 flex flex-col justify-center">
+                      <div className="flex items-center gap-3 mb-2">
+                        <span className="text-xs font-mono text-gray-400 uppercase tracking-wider">{post.category}</span>
+                        <span className="text-gray-300">|</span>
+                        <span className="text-xs text-gray-400">{post.date}</span>
+                      </div>
+                      <h3 className="text-xl font-semibold text-gray-900 group-hover:text-gray-600 transition-colors">
+                        {post.title}
+                      </h3>
+                      <p className="text-sm text-gray-500 mt-2 line-clamp-2">{post.excerpt}</p>
+                      <div className="mt-4 text-xs text-gray-400">
+                        By {post.author}
+                      </div>
+                    </div>
+                    
+                    {/* Arrow */}
+                    <div className="flex items-center justify-center md:justify-end">
+                      <ArrowUpRight className="w-5 h-5 text-gray-400 group-hover:text-gray-900 transition-colors" />
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -164,69 +226,103 @@ export function BlogWidget({ section }: BlogWidgetProps) {
     const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + displayPosts.length) % displayPosts.length)
     
     return (
-      <section className="py-16 bg-background">
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          {section.title && <h2 className="text-3xl font-bold mb-12 text-center text-foreground">{section.title}</h2>}
-          <div className="relative max-w-4xl mx-auto">
-            <div className="overflow-hidden rounded-lg">
-              <div 
-                className="flex transition-transform duration-500 ease-in-out"
-                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-              >
-                {displayPosts.map((post) => (
-                  <div key={post.id} className="w-full flex-shrink-0">
-                    <Card className="overflow-hidden bg-card">
-                      <div className="relative h-64 md:h-96 bg-muted">
-                        {post.image ? (
-                          <Image src={post.image} alt={post.title} fill className="object-cover" />
-                        ) : (
-                          <div className="absolute inset-0 flex items-center justify-center bg-muted/70">
-                            <span className="text-muted-foreground">Blog Image</span>
-                          </div>
-                        )}
-                        <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-                        <div className="absolute bottom-0 left-0 right-0 p-6 text-foreground">
-                          <span className="text-xs font-medium text-primary uppercase">{post.category}</span>
-                          <h3 className="font-semibold text-xl mt-1">{post.title}</h3>
-                          <p className="text-sm text-muted-foreground mt-2 line-clamp-2">{post.excerpt}</p>
-                          <div className="flex items-center gap-4 mt-4 text-xs text-muted-foreground">
-                            <span>{post.author}</span>
-                            <span>{post.date}</span>
-                          </div>
-                        </div>
-                      </div>
-                    </Card>
-                  </div>
-                ))}
-              </div>
+          {/* Clean Header */}
+          <div className="mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+            <div>
+              {section.title && (
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{section.title}</h2>
+              )}
+              <div className="w-20 h-1 bg-gray-900 rounded-full" />
             </div>
             
             {/* Navigation */}
             {displayPosts.length > 1 && (
-              <>
-                <button onClick={prevSlide} className="absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-background/90 hover:bg-background shadow-lg border border-border">
-                  <ChevronLeft className="h-6 w-6 text-foreground" />
+              <div className="flex gap-2">
+                <button 
+                  onClick={prevSlide} 
+                  className="p-3 border border-gray-300 hover:border-gray-900 hover:bg-gray-900 hover:text-white transition-all"
+                >
+                  <ChevronLeft className="h-5 w-5" />
                 </button>
-                <button onClick={nextSlide} className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-background/90 hover:bg-background shadow-lg border border-border">
-                  <ChevronRight className="h-6 w-6 text-foreground" />
+                <button 
+                  onClick={nextSlide} 
+                  className="p-3 border border-gray-300 hover:border-gray-900 hover:bg-gray-900 hover:text-white transition-all"
+                >
+                  <ChevronRight className="h-5 w-5" />
                 </button>
-                <div className="flex justify-center gap-2 mt-4">
-                  {displayPosts.map((_, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setCurrentSlide(idx)}
-                      className={`w-2 h-2 rounded-full transition-colors ${
-                        idx === currentSlide ? "bg-primary" : "bg-muted-foreground/30"
-                      }`}
-                    />
-                  ))}
-                </div>
-              </>
+              </div>
             )}
           </div>
-          <div className="text-center mt-8">
+          
+          <div className="overflow-hidden">
+            <div 
+              className="flex transition-transform duration-500 ease-out"
+              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+            >
+              {displayPosts.map((post) => (
+                <div key={post.id} className="w-full flex-shrink-0 pr-8">
+                  <Link href={`/blog/${post.id}`}>
+                    <div className="group cursor-pointer bg-white">
+                      <div className="relative aspect-[16/9] bg-gray-100 overflow-hidden">
+                        {post.image ? (
+                          <Image 
+                            src={post.image} 
+                            alt={post.title} 
+                            fill 
+                            className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105" 
+                          />
+                        ) : (
+                          <div className="absolute inset-0 flex items-center justify-center bg-gray-200">
+                            <span className="text-gray-400">Blog Image</span>
+                          </div>
+                        )}
+                        <div className="absolute top-4 right-4 w-12 h-12 bg-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+                          <ArrowUpRight className="w-6 h-6 text-gray-900" />
+                        </div>
+                      </div>
+                      <div className="p-6">
+                        <div className="flex items-center gap-3 mb-3">
+                          <span className="text-xs font-mono text-gray-400 uppercase tracking-wider">{post.category}</span>
+                          <span className="text-gray-300">|</span>
+                          <span className="text-xs text-gray-400">{post.date}</span>
+                        </div>
+                        <h3 className="text-2xl font-semibold text-gray-900 group-hover:text-gray-600 transition-colors">
+                          {post.title}
+                        </h3>
+                        <p className="text-gray-500 mt-3">{post.excerpt}</p>
+                        <div className="mt-4 text-sm text-gray-400">
+                          By {post.author}
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          {/* Dots */}
+          {displayPosts.length > 1 && (
+            <div className="flex gap-2 mt-8">
+              {displayPosts.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentSlide(idx)}
+                  className={`h-1 transition-all duration-300 ${
+                    idx === currentSlide ? "w-8 bg-gray-900" : "w-4 bg-gray-300"
+                  }`}
+                />
+              ))}
+            </div>
+          )}
+          
+          <div className="text-center mt-12">
             <Link href="/blog">
-              <Button variant="outline">View All Posts</Button>
+              <Button variant="outline" className="border-gray-300 hover:border-gray-900 hover:bg-gray-900 hover:text-white transition-all rounded-none">
+                View All Posts
+              </Button>
             </Link>
           </div>
         </div>
@@ -244,40 +340,67 @@ export function BlogWidget({ section }: BlogWidgetProps) {
     5: "columns-1 md:columns-2 lg:columns-3 xl:columns-5"
   }
   const appliedMasonryCols = masonryCols[layoutConfig.columns as keyof typeof masonryCols] || masonryCols[3]
-  console.log("[BlogWidget] Rendering MASONRY (default) layout with", layoutConfig.columns, "columns. Layout value was:", layoutConfig.layout, "Applied class:", appliedMasonryCols)
   
   return (
-    <section className="py-16 bg-background">
+    <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
-        {section.title && <h2 className="text-3xl font-bold mb-12 text-center text-foreground">{section.title}</h2>}
+        {/* Clean Header */}
+        <div className="mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+          <div>
+            {section.title && (
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{section.title}</h2>
+            )}
+            <div className="w-20 h-1 bg-gray-900 rounded-full" />
+          </div>
+          
+          <Link href="/blog">
+            <Button variant="outline" className="border-gray-300 hover:border-gray-900 hover:bg-gray-900 hover:text-white transition-all rounded-none">
+              View All Posts
+              <ArrowUpRight className="w-4 h-4 ml-2" />
+            </Button>
+          </Link>
+        </div>
+        
+        {/* Masonry Grid */}
         <div className={`${appliedMasonryCols} gap-6 space-y-6`}>
           {displayPosts.map((post) => (
-            <Card key={post.id} className="overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow break-inside-avoid bg-card">
-              <div className="relative h-48 bg-muted">
-                {post.image ? (
-                  <Image src={post.image} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
-                ) : (
-                  <div className="absolute inset-0 flex items-center justify-center bg-muted/70">
-                    <span className="text-muted-foreground">Blog Image</span>
+            <Link key={post.id} href={`/blog/${post.id}`}>
+              <div className="group cursor-pointer break-inside-avoid mb-6">
+                <div className="relative bg-gray-100 overflow-hidden">
+                  {post.image ? (
+                    <Image 
+                      src={post.image} 
+                      alt={post.title} 
+                      width={600}
+                      height={400}
+                      className="w-full h-auto object-cover grayscale group-hover:grayscale-0 transition-all duration-500" 
+                    />
+                  ) : (
+                    <div className="aspect-[4/3] flex items-center justify-center bg-gray-200">
+                      <span className="text-gray-400">Blog Image</span>
+                    </div>
+                  )}
+                  <div className="absolute top-4 right-4 w-10 h-10 bg-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <ArrowUpRight className="w-5 h-5 text-gray-900" />
                   </div>
-                )}
-              </div>
-              <CardContent className="p-4">
-                <span className="text-xs font-medium text-primary uppercase">{post.category}</span>
-                <h3 className="font-semibold mt-1 line-clamp-2 text-card-foreground">{post.title}</h3>
-                <p className="text-sm text-muted-foreground mt-2 line-clamp-2">{post.excerpt}</p>
-                <div className="flex items-center justify-between mt-4 text-xs text-muted-foreground/70">
-                  <span>{post.author}</span>
-                  <span>{post.date}</span>
                 </div>
-              </CardContent>
-            </Card>
+                <div className="pt-4">
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="text-xs font-mono text-gray-400 uppercase tracking-wider">{post.category}</span>
+                    <span className="text-gray-300">|</span>
+                    <span className="text-xs text-gray-400">{post.date}</span>
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-900 group-hover:text-gray-600 transition-colors line-clamp-2">
+                    {post.title}
+                  </h3>
+                  <p className="text-sm text-gray-500 mt-2 line-clamp-2">{post.excerpt}</p>
+                  <div className="mt-3 text-xs text-gray-400">
+                    By {post.author}
+                  </div>
+                </div>
+              </div>
+            </Link>
           ))}
-        </div>
-        <div className="text-center mt-8">
-          <Link href="/blog">
-            <Button variant="outline">View All Posts</Button>
-          </Link>
         </div>
       </div>
     </section>

@@ -14,10 +14,25 @@ export function NewsletterWidget({ section }: NewsletterWidgetProps) {
   const [email, setEmail] = useState("")
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
 
-  // Handle content as string or object
+  // Parse content data from admin
+  const contentData = typeof section.content === 'string' 
+    ? {} 
+    : section.content || {}
+  
   const contentText = typeof section.content === 'string' 
     ? section.content 
-    : section.content?.text || ''
+    : contentData?.text || ''
+  
+  // Customization options
+  const buttonText = contentData?.buttonText || "Subscribe"
+  const placeholder = contentData?.placeholder || "Enter your email"
+  const backgroundColor = contentData?.backgroundColor || "#111827"
+  const textColor = contentData?.textColor || "#ffffff"
+  const buttonColor = contentData?.buttonColor || "#ffffff"
+  const buttonTextColor = contentData?.buttonTextColor || "#111827"
+  const successMessage = contentData?.successMessage || "Thank you for subscribing!"
+  const showPrivacyText = contentData?.showPrivacyText !== false
+  const privacyText = contentData?.privacyText || "We respect your privacy. Unsubscribe at any time."
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -32,44 +47,67 @@ export function NewsletterWidget({ section }: NewsletterWidgetProps) {
   }
 
   return (
-    <section className="py-16 bg-primary">
+    <section 
+      className="py-20"
+      style={{ backgroundColor }}
+    >
       <div className="container mx-auto px-4">
         <div className="max-w-2xl mx-auto text-center">
-          <div className="w-16 h-16 bg-primary-foreground/20 rounded-full flex items-center justify-center mx-auto mb-6">
-            <Mail className="h-8 w-8 text-primary-foreground" />
+          <div 
+            className="w-12 h-12 flex items-center justify-center mx-auto mb-6"
+            style={{ backgroundColor: textColor, opacity: 0.1 }}
+          >
+            <Mail className="h-6 w-6" style={{ color: textColor }} />
           </div>
           
           {section.title && (
-            <h2 className="text-3xl font-bold text-primary-foreground mb-4">
+            <h2 
+              className="text-3xl font-bold mb-4"
+              style={{ color: textColor }}
+            >
               {section.title}
             </h2>
           )}
           
           {contentText && (
-            <p className="text-primary-foreground/80 text-lg mb-8">
+            <p 
+              className="text-lg mb-8"
+              style={{ color: textColor, opacity: 0.7 }}
+            >
               {contentText}
             </p>
           )}
 
           {status === "success" ? (
-            <div className="flex items-center justify-center gap-2 text-primary-foreground">
+            <div 
+              className="flex items-center justify-center gap-2"
+              style={{ color: textColor }}
+            >
               <CheckCircle className="h-6 w-6" />
-              <span className="text-lg">Thank you for subscribing!</span>
+              <span className="text-lg">{successMessage}</span>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
               <Input
                 type="email"
-                placeholder="Enter your email address"
+                placeholder={placeholder}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="flex-1 bg-background border-0 h-12 text-foreground"
+                className="flex-1 border-0 h-12 rounded-none"
+                style={{ 
+                  backgroundColor: buttonColor,
+                  color: buttonTextColor
+                }}
               />
               <Button 
                 type="submit" 
                 disabled={status === "loading"}
-                className="bg-secondary hover:bg-secondary/80 text-secondary-foreground h-12 px-8"
+                className="h-12 px-8 border-0 rounded-none hover:opacity-90"
+                style={{ 
+                  backgroundColor: buttonColor, 
+                  color: buttonTextColor 
+                }}
               >
                 {status === "loading" ? (
                   <>
@@ -77,15 +115,20 @@ export function NewsletterWidget({ section }: NewsletterWidgetProps) {
                     Subscribing...
                   </>
                 ) : (
-                  "Subscribe"
+                  buttonText
                 )}
               </Button>
             </form>
           )}
 
-          <p className="text-primary-foreground/60 text-sm mt-4">
-            We respect your privacy. Unsubscribe at any time.
-          </p>
+          {showPrivacyText && (
+            <p 
+              className="text-sm mt-4"
+              style={{ color: textColor, opacity: 0.5 }}
+            >
+              {privacyText}
+            </p>
+          )}
         </div>
       </div>
     </section>

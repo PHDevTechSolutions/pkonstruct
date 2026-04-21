@@ -1,10 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Separator } from "@/components/ui/separator"
 import { useProject, useProjects } from "@/hooks/use-projects"
 import { 
   ArrowLeft, 
@@ -56,49 +53,50 @@ export function ProjectDetailClient({ id }: ProjectDetailClientProps) {
   const nextProject = projectIndex < allProjects.length - 1 ? allProjects[projectIndex + 1] : null
 
   return (
-    <main className="flex-1">
+    <main className="flex-1 bg-white">
       {/* Back Navigation */}
-      <div className="bg-stone-50 border-b">
+      <div className="bg-white border-b border-gray-200">
         <div className="container mx-auto px-4 py-4">
-          <Button variant="ghost" size="sm" asChild>
-            <Link href="/#projects">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Projects
-            </Link>
-          </Button>
+          <Link 
+            href="/#projects"
+            className="inline-flex items-center text-gray-500 hover:text-gray-900 transition-colors text-sm font-mono"
+          >
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Back to Projects
+          </Link>
         </div>
       </div>
 
       {/* Hero */}
-      <section className="relative bg-stone-900 py-20">
+      <section className="bg-gray-900 py-16">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <span className="inline-block px-3 py-1 bg-amber-600 text-white text-sm font-medium rounded-full mb-4">
+              <span className="inline-block px-3 py-1 bg-gray-700 text-white text-xs font-medium mb-4 font-mono">
                 {project.category}
               </span>
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 {project.title}
               </h1>
-              <p className="text-xl text-stone-300 mb-8">
+              <p className="text-lg text-gray-400 mb-6">
                 {project.description}
               </p>
-              <div className="flex flex-wrap gap-6 text-stone-400">
+              <div className="flex flex-wrap gap-6 text-gray-400 text-sm">
                 <span className="flex items-center gap-2">
-                  <MapPin className="h-5 w-5" />
+                  <MapPin className="h-4 w-4" />
                   {project.location}
                 </span>
                 <span className="flex items-center gap-2">
-                  <Calendar className="h-5 w-5" />
+                  <Calendar className="h-4 w-4" />
                   {project.year}
                 </span>
                 <span className="flex items-center gap-2">
-                  <Building2 className="h-5 w-5" />
+                  <Building2 className="h-4 w-4" />
                   {project.client}
                 </span>
               </div>
             </div>
-            <div className="relative h-64 lg:h-80 rounded-xl overflow-hidden bg-stone-800">
+            <div className="relative h-64 lg:h-80 border border-gray-700">
               {project.image ? (
                 <img
                   src={project.image}
@@ -106,8 +104,8 @@ export function ProjectDetailClient({ id }: ProjectDetailClientProps) {
                   className="w-full h-full object-cover"
                 />
               ) : (
-                <div className="absolute inset-0 flex items-center justify-center bg-stone-700">
-                  <span className="text-stone-500 font-medium">Project Image</span>
+                <div className="absolute inset-0 flex items-center justify-center bg-gray-800">
+                  <span className="text-gray-500 font-medium">Project Image</span>
                 </div>
               )}
             </div>
@@ -116,43 +114,31 @@ export function ProjectDetailClient({ id }: ProjectDetailClientProps) {
       </section>
 
       {/* Project Stats */}
-      <section className="py-12 bg-stone-100">
+      <section className="py-12 bg-gray-50 border-b border-gray-200">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <Card>
-              <CardContent className="p-6 text-center">
-                <Clock className="h-8 w-8 text-amber-600 mx-auto mb-2" />
-                <div className="text-2xl font-bold text-stone-900">{project.duration}</div>
-                <div className="text-stone-500 text-sm">Duration</div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-6 text-center">
-                <Ruler className="h-8 w-8 text-amber-600 mx-auto mb-2" />
-                <div className="text-2xl font-bold text-stone-900">{project.size}</div>
-                <div className="text-stone-500 text-sm">Size</div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-6 text-center">
-                <Users className="h-8 w-8 text-amber-600 mx-auto mb-2" />
-                <div className="text-2xl font-bold text-stone-900">{project.team}</div>
-                <div className="text-stone-500 text-sm">Team Size</div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-6 text-center">
-                <Calendar className="h-8 w-8 text-amber-600 mx-auto mb-2" />
-                <div className="text-2xl font-bold text-stone-900">{project.year}</div>
-                <div className="text-stone-500 text-sm">Completed</div>
-              </CardContent>
-            </Card>
+            <div className="text-center p-6 border border-gray-200 bg-white">
+              <div className="text-2xl font-bold text-gray-900">{project.duration}</div>
+              <div className="text-gray-500 text-sm font-mono">Duration</div>
+            </div>
+            <div className="text-center p-6 border border-gray-200 bg-white">
+              <div className="text-2xl font-bold text-gray-900">{project.size}</div>
+              <div className="text-gray-500 text-sm font-mono">Size</div>
+            </div>
+            <div className="text-center p-6 border border-gray-200 bg-white">
+              <div className="text-2xl font-bold text-gray-900">{project.team}</div>
+              <div className="text-gray-500 text-sm font-mono">Team Size</div>
+            </div>
+            <div className="text-center p-6 border border-gray-200 bg-white">
+              <div className="text-2xl font-bold text-gray-900">{project.year}</div>
+              <div className="text-gray-500 text-sm font-mono">Completed</div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Main Content */}
-      <section className="py-20">
+      <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Left Column - Details */}
@@ -160,25 +146,25 @@ export function ProjectDetailClient({ id }: ProjectDetailClientProps) {
               {/* Challenge & Solution */}
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
-                  <h2 className="text-2xl font-bold text-stone-900 mb-4">The Challenge</h2>
-                  <p className="text-stone-600">{project.challenge}</p>
+                  <h2 className="text-xl font-semibold text-gray-900 mb-4">The Challenge</h2>
+                  <p className="text-gray-500 leading-relaxed">{project.challenge}</p>
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-stone-900 mb-4">Our Solution</h2>
-                  <p className="text-stone-600">{project.solution}</p>
+                  <h2 className="text-xl font-semibold text-gray-900 mb-4">Our Solution</h2>
+                  <p className="text-gray-500 leading-relaxed">{project.solution}</p>
                 </div>
               </div>
 
-              <Separator />
+              <div className="border-t border-gray-200" />
 
               {/* Results */}
               <div>
-                <h2 className="text-2xl font-bold text-stone-900 mb-6">Project Results</h2>
+                <h2 className="text-xl font-semibold text-gray-900 mb-6">Project Results</h2>
                 <div className="grid sm:grid-cols-2 gap-4">
                   {project.results.map((result, index) => (
                     <div key={index} className="flex items-start gap-3">
-                      <CheckCircle2 className="h-6 w-6 text-amber-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-stone-700">{result}</span>
+                      <CheckCircle2 className="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-600">{result}</span>
                     </div>
                   ))}
                 </div>
@@ -187,10 +173,10 @@ export function ProjectDetailClient({ id }: ProjectDetailClientProps) {
               {/* Gallery */}
               {project.gallery && project.gallery.length > 0 && (
               <div>
-                <h2 className="text-2xl font-bold text-stone-900 mb-6">Project Gallery</h2>
+                <h2 className="text-xl font-semibold text-gray-900 mb-6">Project Gallery</h2>
                 <div className="grid sm:grid-cols-3 gap-4">
                   {project.gallery.map((img, index) => (
-                    <div key={index} className="aspect-video bg-stone-200 rounded-lg overflow-hidden">
+                    <div key={index} className="aspect-video bg-gray-100 border border-gray-200">
                       <img
                         src={img}
                         alt={`Gallery image ${index + 1}`}
@@ -205,53 +191,55 @@ export function ProjectDetailClient({ id }: ProjectDetailClientProps) {
 
             {/* Right Column - Features */}
             <div>
-              <Card>
-                <CardContent className="p-6">
-                  <h3 className="font-bold text-lg mb-4">Project Features</h3>
-                  <ul className="space-y-3">
-                    {project.features.map((feature, index) => (
-                      <li key={index} className="flex items-start gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-amber-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-stone-600">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
+              <div className="border border-gray-200 p-6 mb-6">
+                <h3 className="font-semibold text-lg mb-4 text-gray-900">Project Features</h3>
+                <ul className="space-y-3">
+                  {project.features.map((feature, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <CheckCircle2 className="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-500 text-sm">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-              {/* CTA Card */}
-              <Card className="mt-6 bg-amber-600 text-white">
-                <CardContent className="p-6">
-                  <h3 className="font-bold text-lg mb-2">Start Your Project</h3>
-                  <p className="text-amber-100 mb-4">
-                    Ready to build something amazing? Let us bring your vision to life.
-                  </p>
-                  <Button className="w-full bg-white text-amber-600 hover:bg-amber-50" asChild>
-                    <Link href="/#contact">Get a Quote</Link>
-                  </Button>
-                </CardContent>
-              </Card>
+              {/* CTA Box */}
+              <div className="bg-gray-900 p-6">
+                <h3 className="font-semibold text-lg mb-2 text-white">Start Your Project</h3>
+                <p className="text-gray-400 text-sm mb-4">
+                  Ready to build something amazing? Let us bring your vision to life.
+                </p>
+                <Button className="w-full bg-white text-gray-900 hover:bg-gray-100 rounded-none" asChild>
+                  <Link href="/#contact">Get a Quote</Link>
+                </Button>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Navigation to other projects */}
-      <section className="py-12 bg-stone-50 border-t">
+      <section className="py-12 bg-gray-50 border-t border-gray-200">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center">
-            <Button variant="outline" asChild disabled={!prevProject}>
-              <Link href={prevProject ? `/projects/${prevProject.id}` : "#"}>
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Previous Project
-              </Link>
-            </Button>
-            <Button variant="outline" asChild disabled={!nextProject}>
-              <Link href={nextProject ? `/projects/${nextProject.id}` : "#"}>
-                Next Project
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
+            <Link 
+              href={prevProject ? `/projects/${prevProject.id}` : "#"}
+              className={`inline-flex items-center text-sm font-medium transition-colors ${
+                prevProject ? "text-gray-600 hover:text-gray-900" : "text-gray-400 cursor-not-allowed"
+              }`}
+            >
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Previous Project
+            </Link>
+            <Link 
+              href={nextProject ? `/projects/${nextProject.id}` : "#"}
+              className={`inline-flex items-center text-sm font-medium transition-colors ${
+                nextProject ? "text-gray-600 hover:text-gray-900" : "text-gray-400 cursor-not-allowed"
+              }`}
+            >
+              Next Project
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>

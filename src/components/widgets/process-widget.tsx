@@ -80,17 +80,23 @@ export function ProcessWidget({ section }: ProcessWidgetProps) {
     : section.content?.text || ''
 
   return (
-    <section className="py-16 bg-background">
+    <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
-        {section.title && <h2 className="text-3xl font-bold mb-4 text-center text-foreground">{section.title}</h2>}
-        {contentText && <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">{contentText}</p>}
+        {/* Clean Header */}
+        <div className="mb-12">
+          {section.title && (
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{section.title}</h2>
+          )}
+          <div className="w-20 h-1 bg-gray-900 rounded-full" />
+          {contentText && <p className="text-gray-600 mt-4 max-w-2xl">{contentText}</p>}
+        </div>
         
         <div className="max-w-5xl mx-auto">
           <div className="relative">
             {/* Timeline Line */}
-            <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-primary/20 hidden md:block" />
+            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gray-200 hidden md:block" />
             
-            <div className="space-y-8">
+            <div className="space-y-12">
               {steps.map((step, index) => (
                 <div 
                   key={step.id || `step-${index}`} 
@@ -100,28 +106,28 @@ export function ProcessWidget({ section }: ProcessWidgetProps) {
                 >
                   {/* Content Card */}
                   <div className="flex-1 md:text-right">
-                    <div className={`bg-card p-6 rounded-lg shadow-sm border border-border ${
+                    <div className={`border border-gray-200 p-6 bg-white ${
                       index % 2 === 0 ? "md:mr-8" : "md:ml-8"
                     }`}>
-                      <div className={`flex items-center gap-2 mb-2 ${
+                      <div className={`flex items-center gap-2 mb-3 ${
                         index % 2 === 0 ? "md:justify-end" : ""
                       }`}>
-                        <span className="text-primary font-bold text-lg">0{index + 1}</span>
+                        <span className="text-xs font-mono text-gray-400">0{index + 1}</span>
                         {step.duration && (
-                          <span className="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded">
+                          <span className="text-xs text-gray-500 font-mono">
                             {step.duration}
                           </span>
                         )}
                       </div>
-                      <h3 className="text-xl font-semibold mb-2 text-card-foreground">{step.title}</h3>
-                      <p className="text-muted-foreground">{step.description}</p>
+                      <h3 className="text-xl font-semibold mb-2 text-gray-900">{step.title}</h3>
+                      <p className="text-gray-500">{step.description}</p>
                     </div>
                   </div>
 
                   {/* Center Icon */}
                   <div className="relative z-10 flex-shrink-0">
-                    <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-primary-foreground shadow-lg">
-                      <CheckCircle2 className="h-6 w-6" />
+                    <div className="w-10 h-10 bg-gray-900 flex items-center justify-center text-white">
+                      <span className="text-sm font-bold">{index + 1}</span>
                     </div>
                   </div>
 
