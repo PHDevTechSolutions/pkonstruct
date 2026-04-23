@@ -20,10 +20,19 @@ import {
   Globe,
   Mail,
   MessageCircle,
+  ShoppingBag,
+  Package,
+  ListOrdered,
+  Tag,
+  BarChart3,
+  Warehouse,
+  UserCircle,
+  Activity,
 } from "lucide-react"
 
 const navItems = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard, category: "overview" },
+  { href: "/admin/analytics", label: "Analytics", icon: Activity, category: "overview" },
   { href: "/admin/inquiries", label: "Inquiries", icon: Mail, category: "overview" },
   { href: "/admin/messages", label: "Messages", icon: MessageCircle, category: "overview" },
   { href: "/admin/pages", label: "Pages", icon: Globe, category: "content" },
@@ -31,6 +40,13 @@ const navItems = [
   { href: "/admin/projects", label: "Projects", icon: FolderKanban, category: "content" },
   { href: "/admin/services", label: "Services", icon: Briefcase, category: "content" },
   { href: "/admin/team", label: "Team", icon: Users, category: "content" },
+  { href: "/admin/shop/products", label: "Products", icon: Package, category: "shop" },
+  { href: "/admin/shop/categories", label: "Categories", icon: Tag, category: "shop" },
+  { href: "/admin/shop/inventory", label: "Inventory", icon: Warehouse, category: "shop" },
+  { href: "/admin/shop/orders", label: "Orders", icon: ListOrdered, category: "shop" },
+  { href: "/admin/shop/reports", label: "Reports", icon: BarChart3, category: "shop" },
+  { href: "/admin/shop/settings", label: "Shop Settings", icon: Settings, category: "shop" },
+  { href: "/admin/careers", label: "Careers", icon: UserCircle, category: "shop" },
   { href: "/admin/settings/templates", label: "Templates", icon: LayoutTemplate, category: "system" },
   { href: "/admin/settings/general", label: "Settings", icon: Settings, category: "system" },
 ]
@@ -38,6 +54,7 @@ const navItems = [
 const categoryLabels: Record<string, string> = {
   overview: "Overview",
   content: "Content Management",
+  shop: "Shop & Orders",
   system: "System",
 }
 
@@ -56,7 +73,7 @@ export function AdminSidebar({ mobile }: AdminSidebarProps) {
     return acc
   }, {} as Record<string, typeof navItems>)
 
-  const categoryOrder = ["overview", "content", "system"]
+  const categoryOrder = ["overview", "content", "shop", "system"]
 
   return (
     <div className={cn(

@@ -106,5 +106,106 @@ service cloud.firestore {
       allow read: if true;
       allow create, update, delete: if isAuthenticated();
     }
+    
+    // Shop - Products (public can read, admin can manage)
+    match /products/{productId} {
+      allow read: if true;
+      allow create, update, delete: if isAuthenticated();
+    }
+    
+    // Shop - Categories (public can read, admin can manage)
+    match /categories/{categoryId} {
+      allow read: if true;
+      allow create, update, delete: if isAuthenticated();
+    }
+    
+    // Shop - Orders (customers can read their own, admin can manage all)
+    match /orders/{orderId} {
+      allow read: if isAuthenticated() || resource.data.customer.email == request.auth.token.email;
+      allow create: if true; // Allow checkout to create orders
+      allow update, delete: if isAuthenticated();
+    }
+    
+    // Shop - Cart Sessions (public for guest carts)
+    match /cart_sessions/{sessionId} {
+      allow read, write: if true;
+    }
+    
+    // Shop Settings (public read, admin write)
+    match /shop_settings/{settingId} {
+      allow read: if true;
+      allow create, update, delete: if isAuthenticated();
+    }
+    
+    // Shop - Reviews (public read, authenticated users can create, admins can manage)
+    match /reviews/{reviewId} {
+      allow read: if true;
+      allow create: if request.auth != null;
+      allow update, delete: if isAuthenticated() || 
+        (request.auth != null && resource.data.userId == request.auth.token.email);
+    }
+    
+    // Shop - Wishlists (users can only access their own)
+    match /wishlists/{wishlistId} {
+      allow read, write: if request.auth != null && resource.data.userId == request.auth.uid;
+      allow create: if request.auth != null;
+      allow delete: if isAuthenticated() || 
+        (request.auth != null && resource.data.userId == request.auth.uid);
+    }
+    
+    // Careers - Jobs (public read for published, admin full access)
+    match /jobs/{jobId} {
+      allow read: if resource.data.status == 'published' || isAuthenticated();
+      allow create, update, delete: if isAuthenticated();
+    }
+    
+    // Careers - Applications (applicant can read own, admin full access)
+    match /applications/{appId} {
+      allow read: if isAuthenticated() || 
+        (request.auth != null && resource.data.applicant.email == request.auth.token.email);
+      allow create: if true; // Allow guest applications
+      allow update, delete: if isAuthenticated();
+    }
+    
+    // Analytics - Page Views (admin read, anonymous create)
+    match /page_views/{viewId} {
+      allow read: if isAuthenticated();
+      allow create: if true; // Allow anonymous tracking
+      allow update, delete: if isAuthenticated();
+    }
+    
+    // Analytics - Product Views (admin read, anonymous create)
+    match /product_views/{viewId} {
+      allow read: if isAuthenticated();
+      allow create: if true; // Allow anonymous tracking
+      allow update, delete: if isAuthenticated();
+    }
+    
+    // Analytics - Cart Events (admin read, anonymous create)
+    match /cart_events/{eventId} {
+      allow read: if isAuthenticated();
+      allow create: if true; // Allow anonymous tracking
+      allow update, delete: if isAuthenticated();
+    }
+    
+    // Analytics - User Sessions (admin read, anonymous create/update)
+    match /user_sessions/{sessionId} {
+      allow read: if isAuthenticated();
+      allow create, update: if true; // Allow anonymous session tracking
+      allow delete: if isAuthenticated();
+    }
+    
+    // User Profiles - users can manage their own profile
+    match /user_profiles/{userId} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow create, update: if request.auth != null && request.auth.uid == userId;
+      allow read: if isAuthenticated(); // Admins can read all
+    }
+    
+    // User Carts - users can only access their own cart
+    match /user_carts/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+      allow read, write: if isAuthenticated(); // Admins can access for support
+    }
   }
 }

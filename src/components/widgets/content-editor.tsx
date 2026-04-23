@@ -2438,6 +2438,7 @@ function TextEditor({ content, onChange }: { content: string, onChange: (content
     textAlign: "left",
     fontSize: "base",
     padding: "medium",
+    layout: "centered",
     maxWidth: "full"
   })
   
@@ -2462,6 +2463,7 @@ function TextEditor({ content, onChange }: { content: string, onChange: (content
         textAlign: parsed?.textAlign || "left",
         fontSize: parsed?.fontSize || "base",
         padding: parsed?.padding || "medium",
+        layout: parsed?.layout || "centered",
         maxWidth: parsed?.maxWidth || "full"
       })
     } catch (e) {
@@ -2564,6 +2566,29 @@ function TextEditor({ content, onChange }: { content: string, onChange: (content
               </button>
             ))}
           </div>
+        </div>
+        
+        {/* Layout */}
+        <div className="space-y-1">
+          <label className="text-xs text-muted-foreground">Container Width</label>
+          <div className="flex gap-2">
+            {[
+              { value: 'centered', label: 'Centered (Narrow)' },
+              { value: 'wide', label: 'Wide' },
+              { value: 'full', label: 'Full Width (Match Grid)' }
+            ].map((layout) => (
+              <button
+                key={layout.value}
+                onClick={() => updateField('layout', layout.value)}
+                className={`px-3 py-1 text-xs rounded ${data.layout === layout.value ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}
+              >
+                {layout.label}
+              </button>
+            ))}
+          </div>
+          <p className="text-xs text-muted-foreground mt-1">
+            Choose "Full Width" to match Services/Features grid width
+          </p>
         </div>
       </div>
     </div>

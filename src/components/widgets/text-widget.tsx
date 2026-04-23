@@ -73,12 +73,13 @@ export function TextWidget({ section }: TextWidgetProps) {
       <div className="container mx-auto px-4">
         <div className={`${
           layout === 'split' ? 'grid lg:grid-cols-2 gap-12 items-center' : 
-          layout === 'wide' ? 'max-w-6xl mx-auto' : 
-          'max-w-4xl mx-auto'
+          layout === 'wide' ? 'container mx-auto' : 
+          layout === 'full' ? 'w-full' :
+          'container mx-auto'
         }`}>
           
           {/* Title Section */}
-          <div className={layout === 'split' ? '' : 'mb-12'} style={{ textAlign: textAlign as any }}>
+          <div className={layout === 'split' || layout === 'full' ? '' : 'mb-12'} style={{ textAlign: textAlign as any }}>
             {section.title && (
               <div>
                 {/* Accent line */}
@@ -102,7 +103,7 @@ export function TextWidget({ section }: TextWidgetProps) {
             
             {/* Highlight Box */}
             {highlight && (
-              <div className={`p-4 border border-gray-200 mb-8 ${layout === 'split' ? '' : 'max-w-2xl'}`} style={{ backgroundColor: `${textColor}10` }}>
+              <div className={`p-4 border border-gray-200 mb-8 ${layout === 'split' || layout === 'full' ? '' : 'max-w-2xl'}`} style={{ backgroundColor: `${textColor}10` }}>
                 <div className="flex items-start gap-3">
                   <Sparkles className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: textColor }} />
                   <p style={{ color: textColor }}>{highlight}</p>
@@ -115,26 +116,20 @@ export function TextWidget({ section }: TextWidgetProps) {
           <div className={`${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           } transition-all duration-700 ease-out`}>
-            <div className={`space-y-6 ${layout === 'split' ? '' : ''}`} style={{ textAlign: textAlign as any }}>
-              {paragraphs.map((paragraph: string, idx: number) => (
-                <p 
-                  key={idx} 
-                  className={`leading-relaxed ${fontSizeClasses[fontSize] || 'text-lg'}`}
-                  style={{ 
-                    color: textColor,
-                    opacity: isVisible ? (idx === 0 ? 1 : 0.8) : 0,
-                    transitionDelay: `${idx * 100}ms`,
-                    transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
-                    transition: 'all 0.6s ease-out'
-                  }}
-                >
-                  {paragraph}
-                </p>
-              ))}
-            </div>
+            <div 
+              className={`text-widget-content ${fontSizeClasses[fontSize] || 'text-lg'} leading-relaxed`} 
+              style={{ 
+                color: textColor,
+                textAlign: textAlign as any,
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+                transition: 'all 0.6s ease-out'
+              }}
+              dangerouslySetInnerHTML={{ __html: content }}
+            />
             
             {/* Decorative element at bottom */}
-            {paragraphs.length > 0 && (
+            {content && (
               <div className="mt-12 flex items-center gap-4" style={{ 
                 justifyContent: textAlign === 'center' ? 'center' : textAlign === 'right' ? 'flex-end' : 'flex-start'
               }}>

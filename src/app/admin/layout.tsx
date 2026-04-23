@@ -7,6 +7,7 @@ import { AdminSidebar } from "@/components/admin/sidebar"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
 import { Menu, Sparkles } from "lucide-react"
+import { ErrorBoundary } from "@/components/error-boundary"
 
 export default function AdminLayout({
   children,
@@ -91,7 +92,9 @@ export default function AdminLayout({
           </header>
 
           <main className="flex-1 p-6 lg:p-8 overflow-auto bg-[#0a0a0a]">
-            {children}
+            <ErrorBoundary>
+              {children}
+            </ErrorBoundary>
           </main>
         </div>
       </div>
