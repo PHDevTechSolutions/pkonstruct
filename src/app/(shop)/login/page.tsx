@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, Suspense } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import Link from "next/link"
 import { motion } from "framer-motion"
@@ -12,7 +12,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Eye, EyeOff, ArrowLeft, Mail, Lock, ShoppingBag, Sparkles, ArrowRight } from "lucide-react"
 
-export default function ShopLoginPage() {
+// Inner component that uses useSearchParams
+function LoginForm() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false)
@@ -174,5 +175,18 @@ export default function ShopLoginPage() {
         </motion.div>
       </div>
     </div>
+  )
+}
+
+// Main page component with Suspense wrapper
+export default function ShopLoginPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 flex items-center justify-center">
+        <div className="animate-spin h-8 w-8 border-4 border-gray-900 border-t-transparent rounded-full" />
+      </div>
+    }>
+      <LoginForm />
+    </Suspense>
   )
 }

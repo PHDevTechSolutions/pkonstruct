@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, Suspense } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import Link from "next/link"
 import { motion } from "framer-motion"
@@ -13,7 +13,8 @@ import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Eye, EyeOff, ArrowLeft, Mail, Lock, User, ShoppingBag, Phone, Sparkles, ArrowRight } from "lucide-react"
 
-export default function ShopRegisterPage() {
+// Inner component that uses useSearchParams
+function RegisterForm() {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -271,5 +272,18 @@ export default function ShopRegisterPage() {
         </motion.div>
       </div>
     </div>
+  )
+}
+
+// Main page component with Suspense wrapper
+export default function ShopRegisterPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 flex items-center justify-center">
+        <div className="animate-spin h-8 w-8 border-4 border-gray-900 border-t-transparent rounded-full" />
+      </div>
+    }>
+      <RegisterForm />
+    </Suspense>
   )
 }
