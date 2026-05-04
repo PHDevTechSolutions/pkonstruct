@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useMemo } from "react"
+import { useState, useEffect, useMemo, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
 import { motion } from "framer-motion"
 import { db } from "@/lib/firebase"
@@ -13,7 +13,8 @@ import { Search, ArrowLeft, X, Package, Sparkles, ArrowRight } from "lucide-reac
 import Link from "next/link"
 import type { Product } from "@/types/shop"
 
-export default function SearchPage() {
+// Inner component that uses useSearchParams
+function SearchContent() {
   const searchParams = useSearchParams()
   const queryParam = searchParams.get("q") || ""
   
@@ -221,5 +222,18 @@ export default function SearchPage() {
         )}
       </main>
     </div>
+  )
+}
+
+// Main page component with Suspense wrapper
+export default function SearchPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="animate-spin h-8 w-8 border-4 border-gray-900 border-t-transparent rounded-full" />
+      </div>
+    }>
+      <SearchContent />
+    </Suspense>
   )
 }
