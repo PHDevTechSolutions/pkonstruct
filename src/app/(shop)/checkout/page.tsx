@@ -74,6 +74,20 @@ export default function CheckoutPage() {
         paymentProofUrl = await getDownloadURL(storageRef)
       }
 
+      // Clean items to remove undefined values (Firebase doesn't accept undefined)
+      const cleanItems = items.map(item => {
+        const cleanItem: any = {
+          productId: item.productId,
+          name: item.name,
+          price: item.price,
+          quantity: item.quantity,
+        }
+        // Only add optional fields if they exist
+        if (item.image) cleanItem.image = item.image
+        if (item.variant) cleanItem.variant = item.variant
+        return cleanItem
+      })
+
       // Create order
       const result = await createOrder({
         customer: {
@@ -84,13 +98,7 @@ export default function CheckoutPage() {
           city: formData.city,
           postalCode: formData.postalCode,
         },
-        items: items.map(item => ({
-          productId: item.productId,
-          name: item.name,
-          price: item.price,
-          quantity: item.quantity,
-          image: item.image,
-        })),
+        items: cleanItems,
         subtotal,
         shippingFee,
         discount: 0,
@@ -99,7 +107,7 @@ export default function CheckoutPage() {
         paymentMethod: formData.paymentMethod as any,
         paymentStatus: "pending",
         ...(paymentProofUrl ? { paymentProof: paymentProofUrl } : {}),
-        notes: formData.notes,
+        notes: formData.notes || "",
       })
 
       if (result.success && result.id) {

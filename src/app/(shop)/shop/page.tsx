@@ -9,15 +9,10 @@ import { ShopHeader } from "@/components/shop/shop-header"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { 
-  Search, 
-  Grid3X3, 
-  List, 
-  ShoppingBag, 
-  ChevronDown, 
+  Search,
   TrendingUp,
   Zap,
   Truck,
-  Percent,
   Tag,
   Star,
   Flame,
@@ -116,55 +111,15 @@ export default function ShopPage() {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      {/* Sleek Black Header */}
-      <header className="bg-gray-900 sticky top-0 z-40">
-        <div className="container mx-auto px-4 py-3">
-          <div className="flex items-center gap-4">
-            {/* Logo */}
-            <motion.div 
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              className="flex items-center gap-2 text-white"
-            >
-              <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
-                <ShoppingBag className="w-6 h-6 text-gray-900" />
-              </div>
-              <span className="text-xl font-bold hidden sm:block">PKonstruct</span>
-            </motion.div>
+      {/* Shop Header with Auth */}
+      <ShopHeader 
+        showSearch={true}
+        searchQuery={searchQuery}
+        onSearchChange={setSearchQuery}
+      />
 
-            {/* Big Search Bar - Dark Style */}
-            <div className="flex-1 max-w-2xl">
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="Search products, brands, and more..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-4 pr-12 py-2.5 rounded-sm bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-600 border border-gray-700"
-                />
-                <button className="absolute right-1 top-1 bottom-1 px-4 bg-gray-700 hover:bg-gray-600 text-white rounded-sm transition-colors">
-                  <Search className="w-5 h-5" />
-                </button>
-              </div>
-            </div>
-
-            {/* Cart Icon */}
-            <motion.button 
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              className="relative p-2 text-white"
-            >
-              <ShoppingBag className="w-7 h-7" />
-              <span className="absolute -top-1 -right-1 w-5 h-5 bg-white text-gray-900 text-xs font-bold rounded-full flex items-center justify-center">
-                0
-              </span>
-            </motion.button>
-          </div>
-        </div>
-      </header>
-
-      {/* Main Content - Shopee Style */}
-      <main className="container mx-auto px-4 py-4">
+      {/* Main Content - Black Theme */}
+      <main className="container mx-auto px-4 py-4 pt-20">
         {/* Category Icons - Black Theme */}
         {categories.length > 0 && (
           <motion.div 

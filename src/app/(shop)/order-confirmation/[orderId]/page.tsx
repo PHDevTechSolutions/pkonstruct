@@ -13,7 +13,8 @@ import {
   Truck, 
   Clock,
   Copy,
-  ChevronRight
+  ChevronRight,
+  ShoppingBag
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -102,19 +103,19 @@ export default function OrderConfirmationPage() {
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case "pending": return <Clock className="w-5 h-5 text-yellow-500" />
-      case "processing": return <Package className="w-5 h-5 text-purple-500" />
-      case "shipped": return <Truck className="w-5 h-5 text-cyan-500" />
-      case "delivered": return <CheckCircle className="w-5 h-5 text-green-500" />
-      default: return <Clock className="w-5 h-5 text-yellow-500" />
+      case "pending": return <Clock className="w-5 h-5 text-gray-600" />
+      case "processing": return <Package className="w-5 h-5 text-gray-600" />
+      case "shipped": return <Truck className="w-5 h-5 text-gray-600" />
+      case "delivered": return <CheckCircle className="w-5 h-5 text-green-600" />
+      default: return <Clock className="w-5 h-5 text-gray-600" />
     }
   }
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case "pending": return "bg-yellow-100 text-yellow-800 border-yellow-200"
-      case "processing": return "bg-purple-100 text-purple-800 border-purple-200"
-      case "shipped": return "bg-cyan-100 text-cyan-800 border-cyan-200"
+      case "pending": return "bg-gray-100 text-gray-800 border-gray-300"
+      case "processing": return "bg-gray-200 text-gray-800 border-gray-300"
+      case "shipped": return "bg-gray-800 text-white border-gray-900"
       case "delivered": return "bg-green-100 text-green-800 border-green-200"
       default: return "bg-gray-100 text-gray-800 border-gray-200"
     }
@@ -122,20 +123,20 @@ export default function OrderConfirmationPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="animate-spin h-8 w-8 border-4 border-gray-900 border-t-transparent rounded-full" />
+      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+        <div className="animate-spin h-10 w-10 border-4 border-gray-900 border-t-transparent rounded-full" />
       </div>
     )
   }
 
   if (!order) {
     return (
-      <div className="min-h-screen bg-white flex flex-col items-center justify-center px-4">
-        <Package className="w-16 h-16 text-gray-300 mb-4" />
+      <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center px-4">
+        <Package className="w-16 h-16 text-gray-400 mb-4" />
         <h1 className="text-2xl font-bold text-gray-900 mb-2">Order not found</h1>
         <p className="text-gray-500 mb-4">We couldn&apos;t find this order</p>
         <Link href="/shop">
-          <Button>Continue Shopping</Button>
+          <Button className="bg-gray-900 hover:bg-gray-800">Continue Shopping</Button>
         </Link>
       </div>
     )
@@ -144,23 +145,23 @@ export default function OrderConfirmationPage() {
   const paymentInfo = PAYMENT_INSTRUCTIONS[order.paymentMethod]
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-100">
       {/* Header */}
       <ShopHeader />
 
       {/* Main Content */}
-      <main className="container mx-auto px-4 py-8 max-w-3xl">
+      <main className="container mx-auto px-4 py-8 pt-24 max-w-3xl">
         {/* Success Message */}
-        <div className="text-center mb-8">
-          <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <CheckCircle className="w-10 h-10 text-green-600" />
+        <div className="bg-white rounded-lg p-8 shadow-sm text-center mb-6">
+          <div className="w-20 h-20 bg-gray-900 rounded-full flex items-center justify-center mx-auto mb-4">
+            <CheckCircle className="w-10 h-10 text-white" />
           </div>
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Thank you for your order!</h1>
           <p className="text-gray-600">We&apos;ve received your order and will process it shortly.</p>
         </div>
 
         {/* Order Number */}
-        <div className="bg-gray-50 rounded-lg p-4 mb-6 flex items-center justify-between">
+        <div className="bg-white rounded-lg p-4 mb-6 shadow-sm flex items-center justify-between">
           <div>
             <p className="text-sm text-gray-500">Order Number</p>
             <p className="text-xl font-bold text-gray-900">{order.orderNumber || order.id.slice(-8).toUpperCase()}</p>
@@ -169,10 +170,11 @@ export default function OrderConfirmationPage() {
             variant="outline"
             size="sm"
             onClick={copyOrderNumber}
+            className="border-gray-300"
           >
             {copied ? (
               <>
-                <CheckCircle className="w-4 h-4 mr-2" />
+                <CheckCircle className="w-4 h-4 mr-2 text-green-600" />
                 Copied!
               </>
             ) : (
@@ -185,14 +187,14 @@ export default function OrderConfirmationPage() {
         </div>
 
         {/* Order Status */}
-        <div className="mb-8">
+        <div className="bg-white rounded-lg p-4 mb-6 shadow-sm">
           <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border ${getStatusColor(order.status)}`}>
             {getStatusIcon(order.status)}
             <span className="font-medium capitalize">{order.status}</span>
           </div>
           
           {order.paymentStatus === "pending" && order.paymentMethod !== "cod" && (
-            <p className="mt-2 text-sm text-yellow-600">
+            <p className="mt-3 text-sm text-gray-600 bg-gray-50 p-3 rounded">
               Payment pending - Please complete payment using the instructions below
             </p>
           )}
@@ -200,12 +202,12 @@ export default function OrderConfirmationPage() {
 
         {/* Payment Instructions */}
         {paymentInfo && (
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
-            <h2 className="text-lg font-semibold text-blue-900 mb-4">{paymentInfo.title}</h2>
-            <ol className="space-y-2">
+          <div className="bg-gray-900 text-white rounded-lg p-6 mb-6 shadow-sm">
+            <h2 className="text-lg font-semibold mb-4">{paymentInfo.title}</h2>
+            <ol className="space-y-3">
               {paymentInfo.steps.map((step, idx) => (
-                <li key={idx} className="flex items-start gap-3 text-blue-800">
-                  <span className="flex-shrink-0 w-6 h-6 bg-blue-200 rounded-full flex items-center justify-center text-sm font-medium">
+                <li key={idx} className="flex items-start gap-3 text-gray-300">
+                  <span className="flex-shrink-0 w-6 h-6 bg-white/20 rounded-full flex items-center justify-center text-sm font-medium text-white">
                     {idx + 1}
                   </span>
                   {step}
@@ -216,9 +218,9 @@ export default function OrderConfirmationPage() {
         )}
 
         {/* Order Summary */}
-        <div className="border border-gray-200 rounded-lg overflow-hidden mb-8">
-          <div className="bg-gray-50 px-6 py-4 border-b border-gray-200">
-            <h2 className="font-semibold text-gray-900">Order Summary</h2>
+        <div className="bg-white rounded-lg overflow-hidden mb-6 shadow-sm">
+          <div className="bg-gray-900 px-6 py-4">
+            <h2 className="font-semibold text-white">Order Summary</h2>
           </div>
           
           {/* Items */}
@@ -270,7 +272,7 @@ export default function OrderConfirmationPage() {
         </div>
 
         {/* Customer Info */}
-        <div className="border border-gray-200 rounded-lg p-6 mb-8">
+        <div className="bg-white rounded-lg p-6 mb-6 shadow-sm">
           <h2 className="font-semibold text-gray-900 mb-4">Shipping Information</h2>
           <div className="space-y-1 text-gray-600">
             <p className="font-medium text-gray-900">{order.customer.name}</p>
@@ -284,7 +286,7 @@ export default function OrderConfirmationPage() {
         {/* Actions */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link href="/shop" className="flex-1">
-            <Button variant="outline" className="w-full">
+            <Button variant="outline" className="w-full border-gray-300 hover:bg-gray-50">
               Continue Shopping
             </Button>
           </Link>
