@@ -28,15 +28,18 @@ export function useTestimonials() {
         setLoading(true)
         const q = query(
           collection(db, "testimonials"),
-          where("published", "==", true),
-          orderBy("rating", "desc")
+          where("published", "==", true)
         )
 
         const snapshot = await getDocs(q)
-        const testimonialsData = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data()
-        })) as Testimonial[]
+        const testimonialsData = snapshot.docs
+          .map((doc) => ({
+            id: doc.id,
+            ...doc.data()
+          })) as Testimonial[]
+        
+        // Sort client-side by rating descending
+        testimonialsData.sort((a: Testimonial, b: Testimonial) => b.rating - a.rating)
         
         setTestimonials(testimonialsData)
       } catch (err) {

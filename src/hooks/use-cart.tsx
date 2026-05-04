@@ -84,8 +84,30 @@ export function CartProvider({ children }: { children: ReactNode }) {
   // Save user's cart to Firestore
   const saveUserCart = useCallback(async (uid: string, cartItems: CartItem[]) => {
     try {
+      // Filter out items with undefined/null values to prevent Firebase errors
+      const validItems = cartItems.filter(item => 
+        item && 
+        item.productId && 
+        item.name && 
+        typeof item.price === 'number' && 
+        typeof item.quantity === 'number'
+      ).map(item => {
+        // Build clean item without undefined values
+        const cleanItem: any = {
+          productId: item.productId,
+          name: item.name,
+          price: item.price,
+          quantity: item.quantity,
+          maxStock: item.maxStock || 100,
+        }
+        // Only add optional fields if they exist
+        if (item.image) cleanItem.image = item.image
+        if (item.variant) cleanItem.variant = item.variant
+        return cleanItem
+      })
+      
       await setDoc(doc(db, "user_carts", uid), {
-        items: cartItems,
+        items: validItems,
         updatedAt: serverTimestamp(),
       })
     } catch (error) {
@@ -96,7 +118,14 @@ export function CartProvider({ children }: { children: ReactNode }) {
   // Migrate guest cart to user cart on login
   const migrateGuestCart = useCallback(async (userId: string) => {
     const guestItems = getGuestCart()
-    if (guestItems.length === 0) return
+    // Filter out invalid guest items
+    const validGuestItems = guestItems.filter(item => 
+      item && item.productId && item.name && typeof item.price === 'number'
+    )
+    if (validGuestItems.length === 0) {
+      clearGuestCart()
+      return
+    }
 
     try {
       // Get existing user cart
@@ -105,23 +134,38 @@ export function CartProvider({ children }: { children: ReactNode }) {
       // Merge carts - guest items take precedence if same product
       const mergedItems = [...userItems]
       
-      guestItems.forEach(guestItem => {
+      validGuestItems.forEach(guestItem => {
         const existingIndex = mergedItems.findIndex(
           item => item.productId === guestItem.productId && item.variant === guestItem.variant
         )
         
         if (existingIndex >= 0) {
           // Update quantity if item exists
-          mergedItems[existingIndex] = {
-            ...mergedItems[existingIndex],
-            quantity: Math.min(
-              mergedItems[existingIndex].quantity + guestItem.quantity,
-              guestItem.maxStock
-            ),
+          const existing = mergedItems[existingIndex]
+          const updatedItem: any = {
+            productId: existing.productId,
+            name: existing.name,
+            price: existing.price,
+            quantity: Math.min(existing.quantity + guestItem.quantity, guestItem.maxStock || 100),
+            maxStock: existing.maxStock || 100,
           }
+          // Only add optional fields if they exist
+          if (existing.image) updatedItem.image = existing.image
+          if (existing.variant) updatedItem.variant = existing.variant
+          mergedItems[existingIndex] = updatedItem
         } else {
-          // Add new item
-          mergedItems.push(guestItem)
+          // Add new item with defaults for missing fields
+          const newItem: any = {
+            productId: guestItem.productId,
+            name: guestItem.name,
+            price: guestItem.price,
+            quantity: guestItem.quantity,
+            maxStock: guestItem.maxStock || 100,
+          }
+          // Only add optional fields if they exist
+          if (guestItem.image) newItem.image = guestItem.image
+          if (guestItem.variant) newItem.variant = guestItem.variant
+          mergedItems.push(newItem)
         }
       })
 

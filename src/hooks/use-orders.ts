@@ -31,10 +31,7 @@ export function useOrders() {
   // Subscribe to orders
   useEffect(() => {
     setLoading(true)
-    const q = query(
-      collection(db, COLLECTION),
-      orderBy("createdAt", "desc")
-    )
+    const q = query(collection(db, COLLECTION))
 
     const unsubscribe = onSnapshot(
       q,
@@ -45,6 +42,10 @@ export function useOrders() {
           createdAt: doc.data().createdAt?.toDate() || new Date(),
           updatedAt: doc.data().updatedAt?.toDate() || new Date(),
         })) as Order[]
+        
+        // Sort by createdAt descending
+        items.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
+        
         setOrders(items)
         setLoading(false)
       },

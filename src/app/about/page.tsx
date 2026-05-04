@@ -2,7 +2,7 @@ import { About } from "@/components/about"
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen pt-16">
       <About />
     </main>
   )

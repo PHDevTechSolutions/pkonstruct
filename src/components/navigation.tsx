@@ -1,14 +1,17 @@
 "use client"
 
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { useState, useEffect } from "react"
-import { Menu, HardHat, Loader2 } from "lucide-react"
+import { Menu, HardHat, Loader2, X, ChevronRight, ArrowRight } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import {
   Sheet,
   SheetContent,
   SheetTrigger,
   SheetClose,
+  SheetTitle,
 } from "@/components/ui/sheet"
 import { useNavigation } from "@/hooks/use-navigation"
 import { useSettings } from "@/hooks/use-settings"
@@ -24,10 +27,28 @@ interface NavSettings {
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const { headerNav, loading: navLoading } = useNavigation()
   const { settings, loading: settingsLoading } = useSettings()
   const [navSettings, setNavSettings] = useState<NavSettings | null>(null)
   const [navSettingsLoading, setNavSettingsLoading] = useState(true)
+  const pathname = usePathname()
+  
+  // Force solid background on shop pages (where bg is white)
+  const isShopPage = pathname?.startsWith('/shop') || pathname?.startsWith('/product') || pathname?.startsWith('/cart') || pathname?.startsWith('/checkout') || pathname?.startsWith('/login') || pathname?.startsWith('/register') || pathname?.startsWith('/account') || pathname?.startsWith('/order-confirmation')
+  const forceSolid = isShopPage
+
+  // Detect scroll for transparent/solid header
+  useEffect(() => {
+    const handleScroll = () => {
+      // Use 100px threshold for better UX
+      setScrolled(window.scrollY > 100)
+    }
+    // Initial check
+    handleScroll()
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   // Fetch navigation settings from settings/navigation
   useEffect(() => {
@@ -59,24 +80,39 @@ export function Navigation() {
 
   if (loading) {
     return (
-      <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white">
+      <motion.header 
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        className="fixed top-0 left-0 right-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-gray-200/50 shadow-sm"
+      >
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <Link href="/" className="flex items-center gap-2">
-            <HardHat className="h-7 w-7 text-gray-900" />
+            <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center">
+              <HardHat className="h-5 w-5 text-white" />
+            </div>
             <span className="text-lg font-bold text-gray-900">
               {navSettings?.siteName || settings?.header?.logoText || "PKonstruct"}
             </span>
           </Link>
-          <Loader2 className="h-5 w-5 animate-spin text-gray-400" />
+          <Loader2 className="h-5 w-5 animate-spin text-blue-600" />
         </div>
-      </header>
+      </motion.header>
     )
   }
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white">
+    <motion.header 
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-500 ${
+        scrolled || forceSolid
+          ? "bg-white/95 backdrop-blur-md border-b border-gray-200/50 shadow-lg shadow-gray-200/20" 
+          : "bg-transparent border-b border-white/10"
+      }`}
+    >
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        {/* Clean Logo */}
+        {/* Logo */}
         {settings?.header?.showLogo !== false && (
           <Link href="/" className="flex items-center gap-2 group">
             {navSettings?.headerLogo ? (
@@ -92,118 +128,154 @@ export function Navigation() {
                 className="h-7 w-auto"
               />
             ) : (
-              <HardHat className="h-7 w-7 text-gray-900" />
+              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center">
+                <HardHat className="h-5 w-5 text-white" />
+              </div>
             )}
-            <span className="text-lg font-bold text-gray-900">
+            <span className={`text-lg font-bold transition-colors ${
+              scrolled || forceSolid ? "text-gray-900" : "text-white"
+            }`}>
               {navSettings?.siteName || settings?.header?.logoText || "PKonstruct"}
             </span>
           </Link>
         )}
 
-        {/* Desktop Navigation - Clean Minimal Style */}
-        <nav className="hidden md:flex items-center gap-1">
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center gap-2">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors relative group"
+              className={`relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 group ${
+                scrolled || forceSolid
+                  ? "text-gray-700 hover:text-blue-600 hover:bg-blue-50/50" 
+                  : "text-white/90 hover:text-white hover:bg-white/10"
+              }`}
             >
-              {link.label}
-              {/* Simple underline on hover */}
-              <span className="absolute bottom-0 left-4 right-4 h-px bg-gray-900 scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+              <span className="relative z-10">{link.label}</span>
+              <motion.span
+                className={`absolute inset-0 rounded-full ${
+                  scrolled || forceSolid ? "bg-blue-100" : "bg-white/10"
+                }`}
+                initial={{ scale: 0, opacity: 0 }}
+                whileHover={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.2 }}
+              />
             </Link>
           ))}
           
           {/* Divider */}
           {headerButtons.length > 0 && navLinks.length > 0 && (
-            <div className="w-px h-5 bg-gray-200 mx-2" />
+            <div className={`w-px h-6 mx-3 ${scrolled || forceSolid ? "bg-gray-300" : "bg-white/30"}`} />
           )}
           
-          {/* Clean Header Buttons */}
+          {/* Header Buttons */}
           {headerButtons.map((btn) => (
             <Button 
               key={btn.id} 
               variant={btn.variant} 
               asChild
               className={btn.variant === "default" 
-                ? "bg-gray-900 hover:bg-gray-800 text-white border-0 rounded-none px-5" 
-                : "text-gray-900 hover:bg-gray-100 border-gray-200 rounded-none px-5"
+                ? "bg-gradient-to-r from-blue-500 via-blue-600 to-indigo-600 hover:shadow-xl hover:shadow-blue-500/25 text-white border-0 rounded-full px-6 h-10 font-semibold transition-all duration-300 group overflow-hidden relative" 
+                : scrolled || forceSolid
+                  ? "text-gray-700 hover:text-blue-600 hover:bg-blue-50 border border-gray-300 hover:border-blue-300 rounded-full px-6 h-10 font-medium transition-all duration-300"
+                  : "text-white hover:text-white hover:bg-white/20 border border-white/40 hover:border-white/60 rounded-full px-6 h-10 font-medium transition-all duration-300"
               }
             >
-              <Link href={btn.link}>{btn.label}</Link>
+              <Link href={btn.link} className="flex items-center gap-2">
+                {btn.label}
+                {btn.variant === "default" && (
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                )}
+              </Link>
             </Button>
           ))}
         </nav>
 
-        {/* Mobile Navigation - Clean Style */}
+        {/* Mobile Menu Button */}
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild className="md:hidden">
-            <Button 
-              variant="ghost" 
-              size="icon"
-              className="hover:bg-gray-100 rounded-none"
-            >
-              <Menu className="h-5 w-5 text-gray-900" />
-              <span className="sr-only">Open menu</span>
-            </Button>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button 
+                variant="ghost" 
+                size="icon"
+                className={`rounded-full h-10 w-10 ${
+                  scrolled || forceSolid
+                    ? "hover:bg-blue-50 text-gray-700" 
+                    : "hover:bg-white/20 text-white border border-white/30"
+                }`}
+              >
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">Open menu</span>
+              </Button>
+            </motion.div>
           </SheetTrigger>
-          <SheetContent side="right" className="w-[300px] bg-white border-l border-gray-200 p-0">
+          <SheetContent side="right" className="w-[340px] bg-gradient-to-br from-white to-gray-50 border-l border-gray-200 p-0 shadow-2xl">
+            <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
             <div className="flex flex-col h-full">
-              {/* Header */}
-              <div className="p-6 border-b border-gray-200">
-                {settings?.header?.showLogo !== false && (
-                  <Link href="/" className="flex items-center gap-2">
-                    {navSettings?.headerLogo ? (
-                      <img 
-                        src={navSettings.headerLogo} 
-                        alt="Logo" 
-                        className="h-7 w-auto"
-                      />
-                    ) : settings?.header?.logoImage ? (
-                      <img 
-                        src={settings.header.logoImage} 
-                        alt="Logo" 
-                        className="h-7 w-auto"
-                      />
-                    ) : (
-                      <HardHat className="h-7 w-7 text-gray-900" />
-                    )}
-                    <span className="text-lg font-bold text-gray-900">
+              {/* Header with Gradient */}
+              <div className="p-6 bg-gradient-to-br from-blue-50 to-indigo-50 border-b border-blue-100">
+                <Link href="/" className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/25">
+                    <HardHat className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <span className="text-lg font-bold text-gray-900 block">
                       {navSettings?.siteName || settings?.header?.logoText || "PKonstruct"}
                     </span>
-                  </Link>
-                )}
+                    <span className="text-xs text-blue-600 font-medium">Building Excellence</span>
+                  </div>
+                </Link>
               </div>
               
               {/* Nav Links */}
-              <nav className="flex-1 py-4">
-                {navLinks.map((link) => (
-                  <SheetClose asChild key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="block px-6 py-3 text-base font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors border-l-2 border-transparent hover:border-gray-900"
-                    >
-                      {link.label}
-                    </Link>
-                  </SheetClose>
+              <nav className="flex-1 py-6 px-3">
+                {navLinks.map((link, index) => (
+                  <motion.div
+                    key={link.href}
+                    initial={{ opacity: 0, x: 30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.08, type: "spring", stiffness: 100 }}
+                  >
+                    <SheetClose asChild>
+                      <Link
+                        href={link.href}
+                        className="flex items-center justify-between mx-3 px-4 py-3.5 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 rounded-xl transition-all group"
+                      >
+                        <span>{link.label}</span>
+                        <div className="w-8 h-8 rounded-full bg-gray-100 group-hover:bg-blue-100 flex items-center justify-center transition-colors">
+                          <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-blue-500" />
+                        </div>
+                      </Link>
+                    </SheetClose>
+                  </motion.div>
                 ))}
               </nav>
               
               {/* Buttons */}
               {headerButtons.length > 0 && (
-                <div className="p-6 border-t border-gray-200 space-y-3">
-                  {headerButtons.map((btn) => (
+                <div className="p-6 bg-gray-50/50 border-t border-gray-100 space-y-3">
+                  {headerButtons.map((btn, index) => (
                     <SheetClose key={btn.id} asChild>
-                      <Button 
-                        variant={btn.variant}
-                        className={btn.variant === "default" 
-                          ? "w-full bg-gray-900 hover:bg-gray-800 text-white border-0 rounded-none" 
-                          : "w-full text-gray-900 hover:bg-gray-100 border-gray-200 rounded-none"
-                        }
-                        asChild
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3 + index * 0.1 }}
                       >
-                        <Link href={btn.link}>{btn.label}</Link>
-                      </Button>
+                        <Button 
+                          variant={btn.variant}
+                          className={btn.variant === "default" 
+                            ? "w-full bg-gradient-to-r from-blue-500 via-blue-600 to-indigo-600 hover:shadow-xl hover:shadow-blue-500/25 text-white border-0 rounded-full h-12 font-semibold text-base" 
+                            : "w-full text-gray-700 hover:text-blue-600 hover:bg-white border-2 border-gray-200 hover:border-blue-300 rounded-full h-12 font-medium"
+                          }
+                          asChild
+                        >
+                          <Link href={btn.link} className="flex items-center justify-center gap-2">
+                            {btn.label}
+                            {btn.variant === "default" && <ArrowRight className="w-4 h-4" />}
+                          </Link>
+                        </Button>
+                      </motion.div>
                     </SheetClose>
                   ))}
                 </div>
@@ -212,6 +284,6 @@ export function Navigation() {
           </SheetContent>
         </Sheet>
       </div>
-    </header>
+    </motion.header>
   )
 }

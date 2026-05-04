@@ -92,7 +92,7 @@ export default function ShopSettingsPage() {
             Free Shipping Threshold
           </Label>
           <div className="relative">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">$</span>
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">₱</span>
             <Input
               id="freeShipping"
               type="number"
@@ -115,7 +115,7 @@ export default function ShopSettingsPage() {
             Default Shipping Fee
           </Label>
           <div className="relative">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">$</span>
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">₱</span>
             <Input
               id="defaultShipping"
               type="number"
@@ -135,7 +135,7 @@ export default function ShopSettingsPage() {
             Express Shipping Fee
           </Label>
           <div className="relative">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">$</span>
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">₱</span>
             <Input
               id="expressShipping"
               type="number"
@@ -180,7 +180,7 @@ export default function ShopSettingsPage() {
                     }}
                     className="w-24 bg-[#222] border-[#333] text-white"
                   />
-                  <span className="text-gray-400 text-sm">kg = $</span>
+                  <span className="text-gray-400 text-sm">kg = ₱</span>
                   <Input
                     type="number"
                     min="0"
@@ -244,7 +244,7 @@ export default function ShopSettingsPage() {
                     className="flex-1 bg-[#1a1a1a] border-[#333] text-white"
                   />
                   <div className="relative">
-                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">$</span>
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">₱</span>
                     <Input
                       type="number"
                       min="0"

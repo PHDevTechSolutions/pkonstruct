@@ -1,8 +1,26 @@
 "use client"
 
 import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Send, User, Mail, MessageSquare, Loader2, CheckCircle, ArrowRight, MapPin, Phone, Upload, File } from "lucide-react"
+import { 
+  Send, 
+  User, 
+  Mail, 
+  MessageSquare, 
+  Loader2, 
+  CheckCircle2, 
+  ArrowRight, 
+  MapPin, 
+  Phone, 
+  Upload, 
+  File,
+  Sparkles,
+  MessageCircle,
+  Clock,
+  Shield,
+  X
+} from "lucide-react"
 import { useInquiries } from "@/hooks/use-inquiries"
 import type { PageSection } from "./types"
 
@@ -115,7 +133,7 @@ export function ContactWidget({ section }: ContactWidgetProps) {
   }
 
   const renderField = (field: FormField) => {
-    const baseInputClass = "w-full px-4 py-3 bg-white border border-gray-200 focus:border-gray-900 focus:outline-none transition-colors text-gray-900 placeholder:text-gray-400"
+    const baseInputClass = "w-full px-4 py-3.5 bg-gray-50 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:bg-white focus:outline-none transition-all duration-300 text-gray-900 placeholder:text-gray-400 hover:border-gray-300"
     
     switch (field.type) {
       case 'textarea':
@@ -166,188 +184,296 @@ export function ContactWidget({ section }: ContactWidgetProps) {
   }
 
   const getFieldIcon = (fieldName: string) => {
+    const iconClass = "w-4 h-4 text-blue-600"
     switch (fieldName) {
-      case 'name': return <User className="w-4 h-4" />
-      case 'email': return <Mail className="w-4 h-4" />
-      case 'phone': return <Phone className="w-4 h-4" />
-      case 'address': return <MapPin className="w-4 h-4" />
-      case 'message': return <MessageSquare className="w-4 h-4" />
-      default: return <MessageSquare className="w-4 h-4" />
+      case 'name': return <User className={iconClass} />
+      case 'email': return <Mail className={iconClass} />
+      case 'phone': return <Phone className={iconClass} />
+      case 'address': return <MapPin className={iconClass} />
+      case 'message': return <MessageSquare className={iconClass} />
+      default: return <MessageSquare className={iconClass} />
     }
   }
 
   return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-4 max-w-2xl">
-        {/* Clean Header */}
-        <div className="mb-12 text-center">
+    <section className="py-24 bg-gradient-to-br from-gray-50 via-white to-blue-50 relative overflow-hidden">
+      {/* Decorative background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-5"></div>
+        <div className="absolute bottom-20 right-10 w-64 h-64 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-5"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 max-w-2xl relative z-10">
+        {/* Modern Header */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-12 text-center"
+        >
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-100 to-indigo-100 border border-blue-200 rounded-full px-4 py-2 mb-6">
+            <MessageCircle className="w-4 h-4 text-blue-600" />
+            <span className="text-blue-700 text-sm font-semibold">Get in Touch</span>
+          </div>
           {section.title && (
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{section.title}</h2>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+              {section.title}
+            </h2>
           )}
-          {section.title && <div className="w-20 h-1 bg-gray-900 rounded-full mx-auto mb-4" />}
+          <div className="w-24 h-1.5 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full mx-auto mb-6" />
           {contentText && (
-            <p className="text-gray-600 max-w-xl mx-auto">{contentText}</p>
+            <p className="text-gray-600 text-lg max-w-xl mx-auto">{contentText}</p>
           )}
-        </div>
+        </motion.div>
 
-        {/* Contact Form - Clean Card */}
-        <div className="border border-gray-200 bg-white">
+        {/* Contact Form - Modern Card */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="bg-white rounded-3xl shadow-xl shadow-gray-200/50 border border-gray-100 overflow-hidden"
+        >
           <div className="p-8 md:p-10">
-            {isSubmitted ? (
-              /* Success State */
-              <div className="text-center py-12">
-                <div className="inline-flex items-center justify-center w-16 h-16 mb-6 bg-gray-100">
-                  <CheckCircle className="w-8 h-8 text-gray-900" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-900">Message Sent!</h3>
-                <p className="text-gray-500 mb-6">We'll get back to you within 24 hours.</p>
-                <button 
-                  onClick={() => {
-                    setIsSubmitted(false)
-                    setFormData(buildInitialFormData())
-                    setUploadedFiles([])
-                  }}
-                  className="px-6 py-3 border border-gray-200 hover:border-gray-900 hover:bg-gray-900 hover:text-white transition-all text-sm font-medium"
+            <AnimatePresence mode="wait">
+              {isSubmitted ? (
+                /* Success State */
+                <motion.div 
+                  key="success"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  className="text-center py-12"
                 >
-                  Send Another Message
-                </button>
-              </div>
-            ) : (
-              /* Form */
-              <form onSubmit={handleSubmit} className="space-y-5">
-                {/* Dynamic Form Fields */}
-                <div className="grid md:grid-cols-2 gap-5">
-                  {formFields.map((field) => (
-                    <div 
-                      key={field.name} 
-                      className={`space-y-2 ${field.type === 'textarea' ? 'md:col-span-2' : ''}`}
+                  <motion.div 
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ type: "spring", stiffness: 200, delay: 0.1 }}
+                    className="inline-flex items-center justify-center w-20 h-20 mb-6 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl shadow-lg shadow-green-500/25"
+                  >
+                    <CheckCircle2 className="w-10 h-10 text-white" />
+                  </motion.div>
+                  <h3 className="text-2xl font-bold mb-2 text-gray-900">Message Sent!</h3>
+                  <p className="text-gray-500 mb-8">We'll get back to you within 24 hours.</p>
+                  <motion.button 
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => {
+                      setIsSubmitted(false)
+                      setFormData(buildInitialFormData())
+                      setUploadedFiles([])
+                    }}
+                    className="px-8 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-full font-medium shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/30 transition-all"
+                  >
+                    Send Another Message
+                  </motion.button>
+                </motion.div>
+              ) : (
+                /* Form */
+                <motion.form 
+                  key="form"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  onSubmit={handleSubmit} 
+                  className="space-y-6"
+                >
+                  {/* Dynamic Form Fields */}
+                  <div className="grid md:grid-cols-2 gap-5">
+                    {formFields.map((field, index) => (
+                      <motion.div 
+                        key={field.name}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.05 }}
+                        className={`space-y-2 ${field.type === 'textarea' ? 'md:col-span-2' : ''}`}
+                      >
+                        <label className="text-sm font-semibold text-gray-700 flex items-center gap-2">
+                          {getFieldIcon(field.name)}
+                          {field.label}
+                          {field.required && <span className="text-red-500">*</span>}
+                        </label>
+                        {renderField(field)}
+                      </motion.div>
+                    ))}
+                    
+                    {/* Optional Phone Field */}
+                    {config.showPhone && (
+                      <motion.div 
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: formFields.length * 0.05 }}
+                        className="space-y-2"
+                      >
+                        <label className="text-sm font-semibold text-gray-700 flex items-center gap-2">
+                          <Phone className="w-4 h-4 text-blue-600" />
+                          {config.phoneLabel}
+                        </label>
+                        <input
+                          type="tel"
+                          value={formData.phone || ''}
+                          onChange={(e) => handleInputChange('phone', e.target.value)}
+                          placeholder="+1 (555) 123-4567"
+                          className="w-full px-4 py-3.5 bg-gray-50 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:bg-white focus:outline-none transition-all duration-300 text-gray-900 placeholder:text-gray-400 hover:border-gray-300"
+                        />
+                      </motion.div>
+                    )}
+                    
+                    {/* Optional Address Field */}
+                    {config.showAddress && (
+                      <motion.div 
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: (formFields.length + 1) * 0.05 }}
+                        className={`space-y-2 ${config.showPhone ? 'md:col-span-2' : ''}`}
+                      >
+                        <label className="text-sm font-semibold text-gray-700 flex items-center gap-2">
+                          <MapPin className="w-4 h-4 text-blue-600" />
+                          {config.addressLabel}
+                        </label>
+                        <textarea
+                          value={formData.address || ''}
+                          onChange={(e) => handleInputChange('address', e.target.value)}
+                          placeholder="Your address..."
+                          rows={3}
+                          className="w-full px-4 py-3.5 bg-gray-50 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:bg-white focus:outline-none transition-all duration-300 text-gray-900 placeholder:text-gray-400 resize-none hover:border-gray-300"
+                        />
+                      </motion.div>
+                    )}
+                  </div>
+
+                  {/* File Upload */}
+                  {config.showFileUpload && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="space-y-2"
                     >
-                      <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
-                        {getFieldIcon(field.name)}
-                        {field.label}
-                        {field.required && <span className="text-red-500">*</span>}
+                      <label className="text-sm font-semibold text-gray-700 flex items-center gap-2">
+                        <Upload className="w-4 h-4 text-blue-600" />
+                        Attachments
                       </label>
-                      {renderField(field)}
-                    </div>
-                  ))}
-                  
-                  {/* Optional Phone Field */}
-                  {config.showPhone && (
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
-                        <Phone className="w-4 h-4" />
-                        Phone Number
-                      </label>
-                      <input
-                        type="tel"
-                        value={formData.phone || ''}
-                        onChange={(e) => handleInputChange('phone', e.target.value)}
-                        placeholder="+1 (555) 123-4567"
-                        className="w-full px-4 py-3 bg-white border border-gray-200 focus:border-gray-900 focus:outline-none transition-colors text-gray-900 placeholder:text-gray-400"
-                      />
-                    </div>
+                      <div className="border-2 border-dashed border-gray-300 hover:border-blue-400 bg-gray-50 hover:bg-blue-50/50 rounded-xl transition-all p-6 text-center">
+                        <input
+                          type="file"
+                          multiple
+                          onChange={handleFileChange}
+                          className="hidden"
+                          id="file-upload"
+                          accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
+                        />
+                        <label htmlFor="file-upload" className="cursor-pointer block">
+                          <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+                            <Upload className="w-6 h-6 text-blue-600" />
+                          </div>
+                          <p className="text-sm text-gray-600 mb-1 font-medium">Click to upload files</p>
+                          <p className="text-xs text-gray-400">PDF, Word, or Images up to 10MB</p>
+                        </label>
+                        {uploadedFiles.length > 0 && (
+                          <div className="mt-4 space-y-2">
+                            {uploadedFiles.map((file, index) => (
+                              <motion.div 
+                                key={index}
+                                initial={{ opacity: 0, x: -10 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: index * 0.1 }}
+                                className="flex items-center gap-2 text-sm text-gray-600 bg-white px-3 py-2 rounded-lg shadow-sm"
+                              >
+                                <File className="w-4 h-4 text-blue-500" />
+                                <span className="flex-1 truncate">{file.name}</span>
+                                <span className="text-gray-400 text-xs">({(file.size / 1024 / 1024).toFixed(2)} MB)</span>
+                                <button
+                                  type="button"
+                                  onClick={() => setUploadedFiles(prev => prev.filter((_, i) => i !== index))}
+                                  className="text-gray-400 hover:text-red-500 transition-colors"
+                                >
+                                  <X className="w-4 h-4" />
+                                </button>
+                              </motion.div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </motion.div>
                   )}
-                  
-                  {/* Optional Address Field */}
-                  {config.showAddress && (
-                    <div className={`space-y-2 ${config.showPhone ? 'md:col-span-2' : ''}`}>
-                      <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
-                        <MapPin className="w-4 h-4" />
-                        Address
-                      </label>
-                      <textarea
-                        value={formData.address || ''}
-                        onChange={(e) => handleInputChange('address', e.target.value)}
-                        placeholder="Your address..."
-                        rows={3}
-                        className="w-full px-4 py-3 bg-white border border-gray-200 focus:border-gray-900 focus:outline-none transition-colors text-gray-900 placeholder:text-gray-400 resize-none"
-                      />
-                    </div>
-                  )}
-                </div>
 
-                {/* File Upload */}
-                {config.showFileUpload && (
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
-                      <Upload className="w-4 h-4" />
-                      Attachments
-                    </label>
-                    <div className="border-2 border-dashed border-gray-200 hover:border-gray-900 transition-colors p-6 text-center">
-                      <input
-                        type="file"
-                        multiple
-                        onChange={handleFileChange}
-                        className="hidden"
-                        id="file-upload"
-                        accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
-                      />
-                      <label htmlFor="file-upload" className="cursor-pointer">
-                        <Upload className="w-8 h-8 mx-auto mb-2 text-gray-400" />
-                        <p className="text-sm text-gray-500 mb-1">Click to upload files</p>
-                        <p className="text-xs text-gray-400">PDF, Word, or Images up to 10MB</p>
-                      </label>
-                      {uploadedFiles.length > 0 && (
-                        <div className="mt-4 space-y-2">
-                          {uploadedFiles.map((file, index) => (
-                            <div key={index} className="flex items-center gap-2 text-sm text-gray-600">
-                              <File className="w-4 h-4" />
-                              <span>{file.name}</span>
-                              <span className="text-gray-400">({(file.size / 1024 / 1024).toFixed(2)} MB)</span>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                )}
+                  {/* Error Message */}
+                  <AnimatePresence>
+                    {submitError && (
+                      <motion.div 
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-600 text-sm"
+                      >
+                        {submitError}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
 
-                {/* Error Message */}
-                {submitError && (
-                  <div className="p-4 border border-red-200 bg-red-50 text-red-600 text-sm">
-                    {submitError}
-                  </div>
-                )}
+                  {/* Submit Button */}
+                  <motion.button 
+                    type="submit"
+                    disabled={isSubmitting}
+                    whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                    whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                    className="w-full py-4 text-base font-semibold bg-gradient-to-r from-blue-500 via-blue-600 to-indigo-600 hover:shadow-xl hover:shadow-blue-500/25 text-white rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-5 h-5 animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-5 h-5" />
+                        {config.buttonText}
+                        <ArrowRight className="w-5 h-5" />
+                      </>
+                    )}
+                  </motion.button>
+                </motion.form>
+              )}
+            </AnimatePresence>
+          </div>
+        </motion.div>
 
-                {/* Submit Button */}
-                <button 
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full py-4 text-base font-medium bg-gray-900 hover:bg-gray-800 text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <Loader2 className="w-5 h-5 animate-spin" />
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      <Send className="w-5 h-5" />
-                      {config.buttonText}
-                      <ArrowRight className="w-5 h-5" />
-                    </>
-                  )}
-                </button>
-              </form>
-            )}
+        {/* Trust indicators - Modern Cards */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+          className="mt-10 flex flex-wrap justify-center items-center gap-4"
+        >
+          <div className="flex items-center gap-3 bg-white px-5 py-3 rounded-xl shadow-md shadow-gray-200/50 border border-gray-100">
+            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center">
+              <Clock className="w-5 h-5 text-white" />
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-gray-900">Reply within 24h</p>
+              <p className="text-xs text-gray-500">Quick response guaranteed</p>
+            </div>
           </div>
-        </div>
-
-        {/* Trust indicators */}
-        <div className="mt-8 flex flex-wrap justify-center items-center gap-6 text-gray-500 text-sm">
-          <div className="flex items-center gap-2">
-            <CheckCircle className="w-4 h-4 text-gray-900" />
-            <span>Reply within 24h</span>
+          <div className="flex items-center gap-3 bg-white px-5 py-3 rounded-xl shadow-md shadow-gray-200/50 border border-gray-100">
+            <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center">
+              <Shield className="w-5 h-5 text-white" />
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-gray-900">Secure & Confidential</p>
+              <p className="text-xs text-gray-500">Your data is protected</p>
+            </div>
           </div>
-          <div className="flex items-center gap-2">
-            <CheckCircle className="w-4 h-4 text-gray-900" />
-            <span>Secure & Confidential</span>
+          <div className="flex items-center gap-3 bg-white px-5 py-3 rounded-xl shadow-md shadow-gray-200/50 border border-gray-100">
+            <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-red-500 rounded-lg flex items-center justify-center">
+              <Sparkles className="w-5 h-5 text-white" />
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-gray-900">No spam, ever</p>
+              <p className="text-xs text-gray-500">We respect your privacy</p>
+            </div>
           </div>
-          <div className="flex items-center gap-2">
-            <CheckCircle className="w-4 h-4 text-gray-900" />
-            <span>No spam, ever</span>
-          </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

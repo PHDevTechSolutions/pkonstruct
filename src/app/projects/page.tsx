@@ -7,7 +7,8 @@ import { collection, getDocs } from "firebase/firestore"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Search, MapPin, Calendar, ArrowRight, Loader2, X } from "lucide-react"
+import { Search, MapPin, Calendar, ArrowRight, Loader2, X, Sparkles, ChevronLeft, ChevronRight, Building2 } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
 
 interface Project {
   id: string
@@ -117,56 +118,90 @@ export default function ProjectsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-stone-50 flex items-center justify-center">
-        <Loader2 className="h-12 w-12 animate-spin text-amber-600" />
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 flex items-center justify-center pt-16">
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+        >
+          <Loader2 className="h-12 w-12 text-blue-600" />
+        </motion.div>
       </div>
     )
   }
 
   if (error) {
     return (
-      <div className="min-h-screen bg-stone-50 flex items-center justify-center">
-        <p className="text-red-600">{error}</p>
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 flex items-center justify-center pt-16">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="bg-white rounded-2xl shadow-xl p-8 max-w-md mx-auto text-center"
+        >
+          <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <Sparkles className="w-8 h-8 text-red-600" />
+          </div>
+          <p className="text-red-600 mb-6 text-lg">{error}</p>
+          <Button 
+            className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white hover:shadow-lg transition-all rounded-full px-6"
+            onClick={() => window.location.reload()}
+          >
+            Retry
+          </Button>
+        </motion.div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero */}
-      <section className="bg-gray-900 py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl">
-            <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              All Projects
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
+      {/* Modern Hero */}
+      <section className="pt-40 pb-24 bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500 rounded-full mix-blend-overlay filter blur-3xl opacity-20 animate-pulse"></div>
+          <div className="absolute top-40 right-20 w-48 h-48 bg-purple-500 rounded-full mix-blend-overlay filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute bottom-32 left-1/3 w-56 h-56 bg-cyan-500 rounded-full mix-blend-overlay filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '2s' }}></div>
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl"
+          >
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6">
+              <Building2 className="w-4 h-4 text-yellow-400" />
+              <span className="text-white text-sm font-medium">Our Portfolio</span>
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+              All <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Projects</span>
             </h1>
-            <div className="w-20 h-1 bg-white rounded-full mb-4" />
-            <p className="text-gray-400 text-lg">
+            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full mb-6" />
+            <p className="text-gray-300 text-xl leading-relaxed">
               Explore our complete portfolio of construction projects across residential, 
               commercial, and industrial sectors.
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Search & Filter Bar */}
-      <section className="bg-white border-b border-gray-200 py-6 sticky top-0 z-40">
+      <section className="bg-white/80 backdrop-blur-md border-b border-gray-200 py-6 sticky top-0 z-40 shadow-sm">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
             {/* Search */}
             <div className="relative w-full md:w-96">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
               <Input
                 type="text"
                 placeholder="Search projects..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 pr-10 border-gray-200 rounded-none"
+                className="pl-12 pr-10 border-2 border-gray-200 rounded-full focus:border-blue-500 transition-colors"
               />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery("")}
-                  className="absolute right-3 top-1/2 -translate-y-1/2"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 hover:bg-gray-100 rounded-full p-1 transition-colors"
                 >
                   <X className="h-4 w-4 text-gray-400" />
                 </button>
@@ -179,10 +214,10 @@ export default function ProjectsPage() {
                 <button
                   key={category}
                   onClick={() => setActiveCategory(category)}
-                  className={`px-4 py-2 text-sm font-medium transition-all ${
+                  className={`px-5 py-2.5 text-sm font-medium transition-all duration-300 rounded-full ${
                     activeCategory === category 
-                      ? "bg-gray-900 text-white" 
-                      : "bg-white text-gray-600 border border-gray-200 hover:border-gray-900"
+                      ? "bg-gradient-to-r from-blue-500 to-indigo-500 text-white shadow-lg" 
+                      : "bg-white text-gray-600 border border-gray-200 hover:border-blue-300 hover:text-blue-600 hover:bg-blue-50"
                   }`}
                 >
                   {category}
@@ -191,7 +226,7 @@ export default function ProjectsPage() {
             </div>
 
             {/* Results Count */}
-            <div className="text-sm text-gray-500 whitespace-nowrap font-mono">
+            <div className="text-sm text-gray-500 whitespace-nowrap font-medium bg-gray-100 px-4 py-2 rounded-full">
               {totalProjects} project{totalProjects !== 1 ? 's' : ''}
             </div>
           </div>
@@ -199,110 +234,158 @@ export default function ProjectsPage() {
       </section>
 
       {/* Projects Grid */}
-      <section className="py-12">
-        <div className="container mx-auto px-4">
+      <section className="py-16 relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+          <div className="absolute bottom-20 right-10 w-64 h-64 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
           {currentProjects.length === 0 ? (
-            <div className="text-center py-20">
-              <p className="text-gray-500 text-lg mb-4">No projects found</p>
-              <Button onClick={clearSearch} variant="outline" className="rounded-none">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-center py-20"
+            >
+              <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Search className="w-10 h-10 text-gray-400" />
+              </div>
+              <p className="text-gray-600 text-xl mb-6">No projects found</p>
+              <Button 
+                onClick={clearSearch} 
+                variant="outline" 
+                className="rounded-full px-8 border-2 border-blue-500 text-blue-600 hover:bg-blue-500 hover:text-white transition-all"
+              >
                 Clear Filters
               </Button>
-            </div>
+            </motion.div>
           ) : (
             <>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {currentProjects.map((project) => (
-                  <Link key={project.id} href={`/projects/${project.id}`}>
-                    <div className="group border border-gray-200 hover:border-gray-900 transition-all duration-300 bg-white cursor-pointer">
-                      <div className="relative aspect-[4/3] bg-gray-100 overflow-hidden">
-                        {project.image ? (
-                          <img
-                            src={project.image}
-                            alt={project.title}
-                            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-                          />
-                        ) : (
-                          <div className="absolute inset-0 flex items-center justify-center bg-gray-200">
-                            <span className="text-gray-400 font-medium">Project Image</span>
-                          </div>
-                        )}
-                        {/* Hover overlay */}
-                        <div className="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/20 transition-colors duration-300" />
-                        {/* Category badge */}
-                        <div className="absolute top-4 left-4">
-                          <span className="px-3 py-1 bg-white text-gray-900 text-xs font-medium">
-                            {project.category}
-                          </span>
-                        </div>
-                        {/* Featured badge */}
-                        {project.featured && (
-                          <div className="absolute top-4 right-4">
-                            <span className="px-2 py-1 bg-gray-900 text-white text-xs font-medium">
-                              Featured
+                {currentProjects.map((project, index) => (
+                  <motion.div
+                    key={project.id}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  >
+                    <Link href={`/projects/${project.id}`}>
+                      <div className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer">
+                        <div className="relative aspect-[4/3] overflow-hidden">
+                          {project.image ? (
+                            <motion.div
+                              whileHover={{ scale: 1.1 }}
+                              transition={{ duration: 0.6 }}
+                              className="h-full w-full"
+                            >
+                              <img
+                                src={project.image}
+                                alt={project.title}
+                                className="w-full h-full object-cover"
+                              />
+                            </motion.div>
+                          ) : (
+                            <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-blue-100 to-indigo-100">
+                              <span className="text-blue-400 font-medium">Project Image</span>
+                            </div>
+                          )}
+                          {/* Gradient overlay */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                          
+                          {/* Category badge */}
+                          <div className="absolute top-4 left-4">
+                            <span className="px-4 py-1.5 bg-white/90 backdrop-blur-sm text-blue-600 text-xs font-semibold rounded-full">
+                              {project.category}
                             </span>
                           </div>
-                        )}
-                      </div>
-                      <div className="p-6">
-                        <h3 className="font-semibold text-lg text-gray-900 mb-2">
-                          {project.title}
-                        </h3>
-                        <p className="text-gray-500 text-sm line-clamp-2 mb-4">
-                          {project.description}
-                        </p>
-                        <div className="flex items-center gap-4 text-sm text-gray-400">
-                          <span className="flex items-center gap-1">
-                            <MapPin className="h-4 w-4" />
-                            {project.location}
-                          </span>
-                          <span className="flex items-center gap-1">
-                            <Calendar className="h-4 w-4" />
-                            {project.year}
-                          </span>
+                          
+                          {/* Featured badge */}
+                          {project.featured && (
+                            <div className="absolute top-4 right-4">
+                              <span className="px-3 py-1.5 bg-gradient-to-r from-yellow-400 to-orange-400 text-white text-xs font-semibold rounded-full shadow-lg">
+                                Featured
+                              </span>
+                            </div>
+                          )}
+
+                          {/* Arrow button */}
+                          <motion.div 
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            whileHover={{ opacity: 1, scale: 1 }}
+                            className="absolute bottom-4 right-4 w-12 h-12 bg-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-lg"
+                          >
+                            <ArrowRight className="w-5 h-5 text-blue-600" />
+                          </motion.div>
+                        </div>
+                        <div className="p-6">
+                          <h3 className="font-bold text-xl text-gray-900 mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">
+                            {project.title}
+                          </h3>
+                          <p className="text-gray-600 line-clamp-2 mb-4 leading-relaxed">
+                            {project.description}
+                          </p>
+                          <div className="flex items-center gap-6 text-sm text-gray-500">
+                            <span className="flex items-center gap-1.5">
+                              <MapPin className="h-4 w-4" />
+                              {project.location}
+                            </span>
+                            <span className="flex items-center gap-1.5">
+                              <Calendar className="h-4 w-4" />
+                              {project.year}
+                            </span>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </Link>
+                    </Link>
+                  </motion.div>
                 ))}
               </div>
 
-              {/* Pagination */}
+              {/* Modern Pagination */}
               {totalPages > 1 && (
-                <div className="flex justify-center gap-2 mt-12">
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="flex justify-center gap-3 mt-16"
+                >
                   <button
                     onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                     disabled={currentPage === 1}
-                    className="px-4 py-2 border border-gray-200 hover:border-gray-900 hover:bg-gray-900 hover:text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="px-5 py-2.5 border-2 border-gray-200 rounded-full hover:border-blue-500 hover:bg-blue-50 hover:text-blue-600 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
                   >
-                    Previous
+                    <ChevronLeft className="w-4 h-4" /> Previous
                   </button>
 
-                  {getPageNumbers().map((page, index) =>
-                    page === '...' ? (
-                      <span key={`ellipsis-${index}`} className="px-4 py-2 text-gray-500">...</span>
-                    ) : (
-                      <button
-                        key={page}
-                        onClick={() => setCurrentPage(page as number)}
-                        className={`px-4 py-2 transition-all ${
-                          currentPage === page 
-                            ? "bg-gray-900 text-white" 
-                            : "border border-gray-200 hover:border-gray-900 hover:bg-gray-900 hover:text-white"
-                        }`}
-                      >
-                        {page}
-                      </button>
-                    )
-                  )}
+                  <div className="flex gap-2">
+                    {getPageNumbers().map((page, index) =>
+                      page === '...' ? (
+                        <span key={`ellipsis-${index}`} className="px-4 py-2.5 text-gray-400">...</span>
+                      ) : (
+                        <button
+                          key={page}
+                          onClick={() => setCurrentPage(page as number)}
+                          className={`px-5 py-2.5 rounded-full transition-all duration-300 font-medium ${
+                            currentPage === page 
+                              ? "bg-gradient-to-r from-blue-500 to-indigo-500 text-white shadow-lg" 
+                              : "border-2 border-gray-200 hover:border-blue-300 hover:bg-blue-50 hover:text-blue-600"
+                          }`}
+                        >
+                          {page}
+                        </button>
+                      )
+                    )}
+                  </div>
 
                   <button
                     onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
                     disabled={currentPage === totalPages}
-                    className="px-4 py-2 border border-gray-200 hover:border-gray-900 hover:bg-gray-900 hover:text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="px-5 py-2.5 border-2 border-gray-200 rounded-full hover:border-blue-500 hover:bg-blue-50 hover:text-blue-600 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
                   >
-                    Next
+                    Next <ChevronRight className="w-4 h-4" />
                   </button>
-                </div>
+                </motion.div>
               )}
             </>
           )}

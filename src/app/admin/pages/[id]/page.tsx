@@ -131,12 +131,18 @@ export default function PageEditor() {
 
   const loadPage = async () => {
     try {
-      const pagesQuery = query(collection(db, "pages"), orderBy("createdAt", "desc"))
+      const pagesQuery = query(collection(db, "pages"))
       const snapshot = await getDocs(pagesQuery)
-      const pagesData = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }))
+      const pagesData = snapshot.docs
+        .map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }))
+        .sort((a: any, b: any) => {
+          const aTime = a.createdAt?.toMillis?.() || new Date(a.createdAt).getTime() || 0
+          const bTime = b.createdAt?.toMillis?.() || new Date(b.createdAt).getTime() || 0
+          return bTime - aTime
+        })
       const currentPage = pagesData.find((p) => p.id === pageId)
       if (currentPage) {
         setPage(currentPage)

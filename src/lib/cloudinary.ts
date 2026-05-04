@@ -9,6 +9,10 @@ export function getCloudinaryUploadUrl() {
   return `https://api.cloudinary.com/v1_1/${CLOUDINARY_CONFIG.cloudName}/image/upload`
 }
 
+export function getCloudinaryRawUploadUrl() {
+  return `https://api.cloudinary.com/v1_1/${CLOUDINARY_CONFIG.cloudName}/raw/upload`
+}
+
 export function getCloudinaryImageUrl(publicId: string, options: { width?: number; height?: number; crop?: string } = {}) {
   const { width, height, crop = "fill" } = options
   
@@ -39,6 +43,35 @@ export async function uploadImageToCloudinary(
 
   if (!response.ok) {
     throw new Error("Failed to upload image")
+  }
+
+  const data = await response.json()
+  
+  return {
+    url: data.secure_url,
+    publicId: data.public_id,
+  }
+}
+
+// Upload resume/PDF to Cloudinary (uses raw upload)
+export async function uploadResumeToCloudinary(
+  file: File,
+  folder: string = "resumes"
+): Promise<{ url: string; publicId: string }> {
+  const formData = new FormData()
+  formData.append("file", file)
+  formData.append("upload_preset", "pkonstruct_unsigned") // Unsigned preset
+  formData.append("folder", folder)
+  formData.append("resource_type", "raw") // Important for PDFs/DOCs
+
+  const response = await fetch(getCloudinaryRawUploadUrl(), {
+    method: "POST",
+    body: formData,
+  })
+
+  if (!response.ok) {
+    const errorData = await response.json()
+    throw new Error(errorData.error?.message || "Failed to upload resume")
   }
 
   const data = await response.json()

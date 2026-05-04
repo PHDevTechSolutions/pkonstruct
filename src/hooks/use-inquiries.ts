@@ -53,21 +53,24 @@ export function useInquiries() {
       setLoading(true)
       setError(null)
 
-      let q = query(collection(db, "inquiries"), orderBy("createdAt", "desc"))
+      let q = query(collection(db, "inquiries"))
 
       if (filters?.status && filters.status !== 'all') {
         q = query(
           collection(db, "inquiries"),
-          where("status", "==", filters.status),
-          orderBy("createdAt", "desc")
+          where("status", "==", filters.status)
         )
       }
 
       const snapshot = await getDocs(q)
-      let data = snapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-      })) as Inquiry[]
+      let data = snapshot.docs
+        .map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        })) as Inquiry[]
+      
+      // Sort by createdAt descending
+      data.sort((a: Inquiry, b: Inquiry) => b.createdAt.toMillis() - a.createdAt.toMillis())
 
       // Client-side search
       if (filters?.search) {

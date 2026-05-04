@@ -73,7 +73,7 @@ export function CartButton() {
                         <p className="text-sm text-gray-500">{item.variant}</p>
                       )}
                       <p className="text-sm font-medium text-gray-900 mt-1">
-                        ${item.price.toFixed(2)}
+                        ₱{item.price.toFixed(2)}
                       </p>
 
                       {/* Quantity Controls */}

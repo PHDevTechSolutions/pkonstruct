@@ -2,13 +2,14 @@
 
 import { useState, useEffect, useMemo } from "react"
 import { useSearchParams } from "next/navigation"
+import { motion } from "framer-motion"
 import { db } from "@/lib/firebase"
 import { collection, query, where, getDocs, orderBy } from "firebase/firestore"
 import { ProductCard } from "@/components/shop/product-card"
 import { ShopHeader } from "@/components/shop/shop-header"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { Search, ArrowLeft, X } from "lucide-react"
+import { Search, ArrowLeft, X, Package, Sparkles, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import type { Product } from "@/types/shop"
 
@@ -97,72 +98,126 @@ export default function SearchPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 relative overflow-hidden">
+      {/* Decorative background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-5"></div>
+        <div className="absolute bottom-20 right-10 w-64 h-64 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-5"></div>
+      </div>
+      
       {/* Header */}
       <ShopHeader />
 
       {/* Search Results */}
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 py-8 relative z-10">
         {/* Results Header */}
-        <div className="mb-6">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-8"
+        >
           {loading ? (
-            <p className="text-gray-500">Searching...</p>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-xl flex items-center justify-center">
+                <Search className="w-5 h-5 text-blue-600 animate-pulse" />
+              </div>
+              <p className="text-gray-500 text-lg">Searching...</p>
+            </div>
           ) : queryParam ? (
             <>
-              <h1 className="text-2xl font-bold text-gray-900">
-                Search results for &quot;{queryParam}&quot;
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-100 to-indigo-100 border border-blue-200 rounded-full px-4 py-2 mb-4">
+                <Search className="w-4 h-4 text-blue-600" />
+                <span className="text-blue-700 text-sm font-semibold">Search Results</span>
+              </div>
+              <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
+                Results for &quot;<span className="text-blue-600">{queryParam}</span>&quot;
               </h1>
-              <p className="text-gray-500 mt-1">
-                {products.length} {products.length === 1 ? 'product' : 'products'} found
+              <p className="text-gray-500 mt-2">
+                <span className="font-bold text-blue-600">{products.length}</span> {products.length === 1 ? 'product' : 'products'} found
               </p>
             </>
           ) : (
-            <h1 className="text-2xl font-bold text-gray-900">Search Products</h1>
+            <>
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-100 to-indigo-100 border border-blue-200 rounded-full px-4 py-2 mb-4">
+                <Sparkles className="w-4 h-4 text-blue-600" />
+                <span className="text-blue-700 text-sm font-semibold">Search</span>
+              </div>
+              <h1 className="text-3xl md:text-4xl font-bold text-gray-900">Find Products</h1>
+            </>
           )}
-        </div>
+        </motion.div>
 
         {/* Results Grid */}
         {!loading && products.length > 0 && (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {products.map((product) => (
-              <ProductCard key={product.id} product={product} />
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+          >
+            {products.map((product, index) => (
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.05 }}
+              >
+                <ProductCard product={product} />
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         )}
 
         {/* No Results */}
         {!loading && queryParam && products.length === 0 && (
-          <div className="text-center py-16">
-            <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Search className="w-10 h-10 text-gray-400" />
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="text-center py-16"
+          >
+            <div className="w-24 h-24 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <Search className="w-12 h-12 text-blue-500" />
             </div>
-            <h2 className="text-xl font-semibold text-gray-900 mb-2">No products found</h2>
-            <p className="text-gray-500 mb-6">
-              We couldn&apos;t find any products matching &quot;{queryParam}&quot;
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">No products found</h2>
+            <p className="text-gray-500 mb-6 max-w-md mx-auto">
+              We couldn&apos;t find any products matching &quot;<span className="font-semibold text-gray-700">{queryParam}</span>&quot;
             </p>
-            <div className="flex gap-2 justify-center">
+            <div className="flex gap-3 justify-center">
               <Button variant="outline" onClick={() => {
                 setSearchQuery("")
                 setProducts([])
-              }}>
+              }} className="rounded-xl border-2 border-gray-200 hover:border-blue-300">
+                <X className="w-4 h-4 mr-2" />
                 Clear Search
               </Button>
               <Link href="/shop">
-                <Button>Browse All Products</Button>
+                <Button className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:shadow-xl hover:shadow-blue-500/25 rounded-xl">
+                  <ArrowRight className="w-4 h-4 mr-2" />
+                  Browse All Products
+                </Button>
               </Link>
             </div>
-          </div>
+          </motion.div>
         )}
 
         {/* Empty State (no search yet) */}
         {!queryParam && !loading && products.length === 0 && (
-          <div className="text-center py-16">
-            <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Search className="w-10 h-10 text-gray-400" />
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="text-center py-16"
+          >
+            <div className="w-24 h-24 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <Package className="w-12 h-12 text-blue-500" />
             </div>
-            <h2 className="text-xl font-semibold text-gray-900 mb-2">What are you looking for?</h2>
-            <p className="text-gray-500">Type in the search bar to find products</p>
-          </div>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">What are you looking for?</h2>
+            <p className="text-gray-500 mb-6">Type in the search bar to find products</p>
+            <Link href="/shop">
+              <Button className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:shadow-xl hover:shadow-blue-500/25 rounded-xl">
+                <ArrowRight className="w-4 h-4 mr-2" />
+                Browse All Products
+              </Button>
+            </Link>
+          </motion.div>
         )}
       </main>
     </div>

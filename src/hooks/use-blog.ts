@@ -38,10 +38,7 @@ export function useBlogPosts(category?: string) {
       try {
         setLoading(true)
         // Get all posts and filter client-side for scheduled posts
-        let q = query(
-          collection(db, "blogPosts"),
-          orderBy("date", "desc")
-        )
+        let q = query(collection(db, "blogPosts"))
         
         if (category && category !== "All") {
           q = query(q, where("category", "==", category))
@@ -54,6 +51,38 @@ export function useBlogPosts(category?: string) {
           id: doc.id,
           ...doc.data()
         })) as BlogPost[]
+        
+        // Sort by date descending
+        postsData.sort((a: BlogPost, b: BlogPost) => {
+          let aTime = 0
+          let bTime = 0
+          
+          // Handle different date types for a
+          if (a.date) {
+            const dateA = a.date as any
+            if (typeof dateA === 'object' && dateA.toMillis) {
+              aTime = dateA.toMillis()
+            } else if (typeof dateA === 'object' && dateA.toDate) {
+              aTime = dateA.toDate().getTime()
+            } else {
+              aTime = new Date(dateA).getTime()
+            }
+          }
+          
+          // Handle different date types for b
+          if (b.date) {
+            const dateB = b.date as any
+            if (typeof dateB === 'object' && dateB.toMillis) {
+              bTime = dateB.toMillis()
+            } else if (typeof dateB === 'object' && dateB.toDate) {
+              bTime = dateB.toDate().getTime()
+            } else {
+              bTime = new Date(dateB).getTime()
+            }
+          }
+          
+          return bTime - aTime
+        })
         
         // Filter posts: show published OR scheduled posts where scheduledAt <= now
         const visiblePosts = postsData.filter(post => {

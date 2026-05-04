@@ -40,8 +40,7 @@ export function useReviews(productId?: string) {
     setLoading(true)
     const q = query(
       collection(db, COLLECTION),
-      where("productId", "==", productId),
-      orderBy("createdAt", "desc")
+      where("productId", "==", productId)
     )
 
     const unsubscribe = onSnapshot(
@@ -53,6 +52,13 @@ export function useReviews(productId?: string) {
           createdAt: doc.data().createdAt?.toDate(),
           updatedAt: doc.data().updatedAt?.toDate(),
         })) as Review[]
+        
+        // Sort by createdAt descending
+        data.sort((a: Review, b: Review) => {
+          const aTime = a.createdAt?.getTime() || 0
+          const bTime = b.createdAt?.getTime() || 0
+          return bTime - aTime
+        })
         
         setReviews(data)
         

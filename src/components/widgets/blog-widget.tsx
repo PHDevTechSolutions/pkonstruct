@@ -3,7 +3,8 @@
 import { useState } from "react"
 import { useBlogPosts } from "@/hooks/use-blog"
 import { Button } from "@/components/ui/button"
-import { Loader2, ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react"
+import { Loader2, ChevronLeft, ChevronRight, ArrowUpRight, Calendar, User, Tag } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
 import Image from "next/image"
 import type { PageSection } from "./types"
@@ -66,80 +67,151 @@ export function BlogWidget({ section }: BlogWidgetProps) {
     const appliedCols = gridCols[layoutConfig.columns as keyof typeof gridCols] || gridCols[3]
     
     return (
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          {/* Clean Header */}
-          <div className="mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+      <section className="py-24 bg-gradient-to-br from-gray-50 via-white to-blue-50 relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse"></div>
+          <div className="absolute bottom-20 right-10 w-64 h-64 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse" style={{ animationDelay: '1s' }}></div>
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          {/* Modern Header */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6"
+          >
             <div>
               {section.title && (
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{section.title}</h2>
+                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                  <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                    {section.title}
+                  </span>
+                </h2>
               )}
-              <div className="w-20 h-1 bg-gray-900 rounded-full" />
+              <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full" />
             </div>
             
             <Link href="/blog">
-              <Button variant="outline" className="border-gray-300 hover:border-gray-900 hover:bg-gray-900 hover:text-white transition-all rounded-none">
+              <Button 
+                variant="outline" 
+                className="border-2 border-blue-500 text-blue-600 hover:bg-blue-500 hover:text-white transition-all duration-300 rounded-full px-6"
+              >
                 View All Posts
                 <ArrowUpRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
-          </div>
+          </motion.div>
           
           {/* Category Filters */}
           {layoutConfig.showFilters && categories.length > 0 && (
-            <div className="flex flex-wrap gap-3 mb-10">
-              <button className="px-4 py-2 text-sm font-medium bg-gray-900 text-white">All</button>
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+              className="flex flex-wrap gap-3 mb-12"
+            >
+              <button className="px-5 py-2.5 text-sm font-medium bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-full shadow-lg">
+                All
+              </button>
               {categories.map(cat => (
-                <button key={cat} className="px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 transition-colors">
+                <button 
+                  key={cat} 
+                  className="px-5 py-2.5 text-sm font-medium text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-all duration-300 rounded-full border border-gray-200 hover:border-blue-300"
+                >
                   {cat}
                 </button>
               ))}
-            </div>
+            </motion.div>
           )}
           
-          {/* Minimal Grid */}
+          {/* Modern Grid with Framer Motion */}
           <div className={`grid ${appliedCols} gap-8`}>
-            {displayPosts.map((post) => (
-              <Link key={post.id} href={`/blog/${post.id}`}>
-                <div className="group cursor-pointer">
-                  {/* Image Container */}
-                  <div className="relative aspect-[4/3] bg-gray-100 overflow-hidden mb-4">
-                    {post.image ? (
-                      <Image 
-                        src={post.image} 
-                        alt={post.title} 
-                        fill 
-                        className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105" 
-                      />
-                    ) : (
-                      <div className="absolute inset-0 flex items-center justify-center bg-gray-200">
-                        <span className="text-gray-400 text-sm">Blog Image</span>
+            {displayPosts.map((post, index) => (
+              <motion.div
+                key={post.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Link href={`/blog/${post.id}`}>
+                  <div className="group cursor-pointer bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                    {/* Image Container */}
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      {post.image ? (
+                        <motion.div
+                          whileHover={{ scale: 1.1 }}
+                          transition={{ duration: 0.6 }}
+                          className="h-full w-full"
+                        >
+                          <Image 
+                            src={post.image} 
+                            alt={post.title} 
+                            fill 
+                            className="object-cover" 
+                          />
+                        </motion.div>
+                      ) : (
+                        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-blue-100 to-indigo-100">
+                          <span className="text-blue-400 text-sm font-medium">Blog Image</span>
+                        </div>
+                      )}
+                      {/* Gradient overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      
+                      {/* Category badge */}
+                      <div className="absolute top-4 left-4">
+                        <span className="px-3 py-1.5 text-xs font-semibold bg-white/90 backdrop-blur-sm text-blue-600 rounded-full">
+                          {post.category}
+                        </span>
                       </div>
-                    )}
-                    {/* Hover overlay */}
-                    <div className="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/20 transition-colors duration-300" />
-                    <div className="absolute top-4 right-4 w-10 h-10 bg-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                      <ArrowUpRight className="w-5 h-5 text-gray-900" />
+                      
+                      {/* Arrow button */}
+                      <motion.div 
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileHover={{ opacity: 1, scale: 1 }}
+                        className="absolute bottom-4 right-4 w-12 h-12 bg-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-lg"
+                      >
+                        <ArrowUpRight className="w-5 h-5 text-blue-600" />
+                      </motion.div>
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="p-6">
+                      <div className="flex items-center gap-4 mb-3 text-sm text-gray-500">
+                        <span className="flex items-center gap-1.5">
+                          <Calendar className="w-4 h-4" />
+                          {post.date}
+                        </span>
+                        <span className="flex items-center gap-1.5">
+                          <User className="w-4 h-4" />
+                          {post.author}
+                        </span>
+                      </div>
+                      
+                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2 mb-3">
+                        {post.title}
+                      </h3>
+                      
+                      <p className="text-gray-600 line-clamp-2 leading-relaxed">
+                        {post.excerpt}
+                      </p>
+                      
+                      {/* Read more link */}
+                      <div className="mt-4 pt-4 border-t border-gray-100">
+                        <span className="inline-flex items-center text-sm font-semibold text-blue-600 group-hover:gap-2 transition-all">
+                          Read More 
+                          <ArrowUpRight className="w-4 h-4 ml-1 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                        </span>
+                      </div>
                     </div>
                   </div>
-                  
-                  {/* Content */}
-                  <div>
-                    <div className="flex items-center gap-3 mb-2">
-                      <span className="text-xs font-mono text-gray-400 uppercase tracking-wider">{post.category}</span>
-                      <span className="text-gray-300">|</span>
-                      <span className="text-xs text-gray-400">{post.date}</span>
-                    </div>
-                    <h3 className="text-lg font-semibold text-gray-900 group-hover:text-gray-600 transition-colors line-clamp-2">
-                      {post.title}
-                    </h3>
-                    <p className="text-sm text-gray-500 mt-2 line-clamp-2">{post.excerpt}</p>
-                    <div className="mt-4 text-xs text-gray-400">
-                      By {post.author}
-                    </div>
-                  </div>
-                </div>
-              </Link>
+                </Link>
+              </motion.div>
             ))}
           </div>
         </div>

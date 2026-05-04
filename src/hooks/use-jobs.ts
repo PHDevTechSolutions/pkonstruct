@@ -25,10 +25,7 @@ export function useJobs() {
   const [error, setError] = useState<Error | null>(null)
 
   useEffect(() => {
-    const q = query(
-      collection(db, "jobs"),
-      orderBy("createdAt", "desc")
-    )
+    const q = query(collection(db, "jobs"))
 
     const unsubscribe = onSnapshot(
       q,
@@ -37,6 +34,14 @@ export function useJobs() {
           id: doc.id,
           ...doc.data(),
         })) as Job[]
+        
+        // Sort by createdAt descending
+        jobsData.sort((a: Job, b: Job) => {
+          const aTime = a.createdAt?.toMillis?.() || a.createdAt?.toDate?.().getTime() || 0
+          const bTime = b.createdAt?.toMillis?.() || b.createdAt?.toDate?.().getTime() || 0
+          return bTime - aTime
+        })
+        
         setJobs(jobsData)
         setLoading(false)
       },

@@ -29,16 +29,16 @@ export function useTeam() {
     const fetchTeam = async () => {
       try {
         setLoading(true)
-        const q = query(
-          collection(db, "team"),
-          orderBy("order", "asc")
-        )
+        const q = query(collection(db, "team"))
 
         const snapshot = await getDocs(q)
         const membersData = snapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data()
         })) as TeamMember[]
+        
+        // Sort by order ascending
+        membersData.sort((a: TeamMember, b: TeamMember) => (a.order || 0) - (b.order || 0))
 
         setMembers(membersData)
       } catch (err) {

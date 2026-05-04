@@ -45,8 +45,7 @@ export function useWishlist(userId?: string) {
     setLoading(true)
     const q = query(
       collection(db, COLLECTION),
-      where("userId", "==", userId),
-      orderBy("addedAt", "desc")
+      where("userId", "==", userId)
     )
 
     const unsubscribe = onSnapshot(
@@ -57,6 +56,13 @@ export function useWishlist(userId?: string) {
           userId: doc.data().userId,
           addedAt: doc.data().addedAt?.toDate(),
         })) as WishlistItem[]
+        
+        // Sort by addedAt descending
+        data.sort((a: WishlistItem, b: WishlistItem) => {
+          const aTime = a.addedAt?.getTime() || 0
+          const bTime = b.addedAt?.getTime() || 0
+          return bTime - aTime
+        })
         
         setItems(data)
         setProductIds(new Set(data.map(item => item.productId)))

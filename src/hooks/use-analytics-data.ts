@@ -49,8 +49,7 @@ export function usePageViewStats(days: number = 7) {
 
     const q = query(
       collection(db, "page_views"),
-      where("timestamp", ">=", startTimestamp),
-      orderBy("timestamp", "desc")
+      where("timestamp", ">=", startTimestamp)
     )
 
     const unsubscribe = onSnapshot(q, (snapshot) => {
@@ -105,8 +104,7 @@ export function useProductAnalytics(days: number = 7) {
 
     const viewsQuery = query(
       collection(db, "product_views"),
-      where("timestamp", ">=", startTimestamp),
-      orderBy("timestamp", "desc")
+      where("timestamp", ">=", startTimestamp)
     )
 
     const cartQuery = query(
@@ -209,8 +207,7 @@ export function useCartFunnel(days: number = 7) {
 
     const q = query(
       collection(db, "cart_events"),
-      where("timestamp", ">=", startTimestamp),
-      orderBy("timestamp", "desc")
+      where("timestamp", ">=", startTimestamp)
     )
 
     const unsubscribe = onSnapshot(q, (snapshot) => {

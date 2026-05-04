@@ -200,9 +200,10 @@ export default function PagesManagement() {
 
   const fetchPages = async () => {
     try {
-      const q = query(collection(db, "pages"), orderBy("createdAt", "desc"))
+      const q = query(collection(db, "pages"))
       const snapshot = await getDocs(q)
-      const data = snapshot.docs.map((doc) => {
+      const data = snapshot.docs
+        .map((doc) => {
         const docData = doc.data()
         return {
           id: doc.id,
@@ -215,6 +216,13 @@ export default function PagesManagement() {
           order: docData.order ?? 0,
         }
       }) as CustomPage[]
+      
+      // Sort by createdAt descending
+      data.sort((a: any, b: any) => {
+        const aTime = a.createdAt?.toMillis?.() || new Date(a.createdAt).getTime() || 0
+        const bTime = b.createdAt?.toMillis?.() || new Date(b.createdAt).getTime() || 0
+        return bTime - aTime
+      })
       
       // If no pages exist, create default ones
       if (data.length === 0) {

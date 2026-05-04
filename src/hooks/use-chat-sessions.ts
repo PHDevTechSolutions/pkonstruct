@@ -28,16 +28,21 @@ export function useChatSessions() {
 
   // Subscribe to all active sessions
   useEffect(() => {
-    const q = query(
-      collection(db, "chatSessions"),
-      orderBy("updatedAt", "desc")
-    )
+    const q = query(collection(db, "chatSessions"))
 
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const data = snapshot.docs.map(doc => ({
         id: doc.id,
         ...doc.data()
       })) as ChatSession[]
+      
+      // Sort by updatedAt descending
+      data.sort((a: ChatSession, b: ChatSession) => {
+        const aTime = a.updatedAt?.toMillis?.() || a.updatedAt?.toDate?.().getTime() || 0
+        const bTime = b.updatedAt?.toMillis?.() || b.updatedAt?.toDate?.().getTime() || 0
+        return bTime - aTime
+      })
+      
       setSessions(data)
       setLoading(false)
     }, (err) => {

@@ -59,7 +59,7 @@ export function useApplications() {
         status: 'new',
         statusHistory: [{
           status: 'new',
-          changedAt: serverTimestamp(),
+          changedAt: Timestamp.now(), // Use Timestamp.now() instead of serverTimestamp() for arrays
           changedBy: 'system',
           note: 'Application submitted'
         }],
@@ -87,7 +87,7 @@ export function useApplications() {
       const appRef = doc(db, "applications", applicationId)
       const statusEntry = {
         status: newStatus,
-        changedAt: serverTimestamp(),
+        changedAt: Timestamp.now(), // Use Timestamp.now() for arrays
         changedBy,
         note
       }
@@ -113,7 +113,7 @@ export function useApplications() {
       const newNote = {
         id: crypto.randomUUID(),
         text: noteText,
-        createdAt: serverTimestamp(),
+        createdAt: Timestamp.now(), // Use Timestamp.now() for arrays
         createdBy
       }
       
